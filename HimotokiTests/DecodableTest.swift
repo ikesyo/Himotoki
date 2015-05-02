@@ -40,6 +40,7 @@ class DecodableTest: XCTestCase {
 
         // Failing case
         JSON["bool"] = nil
+        JSON["group"] = nil
         let nilPerson: Person? = decode(JSON)
         XCTAssert(nilPerson == nil)
     }
