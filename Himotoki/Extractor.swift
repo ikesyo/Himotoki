@@ -17,7 +17,7 @@ public final class Extractor {
     }
 
     public func value<T>(key: String) -> T? {
-        return dictionary[key] as? T
+        return valueFor(key.componentsSeparatedByString("."), dictionary) as? T
     }
 
     public func valueOr<T>(key: String, @autoclosure defaultValue: () -> T) -> T {
@@ -44,4 +44,27 @@ public final class Extractor {
     public var isValid: Bool {
         return failedCount == 0
     }
+}
+
+// Implement it as a tail recursive function.
+private func valueFor(keyPathComponents: [String], dictionary: [String: AnyObject]) -> AnyObject? {
+    if keyPathComponents.isEmpty {
+        return nil
+    }
+
+    if let object: AnyObject = dictionary[keyPathComponents.first!] {
+        switch object {
+        case is NSNull:
+            return nil
+
+        case let dict as [String: AnyObject] where keyPathComponents.count > 1:
+            let tail = Array(keyPathComponents[1..<keyPathComponents.count])
+            return valueFor(tail, dict)
+            
+        default:
+            return object
+        }
+    }
+    
+    return nil
 }

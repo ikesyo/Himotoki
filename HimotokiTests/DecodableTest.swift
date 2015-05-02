@@ -19,6 +19,7 @@ class DecodableTest: XCTestCase {
             "height": 175.9,
             "float": 32.1 as Float,
             "bool": true,
+            "nested": [ "value": "The nested value" ],
         ]
 
         // Succeeding case
@@ -30,6 +31,7 @@ class DecodableTest: XCTestCase {
         XCTAssert(person?.height == 175.9)
         XCTAssert(person?.float == 32.1)
         XCTAssert(person?.bool == true)
+        XCTAssert(person?.nested == "The nested value")
 
         // Failing case
         JSON["bool"] = nil
@@ -46,6 +48,7 @@ struct Person: Decodable {
     let height: Double
     let float: Float
     let bool: Bool
+    let nested: String
 
     init?(_ JSON: Extractor) {
         firstName = JSON.valueOrFail("first_name")
@@ -54,6 +57,7 @@ struct Person: Decodable {
         height = JSON.valueOrFail("height")
         float = JSON.valueOrFail("float")
         bool = JSON.valueOrFail("bool")
+        nested = JSON.valueOrFail("nested.value")
 
         if !JSON.isValid {
             return nil
