@@ -7,7 +7,7 @@
 //
 
 public final class Extractor {
-    private let JSON: AnyObject
+    public let JSON: AnyObject
 
     /// Counter for failing cases of deserializing values
     private var failedCount: Int = 0
@@ -16,21 +16,21 @@ public final class Extractor {
         self.JSON = JSON
     }
 
-    public func value<T>(key: String) -> T? {
+    public func value<T: Decodable>(key: String) -> T? {
         if let dictionary = JSON as? [String: AnyObject] {
-            return valueFor(key.componentsSeparatedByString("."), dictionary) as? T
+            return valueFor(key.componentsSeparatedByString("."), dictionary).flatMap(decode)
         } else {
             return nil
         }
     }
 
-    public func valueOr<T>(key: String, @autoclosure defaultValue: () -> T) -> T {
+    public func valueOr<T: Decodable>(key: String, @autoclosure defaultValue: () -> T) -> T {
         return value(key) ?? defaultValue()
     }
 
     /// Returns current JSON value of type `T` if it is existing, or returns a
     /// unusable proxy value for `T` and collects failed count.
-    public func valueOrFail<T>(key: String) -> T {
+    public func valueOrFail<T: Decodable>(key: String) -> T {
         if let value: T = value(key) {
             return value
         } else {
