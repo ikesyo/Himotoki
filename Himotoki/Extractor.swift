@@ -43,9 +43,10 @@ public final class Extractor {
             failedCount++
 
             // Returns dummy memory as a proxy for type `T`
-            let pointer = UnsafeMutablePointer<T>.alloc(0)
-            let autoreleasing = AutoreleasingUnsafeMutablePointer<T>(pointer)
-            return autoreleasing.memory
+            let pointer = UnsafeMutablePointer<T>.alloc(sizeof(T))
+            let dummy = pointer.memory
+            pointer.destroy()
+            return dummy
         }
     }
 
