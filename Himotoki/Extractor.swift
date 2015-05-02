@@ -12,6 +12,11 @@ public final class Extractor {
     /// Counter for failing cases of deserializing values
     private var failedCount: Int = 0
 
+    /// Returns whether the receiver is success or failure.
+    private var isValid: Bool {
+        return failedCount == 0
+    }
+
     internal init(JSON: AnyObject) {
         self.JSON = JSON
     }
@@ -39,14 +44,18 @@ public final class Extractor {
 
             // Returns dummy memory as a proxy for type `T`
             let pointer = UnsafeMutablePointer<T>.alloc(0)
-            pointer.dealloc(0)
-            return pointer.memory
+            let autoreleasing = AutoreleasingUnsafeMutablePointer<T>(pointer)
+            return autoreleasing.memory
         }
     }
 
-    /// Returns whether the receiver is success or failure.
-    public var isValid: Bool {
-        return failedCount == 0
+    public func decodeWith<T: Decodable where T.DecodedType == T>(@noescape decode: Extractor -> T) -> T? {
+        let result = decode(self)
+        if isValid {
+            return result
+        } else {
+            return nil
+        }
     }
 }
 
