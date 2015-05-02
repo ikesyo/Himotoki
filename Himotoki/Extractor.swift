@@ -7,17 +7,21 @@
 //
 
 public final class Extractor {
-    private let dictionary: [String: AnyObject]
+    private let JSON: AnyObject
 
     /// Counter for failing cases of deserializing values
     private var failedCount: Int = 0
 
-    internal init(dictionary: [String: AnyObject]) {
-        self.dictionary = dictionary
+    internal init(JSON: AnyObject) {
+        self.JSON = JSON
     }
 
     public func value<T>(key: String) -> T? {
-        return valueFor(key.componentsSeparatedByString("."), dictionary) as? T
+        if let dictionary = JSON as? [String: AnyObject] {
+            return valueFor(key.componentsSeparatedByString("."), dictionary) as? T
+        } else {
+            return nil
+        }
     }
 
     public func valueOr<T>(key: String, @autoclosure defaultValue: () -> T) -> T {

@@ -7,14 +7,10 @@
 //
 
 public protocol Decodable {
-    init?(_ JSON: Extractor)
+    init?(_ e: Extractor)
 }
 
 public func decode<T: Decodable>(object: AnyObject) -> T? {
-    if let dictionary = object as? [String: AnyObject] {
-        let extractor = Extractor(dictionary: dictionary)
-        return T(extractor)
-    } else {
-        return nil
-    }
+    let extractor = Extractor(JSON: object)
+    return T.init(extractor)
 }

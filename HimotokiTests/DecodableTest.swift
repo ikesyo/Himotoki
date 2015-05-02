@@ -50,16 +50,16 @@ struct Person: Decodable {
     let bool: Bool
     let nested: String
 
-    init?(_ JSON: Extractor) {
-        firstName = JSON.valueOrFail("first_name")
-        lastName = JSON.valueOrFail("last_name")
-        age = JSON.valueOrFail("age")
-        height = JSON.valueOrFail("height")
-        float = JSON.valueOrFail("float")
-        bool = JSON.valueOrFail("bool")
-        nested = JSON.valueOrFail("nested.value")
+    init?(_ e: Extractor) {
+        firstName = e.valueOrFail("first_name")
+        lastName = e.valueOrFail("last_name")
+        age = e.valueOrFail("age")
+        height = e.valueOrFail("height")
+        float = e.valueOrFail("float")
+        bool = e.valueOrFail("bool")
+        nested = e.valueOrFail("nested.value")
 
-        if !JSON.isValid {
+        if !e.isValid {
             return nil
         }
     }
