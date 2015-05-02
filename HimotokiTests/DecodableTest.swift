@@ -54,17 +54,21 @@ struct Person: Decodable {
     let nested: String
     let group: Group
 
-    init?(_ e: Extractor) {
-        firstName = e.valueOrFail("first_name")
-        lastName = e.valueOrFail("last_name")
-        age = e.valueOrFail("age")
-        height = e.valueOrFail("height")
-        float = e.valueOrFail("float")
-        bool = e.valueOrFail("bool")
-        nested = e.valueOrFail("nested.value")
-        group = e.valueOrFail("group")
+    static func decode(e: Extractor) -> Person? {
+        let value = Person(
+            firstName: e.valueOrFail("first_name"),
+            lastName: e.valueOrFail("last_name"),
+            age: e.valueOrFail("age"),
+            height: e.valueOrFail("height"),
+            float: e.valueOrFail("float"),
+            bool: e.valueOrFail("bool"),
+            nested: e.valueOrFail("nested.value"),
+            group: e.valueOrFail("group")
+        )
 
-        if !e.isValid {
+        if e.isValid {
+            return value
+        } else {
             return nil
         }
     }
@@ -74,11 +78,15 @@ struct Group: Decodable {
     let name: String
     let floor: Int
 
-    init?(_ e: Extractor) {
-        name = e.valueOrFail("name")
-        floor = e.valueOrFail("floor")
+    static func decode(e: Extractor) -> Group? {
+        let value = Group(
+            name: e.valueOrFail("name"),
+            floor: e.valueOrFail("floor")
+        )
 
-        if !e.isValid {
+        if e.isValid {
+            return value
+        } else {
             return nil
         }
     }

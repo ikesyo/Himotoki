@@ -7,38 +7,31 @@
 //
 
 public protocol Decodable {
-    init?(_ e: Extractor)
+    typealias DecodedType = Self
+    static func decode(e: Extractor) -> DecodedType?
 }
 
-public func decode<T: Decodable>(object: AnyObject) -> T? {
+public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> T? {
     let extractor = Extractor(JSON: object)
-    return T.init(extractor)
+    return T.decode(extractor)
 }
 
 extension String: Decodable {
-    public init?(_ e: Extractor) {
-        if let value = e.JSON as? String {
-            self = value
-        } else {
-            return nil
-        }
+    public static func decode(e: Extractor) -> String? {
+        return e.JSON as? String
     }
 }
 
 extension Int: Decodable {
-    public init?(_ e: Extractor) {
-        if let value = e.JSON as? Int {
-            self = value
-        } else {
-            return nil
-        }
+    public static func decode(e: Extractor) -> Int? {
+        return e.JSON as? Int
     }
 }
 
 extension Int64: Decodable {
-    public init?(_ e: Extractor) {
+    public static func decode(e: Extractor) -> Int64? {
         if let value = e.JSON as? NSNumber {
-            self = value.longLongValue
+            return value.longLongValue
         } else {
             return nil
         }
@@ -46,31 +39,19 @@ extension Int64: Decodable {
 }
 
 extension Double: Decodable {
-    public init?(_ e: Extractor) {
-        if let value = e.JSON as? Double {
-            self = value
-        } else {
-            return nil
-        }
+    public static func decode(e: Extractor) -> Double? {
+        return e.JSON as? Double
     }
 }
 
 extension Float: Decodable {
-    public init?(_ e: Extractor) {
-        if let value = e.JSON as? Float {
-            self = value
-        } else {
-            return nil
-        }
+    public static func decode(e: Extractor) -> Float? {
+        return e.JSON as? Float
     }
 }
 
 extension Bool: Decodable {
-    public init?(_ e: Extractor) {
-        if let value = e.JSON as? Bool {
-            self = value
-        } else {
-            return nil
-        }
+    public static func decode(e: Extractor) -> Bool? {
+        return e.JSON as? Bool
     }
 }
