@@ -21,9 +21,32 @@ public final class Extractor {
         self.JSON = JSON
     }
 
+    private func rawValue(key: String) -> AnyObject? {
+        if let dictionary = JSON as? [String: AnyObject] {
+            return valueFor(key.componentsSeparatedByString("."), dictionary)
+        } else {
+            return nil
+        }
+    }
+
     internal func value<T: Decodable where T.DecodedType == T>(key: String) -> T? {
         if let dictionary = JSON as? [String: AnyObject] {
             return valueFor(key.componentsSeparatedByString("."), dictionary).flatMap(decode)
+        } else {
+            return nil
+        }
+    }
+
+    internal func array<T: Decodable where T.DecodedType == T>(key: String) -> [T]? {
+        let innerJSON: AnyObject? = rawValue(key)
+
+        if let array = innerJSON as? [AnyObject] {
+            return array.reduce([]) { (var accum, value) in
+                if let decoded: T = decode(value) {
+                    accum?.append(decoded)
+                }
+                return accum
+            }
         } else {
             return nil
         }

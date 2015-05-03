@@ -8,6 +8,8 @@
 
 infix operator <| { associativity left precedence 150 }
 infix operator <|? { associativity left precedence 150 }
+infix operator <|| { associativity left precedence 150 }
+infix operator <||? { associativity left precedence 150 }
 
 public func <| <T: Decodable where T.DecodedType == T>(e: Extractor, key: String) -> T {
     return e.valueOrFail(key)
@@ -15,4 +17,12 @@ public func <| <T: Decodable where T.DecodedType == T>(e: Extractor, key: String
 
 public func <|? <T: Decodable where T.DecodedType == T>(e: Extractor, key: String) -> T? {
     return e.value(key)
+}
+
+public func <|| <T: Decodable where T.DecodedType == T>(e: Extractor, key: String) -> [T] {
+    return (e <||? key) ?? []
+}
+
+public func <||? <T: Decodable where T.DecodedType == T>(e: Extractor, key: String) -> [T]? {
+    return e.array(key)
 }

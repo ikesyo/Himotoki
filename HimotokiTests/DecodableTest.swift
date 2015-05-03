@@ -21,8 +21,12 @@ class DecodableTest: XCTestCase {
             "float": 32.1 as Float,
             "bool": true,
             "nested": [ "value": "The nested value" ],
+            "array": [ "123", "456" ],
+            "arrayOption": NSNull(),
             "group": [ "name": "Himotoki", "floor": 12 ],
         ]
+
+        JSON["people"] = [ JSON, JSON ]
 
         // Succeeding case
         let person: Person? = decode(JSON)
@@ -34,7 +38,13 @@ class DecodableTest: XCTestCase {
         XCTAssert(person?.height == 175.9)
         XCTAssert(person?.float == 32.1)
         XCTAssert(person?.bool == true)
+
         XCTAssert(person?.nested == "The nested value")
+        XCTAssert(person?.array.count == 2)
+        XCTAssert(person?.array.first == "123")
+        XCTAssert(person?.arrayOption == nil)
+
+        XCTAssert(person?.people.count == 2)
         XCTAssert(person?.group.name == "Himotoki")
         XCTAssert(person?.group.floor == 12)
         XCTAssert(person?.group.optional == nil)
@@ -56,7 +66,12 @@ struct Person: Decodable {
     let height: Double
     let float: Float
     let bool: Bool
+
     let nested: String
+    let array: [String]
+    let arrayOption: [String]?
+
+    let people: [Person]
     let group: Group
 
     static func decode(e: Extractor) -> Person? {
@@ -70,6 +85,9 @@ struct Person: Decodable {
                 float: e <| "float",
                 bool: e <| "bool",
                 nested: e <| "nested.value",
+                array: e <|| "array",
+                arrayOption: e <||? "arrayOption",
+                people: e <|| "people",
                 group: e <| "group"
             )
         }
