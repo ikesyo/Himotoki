@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Syo Ikeda. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import Foundation;
 
 //! Project version number for Himotoki.
 FOUNDATION_EXPORT double HimotokiVersionNumber;
