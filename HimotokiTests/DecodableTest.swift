@@ -85,25 +85,23 @@ struct Person: Decodable {
     let group: Group
 
     static func decode(e: Extractor) -> Person? {
-        return e.decodeWith { e in
-            Person(
-                firstName: e <| "first_name",
-                lastName: e <| "last_name",
-                age: e <| "age",
-                int64: e <| "int64",
-                height: e <| "height",
-                float: e <| "float",
-                bool: e <| "bool",
-                number: e <| "number",
-                nested: e <| "nested.value",
-                array: e <|| "array",
-                arrayOption: e <||? "arrayOption",
-                dictionary: e <|-| "dictionary",
-                dictionaryOption: e <|-|? "dictionaryOption",
-                people: e <|| "people",
-                group: e <| "group"
-            )
-        }
+        return Person(
+            firstName: e <| "first_name",
+            lastName: e <| "last_name",
+            age: e <| "age",
+            int64: e <| "int64",
+            height: e <| "height",
+            float: e <| "float",
+            bool: e <| "bool",
+            number: e <| "number",
+            nested: e <| "nested.value",
+            array: e <|| "array",
+            arrayOption: e <||? "arrayOption",
+            dictionary: e <|-| "dictionary",
+            dictionaryOption: e <|-|? "dictionaryOption",
+            people: e <|| "people",
+            group: e <| "group"
+        )
     }
 }
 
@@ -113,12 +111,10 @@ struct Group: Decodable {
     let optional: String?
 
     static func decode(e: Extractor) -> Group? {
-        return e.decodeWith { e in
-            Group(
-                name: e <| "name",
-                floor: e <| "floor",
-                optional: e <|? "optional"
-            )
-        }
+        return Group(
+            name: e <| "name",
+            floor: e <| "floor",
+            optional: e <|? "optional"
+        )
     }
 }

@@ -13,7 +13,11 @@ public protocol Decodable {
 
 public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> T? {
     let extractor = Extractor(JSON: object)
-    return T.decode(extractor)
+    if let decoded = T.decode(extractor) where extractor.isValid {
+        return decoded
+    } else {
+        return nil
+    }
 }
 
 extension String: Decodable {

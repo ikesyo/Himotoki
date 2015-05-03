@@ -13,7 +13,7 @@ public final class Extractor {
     private var failedCount: Int = 0
 
     /// Returns whether the receiver is success or failure.
-    private var isValid: Bool {
+    internal var isValid: Bool {
         return failedCount == 0
     }
 
@@ -80,15 +80,6 @@ public final class Extractor {
             let dummy = pointer.memory
             pointer.destroy()
             return dummy
-        }
-    }
-
-    public func decodeWith<T: Decodable where T.DecodedType == T>(@noescape decode: Extractor -> T) -> T? {
-        let result = decode(self)
-        if isValid {
-            return result
-        } else {
-            return nil
         }
     }
 }
