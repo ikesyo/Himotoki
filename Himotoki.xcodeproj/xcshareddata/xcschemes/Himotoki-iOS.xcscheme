@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CD929A361AF4A2C3002F5C53"
                BuildableName = "Himotoki.framework"
-               BlueprintName = "Himotoki"
+               BlueprintName = "Himotoki-iOS"
                ReferencedContainer = "container:Himotoki.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CD929A411AF4A2C3002F5C53"
-               BuildableName = "HimotokiTests.xctest"
-               BlueprintName = "HimotokiTests"
+               BuildableName = "HimotokiTests-iOS.xctest"
+               BlueprintName = "HimotokiTests-iOS"
                ReferencedContainer = "container:Himotoki.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,8 +47,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CD929A411AF4A2C3002F5C53"
-               BuildableName = "HimotokiTests.xctest"
-               BlueprintName = "HimotokiTests"
+               BuildableName = "HimotokiTests-iOS.xctest"
+               BlueprintName = "HimotokiTests-iOS"
                ReferencedContainer = "container:Himotoki.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -58,7 +58,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD929A361AF4A2C3002F5C53"
             BuildableName = "Himotoki.framework"
-            BlueprintName = "Himotoki"
+            BlueprintName = "Himotoki-iOS"
             ReferencedContainer = "container:Himotoki.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -77,7 +77,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD929A361AF4A2C3002F5C53"
             BuildableName = "Himotoki.framework"
-            BlueprintName = "Himotoki"
+            BlueprintName = "Himotoki-iOS"
             ReferencedContainer = "container:Himotoki.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -95,7 +95,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD929A361AF4A2C3002F5C53"
             BuildableName = "Himotoki.framework"
-            BlueprintName = "Himotoki"
+            BlueprintName = "Himotoki-iOS"
             ReferencedContainer = "container:Himotoki.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

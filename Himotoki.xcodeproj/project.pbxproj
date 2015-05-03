@@ -30,7 +30,7 @@
 		CD929A371AF4A2C3002F5C53 /* Himotoki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Himotoki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD929A3B1AF4A2C3002F5C53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Himotoki.h; sourceTree = "<group>"; };
-		CD929A421AF4A2C3002F5C53 /* HimotokiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HimotokiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD929A421AF4A2C3002F5C53 /* HimotokiTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HimotokiTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD929A481AF4A2C3002F5C53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD929A531AF4A488002F5C53 /* Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
 		CD929A551AF4A4C9002F5C53 /* Extractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extractor.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				CD929A371AF4A2C3002F5C53 /* Himotoki.framework */,
-				CD929A421AF4A2C3002F5C53 /* HimotokiTests.xctest */,
+				CD929A421AF4A2C3002F5C53 /* HimotokiTests-iOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,9 +125,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		CD929A361AF4A2C3002F5C53 /* Himotoki */ = {
+		CD929A361AF4A2C3002F5C53 /* Himotoki-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD929A4D1AF4A2C3002F5C53 /* Build configuration list for PBXNativeTarget "Himotoki" */;
+			buildConfigurationList = CD929A4D1AF4A2C3002F5C53 /* Build configuration list for PBXNativeTarget "Himotoki-iOS" */;
 			buildPhases = (
 				CD929A321AF4A2C3002F5C53 /* Sources */,
 				CD929A331AF4A2C3002F5C53 /* Frameworks */,
@@ -138,14 +138,14 @@
 			);
 			dependencies = (
 			);
-			name = Himotoki;
+			name = "Himotoki-iOS";
 			productName = Himotoki;
 			productReference = CD929A371AF4A2C3002F5C53 /* Himotoki.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CD929A411AF4A2C3002F5C53 /* HimotokiTests */ = {
+		CD929A411AF4A2C3002F5C53 /* HimotokiTests-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD929A501AF4A2C3002F5C53 /* Build configuration list for PBXNativeTarget "HimotokiTests" */;
+			buildConfigurationList = CD929A501AF4A2C3002F5C53 /* Build configuration list for PBXNativeTarget "HimotokiTests-iOS" */;
 			buildPhases = (
 				CD929A3E1AF4A2C3002F5C53 /* Sources */,
 				CD929A3F1AF4A2C3002F5C53 /* Frameworks */,
@@ -156,9 +156,9 @@
 			dependencies = (
 				CD929A451AF4A2C3002F5C53 /* PBXTargetDependency */,
 			);
-			name = HimotokiTests;
+			name = "HimotokiTests-iOS";
 			productName = HimotokiTests;
-			productReference = CD929A421AF4A2C3002F5C53 /* HimotokiTests.xctest */;
+			productReference = CD929A421AF4A2C3002F5C53 /* HimotokiTests-iOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -190,8 +190,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CD929A361AF4A2C3002F5C53 /* Himotoki */,
-				CD929A411AF4A2C3002F5C53 /* HimotokiTests */,
+				CD929A361AF4A2C3002F5C53 /* Himotoki-iOS */,
+				CD929A411AF4A2C3002F5C53 /* HimotokiTests-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -237,7 +237,7 @@
 /* Begin PBXTargetDependency section */
 		CD929A451AF4A2C3002F5C53 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CD929A361AF4A2C3002F5C53 /* Himotoki */;
+			target = CD929A361AF4A2C3002F5C53 /* Himotoki-iOS */;
 			targetProxy = CD929A441AF4A2C3002F5C53 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -343,7 +343,7 @@
 				INFOPLIST_FILE = Himotoki/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -360,7 +360,7 @@
 				INFOPLIST_FILE = Himotoki/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -410,7 +410,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD929A4D1AF4A2C3002F5C53 /* Build configuration list for PBXNativeTarget "Himotoki" */ = {
+		CD929A4D1AF4A2C3002F5C53 /* Build configuration list for PBXNativeTarget "Himotoki-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD929A4E1AF4A2C3002F5C53 /* Debug */,
@@ -419,7 +419,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD929A501AF4A2C3002F5C53 /* Build configuration list for PBXNativeTarget "HimotokiTests" */ = {
+		CD929A501AF4A2C3002F5C53 /* Build configuration list for PBXNativeTarget "HimotokiTests-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD929A511AF4A2C3002F5C53 /* Debug */,
