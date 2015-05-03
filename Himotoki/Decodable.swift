@@ -55,3 +55,11 @@ extension Bool: Decodable {
         return e.JSON as? Bool
     }
 }
+
+extension NSNumber: Decodable {
+    public typealias DecodedType = NSNumber
+
+    public static func decode(e: Extractor) -> NSNumber? {
+        return e.JSON as? NSNumber
+    }
+}

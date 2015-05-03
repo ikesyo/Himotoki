@@ -20,6 +20,7 @@ class DecodableTest: XCTestCase {
             "height": 175.9,
             "float": 32.1 as Float,
             "bool": true,
+            "number": NSNumber(long: 123456789),
             "nested": [ "value": "The nested value" ],
             "array": [ "123", "456" ],
             "arrayOption": NSNull(),
@@ -38,6 +39,7 @@ class DecodableTest: XCTestCase {
         XCTAssert(person?.height == 175.9)
         XCTAssert(person?.float == 32.1)
         XCTAssert(person?.bool == true)
+        XCTAssert(person?.number == NSNumber(long: 123456789))
 
         XCTAssert(person?.nested == "The nested value")
         XCTAssert(person?.array.count == 2)
@@ -66,6 +68,7 @@ struct Person: Decodable {
     let height: Double
     let float: Float
     let bool: Bool
+    let number: NSNumber
 
     let nested: String
     let array: [String]
@@ -84,6 +87,7 @@ struct Person: Decodable {
                 height: e <| "height",
                 float: e <| "float",
                 bool: e <| "bool",
+                number: e <| "number",
                 nested: e <| "nested.value",
                 array: e <|| "array",
                 arrayOption: e <||? "arrayOption",
