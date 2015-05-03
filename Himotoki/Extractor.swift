@@ -52,6 +52,20 @@ public final class Extractor {
         }
     }
 
+    internal func dictionary<T: Decodable where T.DecodedType == T>(key: String) -> [String: T]? {
+        let innerJSON: AnyObject? = rawValue(key)
+
+        if let dictionary = innerJSON as? [String: AnyObject] {
+            return reduce(dictionary, [:]) { (var accum, element) in
+                let (key, value: AnyObject) = element
+                accum?[key] = decode(value)
+                return accum
+            }
+        } else {
+            return nil
+        }
+    }
+
     /// Returns current JSON value of type `T` if it is existing, or returns a
     /// unusable proxy value for `T` and collects failed count.
     internal func valueOrFail<T: Decodable where T.DecodedType == T>(key: String) -> T {

@@ -24,6 +24,8 @@ class DecodableTest: XCTestCase {
             "nested": [ "value": "The nested value" ],
             "array": [ "123", "456" ],
             "arrayOption": NSNull(),
+            "dictionary": [ "A": 1, "B": 2 ],
+            // "dictionaryOption" key is missing
             "group": [ "name": "Himotoki", "floor": 12 ],
         ]
 
@@ -45,6 +47,9 @@ class DecodableTest: XCTestCase {
         XCTAssert(person?.array.count == 2)
         XCTAssert(person?.array.first == "123")
         XCTAssert(person?.arrayOption == nil)
+        XCTAssert(person?.dictionary.count == 2)
+        XCTAssert(person?.dictionary["A"] == 1)
+        XCTAssert(person?.dictionaryOption == nil)
 
         XCTAssert(person?.people.count == 2)
         XCTAssert(person?.group.name == "Himotoki")
@@ -73,6 +78,8 @@ struct Person: Decodable {
     let nested: String
     let array: [String]
     let arrayOption: [String]?
+    let dictionary: [String: Int]
+    let dictionaryOption: [String: Int]?
 
     let people: [Person]
     let group: Group
@@ -91,6 +98,8 @@ struct Person: Decodable {
                 nested: e <| "nested.value",
                 array: e <|| "array",
                 arrayOption: e <||? "arrayOption",
+                dictionary: e <|-| "dictionary",
+                dictionaryOption: e <|-|? "dictionaryOption",
                 people: e <|| "people",
                 group: e <| "group"
             )
