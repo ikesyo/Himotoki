@@ -34,6 +34,20 @@ struct Group: Decodable {
         ).map(create)
     }
 }
+
+func testGroup() {
+   var JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
+
+   let g: Group? = decode(JSON)
+   XCTAssert(g != nil)
+   XCTAssert(g?.name == "Himotoki")
+   XCTAssert(g?.floor == 12)
+   XCTAssert(g?.optional == nil)
+
+   JSON["name"] = nil
+   let f: Group? = decode(JSON)
+   XCTAssert(f == nil)
+}
 ```
 
 ## Requirements
