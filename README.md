@@ -9,6 +9,7 @@ _Himotoki_ has the same meaning of 'decoding' in Japanese.
 - Just do JSON decoding (deserialization) well. JSON encoding (serialization) would not be supported going forward. :wink:
 - Much simpler API.
 - Fail-fast conditional model building. This is useful for some `struct`s with non-optional `let` properties.
+- No external dependencies.
 
 See a simple example from a test code:
 
@@ -52,7 +53,7 @@ There are 2 options. If your app support iOS 7, you can only use the latter way.
 
 ### Copying the source files directly
 
-- Add this repository as a git submodule: 
+- Add this repository as a git submodule:
 
 ```swift
 $ git submodule add https://github.com/ikesyo/Himotoki.git PATH_TO_SUBMODULE
