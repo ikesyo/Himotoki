@@ -22,11 +22,7 @@ public final class Extractor {
     }
 
     internal func value<T: Decodable where T.DecodedType == T>(key: String) -> T? {
-        if let dictionary = rawValue as? [String: AnyObject] {
-            return valueFor(key.componentsSeparatedByString("."), dictionary).flatMap(decode)
-        } else {
-            return nil
-        }
+        return rawValue(key).flatMap(decode)
     }
 
     internal func array<T: Decodable where T.DecodedType == T>(key: String) -> [T]? {
