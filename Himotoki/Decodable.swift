@@ -57,8 +57,6 @@ extension Bool: Decodable {
 }
 
 extension NSNumber: Decodable {
-    public typealias DecodedType = NSNumber
-
     public static func decode(e: Extractor) -> NSNumber? {
         return e.rawValue as? NSNumber
     }
