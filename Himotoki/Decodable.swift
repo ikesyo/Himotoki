@@ -12,25 +12,25 @@ public protocol Decodable {
 }
 
 public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> T? {
-    let extractor = Extractor(JSON: object)
+    let extractor = Extractor(object)
     return T.decode(extractor)
 }
 
 extension String: Decodable {
     public static func decode(e: Extractor) -> String? {
-        return e.JSON as? String
+        return e.rawValue as? String
     }
 }
 
 extension Int: Decodable {
     public static func decode(e: Extractor) -> Int? {
-        return e.JSON as? Int
+        return e.rawValue as? Int
     }
 }
 
 extension Int64: Decodable {
     public static func decode(e: Extractor) -> Int64? {
-        if let value = e.JSON as? NSNumber {
+        if let value = e.rawValue as? NSNumber {
             return value.longLongValue
         } else {
             return nil
@@ -40,19 +40,19 @@ extension Int64: Decodable {
 
 extension Double: Decodable {
     public static func decode(e: Extractor) -> Double? {
-        return e.JSON as? Double
+        return e.rawValue as? Double
     }
 }
 
 extension Float: Decodable {
     public static func decode(e: Extractor) -> Float? {
-        return e.JSON as? Float
+        return e.rawValue as? Float
     }
 }
 
 extension Bool: Decodable {
     public static func decode(e: Extractor) -> Bool? {
-        return e.JSON as? Bool
+        return e.rawValue as? Bool
     }
 }
 
@@ -60,6 +60,6 @@ extension NSNumber: Decodable {
     public typealias DecodedType = NSNumber
 
     public static func decode(e: Extractor) -> NSNumber? {
-        return e.JSON as? NSNumber
+        return e.rawValue as? NSNumber
     }
 }

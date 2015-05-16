@@ -7,14 +7,14 @@
 //
 
 public final class Extractor {
-    public let JSON: AnyObject
+    public let rawValue: AnyObject
 
-    internal init(JSON: AnyObject) {
-        self.JSON = JSON
+    internal init(_ rawValue: AnyObject) {
+        self.rawValue = rawValue
     }
 
     private func rawValue(key: String) -> AnyObject? {
-        if let dictionary = JSON as? [String: AnyObject] {
+        if let dictionary = rawValue as? [String: AnyObject] {
             return valueFor(key.componentsSeparatedByString("."), dictionary)
         } else {
             return nil
@@ -22,7 +22,7 @@ public final class Extractor {
     }
 
     internal func value<T: Decodable where T.DecodedType == T>(key: String) -> T? {
-        if let dictionary = JSON as? [String: AnyObject] {
+        if let dictionary = rawValue as? [String: AnyObject] {
             return valueFor(key.componentsSeparatedByString("."), dictionary).flatMap(decode)
         } else {
             return nil
@@ -30,9 +30,9 @@ public final class Extractor {
     }
 
     internal func array<T: Decodable where T.DecodedType == T>(key: String) -> [T]? {
-        let innerJSON: AnyObject? = rawValue(key)
+        let innerValue: AnyObject? = rawValue(key)
 
-        if let array = innerJSON as? [AnyObject] {
+        if let array = innerValue as? [AnyObject] {
             return array.reduce([]) { (var accum, value) in
                 if let decoded: T = decode(value) {
                     accum?.append(decoded)
@@ -45,9 +45,9 @@ public final class Extractor {
     }
 
     internal func dictionary<T: Decodable where T.DecodedType == T>(key: String) -> [String: T]? {
-        let innerJSON: AnyObject? = rawValue(key)
+        let innerValue: AnyObject? = rawValue(key)
 
-        if let dictionary = innerJSON as? [String: AnyObject] {
+        if let dictionary = innerValue as? [String: AnyObject] {
             return reduce(dictionary, [:]) { (var accum, element) in
                 let (key, value: AnyObject) = element
                 accum?[key] = decode(value)
