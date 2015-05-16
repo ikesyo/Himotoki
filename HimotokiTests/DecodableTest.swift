@@ -11,7 +11,8 @@ import Himotoki
 
 class DecodableTest: XCTestCase {
 
-    func testDecodable() {
+    func testPerson() {
+        var gruopJSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
         var JSON: [String: AnyObject] = [
             "first_name": "ABC",
             "last_name": "DEF",
@@ -26,10 +27,10 @@ class DecodableTest: XCTestCase {
             "arrayOption": NSNull(),
             "dictionary": [ "A": 1, "B": 2 ],
             // "dictionaryOption" key is missing
-            "group": [ "name": "Himotoki", "floor": 12 ],
+            "group": gruopJSON,
         ]
 
-        JSON["people"] = [ JSON, JSON ]
+        JSON["groups"] = [ gruopJSON, gruopJSON ]
 
         // Succeeding case
         let person: Person? = decode(JSON)
@@ -51,16 +52,30 @@ class DecodableTest: XCTestCase {
         XCTAssert(person?.dictionary["A"] == 1)
         XCTAssert(person?.dictionaryOption == nil)
 
-        XCTAssert(person?.people.count == 2)
         XCTAssert(person?.group.name == "Himotoki")
         XCTAssert(person?.group.floor == 12)
         XCTAssert(person?.group.optional == nil)
+        XCTAssert(person?.groups.count == 2)
 
         // Failing case
         JSON["bool"] = nil
         JSON["group"] = nil
         let nilPerson: Person? = decode(JSON)
         XCTAssert(nilPerson == nil)
+    }
+
+    func testGroup() {
+        var JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
+
+        let g: Group? = decode(JSON)
+        XCTAssert(g != nil)
+        XCTAssert(g?.name == "Himotoki")
+        XCTAssert(g?.floor == 12)
+        XCTAssert(g?.optional == nil)
+
+        JSON["name"] = nil
+        let f: Group? = decode(JSON)
+        XCTAssert(f == nil)
     }
 
 }
@@ -81,40 +96,42 @@ struct Person: Decodable {
     let dictionary: [String: Int]
     let dictionaryOption: [String: Int]?
 
-    let people: [Person]
     let group: Group
+    let groups: [Group]
 
     static func decode(e: Extractor) -> Person? {
-        return Person(
-            firstName: e <| "first_name",
-            lastName: e <| "last_name",
-            age: e <| "age",
-            int64: e <| "int64",
-            height: e <| "height",
-            float: e <| "float",
-            bool: e <| "bool",
-            number: e <| "number",
-            nested: e <| "nested.value",
-            array: e <|| "array",
-            arrayOption: e <||? "arrayOption",
-            dictionary: e <|-| "dictionary",
-            dictionaryOption: e <|-|? "dictionaryOption",
-            people: e <|| "people",
-            group: e <| "group"
-        )
+        let create = { Person($0) }
+        return build(
+            e <| "first_name",
+            e <| "last_name",
+            e <| "age",
+            e <| "int64",
+            e <| "height",
+            e <| "float",
+            e <| "bool",
+            e <| "number",
+            e <| "nested.value",
+            e <|| "array",
+            e <||? "arrayOption",
+            e <|-| "dictionary",
+            e <|-|? "dictionaryOption",
+            e <| "group",
+            e <|| "groups"
+        ).map(create)
     }
 }
 
 struct Group: Decodable {
     let name: String
     let floor: Int
-    let optional: String?
+    let optional: [String]?
 
     static func decode(e: Extractor) -> Group? {
-        return Group(
-            name: e <| "name",
-            floor: e <| "floor",
-            optional: e <|? "optional"
-        )
+        let create = { Group($0) }
+        return build(
+            e <| "name",
+            e <| "floor",
+            e <||? "optional"
+        ).map(create)
     }
 }

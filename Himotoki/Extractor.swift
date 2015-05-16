@@ -9,14 +9,6 @@
 public final class Extractor {
     public let JSON: AnyObject
 
-    /// Counter for failing cases of deserializing values
-    private var failedCount: Int = 0
-
-    /// Returns whether the receiver is success or failure.
-    internal var isValid: Bool {
-        return failedCount == 0
-    }
-
     internal init(JSON: AnyObject) {
         self.JSON = JSON
     }
@@ -63,23 +55,6 @@ public final class Extractor {
             }
         } else {
             return nil
-        }
-    }
-
-    /// Returns current JSON value of type `T` if it is existing, or returns a
-    /// unusable proxy value for `T` and collects failed count.
-    internal func valueOrFail<T: Decodable where T.DecodedType == T>(key: String) -> T {
-        if let value: T = value(key) {
-            return value
-        } else {
-            // Collects failed count
-            failedCount++
-
-            // Returns dummy memory as a proxy for type `T`
-            let pointer = UnsafeMutablePointer<T>.alloc(sizeof(T))
-            let dummy = pointer.memory
-            pointer.destroy()
-            return dummy
         }
     }
 }
