@@ -26,9 +26,7 @@ public final class Extractor {
     }
 
     internal func array<T: Decodable where T.DecodedType == T>(key: String) -> [T]? {
-        let innerValue: AnyObject? = rawValue(key)
-
-        if let array = innerValue as? [AnyObject] {
+        if let array = rawValue(key) as? [AnyObject] {
             return array.reduce([]) { (var accum, value) in
                 if let decoded: T = decode(value) {
                     accum?.append(decoded)
@@ -41,9 +39,7 @@ public final class Extractor {
     }
 
     internal func dictionary<T: Decodable where T.DecodedType == T>(key: String) -> [String: T]? {
-        let innerValue: AnyObject? = rawValue(key)
-
-        if let dictionary = innerValue as? [String: AnyObject] {
+        if let dictionary = rawValue(key) as? [String: AnyObject] {
             return reduce(dictionary, [:]) { (var accum, element) in
                 let (key, value: AnyObject) = element
                 accum?[key] = decode(value)
