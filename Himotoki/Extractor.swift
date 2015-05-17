@@ -15,7 +15,8 @@ public final class Extractor {
 
     private func rawValue(key: String) -> AnyObject? {
         if let dictionary = rawValue as? [String: AnyObject] {
-            return valueFor(key.componentsSeparatedByString("."), dictionary)
+            let components = ArraySlice(split(key) { $0 == "." })
+            return valueFor(components, dictionary)
         } else {
             return nil
         }
@@ -52,7 +53,10 @@ public final class Extractor {
 }
 
 // Implement it as a tail recursive function.
-private func valueFor(keyPathComponents: [String], dictionary: [String: AnyObject]) -> AnyObject? {
+//
+// `ArraySlice` is used for performance optimization.
+// See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
+private func valueFor(keyPathComponents: ArraySlice<String>, dictionary: [String: AnyObject]) -> AnyObject? {
     if keyPathComponents.isEmpty {
         return nil
     }
@@ -63,7 +67,7 @@ private func valueFor(keyPathComponents: [String], dictionary: [String: AnyObjec
             return nil
 
         case let dict as [String: AnyObject] where keyPathComponents.count > 1:
-            let tail = Array(keyPathComponents[1..<keyPathComponents.count])
+            let tail = dropFirst(keyPathComponents)
             return valueFor(tail, dict)
             
         default:
