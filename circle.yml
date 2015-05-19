@@ -7,8 +7,9 @@ machine:
 dependencies:
   override:
     - sudo chown :wheel /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ *.simruntime/Contents/Resources/RuntimeRoot/usr/lib/dyld_sim
-    - sudo gem install xcpretty --no-ri --no-rdoc
+    - sudo gem install cocoapods xcpretty --no-ri --no-rdoc
 
 test:
   override:
+    - pod spec lint
     - set -o pipefail && xcodebuild test -scheme Himotoki-Mac | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-mac.xml
