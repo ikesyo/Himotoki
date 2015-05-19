@@ -23,3 +23,15 @@ public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> 
         return nil
     }
 }
+
+public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [String: T]? {
+    if let dictionary = object as? [String: AnyObject] {
+        return reduce(dictionary, [:]) { (var accum, element) in
+            let (key, value: AnyObject) = element
+            accum?[key] = decode(value)
+            return accum
+        }
+    } else {
+        return nil
+    }
+}
