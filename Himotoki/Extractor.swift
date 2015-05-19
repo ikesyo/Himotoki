@@ -27,16 +27,7 @@ public final class Extractor {
     }
 
     internal func array<T: Decodable where T.DecodedType == T>(key: String) -> [T]? {
-        if let array = rawValue(key) as? [AnyObject] {
-            return array.reduce([]) { (var accum, value) in
-                if let decoded: T = decode(value) {
-                    accum?.append(decoded)
-                }
-                return accum
-            }
-        } else {
-            return nil
-        }
+        return rawValue(key).flatMap(decode)
     }
 
     internal func dictionary<T: Decodable where T.DecodedType == T>(key: String) -> [String: T]? {
