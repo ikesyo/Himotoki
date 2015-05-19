@@ -87,6 +87,15 @@ class DecodableTest: XCTestCase {
         XCTAssert(values?.count == 2)
     }
 
+    func testDecodeDictionary() {
+        let JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
+        let JSONDict = [ "1": JSON, "2": JSON ]
+
+        let values: [String: Group]? = decode(JSONDict)
+        XCTAssert(values != nil)
+        XCTAssert(values?.count == 2)
+    }
+
 }
 
 struct Person: Decodable {
