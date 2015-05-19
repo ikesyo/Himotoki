@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/ikesyo/Himotoki"
   s.license      = "MIT"
   s.author             = { "Syo Ikeda" => "suicaicoca@gmail.com" }
-  s.social_media_url   = "http://twitter.com/ikesyo"
+  s.social_media_url   = "https://twitter.com/ikesyo"
 
   s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.9"
