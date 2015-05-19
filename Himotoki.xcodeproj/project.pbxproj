@@ -16,6 +16,8 @@
 		CD929A581AF4A915002F5C53 /* DecodableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD929A571AF4A915002F5C53 /* DecodableTest.swift */; };
 		CD9ADBF91B00F8F600406AA5 /* ArgumentsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9ADBF81B00F8F600406AA5 /* ArgumentsBuilder.swift */; };
 		CD9ADBFA1B00F8F600406AA5 /* ArgumentsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9ADBF81B00F8F600406AA5 /* ArgumentsBuilder.swift */; };
+		CDC4E7871B0ACB42007F8F88 /* decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4E7861B0ACB42007F8F88 /* decode.swift */; };
+		CDC4E7881B0ACB42007F8F88 /* decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4E7861B0ACB42007F8F88 /* decode.swift */; };
 		CDF03E3E1AF606F70041C3AA /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF03E331AF606F60041C3AA /* Himotoki.framework */; };
 		CDF03E4C1AF607540041C3AA /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD929A531AF4A488002F5C53 /* Decodable.swift */; };
 		CDF03E4D1AF607580041C3AA /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD929A551AF4A4C9002F5C53 /* Extractor.swift */; };
@@ -51,6 +53,7 @@
 		CD929A551AF4A4C9002F5C53 /* Extractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extractor.swift; sourceTree = "<group>"; };
 		CD929A571AF4A915002F5C53 /* DecodableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableTest.swift; sourceTree = "<group>"; };
 		CD9ADBF81B00F8F600406AA5 /* ArgumentsBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentsBuilder.swift; sourceTree = "<group>"; };
+		CDC4E7861B0ACB42007F8F88 /* decode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = decode.swift; sourceTree = "<group>"; };
 		CDF03E331AF606F60041C3AA /* Himotoki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Himotoki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF03E3D1AF606F60041C3AA /* HimotokiTests-Mac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HimotokiTests-Mac.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -148,6 +151,7 @@
 			children = (
 				CD9ADBF81B00F8F600406AA5 /* ArgumentsBuilder.swift */,
 				CD929A531AF4A488002F5C53 /* Decodable.swift */,
+				CDC4E7861B0ACB42007F8F88 /* decode.swift */,
 				CD929A551AF4A4C9002F5C53 /* Extractor.swift */,
 				CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */,
 				CD181ED81AF4F7C20065963F /* Operators.swift */,
@@ -329,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD929A561AF4A4C9002F5C53 /* Extractor.swift in Sources */,
+				CDC4E7871B0ACB42007F8F88 /* decode.swift in Sources */,
 				CD929A541AF4A488002F5C53 /* Decodable.swift in Sources */,
 				CD9ADBF91B00F8F600406AA5 /* ArgumentsBuilder.swift in Sources */,
 				CD181ED91AF4F7C20065963F /* Operators.swift in Sources */,
@@ -348,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDF03E4D1AF607580041C3AA /* Extractor.swift in Sources */,
+				CDC4E7881B0ACB42007F8F88 /* decode.swift in Sources */,
 				CDF03E4C1AF607540041C3AA /* Decodable.swift in Sources */,
 				CD9ADBFA1B00F8F600406AA5 /* ArgumentsBuilder.swift in Sources */,
 				CDF03E4E1AF607650041C3AA /* Operators.swift in Sources */,

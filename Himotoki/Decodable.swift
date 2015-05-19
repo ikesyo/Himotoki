@@ -11,11 +11,6 @@ public protocol Decodable {
     static func decode(e: Extractor) -> DecodedType?
 }
 
-public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> T? {
-    let extractor = Extractor(object)
-    return T.decode(extractor)
-}
-
 extension String: Decodable {
     public static func decode(e: Extractor) -> String? {
         return e.rawValue as? String
