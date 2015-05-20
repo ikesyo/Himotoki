@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Syo Ikeda. All rights reserved.
 //
 
-public final class Extractor {
+public struct Extractor {
     public let rawValue: AnyObject
 
     internal init(_ rawValue: AnyObject) {
