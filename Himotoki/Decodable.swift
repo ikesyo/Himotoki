@@ -25,11 +25,7 @@ extension Int: Decodable {
 
 extension Int64: Decodable {
     public static func decode(e: Extractor) -> Int64? {
-        if let value = e.rawValue as? NSNumber {
-            return value.longLongValue
-        } else {
-            return nil
-        }
+        return NSNumber.decode(e)?.longLongValue
     }
 }
 
