@@ -8,8 +8,8 @@
 
 // MARK: Arguments builder
 
-public func build<A>(@autoclosure a: () -> A?) -> (A)? {
-    if let a = a() {
+public func build<A>(a: A?) -> (A)? {
+    if let a = a {
         return (a)
     }
     return nil
