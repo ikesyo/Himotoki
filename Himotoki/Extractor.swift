@@ -22,27 +22,27 @@ public struct Extractor {
         }
     }
 
-    internal func value<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<T> {
+    public func value<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<T> {
         return rawValue(keyPath).flatMap(decode)
     }
 
-    internal func valueOptional<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<T?> {
+    public func valueOptional<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<T?> {
         return Optional(value(keyPath))
     }
 
-    internal func array<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[T]> {
+    public func array<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[T]> {
         return rawValue(keyPath).flatMap(decode)
     }
 
-    internal func arrayOptional<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[T]?> {
+    public func arrayOptional<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[T]?> {
         return Optional(array(keyPath))
     }
 
-    internal func dictionary<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[String: T]> {
+    public func dictionary<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[String: T]> {
         return rawValue(keyPath).flatMap(decode)
     }
 
-    internal func dictionaryOptional<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[String: T]?> {
+    public func dictionaryOptional<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[String: T]?> {
         return Optional(dictionary(keyPath))
     }
 }
