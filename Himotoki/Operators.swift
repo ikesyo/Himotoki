@@ -18,7 +18,7 @@ public func <| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: St
 }
 
 public func <|? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: String) -> Optional<T?> {
-    return Optional(e <| keyPath)
+    return e.valueOptional(keyPath)
 }
 
 public func <|| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: String) -> Optional<[T]> {
@@ -26,7 +26,7 @@ public func <|| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: S
 }
 
 public func <||? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: String) -> Optional<[T]?> {
-    return Optional(e <|| keyPath)
+    return e.arrayOptional(keyPath)
 }
 
 public func <|-| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: String) -> Optional<[String: T]> {
@@ -34,5 +34,5 @@ public func <|-| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: 
 }
 
 public func <|-|? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: String) -> Optional<[String: T]?> {
-    return Optional(e <|-| keyPath)
+    return e.dictionaryOptional(keyPath)
 }
