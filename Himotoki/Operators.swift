@@ -13,26 +13,26 @@ infix operator <||? { associativity left precedence 150 }
 infix operator <|-| { associativity left precedence 150 }
 infix operator <|-|? { associativity left precedence 150 }
 
-public func <| <T: Decodable where T.DecodedType == T>(e: Extractor, key: String) -> Optional<T> {
-    return e.value(key)
+public func <| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: String) -> Optional<T> {
+    return e.value(keyPath)
 }
 
-public func <|? <T: Decodable where T.DecodedType == T>(e: Extractor, key: String) -> Optional<T?> {
-    return Optional(e <| key)
+public func <|? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: String) -> Optional<T?> {
+    return Optional(e <| keyPath)
 }
 
-public func <|| <T: Decodable where T.DecodedType == T>(e: Extractor, key: String) -> Optional<[T]> {
-    return e.array(key)
+public func <|| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: String) -> Optional<[T]> {
+    return e.array(keyPath)
 }
 
-public func <||? <T: Decodable where T.DecodedType == T>(e: Extractor, key: String) -> Optional<[T]?> {
-    return Optional(e <|| key)
+public func <||? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: String) -> Optional<[T]?> {
+    return Optional(e <|| keyPath)
 }
 
-public func <|-| <T: Decodable where T.DecodedType == T>(e: Extractor, key: String) -> Optional<[String: T]> {
-    return e.dictionary(key)
+public func <|-| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: String) -> Optional<[String: T]> {
+    return e.dictionary(keyPath)
 }
 
-public func <|-|? <T: Decodable where T.DecodedType == T>(e: Extractor, key: String) -> Optional<[String: T]?> {
-    return Optional(e <|-| key)
+public func <|-|? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: String) -> Optional<[String: T]?> {
+    return Optional(e <|-| keyPath)
 }

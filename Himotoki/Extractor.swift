@@ -13,25 +13,25 @@ public struct Extractor {
         self.rawValue = rawValue
     }
 
-    private func rawValue(key: String) -> AnyObject? {
+    private func rawValue(keyPath: String) -> AnyObject? {
         if let dictionary = rawValue as? [String: AnyObject] {
-            let components = ArraySlice(split(key) { $0 == "." })
+            let components = ArraySlice(split(keyPath) { $0 == "." })
             return valueFor(components, dictionary)
         } else {
             return nil
         }
     }
 
-    internal func value<T: Decodable where T.DecodedType == T>(key: String) -> T? {
-        return rawValue(key).flatMap(decode)
+    internal func value<T: Decodable where T.DecodedType == T>(keyPath: String) -> T? {
+        return rawValue(keyPath).flatMap(decode)
     }
 
-    internal func array<T: Decodable where T.DecodedType == T>(key: String) -> [T]? {
-        return rawValue(key).flatMap(decode)
+    internal func array<T: Decodable where T.DecodedType == T>(keyPath: String) -> [T]? {
+        return rawValue(keyPath).flatMap(decode)
     }
 
-    internal func dictionary<T: Decodable where T.DecodedType == T>(key: String) -> [String: T]? {
-        return rawValue(key).flatMap(decode)
+    internal func dictionary<T: Decodable where T.DecodedType == T>(keyPath: String) -> [String: T]? {
+        return rawValue(keyPath).flatMap(decode)
     }
 }
 
