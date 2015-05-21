@@ -22,16 +22,28 @@ public struct Extractor {
         }
     }
 
-    internal func value<T: Decodable where T.DecodedType == T>(keyPath: String) -> T? {
+    public func value<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<T> {
         return rawValue(keyPath).flatMap(decode)
     }
 
-    internal func array<T: Decodable where T.DecodedType == T>(keyPath: String) -> [T]? {
+    public func valueOptional<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<T?> {
+        return Optional(value(keyPath))
+    }
+
+    public func array<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[T]> {
         return rawValue(keyPath).flatMap(decode)
     }
 
-    internal func dictionary<T: Decodable where T.DecodedType == T>(keyPath: String) -> [String: T]? {
+    public func arrayOptional<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[T]?> {
+        return Optional(array(keyPath))
+    }
+
+    public func dictionary<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[String: T]> {
         return rawValue(keyPath).flatMap(decode)
+    }
+
+    public func dictionaryOptional<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[String: T]?> {
+        return Optional(dictionary(keyPath))
     }
 }
 
