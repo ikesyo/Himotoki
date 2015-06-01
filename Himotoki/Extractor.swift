@@ -45,6 +45,14 @@ public struct Extractor {
     public func dictionaryOptional<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[String: T]?> {
         return Optional(dictionary(keyPath))
     }
+
+    public func set<T: Decodable where T.DecodedType == T, T: Hashable>(keyPath: String) -> Optional<Set<T>> {
+        return rawValue(keyPath).flatMap(decode)
+    }
+
+    public func setOptional<T: Decodable where T.DecodedType == T, T: Hashable>(keyPath: String) -> Optional<Set<T>?> {
+        return Optional(set(keyPath))
+    }
 }
 
 // Implement it as a tail recursive function.

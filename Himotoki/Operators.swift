@@ -12,6 +12,8 @@ infix operator <|| { associativity left precedence 150 }
 infix operator <||? { associativity left precedence 150 }
 infix operator <|-| { associativity left precedence 150 }
 infix operator <|-|? { associativity left precedence 150 }
+infix operator <||| { associativity left precedence 150 }
+infix operator <|||? { associativity left precedence 150 }
 
 public func <| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: String) -> Optional<T> {
     return e.value(keyPath)
@@ -35,4 +37,12 @@ public func <|-| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: 
 
 public func <|-|? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: String) -> Optional<[String: T]?> {
     return e.dictionaryOptional(keyPath)
+}
+
+public func <||| <T: Decodable where T.DecodedType == T, T: Hashable>(e: Extractor, keyPath: String) -> Optional<Set<T>> {
+    return e.set(keyPath)
+}
+
+public func <|||? <T: Decodable where T.DecodedType == T, T: Hashable>(e: Extractor, keyPath: String) -> Optional<Set<T>?> {
+    return e.setOptional(keyPath)
 }

@@ -35,3 +35,17 @@ public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> 
         return nil
     }
 }
+
+public func decode<T: Decodable where T.DecodedType == T, T: Hashable>(object: AnyObject) -> Set<T>? {
+    if let array = object as? [AnyObject] {
+        var set = Set<T>(minimumCapacity: array.count)
+        return array.reduce(set) { (var accum, value) in
+            if let decoded: T = decode(value) {
+                accum.insert(decoded)
+            }
+            return accum
+        }
+    } else {
+        return nil
+    }
+}
