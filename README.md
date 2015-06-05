@@ -20,6 +20,7 @@ See a simple example from a test code:
 struct Group: Decodable {
     let name: String
     let floor: Int
+    let locationName: String
     let optional: [String]?
 
 	// MARK: Decodable
@@ -33,7 +34,8 @@ struct Group: Decodable {
         return build(
             e <| "name",
             e <| "floor",
-            e <||? "optional"
+            e <| [ "location", "name" ], // Parse nested objects
+            e <||? "optional" // Parse optional arrays of values
         ).map(create)
     }
 }
