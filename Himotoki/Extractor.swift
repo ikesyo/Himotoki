@@ -13,36 +13,36 @@ public struct Extractor {
         self.rawValue = rawValue
     }
 
-    private func rawValue(keyPath: String) -> AnyObject? {
+    private func rawValue(keyPath: KeyPath) -> AnyObject? {
         if let dictionary = rawValue as? [String: AnyObject] {
-            let components = ArraySlice(split(keyPath) { $0 == "." })
+            let components = ArraySlice(keyPath.components)
             return valueFor(components, dictionary)
         } else {
             return nil
         }
     }
 
-    public func value<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<T> {
+    public func value<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) -> Optional<T> {
         return rawValue(keyPath).flatMap(decode)
     }
 
-    public func valueOptional<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<T?> {
+    public func valueOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) -> Optional<T?> {
         return Optional(value(keyPath))
     }
 
-    public func array<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[T]> {
+    public func array<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) -> Optional<[T]> {
         return rawValue(keyPath).flatMap(decode)
     }
 
-    public func arrayOptional<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[T]?> {
+    public func arrayOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) -> Optional<[T]?> {
         return Optional(array(keyPath))
     }
 
-    public func dictionary<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[String: T]> {
+    public func dictionary<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) -> Optional<[String: T]> {
         return rawValue(keyPath).flatMap(decode)
     }
 
-    public func dictionaryOptional<T: Decodable where T.DecodedType == T>(keyPath: String) -> Optional<[String: T]?> {
+    public func dictionaryOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) -> Optional<[String: T]?> {
         return Optional(dictionary(keyPath))
     }
 }

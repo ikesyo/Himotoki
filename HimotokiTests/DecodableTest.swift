@@ -128,7 +128,7 @@ struct Person: Decodable {
             e <| "float",
             e <| "bool",
             e <| "number",
-            e <| "nested.value",
+            e <| [ "nested", "value" ],
             e <|| "array",
             e <||? "arrayOption",
             e <|-| "dictionary",
