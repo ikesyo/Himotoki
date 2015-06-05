@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CD181ED91AF4F7C20065963F /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD181ED81AF4F7C20065963F /* Operators.swift */; };
+		CD6DA5E11B215B7C008B3EC5 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */; };
+		CD6DA5E21B215B7C008B3EC5 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */; };
 		CD7423DF1AF608E70056144E /* Himotoki.h in Headers */ = {isa = PBXBuildFile; fileRef = CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD929A3D1AF4A2C3002F5C53 /* Himotoki.h in Headers */ = {isa = PBXBuildFile; fileRef = CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD929A431AF4A2C3002F5C53 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD929A371AF4A2C3002F5C53 /* Himotoki.framework */; };
@@ -44,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		CD181ED81AF4F7C20065963F /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPath.swift; sourceTree = "<group>"; };
 		CD929A371AF4A2C3002F5C53 /* Himotoki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Himotoki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD929A3B1AF4A2C3002F5C53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Himotoki.h; sourceTree = "<group>"; };
@@ -154,6 +157,7 @@
 				CDC4E7861B0ACB42007F8F88 /* decode.swift */,
 				CD929A551AF4A4C9002F5C53 /* Extractor.swift */,
 				CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */,
+				CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */,
 				CD181ED81AF4F7C20065963F /* Operators.swift */,
 			);
 			name = Sources;
@@ -332,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6DA5E11B215B7C008B3EC5 /* KeyPath.swift in Sources */,
 				CD929A561AF4A4C9002F5C53 /* Extractor.swift in Sources */,
 				CDC4E7871B0ACB42007F8F88 /* decode.swift in Sources */,
 				CD929A541AF4A488002F5C53 /* Decodable.swift in Sources */,
@@ -352,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6DA5E21B215B7C008B3EC5 /* KeyPath.swift in Sources */,
 				CDF03E4D1AF607580041C3AA /* Extractor.swift in Sources */,
 				CDC4E7881B0ACB42007F8F88 /* decode.swift in Sources */,
 				CDF03E4C1AF607540041C3AA /* Decodable.swift in Sources */,
