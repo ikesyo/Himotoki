@@ -8,6 +8,14 @@
 
 public struct KeyPath {
     public let components: [String]
+
+    public init(_ key: String) {
+        self.init([key])
+    }
+
+    public init(_ components: [String]) {
+        self.components = components
+    }
 }
 
 extension KeyPath: StringLiteralConvertible {
@@ -15,15 +23,15 @@ extension KeyPath: StringLiteralConvertible {
     public typealias ExtendedGraphemeClusterLiteralType = StringLiteralType
 
     public init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
-        components = [value]
+        self.init(value)
     }
 
     public init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterLiteralType) {
-        components = [value]
+        self.init(value)
     }
 
     public init(stringLiteral value: StringLiteralType) {
-        components = [value]
+        self.init(value)
     }
 }
 
@@ -31,6 +39,6 @@ extension KeyPath: ArrayLiteralConvertible {
     public typealias Element = String
 
     public init(arrayLiteral elements: String...) {
-        components = elements
+        self.init(elements)
     }
 }
