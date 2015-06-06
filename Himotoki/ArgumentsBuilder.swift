@@ -8,156 +8,284 @@
 
 // MARK: Arguments builder
 
-public func build<A>(a: A?) -> (A)? {
-    if let a = a {
-        return (a)
+public func build<A1>(a1: A1?) -> (A1)? {
+    if let a1 = a1 {
+        return (a1)
     }
     return nil
 }
 
-public func build<A, B>(a: A?, @autoclosure b: () -> B?) -> (A, B)? {
-    if let a = a, b = b() {
-        return (a, b)
+public func build<A1, A2>(a1: A1?, @autoclosure a2: () -> A2?) -> (A1, A2)? {
+    if let a1 = a1, a2 = a2() {
+        return (a1, a2)
     }
     return nil
 }
 
-public func build<A, B, C>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?) -> (A, B, C)? {
-    if let a = a, b = b(), c = c() {
-        return (a, b, c)
+public func build<A1, A2, A3>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?) -> (A1, A2, A3)? {
+    if let a1 = a1, a2 = a2(), a3 = a3() {
+        return (a1, a2, a3)
     }
     return nil
 }
 
-public func build<A, B, C, D>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?) -> (A, B, C, D)? {
-    if let a = a, b = b(), c = c(), d = d() {
-        return (a, b, c, d)
+public func build<A1, A2, A3, A4>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?) -> (A1, A2, A3, A4)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4() {
+        return (a1, a2, a3, a4)
     }
     return nil
 }
 
-public func build<A, B, C, D, E>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?) -> (A, B, C, D, E)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e() {
-        return (a, b, c, d, e)
+public func build<A1, A2, A3, A4, A5>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?) -> (A1, A2, A3, A4, A5)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5() {
+        return (a1, a2, a3, a4, a5)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?) -> (A, B, C, D, E, F)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f() {
-        return (a, b, c, d, e, f)
+public func build<A1, A2, A3, A4, A5, A6>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?) -> (A1, A2, A3, A4, A5, A6)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6() {
+        return (a1, a2, a3, a4, a5, a6)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?) -> (A, B, C, D, E, F, G)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g() {
-        return (a, b, c, d, e, f, g)
+public func build<A1, A2, A3, A4, A5, A6, A7>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?) -> (A1, A2, A3, A4, A5, A6, A7)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7() {
+        return (a1, a2, a3, a4, a5, a6, a7)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?) -> (A, B, C, D, E, F, G, H)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h() {
-        return (a, b, c, d, e, f, g, h)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?) -> (A1, A2, A3, A4, A5, A6, A7, A8)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?) -> (A, B, C, D, E, F, G, H, I)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i() {
-        return (a, b, c, d, e, f, g, h, i)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?) -> (A, B, C, D, E, F, G, H, I, J)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j() {
-        return (a, b, c, d, e, f, g, h, i, j)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?) -> (A, B, C, D, E, F, G, H, I, J, K)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k() {
-        return (a, b, c, d, e, f, g, h, i, j, k)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?) -> (A, B, C, D, E, F, G, H, I, J, K, L)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?, @autoclosure m: () -> M?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?, @autoclosure m: () -> M?, @autoclosure n: () -> N?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?, @autoclosure m: () -> M?, @autoclosure n: () -> N?, @autoclosure o: () -> O?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?, @autoclosure m: () -> M?, @autoclosure n: () -> N?, @autoclosure o: () -> O?, @autoclosure p: () -> P?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?, @autoclosure m: () -> M?, @autoclosure n: () -> N?, @autoclosure o: () -> O?, @autoclosure p: () -> P?, @autoclosure q: () -> Q?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?, @autoclosure m: () -> M?, @autoclosure n: () -> N?, @autoclosure o: () -> O?, @autoclosure p: () -> P?, @autoclosure q: () -> Q?, @autoclosure r: () -> R?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?, @autoclosure m: () -> M?, @autoclosure n: () -> N?, @autoclosure o: () -> O?, @autoclosure p: () -> P?, @autoclosure q: () -> Q?, @autoclosure r: () -> R?, @autoclosure s: () -> S?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?, @autoclosure m: () -> M?, @autoclosure n: () -> N?, @autoclosure o: () -> O?, @autoclosure p: () -> P?, @autoclosure q: () -> Q?, @autoclosure r: () -> R?, @autoclosure s: () -> S?, @autoclosure t: () -> T?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?, @autoclosure m: () -> M?, @autoclosure n: () -> N?, @autoclosure o: () -> O?, @autoclosure p: () -> P?, @autoclosure q: () -> Q?, @autoclosure r: () -> R?, @autoclosure s: () -> S?, @autoclosure t: () -> T?, @autoclosure u: () -> U?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?, @autoclosure m: () -> M?, @autoclosure n: () -> N?, @autoclosure o: () -> O?, @autoclosure p: () -> P?, @autoclosure q: () -> Q?, @autoclosure r: () -> R?, @autoclosure s: () -> S?, @autoclosure t: () -> T?, @autoclosure u: () -> U?, @autoclosure v: () -> V?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V)? {
-    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u(), v = v() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v)
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22)
     }
     return nil
 }
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?, @autoclosure a27: () -> A27?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26(), a27 = a27() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?, @autoclosure a27: () -> A27?, @autoclosure a28: () -> A28?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26(), a27 = a27(), a28 = a28() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?, @autoclosure a27: () -> A27?, @autoclosure a28: () -> A28?, @autoclosure a29: () -> A29?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26(), a27 = a27(), a28 = a28(), a29 = a29() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?, @autoclosure a27: () -> A27?, @autoclosure a28: () -> A28?, @autoclosure a29: () -> A29?, @autoclosure a30: () -> A30?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26(), a27 = a27(), a28 = a28(), a29 = a29(), a30 = a30() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?, @autoclosure a27: () -> A27?, @autoclosure a28: () -> A28?, @autoclosure a29: () -> A29?, @autoclosure a30: () -> A30?, @autoclosure a31: () -> A31?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26(), a27 = a27(), a28 = a28(), a29 = a29(), a30 = a30(), a31 = a31() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?, @autoclosure a27: () -> A27?, @autoclosure a28: () -> A28?, @autoclosure a29: () -> A29?, @autoclosure a30: () -> A30?, @autoclosure a31: () -> A31?, @autoclosure a32: () -> A32?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26(), a27 = a27(), a28 = a28(), a29 = a29(), a30 = a30(), a31 = a31(), a32 = a32() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?, @autoclosure a27: () -> A27?, @autoclosure a28: () -> A28?, @autoclosure a29: () -> A29?, @autoclosure a30: () -> A30?, @autoclosure a31: () -> A31?, @autoclosure a32: () -> A32?, @autoclosure a33: () -> A33?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26(), a27 = a27(), a28 = a28(), a29 = a29(), a30 = a30(), a31 = a31(), a32 = a32(), a33 = a33() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?, @autoclosure a27: () -> A27?, @autoclosure a28: () -> A28?, @autoclosure a29: () -> A29?, @autoclosure a30: () -> A30?, @autoclosure a31: () -> A31?, @autoclosure a32: () -> A32?, @autoclosure a33: () -> A33?, @autoclosure a34: () -> A34?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26(), a27 = a27(), a28 = a28(), a29 = a29(), a30 = a30(), a31 = a31(), a32 = a32(), a33 = a33(), a34 = a34() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34, A35>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?, @autoclosure a27: () -> A27?, @autoclosure a28: () -> A28?, @autoclosure a29: () -> A29?, @autoclosure a30: () -> A30?, @autoclosure a31: () -> A31?, @autoclosure a32: () -> A32?, @autoclosure a33: () -> A33?, @autoclosure a34: () -> A34?, @autoclosure a35: () -> A35?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34, A35)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26(), a27 = a27(), a28 = a28(), a29 = a29(), a30 = a30(), a31 = a31(), a32 = a32(), a33 = a33(), a34 = a34(), a35 = a35() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34, A35, A36>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?, @autoclosure a27: () -> A27?, @autoclosure a28: () -> A28?, @autoclosure a29: () -> A29?, @autoclosure a30: () -> A30?, @autoclosure a31: () -> A31?, @autoclosure a32: () -> A32?, @autoclosure a33: () -> A33?, @autoclosure a34: () -> A34?, @autoclosure a35: () -> A35?, @autoclosure a36: () -> A36?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34, A35, A36)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26(), a27 = a27(), a28 = a28(), a29 = a29(), a30 = a30(), a31 = a31(), a32 = a32(), a33 = a33(), a34 = a34(), a35 = a35(), a36 = a36() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34, A35, A36, A37>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?, @autoclosure a27: () -> A27?, @autoclosure a28: () -> A28?, @autoclosure a29: () -> A29?, @autoclosure a30: () -> A30?, @autoclosure a31: () -> A31?, @autoclosure a32: () -> A32?, @autoclosure a33: () -> A33?, @autoclosure a34: () -> A34?, @autoclosure a35: () -> A35?, @autoclosure a36: () -> A36?, @autoclosure a37: () -> A37?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34, A35, A36, A37)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26(), a27 = a27(), a28 = a28(), a29 = a29(), a30 = a30(), a31 = a31(), a32 = a32(), a33 = a33(), a34 = a34(), a35 = a35(), a36 = a36(), a37 = a37() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34, A35, A36, A37, A38>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?, @autoclosure a27: () -> A27?, @autoclosure a28: () -> A28?, @autoclosure a29: () -> A29?, @autoclosure a30: () -> A30?, @autoclosure a31: () -> A31?, @autoclosure a32: () -> A32?, @autoclosure a33: () -> A33?, @autoclosure a34: () -> A34?, @autoclosure a35: () -> A35?, @autoclosure a36: () -> A36?, @autoclosure a37: () -> A37?, @autoclosure a38: () -> A38?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34, A35, A36, A37, A38)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26(), a27 = a27(), a28 = a28(), a29 = a29(), a30 = a30(), a31 = a31(), a32 = a32(), a33 = a33(), a34 = a34(), a35 = a35(), a36 = a36(), a37 = a37(), a38 = a38() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34, A35, A36, A37, A38, A39>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?, @autoclosure a27: () -> A27?, @autoclosure a28: () -> A28?, @autoclosure a29: () -> A29?, @autoclosure a30: () -> A30?, @autoclosure a31: () -> A31?, @autoclosure a32: () -> A32?, @autoclosure a33: () -> A33?, @autoclosure a34: () -> A34?, @autoclosure a35: () -> A35?, @autoclosure a36: () -> A36?, @autoclosure a37: () -> A37?, @autoclosure a38: () -> A38?, @autoclosure a39: () -> A39?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34, A35, A36, A37, A38, A39)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26(), a27 = a27(), a28 = a28(), a29 = a29(), a30 = a30(), a31 = a31(), a32 = a32(), a33 = a33(), a34 = a34(), a35 = a35(), a36 = a36(), a37 = a37(), a38 = a38(), a39 = a39() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38, a39)
+    }
+    return nil
+}
+
+public func build<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34, A35, A36, A37, A38, A39, A40>(a1: A1?, @autoclosure a2: () -> A2?, @autoclosure a3: () -> A3?, @autoclosure a4: () -> A4?, @autoclosure a5: () -> A5?, @autoclosure a6: () -> A6?, @autoclosure a7: () -> A7?, @autoclosure a8: () -> A8?, @autoclosure a9: () -> A9?, @autoclosure a10: () -> A10?, @autoclosure a11: () -> A11?, @autoclosure a12: () -> A12?, @autoclosure a13: () -> A13?, @autoclosure a14: () -> A14?, @autoclosure a15: () -> A15?, @autoclosure a16: () -> A16?, @autoclosure a17: () -> A17?, @autoclosure a18: () -> A18?, @autoclosure a19: () -> A19?, @autoclosure a20: () -> A20?, @autoclosure a21: () -> A21?, @autoclosure a22: () -> A22?, @autoclosure a23: () -> A23?, @autoclosure a24: () -> A24?, @autoclosure a25: () -> A25?, @autoclosure a26: () -> A26?, @autoclosure a27: () -> A27?, @autoclosure a28: () -> A28?, @autoclosure a29: () -> A29?, @autoclosure a30: () -> A30?, @autoclosure a31: () -> A31?, @autoclosure a32: () -> A32?, @autoclosure a33: () -> A33?, @autoclosure a34: () -> A34?, @autoclosure a35: () -> A35?, @autoclosure a36: () -> A36?, @autoclosure a37: () -> A37?, @autoclosure a38: () -> A38?, @autoclosure a39: () -> A39?, @autoclosure a40: () -> A40?) -> (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34, A35, A36, A37, A38, A39, A40)? {
+    if let a1 = a1, a2 = a2(), a3 = a3(), a4 = a4(), a5 = a5(), a6 = a6(), a7 = a7(), a8 = a8(), a9 = a9(), a10 = a10(), a11 = a11(), a12 = a12(), a13 = a13(), a14 = a14(), a15 = a15(), a16 = a16(), a17 = a17(), a18 = a18(), a19 = a19(), a20 = a20(), a21 = a21(), a22 = a22(), a23 = a23(), a24 = a24(), a25 = a25(), a26 = a26(), a27 = a27(), a28 = a28(), a29 = a29(), a30 = a30(), a31 = a31(), a32 = a32(), a33 = a33(), a34 = a34(), a35 = a35(), a36 = a36(), a37 = a37(), a38 = a38(), a39 = a39(), a40 = a40() {
+        return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38, a39, a40)
+    }
+    return nil
+}
+
+
