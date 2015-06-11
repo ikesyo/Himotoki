@@ -26,8 +26,8 @@ public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> 
 
 public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [String: T]? {
     if let dictionary = object as? [String: AnyObject] {
-        return reduce(dictionary, [:]) { (var accum: [String: T], element) in
-            let (key, value: AnyObject) = element
+        return dictionary.reduce([:]) { (var accum: [String: T], element) in
+            let (key, value) = element
             accum[key] = decode(value)
             return accum
         }

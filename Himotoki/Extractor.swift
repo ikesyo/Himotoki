@@ -51,7 +51,7 @@ public struct Extractor {
 //
 // `ArraySlice` is used for performance optimization.
 // See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
-private func valueFor(keyPathComponents: ArraySlice<String>, dictionary: [String: AnyObject]) -> AnyObject? {
+private func valueFor(keyPathComponents: ArraySlice<String>, _ dictionary: [String: AnyObject]) -> AnyObject? {
     if keyPathComponents.isEmpty {
         return nil
     }

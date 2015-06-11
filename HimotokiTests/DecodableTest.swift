@@ -12,7 +12,7 @@ import Himotoki
 class DecodableTest: XCTestCase {
 
     func testPerson() {
-        var gruopJSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
+        let gruopJSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
         var JSON: [String: AnyObject] = [
             "first_name": "ABC",
             "last_name": "DEF",
