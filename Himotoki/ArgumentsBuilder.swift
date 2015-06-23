@@ -161,3 +161,31 @@ public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U,
     }
     return nil
 }
+
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?, @autoclosure m: () -> M?, @autoclosure n: () -> N?, @autoclosure o: () -> O?, @autoclosure p: () -> P?, @autoclosure q: () -> Q?, @autoclosure r: () -> R?, @autoclosure s: () -> S?, @autoclosure t: () -> T?, @autoclosure u: () -> U?, @autoclosure v: () -> V?, @autoclosure w: () -> W?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W)? {
+    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u(), v = v(), w = w() {
+        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w)
+    }
+    return nil
+}
+
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?, @autoclosure m: () -> M?, @autoclosure n: () -> N?, @autoclosure o: () -> O?, @autoclosure p: () -> P?, @autoclosure q: () -> Q?, @autoclosure r: () -> R?, @autoclosure s: () -> S?, @autoclosure t: () -> T?, @autoclosure u: () -> U?, @autoclosure v: () -> V?, @autoclosure w: () -> W?, @autoclosure x: () -> X?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X)? {
+    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u(), v = v(), w = w(), x = x() {
+        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x)
+    }
+    return nil
+}
+
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?, @autoclosure m: () -> M?, @autoclosure n: () -> N?, @autoclosure o: () -> O?, @autoclosure p: () -> P?, @autoclosure q: () -> Q?, @autoclosure r: () -> R?, @autoclosure s: () -> S?, @autoclosure t: () -> T?, @autoclosure u: () -> U?, @autoclosure v: () -> V?, @autoclosure w: () -> W?, @autoclosure x: () -> X?, @autoclosure y: () -> Y?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y)? {
+    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u(), v = v(), w = w(), x = x(), y = y() {
+        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y)
+    }
+    return nil
+}
+
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z>(a: A?, @autoclosure b: () -> B?, @autoclosure c: () -> C?, @autoclosure d: () -> D?, @autoclosure e: () -> E?, @autoclosure f: () -> F?, @autoclosure g: () -> G?, @autoclosure h: () -> H?, @autoclosure i: () -> I?, @autoclosure j: () -> J?, @autoclosure k: () -> K?, @autoclosure l: () -> L?, @autoclosure m: () -> M?, @autoclosure n: () -> N?, @autoclosure o: () -> O?, @autoclosure p: () -> P?, @autoclosure q: () -> Q?, @autoclosure r: () -> R?, @autoclosure s: () -> S?, @autoclosure t: () -> T?, @autoclosure u: () -> U?, @autoclosure v: () -> V?, @autoclosure w: () -> W?, @autoclosure x: () -> X?, @autoclosure y: () -> Y?, @autoclosure z: () -> Z?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z)? {
+    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u(), v = v(), w = w(), x = x(), y = y(), z = z() {
+        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z)
+    }
+    return nil
+}
