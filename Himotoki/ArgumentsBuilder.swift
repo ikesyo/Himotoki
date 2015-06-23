@@ -161,3 +161,31 @@ public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U,
     }
     return nil
 }
+
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?, @autoclosure _ v: () -> V?, @autoclosure _ w: () -> W?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W)? {
+    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u(), v = v(), w = w() {
+        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w)
+    }
+    return nil
+}
+
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?, @autoclosure _ v: () -> V?, @autoclosure _ w: () -> W?, @autoclosure _ x: () -> X?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X)? {
+    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u(), v = v(), w = w(), x = x() {
+        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x)
+    }
+    return nil
+}
+
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?, @autoclosure _ v: () -> V?, @autoclosure _ w: () -> W?, @autoclosure _ x: () -> X?, @autoclosure _ y: () -> Y?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y)? {
+    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u(), v = v(), w = w(), x = x(), y = y() {
+        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y)
+    }
+    return nil
+}
+
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?, @autoclosure _ v: () -> V?, @autoclosure _ w: () -> W?, @autoclosure _ x: () -> X?, @autoclosure _ y: () -> Y?, @autoclosure _ z: () -> Z?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z)? {
+    if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u(), v = v(), w = w(), x = x(), y = y(), z = z() {
+        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z)
+    }
+    return nil
+}
