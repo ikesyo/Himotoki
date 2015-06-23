@@ -14,9 +14,7 @@ public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> 
 public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [T]? {
     if let array = object as? [AnyObject] {
         return array.reduce([]) { (var accum: [T], value) in
-            if let decoded: T = decode(value) {
-                accum.append(decoded)
-            }
+            decode(value).map(accum.append)
             return accum
         }
     } else {
