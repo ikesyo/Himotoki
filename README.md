@@ -26,9 +26,6 @@ struct Group: Decodable {
 	// MARK: Decodable
 
     static func decode(e: Extractor) -> Group? {
-        // Initializer as a function
-        let create = { Group($0) }
-
         // Create an arguments list which itself is optional,
         // then use it with `Optional.map()`
         return build(
@@ -36,7 +33,7 @@ struct Group: Decodable {
             e <| "floor",
             e <| [ "location", "name" ], // Parse nested objects
             e <||? "optional" // Parse optional arrays of values
-        ).map(create)
+        ).map(Group.init)
     }
 }
 
@@ -57,7 +54,7 @@ func testGroup() {
 
 ## Requirements
 
-- Swift 1.2 (Xcode 6.3 or later)
+- Swift 2 (Xcode 7 beta 2 or later)
 - iOS 8.0 or later (by Carthage) / iOS 7 (by coping the source files directly)
 - OS X 10.9 or later
 
