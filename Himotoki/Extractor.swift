@@ -52,23 +52,23 @@ public struct Extractor {
 // `ArraySlice` is used for performance optimization.
 // See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
 private func valueFor(keyPathComponents: ArraySlice<String>, _ dictionary: [String: AnyObject]) -> AnyObject? {
-    if keyPathComponents.isEmpty {
+    guard let first = keyPathComponents.first else {
         return nil
     }
 
-    if let object: AnyObject = dictionary[keyPathComponents.first!] {
-        switch object {
-        case is NSNull:
-            return nil
-
-        case let dict as [String: AnyObject] where keyPathComponents.count > 1:
-            let tail = dropFirst(keyPathComponents)
-            return valueFor(tail, dict)
-            
-        default:
-            return object
-        }
+    guard let object = dictionary[first] else {
+        return nil
     }
-    
-    return nil
+
+    switch object {
+    case is NSNull:
+        return nil
+
+    case let dict as [String: AnyObject] where keyPathComponents.count > 1:
+        let tail = dropFirst(keyPathComponents)
+        return valueFor(tail, dict)
+
+    default:
+        return object
+    }
 }
