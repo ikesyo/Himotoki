@@ -82,7 +82,7 @@ class DecodableTest: XCTestCase {
         let JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
         let JSONArray = [ JSON, JSON ]
 
-        let values: [Group]? = decode(JSONArray)
+        let values: [Group]? = decodeArray(JSONArray)
         XCTAssert(values != nil)
         XCTAssert(values?.count == 2)
     }
@@ -91,7 +91,7 @@ class DecodableTest: XCTestCase {
         let JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
         let JSONDict = [ "1": JSON, "2": JSON ]
 
-        let values: [String: Group]? = decode(JSONDict)
+        let values: [String: Group]? = decodeDictionary(JSONDict)
         XCTAssert(values != nil)
         XCTAssert(values?.count == 2)
     }
