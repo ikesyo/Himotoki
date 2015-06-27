@@ -11,7 +11,7 @@ public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> 
     return T.decode(extractor)
 }
 
-public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [T]? {
+public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [T]? {
     if let array = object as? [AnyObject] {
         return array.reduce([]) { (var accum: [T], value) in
             decode(value).map(accum.append)
@@ -22,7 +22,7 @@ public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> 
     }
 }
 
-public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [String: T]? {
+public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [String: T]? {
     if let dictionary = object as? [String: AnyObject] {
         return reduce(dictionary, [:]) { (var accum: [String: T], element) in
             let (key, value: AnyObject) = element
