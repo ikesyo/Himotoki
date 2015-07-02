@@ -96,6 +96,34 @@ class DecodableTest: XCTestCase {
         XCTAssert(values?.count == 2)
     }
 
+    func testDecodeNumbers() {
+        let JSON: [String: AnyObject] = [
+            "int": Int.min,
+            "uint": UInt.max,
+            "int8": NSNumber(char: Int8.min),
+            "uint8": NSNumber(unsignedChar: UInt8.max),
+            "int16": NSNumber(short: Int16.min),
+            "uint16": NSNumber(unsignedShort: UInt16.max),
+            "int32": NSNumber(int: Int32.min),
+            "uint32": NSNumber(unsignedInt: UInt32.max),
+            "int64": NSNumber(longLong: Int64.min),
+            "uint64": NSNumber(unsignedLongLong: UInt64.max),
+        ]
+
+        let numbers: Numbers? = decode(JSON)
+        XCTAssert(numbers != nil)
+        XCTAssert(numbers?.int == Int.min)
+        XCTAssert(numbers?.uint == UInt.max)
+        XCTAssert(numbers?.int8 == Int8.min)
+        XCTAssert(numbers?.uint8 == UInt8.max)
+        XCTAssert(numbers?.int16 == Int16.min)
+        XCTAssert(numbers?.uint16 == UInt16.max)
+        XCTAssert(numbers?.int32 == Int32.min)
+        XCTAssert(numbers?.uint32 == UInt32.max)
+        XCTAssert(numbers?.int64 == Int64.min)
+        XCTAssert(numbers?.uint64 == UInt64.max)
+    }
+
 }
 
 struct Person: Decodable {
@@ -150,6 +178,35 @@ struct Group: Decodable {
             e <| "name",
             e <| "floor",
             e <||? "optional"
+        ).map(create)
+    }
+}
+
+struct Numbers: Decodable {
+    let int: Int
+    let uint: UInt
+    let int8: Int8
+    let uint8: UInt8
+    let int16: Int16
+    let uint16: UInt16
+    let int32: Int32
+    let uint32: UInt32
+    let int64: Int64
+    let uint64: UInt64
+
+    static func decode(e: Extractor) -> Numbers? {
+        let create = { Numbers($0) }
+        return build(
+            e <| "int",
+            e <| "uint",
+            e <| "int8",
+            e <| "uint8",
+            e <| "int16",
+            e <| "uint16",
+            e <| "int32",
+            e <| "uint32",
+            e <| "int64",
+            e <| "uint64"
         ).map(create)
     }
 }
