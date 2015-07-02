@@ -23,9 +23,57 @@ extension Int: Decodable {
     }
 }
 
+extension UInt: Decodable {
+    public static func decode(e: Extractor) -> UInt? {
+        return NSNumber.decode(e)?.unsignedLongValue
+    }
+}
+
+extension Int8: Decodable {
+    public static func decode(e: Extractor) -> Int8? {
+        return NSNumber.decode(e)?.charValue
+    }
+}
+
+extension UInt8: Decodable {
+    public static func decode(e: Extractor) -> UInt8? {
+        return NSNumber.decode(e)?.unsignedCharValue
+    }
+}
+
+extension Int16: Decodable {
+    public static func decode(e: Extractor) -> Int16? {
+        return NSNumber.decode(e)?.shortValue
+    }
+}
+
+extension UInt16: Decodable {
+    public static func decode(e: Extractor) -> UInt16? {
+        return NSNumber.decode(e)?.unsignedShortValue
+    }
+}
+
+extension Int32: Decodable {
+    public static func decode(e: Extractor) -> Int32? {
+        return NSNumber.decode(e)?.intValue
+    }
+}
+
+extension UInt32: Decodable {
+    public static func decode(e: Extractor) -> UInt32? {
+        return NSNumber.decode(e)?.unsignedIntValue
+    }
+}
+
 extension Int64: Decodable {
     public static func decode(e: Extractor) -> Int64? {
         return NSNumber.decode(e)?.longLongValue
+    }
+}
+
+extension UInt64: Decodable {
+    public static func decode(e: Extractor) -> UInt64? {
+        return NSNumber.decode(e)?.unsignedLongLongValue
     }
 }
 

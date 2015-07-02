@@ -31,7 +31,7 @@ public struct Extractor {
     }
 
     public func array<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) -> Optional<[T]> {
-        return rawValue(keyPath).flatMap(decode)
+        return rawValue(keyPath).flatMap(decodeArray)
     }
 
     public func arrayOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) -> Optional<[T]?> {
@@ -39,7 +39,7 @@ public struct Extractor {
     }
 
     public func dictionary<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) -> Optional<[String: T]> {
-        return rawValue(keyPath).flatMap(decode)
+        return rawValue(keyPath).flatMap(decodeDictionary)
     }
 
     public func dictionaryOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) -> Optional<[String: T]?> {

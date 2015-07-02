@@ -11,7 +11,7 @@ public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> 
     return T.decode(extractor)
 }
 
-public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [T]? {
+public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [T]? {
     if let array = object as? [AnyObject] {
         return array.flatMap(decode)
     } else {
@@ -19,7 +19,7 @@ public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> 
     }
 }
 
-public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [String: T]? {
+public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [String: T]? {
     if let dictionary = object as? [String: AnyObject] {
         return dictionary.reduce([:]) { (var accum: [String: T], element) in
             let (key, value) = element
