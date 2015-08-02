@@ -80,7 +80,7 @@ Himotoki also can be used by [CocoaPods](https://cocoapods.org/).
 
     ```ruby
     use_frameworks!
-    pod "Himotoki"
+    pod "Himotoki", "~> 0.5.1"
     ```
 
 - Run `pod install`.
