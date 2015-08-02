@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CD929A361AF4A2C3002F5C53"
+               BlueprintIdentifier = "CD8F0DC61B6D014B0021196A"
                BuildableName = "Himotoki.framework"
-               BlueprintName = "Himotoki-iOS"
-               ReferencedContainer = "container:Himotoki.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CD929A411AF4A2C3002F5C53"
-               BuildableName = "HimotokiTests-iOS.xctest"
-               BlueprintName = "HimotokiTests-iOS"
+               BlueprintName = "Himotoki-watchOS"
                ReferencedContainer = "container:Himotoki.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -40,29 +26,9 @@
       buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CD929A411AF4A2C3002F5C53"
-               BuildableName = "HimotokiTests-iOS.xctest"
-               BlueprintName = "HimotokiTests-iOS"
-               ReferencedContainer = "container:Himotoki.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CD929A361AF4A2C3002F5C53"
-            BuildableName = "Himotoki.framework"
-            BlueprintName = "Himotoki-iOS"
-            ReferencedContainer = "container:Himotoki.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -79,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CD929A361AF4A2C3002F5C53"
+            BlueprintIdentifier = "CD8F0DC61B6D014B0021196A"
             BuildableName = "Himotoki.framework"
-            BlueprintName = "Himotoki-iOS"
+            BlueprintName = "Himotoki-watchOS"
             ReferencedContainer = "container:Himotoki.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -97,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CD929A361AF4A2C3002F5C53"
+            BlueprintIdentifier = "CD8F0DC61B6D014B0021196A"
             BuildableName = "Himotoki.framework"
-            BlueprintName = "Himotoki-iOS"
+            BlueprintName = "Himotoki-watchOS"
             ReferencedContainer = "container:Himotoki.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
