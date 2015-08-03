@@ -58,29 +58,44 @@ func testGroup() {
 ## Requirements
 
 - Swift 1.2 (Xcode 6.3 or later)
-- iOS 8.0 or later (by Carthage) / iOS 7 (by coping the source files directly)
+- iOS 8.0 or later (by Carthage or CocoaPods) / iOS 7 (by coping the source files directly)
 - OS X 10.9 or later
 
 ## Installation
 
-There are 2 options. If your app support iOS 7, you can only use the latter way.
+There are 3 options. If your app support iOS 7, you can only use the last way.
 
-### [Framework with Carthage](https://github.com/Carthage/Carthage) (preferable)
+### Framework with Carthage (preferable)
 
-- Add `github "ikesyo/Himotoki"` to your Cartfile.
+Himotoki is [Carthage](https://github.com/Carthage/Carthage) compatible.
+
+- Add `github "ikesyo/Himotoki" ~> 0.5.1` to your Cartfile.
 - Run `carthage update`.
+
+### Framework with CocoaPods
+
+Himotoki also can be used by [CocoaPods](https://cocoapods.org/).
+
+- Add the followings to your Podfile:
+
+    ```ruby
+    use_frameworks!
+    pod "Himotoki", "~> 0.5.1"
+    ```
+
+- Run `pod install`.
 
 ### Copying the source files directly
 
 - Add this repository as a git submodule:
 
-```swift
-$ git submodule add https://github.com/ikesyo/Himotoki.git PATH_TO_SUBMODULE
-
-// or
-
-$ carthage update --use-submodules
-```
+    ```swift
+    $ git submodule add https://github.com/ikesyo/Himotoki.git PATH_TO_SUBMODULE
+    
+    // or
+    
+    $ carthage update --use-submodules
+    ```
 
 - Then just add references of `Himotoki/*.swift` to your Xcode project.
 
