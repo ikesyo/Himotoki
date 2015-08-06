@@ -22,6 +22,7 @@ class DecodableTest: XCTestCase {
             "float": 32.1 as Float,
             "bool": true,
             "number": NSNumber(long: 123456789),
+            "raw_value": "RawValue",
             "nested": [ "value": "The nested value" ],
             "array": [ "123", "456" ],
             "arrayOption": NSNull(),
@@ -43,6 +44,7 @@ class DecodableTest: XCTestCase {
         XCTAssert(person?.float == 32.1)
         XCTAssert(person?.bool == true)
         XCTAssert(person?.number == NSNumber(long: 123456789))
+        XCTAssert(person?.rawValue as? String == "RawValue")
 
         XCTAssert(person?.nested == "The nested value")
         XCTAssert(person?.array.count == 2)
@@ -135,6 +137,7 @@ struct Person: Decodable {
     let float: Float
     let bool: Bool
     let number: NSNumber
+    let rawValue: AnyObject
 
     let nested: String
     let array: [String]
@@ -156,6 +159,7 @@ struct Person: Decodable {
             e <| "float",
             e <| "bool",
             e <| "number",
+            (e <| "raw_value").map { (e: Extractor) in e.rawValue },
             e <| [ "nested", "value" ],
             e <|| "array",
             e <||? "arrayOption",

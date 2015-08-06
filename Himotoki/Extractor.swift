@@ -47,6 +47,12 @@ public struct Extractor {
     }
 }
 
+extension Extractor: Decodable {
+    public static func decode(e: Extractor) -> Extractor? {
+        return e
+    }
+}
+
 // Implement it as a tail recursive function.
 //
 // `ArraySlice` is used for performance optimization.
