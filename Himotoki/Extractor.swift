@@ -71,7 +71,7 @@ private func valueFor(keyPathComponents: ArraySlice<String>, _ dictionary: [Stri
         return nil
 
     case let dict as [String: AnyObject] where keyPathComponents.count > 1:
-        let tail = dropFirst(keyPathComponents)
+        let tail = keyPathComponents.dropFirst()
         return valueFor(tail, dict)
 
     default:
