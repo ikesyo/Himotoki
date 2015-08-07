@@ -55,7 +55,7 @@ func testGroup() {
 
 ## Requirements
 
-- Swift 2 (Xcode 7 beta 2 or later)
+- Swift 2 (Xcode 7 beta 5)
 - iOS 8.0 or later (by Carthage or CocoaPods) / iOS 7 (by coping the source files directly)
 - OS X 10.9 or later
 
