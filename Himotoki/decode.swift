@@ -6,27 +6,30 @@
 //  Copyright (c) 2015 Syo Ikeda. All rights reserved.
 //
 
-public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> T? {
+/// - Throws: DecodingError
+public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> T {
     let extractor = Extractor(object)
-    return T.decode(extractor)
+    return try T.decode(extractor)
 }
 
-public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [T]? {
+/// - Throws: DecodingError
+public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> [T] {
     if let array = object as? [AnyObject] {
-        return array.flatMap(decode)
+        return try array.map(decode)
     } else {
-        return nil
+        throw DecodingError.TypeMismatch("\(object) is not an array.")
     }
 }
 
-public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [String: T]? {
+/// - Throws: DecodingError
+public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> [String: T] {
     if let dictionary = object as? [String: AnyObject] {
-        return dictionary.reduce([:]) { (var accum: [String: T], element) in
+        return try dictionary.reduce([:]) { (var accum: [String: T], element) in
             let (key, value) = element
-            accum[key] = decode(value)
+            accum[key] = try decode(value) as T
             return accum
         }
     } else {
-        return nil
+        throw DecodingError.TypeMismatch("\(object) is not a dictionary.")
     }
 }

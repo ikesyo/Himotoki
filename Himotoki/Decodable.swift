@@ -8,95 +8,105 @@
 
 public protocol Decodable {
     typealias DecodedType = Self
-    static func decode(e: Extractor) -> DecodedType?
+
+    /// - Throws: DecodingError
+    static func decode(e: Extractor) throws -> DecodedType
 }
 
 extension String: Decodable {
-    public static func decode(e: Extractor) -> String? {
-        return e.rawValue as? String
+    public static func decode(e: Extractor) throws -> String {
+        return try castOrFail(e)
     }
 }
 
 extension Int: Decodable {
-    public static func decode(e: Extractor) -> Int? {
-        return e.rawValue as? Int
+    public static func decode(e: Extractor) throws -> Int {
+        return try castOrFail(e)
     }
 }
 
 extension UInt: Decodable {
-    public static func decode(e: Extractor) -> UInt? {
-        return NSNumber.decode(e)?.unsignedLongValue
+    public static func decode(e: Extractor) throws -> UInt {
+        return try NSNumber.decode(e).unsignedLongValue
     }
 }
 
 extension Int8: Decodable {
-    public static func decode(e: Extractor) -> Int8? {
-        return NSNumber.decode(e)?.charValue
+    public static func decode(e: Extractor) throws -> Int8 {
+        return try NSNumber.decode(e).charValue
     }
 }
 
 extension UInt8: Decodable {
-    public static func decode(e: Extractor) -> UInt8? {
-        return NSNumber.decode(e)?.unsignedCharValue
+    public static func decode(e: Extractor) throws -> UInt8 {
+        return try NSNumber.decode(e).unsignedCharValue
     }
 }
 
 extension Int16: Decodable {
-    public static func decode(e: Extractor) -> Int16? {
-        return NSNumber.decode(e)?.shortValue
+    public static func decode(e: Extractor) throws -> Int16 {
+        return try NSNumber.decode(e).shortValue
     }
 }
 
 extension UInt16: Decodable {
-    public static func decode(e: Extractor) -> UInt16? {
-        return NSNumber.decode(e)?.unsignedShortValue
+    public static func decode(e: Extractor) throws -> UInt16 {
+        return try NSNumber.decode(e).unsignedShortValue
     }
 }
 
 extension Int32: Decodable {
-    public static func decode(e: Extractor) -> Int32? {
-        return NSNumber.decode(e)?.intValue
+    public static func decode(e: Extractor) throws -> Int32 {
+        return try NSNumber.decode(e).intValue
     }
 }
 
 extension UInt32: Decodable {
-    public static func decode(e: Extractor) -> UInt32? {
-        return NSNumber.decode(e)?.unsignedIntValue
+    public static func decode(e: Extractor) throws -> UInt32 {
+        return try NSNumber.decode(e).unsignedIntValue
     }
 }
 
 extension Int64: Decodable {
-    public static func decode(e: Extractor) -> Int64? {
-        return NSNumber.decode(e)?.longLongValue
+    public static func decode(e: Extractor) throws -> Int64 {
+        return try NSNumber.decode(e).longLongValue
     }
 }
 
 extension UInt64: Decodable {
-    public static func decode(e: Extractor) -> UInt64? {
-        return NSNumber.decode(e)?.unsignedLongLongValue
+    public static func decode(e: Extractor) throws -> UInt64 {
+        return try NSNumber.decode(e).unsignedLongLongValue
     }
 }
 
 extension Double: Decodable {
-    public static func decode(e: Extractor) -> Double? {
-        return e.rawValue as? Double
+    public static func decode(e: Extractor) throws -> Double {
+        return try castOrFail(e)
     }
 }
 
 extension Float: Decodable {
-    public static func decode(e: Extractor) -> Float? {
-        return e.rawValue as? Float
+    public static func decode(e: Extractor) throws -> Float {
+        return try castOrFail(e)
     }
 }
 
 extension Bool: Decodable {
-    public static func decode(e: Extractor) -> Bool? {
-        return e.rawValue as? Bool
+    public static func decode(e: Extractor) throws -> Bool {
+        return try castOrFail(e)
     }
 }
 
 extension NSNumber: Decodable {
-    public static func decode(e: Extractor) -> NSNumber? {
-        return e.rawValue as? NSNumber
+    public static func decode(e: Extractor) throws -> NSNumber {
+        return try castOrFail(e)
     }
+}
+
+private func castOrFail<T>(e: Extractor) throws -> T {
+    guard let result = e.rawValue as? T else {
+        throw DecodingError.TypeMismatch("\(e.rawValue) is not a \(T.self)")
+    }
+
+    return result
 }

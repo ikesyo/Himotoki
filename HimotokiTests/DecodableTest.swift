@@ -34,7 +34,7 @@ class DecodableTest: XCTestCase {
         JSON["groups"] = [ gruopJSON, gruopJSON ]
 
         // Succeeding case
-        let person: Person? = decode(JSON)
+        let person: Person? = try? decode(JSON)
         XCTAssert(person != nil)
         XCTAssert(person?.firstName == "ABC")
         XCTAssert(person?.lastName == "DEF")
@@ -62,29 +62,39 @@ class DecodableTest: XCTestCase {
         // Failing case
         JSON["bool"] = nil
         JSON["group"] = nil
-        let nilPerson: Person? = decode(JSON)
-        XCTAssert(nilPerson == nil)
+        do {
+            try decode(JSON) as Person
+        } catch let DecodingError.MissingKeyPath(keyPath) {
+            XCTAssert(keyPath.components == ["bool"])
+        } catch {
+            XCTFail()
+        }
     }
 
     func testGroup() {
         var JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
 
-        let g: Group? = decode(JSON)
+        let g: Group? = try? decode(JSON)
         XCTAssert(g != nil)
         XCTAssert(g?.name == "Himotoki")
         XCTAssert(g?.floor == 12)
         XCTAssert(g?.optional == nil)
 
         JSON["name"] = nil
-        let f: Group? = decode(JSON)
-        XCTAssert(f == nil)
+        do {
+            try decode(JSON) as Group
+        } catch let DecodingError.MissingKeyPath(keyPath) {
+            XCTAssert(keyPath.components == ["name"])
+        } catch {
+            XCTFail()
+        }
     }
 
     func testDecodeArray() {
         let JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
         let JSONArray = [ JSON, JSON ]
 
-        let values: [Group]? = decodeArray(JSONArray)
+        let values: [Group]? = try? decodeArray(JSONArray)
         XCTAssert(values != nil)
         XCTAssert(values?.count == 2)
     }
@@ -93,7 +103,7 @@ class DecodableTest: XCTestCase {
         let JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
         let JSONDict = [ "1": JSON, "2": JSON ]
 
-        let values: [String: Group]? = decodeDictionary(JSONDict)
+        let values: [String: Group]? = try? decodeDictionary(JSONDict)
         XCTAssert(values != nil)
         XCTAssert(values?.count == 2)
     }
@@ -112,7 +122,7 @@ class DecodableTest: XCTestCase {
             "uint64": NSNumber(unsignedLongLong: UInt64.max),
         ]
 
-        let numbers: Numbers? = decode(JSON)
+        let numbers: Numbers? = try? decode(JSON)
         XCTAssert(numbers != nil)
         XCTAssert(numbers?.int == Int.min)
         XCTAssert(numbers?.uint == UInt.max)
@@ -148,8 +158,8 @@ struct Person: Decodable {
     let group: Group
     let groups: [Group]
 
-    static func decode(e: Extractor) -> Person? {
-        return build(Person.init)(
+    static func decode(e: Extractor) throws -> Person {
+        return try build(Person.init)(
             e <| "first_name",
             e <| "last_name",
             e <| "age",
@@ -158,7 +168,7 @@ struct Person: Decodable {
             e <| "float",
             e <| "bool",
             e <| "number",
-            (e <| "raw_value").map { (e: Extractor) in e.rawValue },
+            (e <| "raw_value" as Extractor).rawValue,
             e <| [ "nested", "value" ],
             e <|| "array",
             e <||? "arrayOption",
@@ -175,8 +185,8 @@ struct Group: Decodable {
     let floor: Int
     let optional: [String]?
 
-    static func decode(e: Extractor) -> Group? {
-        return build(Group.init)(
+    static func decode(e: Extractor) throws -> Group {
+        return try build(Group.init)(
             e <| "name",
             e <| "floor",
             e <||? "optional"
@@ -196,8 +206,8 @@ struct Numbers: Decodable {
     let int64: Int64
     let uint64: UInt64
 
-    static func decode(e: Extractor) -> Numbers? {
-        return build(Numbers.init)(
+    static func decode(e: Extractor) throws -> Numbers {
+        return try build(Numbers.init)(
             e <| "int",
             e <| "uint",
             e <| "int8",
