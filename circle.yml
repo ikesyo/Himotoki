@@ -8,7 +8,7 @@ dependencies:
   override:
     - sudo chown :wheel /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ *.simruntime/Contents/Resources/RuntimeRoot/usr/lib/dyld_sim
     - git submodule update --init --recursive
-    - sudo gem install cocoapods xcpretty --no-ri --no-rdoc
+    - sudo gem install cocoapods xcpretty -N
 
 test:
   override:
