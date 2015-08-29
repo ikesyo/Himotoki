@@ -2,7 +2,10 @@ language: objective-c
 osx_image: xcode7
 env:
   - LC_CTYPE=en_US.UTF-8
+git:
+  submodules: false
 before_install:
+  - git submodule update --init --recursive
   - gem install cocoapods xcpretty -N
 script:
 #  - pod spec lint
