@@ -104,8 +104,10 @@ extension NSNumber: Decodable {
 }
 
 private func castOrFail<T>(e: Extractor) throws -> T {
-    guard let result = e.rawValue as? T else {
-        throw DecodingError.TypeMismatch("\(e.rawValue) is not a \(T.self)")
+    let rawValue = e.rawValue
+
+    guard let result = rawValue as? T else {
+        throw DecodingError.TypeMismatch(keyPath: "", object: rawValue, expected: T.self, actual: rawValue.dynamicType)
     }
 
     return result

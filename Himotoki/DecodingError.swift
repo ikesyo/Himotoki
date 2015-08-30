@@ -8,5 +8,5 @@
 
 public enum DecodingError: ErrorType {
     case MissingKeyPath(KeyPath)
-    case TypeMismatch(String)
+    case TypeMismatch(keyPath: KeyPath, object: AnyObject, expected: Any.Type, actual: Any.Type)
 }

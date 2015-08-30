@@ -14,8 +14,15 @@ public struct Extractor {
     }
 
     private func rawValue(keyPath: KeyPath) throws -> AnyObject? {
-        guard let dictionary = rawValue as? [String: AnyObject] else {
-            throw DecodingError.TypeMismatch("\(rawValue) is not a dictionary")
+        typealias Expected = [String: AnyObject]
+
+        guard let dictionary = rawValue as? Expected else {
+            throw DecodingError.TypeMismatch(
+                keyPath: keyPath,
+                object: rawValue,
+                expected: Expected.self,
+                actual: rawValue.dynamicType as Any.Type
+            )
         }
 
         let components = ArraySlice(keyPath.components)

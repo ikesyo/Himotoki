@@ -14,8 +14,10 @@ public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) thr
 
 /// - Throws: DecodingError
 public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> [T] {
-    guard let array = object as? [AnyObject] else {
-        throw DecodingError.TypeMismatch("\(object) is not an array.")
+    typealias Expected = [AnyObject]
+
+    guard let array = object as? Expected else {
+        throw DecodingError.TypeMismatch(keyPath: "", object: object, expected: Expected.self, actual: object.dynamicType)
     }
 
     return try array.map(decode)
@@ -23,8 +25,10 @@ public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject
 
 /// - Throws: DecodingError
 public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> [String: T] {
-    guard let dictionary = object as? [String: AnyObject] else {
-        throw DecodingError.TypeMismatch("\(object) is not a dictionary.")
+    typealias Expected = [String: AnyObject]
+
+    guard let dictionary = object as? Expected else {
+        throw DecodingError.TypeMismatch(keyPath: "", object: object, expected: Expected.self, actual: object.dynamicType)
     }
 
     return try dictionary.reduce([:]) { (var accum: [String: T], element) in
