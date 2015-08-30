@@ -24,11 +24,11 @@ public struct Extractor {
 
     /// - Throws: DecodingError
     public func value<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> T {
-        if let value: T = try valueOptional(keyPath) {
-            return value
-        } else {
+        guard let value: T = try valueOptional(keyPath) else {
             throw DecodingError.MissingKeyPath(keyPath)
         }
+
+        return value
     }
 
     /// - Throws: DecodingError
@@ -38,11 +38,11 @@ public struct Extractor {
 
     /// - Throws: DecodingError
     public func array<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [T] {
-        if let array: [T] = try arrayOptional(keyPath) {
-            return array
-        } else {
+        guard let array: [T] = try arrayOptional(keyPath) else {
             throw DecodingError.MissingKeyPath(keyPath)
         }
+
+        return array
     }
 
     /// - Throws: DecodingError
@@ -52,11 +52,11 @@ public struct Extractor {
 
     /// - Throws: DecodingError
     public func dictionary<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [String: T] {
-        if let dictionary: [String: T] = try dictionaryOptional(keyPath) {
-            return dictionary
-        } else {
+        guard let dictionary: [String: T] = try dictionaryOptional(keyPath) else {
             throw DecodingError.MissingKeyPath(keyPath)
         }
+
+        return dictionary
     }
 
     /// - Throws: DecodingError

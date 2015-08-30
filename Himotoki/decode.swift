@@ -14,22 +14,22 @@ public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) thr
 
 /// - Throws: DecodingError
 public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> [T] {
-    if let array = object as? [AnyObject] {
-        return try array.map(decode)
-    } else {
+    guard let array = object as? [AnyObject] else {
         throw DecodingError.TypeMismatch("\(object) is not an array.")
     }
+
+    return try array.map(decode)
 }
 
 /// - Throws: DecodingError
 public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> [String: T] {
-    if let dictionary = object as? [String: AnyObject] {
-        return try dictionary.reduce([:]) { (var accum: [String: T], element) in
-            let (key, value) = element
-            accum[key] = try decode(value) as T
-            return accum
-        }
-    } else {
+    guard let dictionary = object as? [String: AnyObject] else {
         throw DecodingError.TypeMismatch("\(object) is not a dictionary.")
+    }
+
+    return try dictionary.reduce([:]) { (var accum: [String: T], element) in
+        let (key, value) = element
+        accum[key] = try decode(value) as T
+        return accum
     }
 }
