@@ -27,14 +27,14 @@ struct Group: Decodable {
 	// MARK: Decodable
 
     static func decode(e: Extractor) -> Group? {
-        // Create an arguments list which itself is optional,
-        // then use it with `Optional.map()`
-        return build(
+        // Pass the initializer function and the arguments for
+        // that function to `build()`.
+        return build(Group.init)(
             e <| "name",
             e <| "floor",
             e <| [ "location", "name" ], // Parse nested objects
             e <||? "optional" // Parse optional arrays of values
-        ).map(Group.init)
+        )
     }
 }
 

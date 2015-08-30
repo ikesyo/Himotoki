@@ -149,7 +149,7 @@ struct Person: Decodable {
     let groups: [Group]
 
     static func decode(e: Extractor) -> Person? {
-        return build(
+        return build(Person.init)(
             e <| "first_name",
             e <| "last_name",
             e <| "age",
@@ -166,7 +166,7 @@ struct Person: Decodable {
             e <|-|? "dictionaryOption",
             e <| "group",
             e <|| "groups"
-        ).map(Person.init)
+        )
     }
 }
 
@@ -176,11 +176,11 @@ struct Group: Decodable {
     let optional: [String]?
 
     static func decode(e: Extractor) -> Group? {
-        return build(
+        return build(Group.init)(
             e <| "name",
             e <| "floor",
             e <||? "optional"
-        ).map(Group.init)
+        )
     }
 }
 
@@ -197,7 +197,7 @@ struct Numbers: Decodable {
     let uint64: UInt64
 
     static func decode(e: Extractor) -> Numbers? {
-        return build(
+        return build(Numbers.init)(
             e <| "int",
             e <| "uint",
             e <| "int8",
@@ -208,6 +208,6 @@ struct Numbers: Decodable {
             e <| "uint32",
             e <| "int64",
             e <| "uint64"
-        ).map(Numbers.init)
+        )
     }
 }

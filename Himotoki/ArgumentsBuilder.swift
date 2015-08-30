@@ -8,184 +8,184 @@
 
 // MARK: Arguments builder
 
-public func build<A>(a: A?) -> (A)? {
+public func build<A, Value>(create: (A) -> Value)(_ a: A?) -> Value? {
     if let a = a {
-        return (a)
+        return create(a)
     }
     return nil
 }
 
-public func build<A, B>(a: A?, @autoclosure _ b: () -> B?) -> (A, B)? {
+public func build<A, B, Value>(create: (A, B) -> Value)(_ a: A?, @autoclosure _ b: () -> B?) -> Value? {
     if let a = a, b = b() {
-        return (a, b)
+        return create(a, b)
     }
     return nil
 }
 
-public func build<A, B, C>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?) -> (A, B, C)? {
+public func build<A, B, C, Value>(create: (A, B, C) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?) -> Value? {
     if let a = a, b = b(), c = c() {
-        return (a, b, c)
+        return create(a, b, c)
     }
     return nil
 }
 
-public func build<A, B, C, D>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?) -> (A, B, C, D)? {
+public func build<A, B, C, D, Value>(create: (A, B, C, D) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?) -> Value? {
     if let a = a, b = b(), c = c(), d = d() {
-        return (a, b, c, d)
+        return create(a, b, c, d)
     }
     return nil
 }
 
-public func build<A, B, C, D, E>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?) -> (A, B, C, D, E)? {
+public func build<A, B, C, D, E, Value>(create: (A, B, C, D, E) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e() {
-        return (a, b, c, d, e)
+        return create(a, b, c, d, e)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?) -> (A, B, C, D, E, F)? {
+public func build<A, B, C, D, E, F, Value>(create: (A, B, C, D, E, F) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f() {
-        return (a, b, c, d, e, f)
+        return create(a, b, c, d, e, f)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?) -> (A, B, C, D, E, F, G)? {
+public func build<A, B, C, D, E, F, G, Value>(create: (A, B, C, D, E, F, G) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g() {
-        return (a, b, c, d, e, f, g)
+        return create(a, b, c, d, e, f, g)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?) -> (A, B, C, D, E, F, G, H)? {
+public func build<A, B, C, D, E, F, G, H, Value>(create: (A, B, C, D, E, F, G, H) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h() {
-        return (a, b, c, d, e, f, g, h)
+        return create(a, b, c, d, e, f, g, h)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?) -> (A, B, C, D, E, F, G, H, I)? {
+public func build<A, B, C, D, E, F, G, H, I, Value>(create: (A, B, C, D, E, F, G, H, I) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i() {
-        return (a, b, c, d, e, f, g, h, i)
+        return create(a, b, c, d, e, f, g, h, i)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?) -> (A, B, C, D, E, F, G, H, I, J)? {
+public func build<A, B, C, D, E, F, G, H, I, J, Value>(create: (A, B, C, D, E, F, G, H, I, J) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j() {
-        return (a, b, c, d, e, f, g, h, i, j)
+        return create(a, b, c, d, e, f, g, h, i, j)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?) -> (A, B, C, D, E, F, G, H, I, J, K)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, Value>(create: (A, B, C, D, E, F, G, H, I, J, K) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k() {
-        return (a, b, c, d, e, f, g, h, i, j, k)
+        return create(a, b, c, d, e, f, g, h, i, j, k)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?) -> (A, B, C, D, E, F, G, H, I, J, K, L)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L, M) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l, m)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L, M, N) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l, m, n)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?, @autoclosure _ v: () -> V?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?, @autoclosure _ v: () -> V?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u(), v = v() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?, @autoclosure _ v: () -> V?, @autoclosure _ w: () -> W?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?, @autoclosure _ v: () -> V?, @autoclosure _ w: () -> W?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u(), v = v(), w = w() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?, @autoclosure _ v: () -> V?, @autoclosure _ w: () -> W?, @autoclosure _ x: () -> X?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?, @autoclosure _ v: () -> V?, @autoclosure _ w: () -> W?, @autoclosure _ x: () -> X?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u(), v = v(), w = w(), x = x() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?, @autoclosure _ v: () -> V?, @autoclosure _ w: () -> W?, @autoclosure _ x: () -> X?, @autoclosure _ y: () -> Y?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?, @autoclosure _ v: () -> V?, @autoclosure _ w: () -> W?, @autoclosure _ x: () -> X?, @autoclosure _ y: () -> Y?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u(), v = v(), w = w(), x = x(), y = y() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y)
     }
     return nil
 }
 
-public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z>(a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?, @autoclosure _ v: () -> V?, @autoclosure _ w: () -> W?, @autoclosure _ x: () -> X?, @autoclosure _ y: () -> Y?, @autoclosure _ z: () -> Z?) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z)? {
+public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Value>(create: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z) -> Value)(_ a: A?, @autoclosure _ b: () -> B?, @autoclosure _ c: () -> C?, @autoclosure _ d: () -> D?, @autoclosure _ e: () -> E?, @autoclosure _ f: () -> F?, @autoclosure _ g: () -> G?, @autoclosure _ h: () -> H?, @autoclosure _ i: () -> I?, @autoclosure _ j: () -> J?, @autoclosure _ k: () -> K?, @autoclosure _ l: () -> L?, @autoclosure _ m: () -> M?, @autoclosure _ n: () -> N?, @autoclosure _ o: () -> O?, @autoclosure _ p: () -> P?, @autoclosure _ q: () -> Q?, @autoclosure _ r: () -> R?, @autoclosure _ s: () -> S?, @autoclosure _ t: () -> T?, @autoclosure _ u: () -> U?, @autoclosure _ v: () -> V?, @autoclosure _ w: () -> W?, @autoclosure _ x: () -> X?, @autoclosure _ y: () -> Y?, @autoclosure _ z: () -> Z?) -> Value? {
     if let a = a, b = b(), c = c(), d = d(), e = e(), f = f(), g = g(), h = h(), i = i(), j = j(), k = k(), l = l(), m = m(), n = n(), o = o(), p = p(), q = q(), r = r(), s = s(), t = t(), u = u(), v = v(), w = w(), x = x(), y = y(), z = z() {
-        return (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z)
+        return create(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z)
     }
     return nil
 }
