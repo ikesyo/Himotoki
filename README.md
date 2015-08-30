@@ -30,14 +30,14 @@ struct Group: Decodable {
         // Initializer as a function
         let create = { Group($0) }
 
-        // Create an arguments list which itself is optional,
-        // then use it with `Optional.map()`
-        return build(
+        // Pass the initializer function and the arguments for
+        // that function to `build()`.
+        return build(create)(
             e <| "name",
             e <| "floor",
             e <| [ "location", "name" ], // Parse nested objects
             e <||? "optional" // Parse optional arrays of values
-        ).map(create)
+        )
     }
 }
 
