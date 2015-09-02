@@ -69,13 +69,25 @@ class DecodableTest: XCTestCase {
         XCTAssert(person?.group.optional == nil)
         XCTAssert(person?.groups.count == 2)
 
-        // Failing case
-        JSON["bool"] = nil
-        JSON["group"] = nil
+        // Failing cases
+
         do {
+            JSON["bool"] = nil
+            JSON["group"] = nil
             try decode(JSON) as Person
         } catch let DecodingError.MissingKeyPath(keyPath) {
-            XCTAssert(keyPath.components == ["bool"])
+            XCTAssert(keyPath == "bool")
+        } catch {
+            XCTFail()
+        }
+
+        do {
+            JSON["age"] = "32"
+            try decode(JSON) as Person
+        } catch let DecodingError.TypeMismatch(keyPath, object, expected, _) {
+            XCTAssert(keyPath == "age")
+            XCTAssert(object as? String == "32")
+            XCTAssert(expected is Int.Type)
         } catch {
             XCTFail()
         }

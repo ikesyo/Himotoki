@@ -42,7 +42,11 @@ public struct Extractor {
 
     /// - Throws: DecodingError
     public func valueOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> T? {
-        return try rawValue(keyPath).map(decode)
+        do {
+            return try rawValue(keyPath).map(decode)
+        } catch let DecodingError.TypeMismatch(_, object, expected, actual) {
+            throw DecodingError.TypeMismatch(keyPath: keyPath, object: object, expected: expected, actual: actual)
+        }
     }
 
     /// - Throws: DecodingError
