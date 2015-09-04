@@ -13,10 +13,16 @@ public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> 
 
 public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [T]? {
     if let array = object as? [AnyObject] {
-        return array.reduce([]) { (var accum: [T], value) in
-            decode(value).map(accum.append)
-            return accum
+        var result: [T] = []
+        result.reserveCapacity(array.count)
+
+        for value in array {
+            if let value: T = decode(value) {
+                result.append(value)
+            }
         }
+
+        return result
     } else {
         return nil
     }
