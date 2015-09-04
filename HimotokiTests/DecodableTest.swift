@@ -73,13 +73,10 @@ class DecodableTest: XCTestCase {
     }
 
     func testPerformanceByPersons() {
-        var personsJSON: [[String: AnyObject]] = []
-        for _ in 0..<500 {
-            personsJSON.append(personJSON)
-        }
+        let peopleJSON = Array(count: 500, repeatedValue: personJSON)
 
         measureBlock {
-            let persons: [Person]? = decodeArray(personsJSON)
+            let persons: [Person]? = decodeArray(peopleJSON)
         }
     }
 
