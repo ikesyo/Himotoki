@@ -11,7 +11,7 @@ import Himotoki
 
 class DecodableTest: XCTestCase {
 
-    func testPerson() {
+    lazy var personJSON: [String: AnyObject] = {
         var gruopJSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
         var JSON: [String: AnyObject] = [
             "first_name": "ABC",
@@ -32,6 +32,12 @@ class DecodableTest: XCTestCase {
         ]
 
         JSON["groups"] = [ gruopJSON, gruopJSON ]
+
+        return JSON
+    }()
+
+    func testPerson() {
+        var JSON = personJSON
 
         // Succeeding case
         let person: Person? = decode(JSON)
@@ -64,6 +70,17 @@ class DecodableTest: XCTestCase {
         JSON["group"] = nil
         let nilPerson: Person? = decode(JSON)
         XCTAssert(nilPerson == nil)
+    }
+
+    func testPerformanceByPersons() {
+        var personsJSON: [[String: AnyObject]] = []
+        for _ in 0..<500 {
+            personsJSON.append(personJSON)
+        }
+
+        measureBlock {
+            let persons: [Person]? = decodeArray(personsJSON)
+        }
     }
 
     func testGroup() {
