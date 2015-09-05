@@ -8,13 +8,15 @@
 
 public struct Extractor {
     public let rawValue: AnyObject
+    private let dictionary: [String: AnyObject]?
 
     internal init(_ rawValue: AnyObject) {
         self.rawValue = rawValue
+        self.dictionary = rawValue as? [String: AnyObject]
     }
 
     private func rawValue(keyPath: KeyPath) -> AnyObject? {
-        if let dictionary = rawValue as? [String: AnyObject] {
+        if let dictionary = dictionary {
             let components = ArraySlice(keyPath.components)
             return valueFor(components, dictionary)
         } else {
