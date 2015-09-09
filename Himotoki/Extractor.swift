@@ -8,19 +8,19 @@
 
 public struct Extractor {
     public let rawValue: AnyObject
+    private let dictionary: [String: AnyObject]?
 
     internal init(_ rawValue: AnyObject) {
         self.rawValue = rawValue
+        self.dictionary = rawValue as? [String: AnyObject]
     }
 
     private func rawValue(keyPath: KeyPath) throws -> AnyObject? {
-        typealias Expected = [String: AnyObject]
-
-        guard let dictionary = rawValue as? Expected else {
+        guard let dictionary = dictionary else {
             throw DecodingError.TypeMismatch(
                 keyPath: keyPath,
                 object: rawValue,
-                expected: Expected.self,
+                expected: [String: AnyObject].self,
                 actual: rawValue.dynamicType as Any.Type
             )
         }
