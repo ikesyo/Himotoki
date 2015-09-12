@@ -59,7 +59,7 @@ private func valueFor(keyPathComponents: ArraySlice<String>, object: AnyObject) 
     }
 
     if let nested: AnyObject = object[keyPathComponents.first!] {
-        if object is NSNull {
+        if nested is NSNull {
             return nil
         } else if keyPathComponents.count > 1 {
             let tail = dropFirst(keyPathComponents)
