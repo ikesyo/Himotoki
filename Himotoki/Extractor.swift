@@ -59,15 +59,12 @@ private func valueFor(keyPathComponents: ArraySlice<String>, object: AnyObject) 
     }
 
     if let nested: AnyObject = object[keyPathComponents.first!] {
-        switch nested {
-        case is NSNull:
+        if object is NSNull {
             return nil
-
-        case is [String: AnyObject] where keyPathComponents.count > 1:
+        } else if keyPathComponents.count > 1 {
             let tail = dropFirst(keyPathComponents)
             return valueFor(tail, nested)
-            
-        default:
+        } else {
             return nested
         }
     }
