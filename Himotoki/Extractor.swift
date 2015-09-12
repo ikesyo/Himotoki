@@ -8,20 +8,14 @@
 
 public struct Extractor {
     public let rawValue: AnyObject
-    private let dictionary: [String: AnyObject]?
 
     internal init(_ rawValue: AnyObject) {
         self.rawValue = rawValue
-        self.dictionary = rawValue as? [String: AnyObject]
     }
 
     private func rawValue(keyPath: KeyPath) -> AnyObject? {
-        if let dictionary = dictionary {
-            let components = ArraySlice(keyPath.components)
-            return valueFor(components, dictionary)
-        } else {
-            return nil
-        }
+        let components = ArraySlice(keyPath.components)
+        return valueFor(components, rawValue)
     }
 
     public func value<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) -> Optional<T> {
@@ -59,22 +53,19 @@ extension Extractor: Decodable {
 //
 // `ArraySlice` is used for performance optimization.
 // See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
-private func valueFor(keyPathComponents: ArraySlice<String>, dictionary: [String: AnyObject]) -> AnyObject? {
+private func valueFor(keyPathComponents: ArraySlice<String>, object: AnyObject) -> AnyObject? {
     if keyPathComponents.isEmpty {
         return nil
     }
 
-    if let object: AnyObject = dictionary[keyPathComponents.first!] {
-        switch object {
-        case is NSNull:
+    if let nested: AnyObject = object[keyPathComponents.first!] {
+        if object is NSNull {
             return nil
-
-        case let dict as [String: AnyObject] where keyPathComponents.count > 1:
+        } else if keyPathComponents.count > 1 {
             let tail = dropFirst(keyPathComponents)
-            return valueFor(tail, dict)
-            
-        default:
-            return object
+            return valueFor(tail, nested)
+        } else {
+            return nested
         }
     }
     
