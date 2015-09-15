@@ -60,7 +60,7 @@ private func valueFor(keyPathComponents: ArraySlice<String>, _ object: AnyObject
         return nil
     }
 
-    guard case let nested?? = object[first] else {
+    guard let nested: AnyObject = object[first] else {
         return nil
     }
 
