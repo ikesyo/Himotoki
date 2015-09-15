@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Syo Ikeda. All rights reserved.
 //
 
+import class Foundation.NSNumber
+
 public protocol Decodable {
     typealias DecodedType = Self
     static func decode(e: Extractor) -> DecodedType?
