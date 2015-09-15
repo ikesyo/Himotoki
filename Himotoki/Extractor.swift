@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Syo Ikeda. All rights reserved.
 //
 
+import Foundation
+
 public struct Extractor {
     public let rawValue: AnyObject
 
