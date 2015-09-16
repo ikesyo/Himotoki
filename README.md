@@ -59,7 +59,7 @@ func testGroup() {
 ## Requirements
 
 - Swift 1.2 (Xcode 6.4)
-- iOS 8.0 or later (by Carthage or CocoaPods) / iOS 7 (by coping the source files directly)
+- iOS 8.0 or later (by Carthage or CocoaPods) / iOS 7 (by copying the source files directly)
 - OS X 10.9 or later
 
 ## Installation
