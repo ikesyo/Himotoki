@@ -1,6 +1,6 @@
 machine:
   xcode:
-    version: "6.3.1"
+    version: "6.4"
   environment:
     LC_CTYPE: en_US.UTF-8
 
