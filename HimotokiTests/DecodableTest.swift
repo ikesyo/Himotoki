@@ -114,7 +114,7 @@ class DecodableTest: XCTestCase {
         do {
             try decode(JSON) as Group
         } catch let DecodingError.MissingKeyPath(keyPath) {
-            XCTAssert(keyPath.components == ["name"])
+            XCTAssert(keyPath == "name")
         } catch {
             XCTFail()
         }
