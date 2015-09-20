@@ -18,7 +18,7 @@ public struct Extractor {
     }
 
     private func rawValue(keyPath: KeyPath) throws -> AnyObject? {
-        guard isDictionary else {
+        if !isDictionary {
             throw DecodeError.TypeMismatch(
                 expected: "Dictionary",
                 actual: "\(rawValue)",
