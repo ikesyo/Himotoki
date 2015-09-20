@@ -11,5 +11,6 @@ script:
   - set -o pipefail
   - xcodebuild test -scheme Himotoki-Mac | xcpretty -c
   - xcodebuild test -scheme Himotoki-iOS -sdk iphonesimulator | xcpretty -c
+  - xcodebuild build -scheme Himotoki-watchOS -sdk watchsimulator | xcpretty -c
 notifications:
   email: false
