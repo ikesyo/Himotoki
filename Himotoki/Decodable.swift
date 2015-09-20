@@ -109,7 +109,7 @@ private func castOrFail<T>(e: Extractor) throws -> T {
     let rawValue = e.rawValue
 
     guard let result = rawValue as? T else {
-        throw DecodeError.TypeMismatch(keyPath: "", object: rawValue, expected: T.self, actual: rawValue.dynamicType)
+        throw DecodeError.TypeMismatch(expected: "\(T.self)", actual: "\(rawValue)", keyPath: nil)
     }
 
     return result

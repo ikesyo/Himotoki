@@ -17,7 +17,7 @@ public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject
     typealias Expected = [AnyObject]
 
     guard let array = object as? Expected else {
-        throw DecodeError.TypeMismatch(keyPath: "", object: object, expected: Expected.self, actual: object.dynamicType)
+        throw DecodeError.TypeMismatch(expected: "Array", actual: "\(object)", keyPath: nil)
     }
 
     return try array.map(decode)
@@ -28,7 +28,7 @@ public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyO
     typealias Expected = [String: AnyObject]
 
     guard let dictionary = object as? Expected else {
-        throw DecodeError.TypeMismatch(keyPath: "", object: object, expected: Expected.self, actual: object.dynamicType)
+        throw DecodeError.TypeMismatch(expected: "Dictionary", actual: "\(object)", keyPath: nil)
     }
 
     return try dictionary.reduce([:]) { (var accum: [String: T], element) in

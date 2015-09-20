@@ -20,10 +20,9 @@ public struct Extractor {
     private func rawValue(keyPath: KeyPath) throws -> AnyObject? {
         guard isDictionary else {
             throw DecodeError.TypeMismatch(
-                keyPath: keyPath,
-                object: rawValue,
-                expected: [String: AnyObject].self,
-                actual: rawValue.dynamicType as Any.Type
+                expected: "Dictionary",
+                actual: "\(rawValue)",
+                keyPath: keyPath
             )
         }
 
@@ -44,8 +43,8 @@ public struct Extractor {
     public func valueOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> T? {
         do {
             return try rawValue(keyPath).map(decode)
-        } catch let DecodeError.TypeMismatch(_, object, expected, actual) {
-            throw DecodeError.TypeMismatch(keyPath: keyPath, object: object, expected: expected, actual: actual)
+        } catch let DecodeError.TypeMismatch(expected, actual, _) {
+            throw DecodeError.TypeMismatch(expected: expected, actual: actual, keyPath: keyPath)
         }
     }
 

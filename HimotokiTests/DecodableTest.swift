@@ -84,10 +84,10 @@ class DecodableTest: XCTestCase {
         do {
             JSON["age"] = "32"
             try decode(JSON) as Person
-        } catch let DecodeError.TypeMismatch(keyPath, object, expected, _) {
+        } catch let DecodeError.TypeMismatch(expected, actual, keyPath) {
             XCTAssert(keyPath == "age")
-            XCTAssert(object as? String == "32")
-            XCTAssert(expected is Int.Type)
+            XCTAssert(actual == "32")
+            XCTAssert(expected == "Int")
         } catch {
             XCTFail()
         }
