@@ -6,7 +6,6 @@ git:
   submodules: false
 before_install:
   - git submodule update --init --recursive
-  - gem install cocoapods xcpretty -N
 script:
 #  - pod spec lint
   - set -o pipefail && xcodebuild test -scheme Himotoki-Mac | xcpretty -c
