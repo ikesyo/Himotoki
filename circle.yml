@@ -1,16 +1,18 @@
 machine:
   xcode:
-    version: "6.4"
+    version: "7.0"
   environment:
     LC_CTYPE: en_US.UTF-8
 
 dependencies:
   override:
-    - sudo chown :wheel /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ *.simruntime/Contents/Resources/RuntimeRoot/usr/lib/dyld_sim
     - git submodule update --init --recursive
     - sudo gem install cocoapods xcpretty -N
 
 test:
   override:
-    - pod spec lint
-    - set -o pipefail && xcodebuild test -scheme Himotoki-Mac | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-mac.xml
+#    - pod spec lint
+    - set -o pipefail
+    - xcodebuild test -scheme Himotoki-Mac | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-mac.xml
+    - xcodebuild test -scheme Himotoki-iOS -sdk iphonesimulator | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-ios.xml
+    - xcodebuild build -scheme Himotoki-watchOS -sdk watchsimulator | xcpretty -c

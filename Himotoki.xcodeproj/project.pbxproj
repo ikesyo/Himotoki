@@ -11,6 +11,16 @@
 		CD6DA5E11B215B7C008B3EC5 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */; };
 		CD6DA5E21B215B7C008B3EC5 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */; };
 		CD7423DF1AF608E70056144E /* Himotoki.h in Headers */ = {isa = PBXBuildFile; fileRef = CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD8620E31B914C60006DCCDC /* DecodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8620E21B914C60006DCCDC /* DecodeError.swift */; settings = {ASSET_TAGS = (); }; };
+		CD8620E41B914C60006DCCDC /* DecodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8620E21B914C60006DCCDC /* DecodeError.swift */; settings = {ASSET_TAGS = (); }; };
+		CD8620E51B914C60006DCCDC /* DecodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8620E21B914C60006DCCDC /* DecodeError.swift */; settings = {ASSET_TAGS = (); }; };
+		CD8F0DC81B6D014B0021196A /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */; };
+		CD8F0DC91B6D014B0021196A /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD929A551AF4A4C9002F5C53 /* Extractor.swift */; };
+		CD8F0DCA1B6D014B0021196A /* decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4E7861B0ACB42007F8F88 /* decode.swift */; };
+		CD8F0DCB1B6D014B0021196A /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD929A531AF4A488002F5C53 /* Decodable.swift */; };
+		CD8F0DCC1B6D014B0021196A /* ArgumentsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9ADBF81B00F8F600406AA5 /* ArgumentsBuilder.swift */; };
+		CD8F0DCD1B6D014B0021196A /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD181ED81AF4F7C20065963F /* Operators.swift */; };
+		CD8F0DD01B6D014B0021196A /* Himotoki.h in Headers */ = {isa = PBXBuildFile; fileRef = CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD929A3D1AF4A2C3002F5C53 /* Himotoki.h in Headers */ = {isa = PBXBuildFile; fileRef = CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD929A431AF4A2C3002F5C53 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD929A371AF4A2C3002F5C53 /* Himotoki.framework */; };
 		CD929A541AF4A488002F5C53 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD929A531AF4A488002F5C53 /* Decodable.swift */; };
@@ -64,6 +74,12 @@
 		CD748AF01B4440CB00632C3F /* Mac-DynamicLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-DynamicLibrary.xcconfig"; sourceTree = "<group>"; };
 		CD748AF11B4440CB00632C3F /* Mac-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Framework.xcconfig"; sourceTree = "<group>"; };
 		CD748AF21B4440CB00632C3F /* Mac-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
+		CD8620E21B914C60006DCCDC /* DecodeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeError.swift; sourceTree = "<group>"; };
+		CD8F0DD51B6D014B0021196A /* Himotoki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Himotoki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD8F0DD81B6D017D0021196A /* watchOS-Application.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "watchOS-Application.xcconfig"; sourceTree = "<group>"; };
+		CD8F0DD91B6D017D0021196A /* watchOS-Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "watchOS-Base.xcconfig"; sourceTree = "<group>"; };
+		CD8F0DDA1B6D017D0021196A /* watchOS-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "watchOS-Framework.xcconfig"; sourceTree = "<group>"; };
+		CD8F0DDB1B6D017D0021196A /* watchOS-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "watchOS-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
 		CD929A371AF4A2C3002F5C53 /* Himotoki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Himotoki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD929A3B1AF4A2C3002F5C53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Himotoki.h; sourceTree = "<group>"; };
@@ -79,6 +95,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CD8F0DCE1B6D014B0021196A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD929A331AF4A2C3002F5C53 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -118,6 +141,7 @@
 				CD748ADD1B4440CB00632C3F /* Base */,
 				CD748AE81B4440CB00632C3F /* iOS */,
 				CD748AED1B4440CB00632C3F /* Mac OS X */,
+				CD8F0DD71B6D017D0021196A /* watchOS */,
 			);
 			name = Configuration;
 			path = Carthage/Checkouts/xcconfigs;
@@ -177,6 +201,17 @@
 			path = "Mac OS X";
 			sourceTree = "<group>";
 		};
+		CD8F0DD71B6D017D0021196A /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				CD8F0DD81B6D017D0021196A /* watchOS-Application.xcconfig */,
+				CD8F0DD91B6D017D0021196A /* watchOS-Base.xcconfig */,
+				CD8F0DDA1B6D017D0021196A /* watchOS-Framework.xcconfig */,
+				CD8F0DDB1B6D017D0021196A /* watchOS-StaticLibrary.xcconfig */,
+			);
+			path = watchOS;
+			sourceTree = "<group>";
+		};
 		CD929A2D1AF4A2C3002F5C53 = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +229,7 @@
 				CD929A421AF4A2C3002F5C53 /* HimotokiTests-iOS.xctest */,
 				CDF03E331AF606F60041C3AA /* Himotoki.framework */,
 				CDF03E3D1AF606F60041C3AA /* HimotokiTests-Mac.xctest */,
+				CD8F0DD51B6D014B0021196A /* Himotoki.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,6 +274,7 @@
 				CD9ADBF81B00F8F600406AA5 /* ArgumentsBuilder.swift */,
 				CD929A531AF4A488002F5C53 /* Decodable.swift */,
 				CDC4E7861B0ACB42007F8F88 /* decode.swift */,
+				CD8620E21B914C60006DCCDC /* DecodeError.swift */,
 				CD929A551AF4A4C9002F5C53 /* Extractor.swift */,
 				CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */,
 				CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */,
@@ -249,6 +286,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		CD8F0DCF1B6D014B0021196A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD8F0DD01B6D014B0021196A /* Himotoki.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD929A341AF4A2C3002F5C53 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -268,6 +313,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		CD8F0DC61B6D014B0021196A /* Himotoki-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD8F0DD21B6D014B0021196A /* Build configuration list for PBXNativeTarget "Himotoki-watchOS" */;
+			buildPhases = (
+				CD8F0DC71B6D014B0021196A /* Sources */,
+				CD8F0DCE1B6D014B0021196A /* Frameworks */,
+				CD8F0DCF1B6D014B0021196A /* Headers */,
+				CD8F0DD11B6D014B0021196A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Himotoki-watchOS";
+			productName = Himotoki;
+			productReference = CD8F0DD51B6D014B0021196A /* Himotoki.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		CD929A361AF4A2C3002F5C53 /* Himotoki-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD929A4D1AF4A2C3002F5C53 /* Build configuration list for PBXNativeTarget "Himotoki-iOS" */;
@@ -346,7 +409,8 @@
 		CD929A2E1AF4A2C3002F5C53 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Syo Ikeda";
 				TargetAttributes = {
 					CD929A361AF4A2C3002F5C53 = {
@@ -379,11 +443,19 @@
 				CD929A411AF4A2C3002F5C53 /* HimotokiTests-iOS */,
 				CDF03E321AF606F60041C3AA /* Himotoki-Mac */,
 				CDF03E3C1AF606F60041C3AA /* HimotokiTests-Mac */,
+				CD8F0DC61B6D014B0021196A /* Himotoki-watchOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CD8F0DD11B6D014B0021196A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD929A351AF4A2C3002F5C53 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,6 +487,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CD8F0DC71B6D014B0021196A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD8F0DC81B6D014B0021196A /* KeyPath.swift in Sources */,
+				CD8F0DC91B6D014B0021196A /* Extractor.swift in Sources */,
+				CD8F0DCA1B6D014B0021196A /* decode.swift in Sources */,
+				CD8F0DCB1B6D014B0021196A /* Decodable.swift in Sources */,
+				CD8F0DCC1B6D014B0021196A /* ArgumentsBuilder.swift in Sources */,
+				CD8F0DCD1B6D014B0021196A /* Operators.swift in Sources */,
+				CD8620E51B914C60006DCCDC /* DecodeError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD929A321AF4A2C3002F5C53 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,6 +511,7 @@
 				CD929A541AF4A488002F5C53 /* Decodable.swift in Sources */,
 				CD9ADBF91B00F8F600406AA5 /* ArgumentsBuilder.swift in Sources */,
 				CD181ED91AF4F7C20065963F /* Operators.swift in Sources */,
+				CD8620E31B914C60006DCCDC /* DecodeError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +533,7 @@
 				CDF03E4C1AF607540041C3AA /* Decodable.swift in Sources */,
 				CD9ADBFA1B00F8F600406AA5 /* ArgumentsBuilder.swift in Sources */,
 				CDF03E4E1AF607650041C3AA /* Operators.swift in Sources */,
+				CD8620E41B914C60006DCCDC /* DecodeError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,17 +561,42 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		CD8F0DD31B6D014B0021196A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD8F0DDA1B6D017D0021196A /* watchOS-Framework.xcconfig */;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				INFOPLIST_FILE = Himotoki/Info.plist;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		CD8F0DD41B6D014B0021196A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD8F0DDA1B6D017D0021196A /* watchOS-Framework.xcconfig */;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				INFOPLIST_FILE = Himotoki/Info.plist;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
 		CD929A4B1AF4A2C3002F5C53 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD748AE01B4440CB00632C3F /* Debug.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_BITCODE = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ikesyo.$(PRODUCT_NAME:rfc1034identifier)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -495,11 +608,13 @@
 			baseConfigurationReference = CD748AE21B4440CB00632C3F /* Release.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_BITCODE = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ikesyo.$(PRODUCT_NAME:rfc1034identifier)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -629,6 +744,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CD8F0DD21B6D014B0021196A /* Build configuration list for PBXNativeTarget "Himotoki-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD8F0DD31B6D014B0021196A /* Debug */,
+				CD8F0DD41B6D014B0021196A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CD929A311AF4A2C3002F5C53 /* Build configuration list for PBXProject "Himotoki" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
