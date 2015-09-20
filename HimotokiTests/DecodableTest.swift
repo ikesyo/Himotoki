@@ -23,7 +23,10 @@ class DecodableTest: XCTestCase {
             "bool": true,
             "number": NSNumber(long: 123456789),
             "raw_value": "RawValue",
-            "nested": [ "value": "The nested value" ],
+            "nested": [
+                "value": "The nested value",
+                "dict": [ "key": "The nested value" ]
+            ],
             "array": [ "123", "456" ],
             "arrayOption": NSNull(),
             "dictionary": [ "A": 1, "B": 2 ],
@@ -53,6 +56,7 @@ class DecodableTest: XCTestCase {
         XCTAssert(person?.rawValue as? String == "RawValue")
 
         XCTAssert(person?.nested == "The nested value")
+        XCTAssert(person?.nestedDict["key"] == "The nested value")
         XCTAssert(person?.array.count == 2)
         XCTAssert(person?.array.first == "123")
         XCTAssert(person?.arrayOption == nil)
@@ -164,6 +168,7 @@ struct Person: Decodable {
     let rawValue: AnyObject
 
     let nested: String
+    let nestedDict: [String: String]
     let array: [String]
     let arrayOption: [String]?
     let dictionary: [String: Int]
@@ -184,6 +189,7 @@ struct Person: Decodable {
             e <| "number",
             (e <| "raw_value" as Extractor).rawValue,
             e <| [ "nested", "value" ],
+            e <|-| [ "nested", "dict" ],
             e <|| "array",
             e <||? "arrayOption",
             e <|-| "dictionary",
