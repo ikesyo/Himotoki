@@ -11,7 +11,7 @@ import class Foundation.NSNumber
 public protocol Decodable {
     typealias DecodedType = Self
 
-    /// - Throws: DecodingError
+    /// - Throws: DecodeError
     static func decode(e: Extractor) throws -> DecodedType
 }
 
@@ -109,7 +109,7 @@ private func castOrFail<T>(e: Extractor) throws -> T {
     let rawValue = e.rawValue
 
     guard let result = rawValue as? T else {
-        throw DecodingError.TypeMismatch(keyPath: "", object: rawValue, expected: T.self, actual: rawValue.dynamicType)
+        throw DecodeError.TypeMismatch(keyPath: "", object: rawValue, expected: T.self, actual: rawValue.dynamicType)
     }
 
     return result

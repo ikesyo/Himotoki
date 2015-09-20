@@ -19,7 +19,7 @@ public struct Extractor {
 
     private func rawValue(keyPath: KeyPath) throws -> AnyObject? {
         guard isDictionary else {
-            throw DecodingError.TypeMismatch(
+            throw DecodeError.TypeMismatch(
                 keyPath: keyPath,
                 object: rawValue,
                 expected: [String: AnyObject].self,
@@ -31,48 +31,48 @@ public struct Extractor {
         return valueFor(components, rawValue)
     }
 
-    /// - Throws: DecodingError
+    /// - Throws: DecodeError
     public func value<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> T {
         guard let value: T = try valueOptional(keyPath) else {
-            throw DecodingError.MissingKeyPath(keyPath)
+            throw DecodeError.MissingKeyPath(keyPath)
         }
 
         return value
     }
 
-    /// - Throws: DecodingError
+    /// - Throws: DecodeError
     public func valueOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> T? {
         do {
             return try rawValue(keyPath).map(decode)
-        } catch let DecodingError.TypeMismatch(_, object, expected, actual) {
-            throw DecodingError.TypeMismatch(keyPath: keyPath, object: object, expected: expected, actual: actual)
+        } catch let DecodeError.TypeMismatch(_, object, expected, actual) {
+            throw DecodeError.TypeMismatch(keyPath: keyPath, object: object, expected: expected, actual: actual)
         }
     }
 
-    /// - Throws: DecodingError
+    /// - Throws: DecodeError
     public func array<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [T] {
         guard let array: [T] = try arrayOptional(keyPath) else {
-            throw DecodingError.MissingKeyPath(keyPath)
+            throw DecodeError.MissingKeyPath(keyPath)
         }
 
         return array
     }
 
-    /// - Throws: DecodingError
+    /// - Throws: DecodeError
     public func arrayOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [T]? {
         return try rawValue(keyPath).map(decodeArray)
     }
 
-    /// - Throws: DecodingError
+    /// - Throws: DecodeError
     public func dictionary<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [String: T] {
         guard let dictionary: [String: T] = try dictionaryOptional(keyPath) else {
-            throw DecodingError.MissingKeyPath(keyPath)
+            throw DecodeError.MissingKeyPath(keyPath)
         }
 
         return dictionary
     }
 
-    /// - Throws: DecodingError
+    /// - Throws: DecodeError
     public func dictionaryOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [String: T]? {
         return try rawValue(keyPath).map(decodeDictionary)
     }

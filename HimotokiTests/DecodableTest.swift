@@ -75,7 +75,7 @@ class DecodableTest: XCTestCase {
             JSON["bool"] = nil
             JSON["group"] = nil
             try decode(JSON) as Person
-        } catch let DecodingError.MissingKeyPath(keyPath) {
+        } catch let DecodeError.MissingKeyPath(keyPath) {
             XCTAssert(keyPath == "bool")
         } catch {
             XCTFail()
@@ -84,7 +84,7 @@ class DecodableTest: XCTestCase {
         do {
             JSON["age"] = "32"
             try decode(JSON) as Person
-        } catch let DecodingError.TypeMismatch(keyPath, object, expected, _) {
+        } catch let DecodeError.TypeMismatch(keyPath, object, expected, _) {
             XCTAssert(keyPath == "age")
             XCTAssert(object as? String == "32")
             XCTAssert(expected is Int.Type)
@@ -113,7 +113,7 @@ class DecodableTest: XCTestCase {
         JSON["name"] = nil
         do {
             try decode(JSON) as Group
-        } catch let DecodingError.MissingKeyPath(keyPath) {
+        } catch let DecodeError.MissingKeyPath(keyPath) {
             XCTAssert(keyPath == "name")
         } catch {
             XCTFail()
