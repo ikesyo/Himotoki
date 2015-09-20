@@ -97,7 +97,7 @@ class DecodableTest: XCTestCase {
         let peopleJSON = Array(count: 500, repeatedValue: personJSON)
 
         measureBlock {
-            let persons: [Person]? = try? decodeArray(peopleJSON)
+            let _: [Person]? = try? decodeArray(peopleJSON)
         }
     }
 
