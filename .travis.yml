@@ -8,6 +8,8 @@ before_install:
   - git submodule update --init --recursive
 script:
 #  - pod spec lint
-  - set -o pipefail && xcodebuild test -scheme Himotoki-Mac | xcpretty -c
+  - set -o pipefail
+  - xcodebuild test -scheme Himotoki-Mac | xcpretty -c
+  - xcodebuild test -scheme Himotoki-iOS -sdk iphonesimulator | xcpretty -c
 notifications:
   email: false
