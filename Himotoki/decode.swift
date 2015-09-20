@@ -14,9 +14,7 @@ public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) thr
 
 /// - Throws: DecodeError
 public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> [T] {
-    typealias Expected = [AnyObject]
-
-    guard let array = object as? Expected else {
+    guard let array = object as? [AnyObject] else {
         throw DecodeError.TypeMismatch(expected: "Array", actual: "\(object)", keyPath: nil)
     }
 
@@ -25,9 +23,7 @@ public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject
 
 /// - Throws: DecodeError
 public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> [String: T] {
-    typealias Expected = [String: AnyObject]
-
-    guard let dictionary = object as? Expected else {
+    guard let dictionary = object as? [String: AnyObject] else {
         throw DecodeError.TypeMismatch(expected: "Dictionary", actual: "\(object)", keyPath: nil)
     }
 
