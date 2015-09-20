@@ -11,6 +11,9 @@
 		CD6DA5E11B215B7C008B3EC5 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */; };
 		CD6DA5E21B215B7C008B3EC5 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */; };
 		CD7423DF1AF608E70056144E /* Himotoki.h in Headers */ = {isa = PBXBuildFile; fileRef = CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD8620E31B914C60006DCCDC /* DecodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8620E21B914C60006DCCDC /* DecodeError.swift */; settings = {ASSET_TAGS = (); }; };
+		CD8620E41B914C60006DCCDC /* DecodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8620E21B914C60006DCCDC /* DecodeError.swift */; settings = {ASSET_TAGS = (); }; };
+		CD8620E51B914C60006DCCDC /* DecodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8620E21B914C60006DCCDC /* DecodeError.swift */; settings = {ASSET_TAGS = (); }; };
 		CD8F0DC81B6D014B0021196A /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */; };
 		CD8F0DC91B6D014B0021196A /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD929A551AF4A4C9002F5C53 /* Extractor.swift */; };
 		CD8F0DCA1B6D014B0021196A /* decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4E7861B0ACB42007F8F88 /* decode.swift */; };
@@ -71,6 +74,7 @@
 		CD748AF01B4440CB00632C3F /* Mac-DynamicLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-DynamicLibrary.xcconfig"; sourceTree = "<group>"; };
 		CD748AF11B4440CB00632C3F /* Mac-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Framework.xcconfig"; sourceTree = "<group>"; };
 		CD748AF21B4440CB00632C3F /* Mac-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
+		CD8620E21B914C60006DCCDC /* DecodeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeError.swift; sourceTree = "<group>"; };
 		CD8F0DD51B6D014B0021196A /* Himotoki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Himotoki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8F0DD81B6D017D0021196A /* watchOS-Application.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "watchOS-Application.xcconfig"; sourceTree = "<group>"; };
 		CD8F0DD91B6D017D0021196A /* watchOS-Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "watchOS-Base.xcconfig"; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 				CD9ADBF81B00F8F600406AA5 /* ArgumentsBuilder.swift */,
 				CD929A531AF4A488002F5C53 /* Decodable.swift */,
 				CDC4E7861B0ACB42007F8F88 /* decode.swift */,
+				CD8620E21B914C60006DCCDC /* DecodeError.swift */,
 				CD929A551AF4A4C9002F5C53 /* Extractor.swift */,
 				CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */,
 				CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */,
@@ -492,6 +497,7 @@
 				CD8F0DCB1B6D014B0021196A /* Decodable.swift in Sources */,
 				CD8F0DCC1B6D014B0021196A /* ArgumentsBuilder.swift in Sources */,
 				CD8F0DCD1B6D014B0021196A /* Operators.swift in Sources */,
+				CD8620E51B914C60006DCCDC /* DecodeError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +511,7 @@
 				CD929A541AF4A488002F5C53 /* Decodable.swift in Sources */,
 				CD9ADBF91B00F8F600406AA5 /* ArgumentsBuilder.swift in Sources */,
 				CD181ED91AF4F7C20065963F /* Operators.swift in Sources */,
+				CD8620E31B914C60006DCCDC /* DecodeError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +533,7 @@
 				CDF03E4C1AF607540041C3AA /* Decodable.swift in Sources */,
 				CD9ADBFA1B00F8F600406AA5 /* ArgumentsBuilder.swift in Sources */,
 				CDF03E4E1AF607650041C3AA /* Operators.swift in Sources */,
+				CD8620E41B914C60006DCCDC /* DecodeError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

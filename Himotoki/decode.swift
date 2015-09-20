@@ -6,27 +6,30 @@
 //  Copyright (c) 2015 Syo Ikeda. All rights reserved.
 //
 
-public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) -> T? {
+/// - Throws: DecodeError
+public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> T {
     let extractor = Extractor(object)
-    return T.decode(extractor)
+    return try T.decode(extractor)
 }
 
-public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [T]? {
-    if let array = object as? [AnyObject] {
-        return array.flatMap(decode)
-    } else {
-        return nil
+/// - Throws: DecodeError
+public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> [T] {
+    guard let array = object as? [AnyObject] else {
+        throw DecodeError.TypeMismatch(expected: "Array", actual: "\(object)", keyPath: nil)
     }
+
+    return try array.map(decode)
 }
 
-public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyObject) -> [String: T]? {
-    if let dictionary = object as? [String: AnyObject] {
-        return dictionary.reduce([:]) { (var accum: [String: T], element) in
-            let (key, value) = element
-            accum[key] = decode(value)
-            return accum
-        }
-    } else {
-        return nil
+/// - Throws: DecodeError
+public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> [String: T] {
+    guard let dictionary = object as? [String: AnyObject] else {
+        throw DecodeError.TypeMismatch(expected: "Dictionary", actual: "\(object)", keyPath: nil)
+    }
+
+    return try dictionary.reduce([:]) { (var accum: [String: T], element) in
+        let (key, value) = element
+        accum[key] = try decode(value) as T
+        return accum
     }
 }

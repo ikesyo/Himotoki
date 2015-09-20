@@ -13,26 +13,32 @@ infix operator <||? { associativity left precedence 150 }
 infix operator <|-| { associativity left precedence 150 }
 infix operator <|-|? { associativity left precedence 150 }
 
-public func <| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: KeyPath) -> Optional<T> {
-    return e.value(keyPath)
+/// - Throws: DecodeError
+public func <| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: KeyPath) throws -> T {
+    return try e.value(keyPath)
 }
 
-public func <|? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: KeyPath) -> Optional<T?> {
-    return e.valueOptional(keyPath)
+/// - Throws: DecodeError
+public func <|? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: KeyPath) throws -> T? {
+    return try e.valueOptional(keyPath)
 }
 
-public func <|| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: KeyPath) -> Optional<[T]> {
-    return e.array(keyPath)
+/// - Throws: DecodeError
+public func <|| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: KeyPath) throws -> [T] {
+    return try e.array(keyPath)
 }
 
-public func <||? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: KeyPath) -> Optional<[T]?> {
-    return e.arrayOptional(keyPath)
+/// - Throws: DecodeError
+public func <||? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: KeyPath) throws -> [T]? {
+    return try e.arrayOptional(keyPath)
 }
 
-public func <|-| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: KeyPath) -> Optional<[String: T]> {
-    return e.dictionary(keyPath)
+/// - Throws: DecodeError
+public func <|-| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: KeyPath) throws -> [String: T] {
+    return try e.dictionary(keyPath)
 }
 
-public func <|-|? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: KeyPath) -> Optional<[String: T]?> {
-    return e.dictionaryOptional(keyPath)
+/// - Throws: DecodeError
+public func <|-|? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: KeyPath) throws -> [String: T]? {
+    return try e.dictionaryOptional(keyPath)
 }
