@@ -24,12 +24,12 @@ struct Group: Decodable {
     let locationName: String
     let optional: [String]?
 
-	// MARK: Decodable
+    // MARK: Decodable
 
-    static func decode(e: Extractor) -> Group? {
+    static func decode(e: Extractor) throws -> Group {
         // Pass the initializer function and the arguments for
         // that function to `build()`.
-        return build(Group.init)(
+        return try build(Group.init)(
             e <| "name",
             e <| "floor",
             e <| [ "location", "name" ], // Parse nested objects
@@ -39,17 +39,22 @@ struct Group: Decodable {
 }
 
 func testGroup() {
-   var JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
+    var JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
+    
+    let g: Group? = try? decode(JSON)
+    XCTAssert(g != nil)
+    XCTAssert(g?.name == "Himotoki")
+    XCTAssert(g?.floor == 12)
+    XCTAssert(g?.optional == nil)
 
-   let g: Group? = decode(JSON)
-   XCTAssert(g != nil)
-   XCTAssert(g?.name == "Himotoki")
-   XCTAssert(g?.floor == 12)
-   XCTAssert(g?.optional == nil)
-
-   JSON["name"] = nil
-   let f: Group? = decode(JSON)
-   XCTAssert(f == nil)
+    JSON["name"] = nil
+    do {
+        try decode(JSON) as Group
+    } catch let DecodeError.MissingKeyPath(keyPath) {
+        XCTAssert(keyPath == "name")
+    } catch {
+        XCTFail()
+    }
 }
 ```
 
