@@ -24,7 +24,7 @@ struct Group: Decodable {
     let locationName: String
     let optional: [String]?
 
-	// MARK: Decodable
+    // MARK: Decodable
 
     static func decode(e: Extractor) throws -> Group {
         // Pass the initializer function and the arguments for
