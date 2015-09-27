@@ -1,12 +1,12 @@
 //
-//  ArgumentsBuilder.swift
+//  Builder.swift
 //  Himotoki
 //
 //  Created by Syo Ikeda on 5/11/15.
 //  Copyright (c) 2015 Syo Ikeda. All rights reserved.
 //
 
-// MARK: Arguments builder
+// MARK: Builder
 
 public func build<A, Value>(create: (A) -> Value)(_ a: A) -> Value {
     return create(a)
