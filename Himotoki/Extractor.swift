@@ -83,6 +83,12 @@ extension Extractor: Decodable {
     }
 }
 
+extension Extractor: CustomStringConvertible {
+    public var description: String {
+        return "Extractor(\(rawValue))"
+    }
+}
+
 // Implement it as a tail recursive function.
 //
 // `ArraySlice` is used for performance optimization.
