@@ -18,7 +18,7 @@ public struct KeyPath: Equatable {
     }
 }
 
-public func ==(lhs: KeyPath, rhs: KeyPath) -> Bool {
+public func == (lhs: KeyPath, rhs: KeyPath) -> Bool {
     return lhs.components == rhs.components
 }
 
