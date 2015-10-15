@@ -8,7 +8,7 @@ dependencies:
   override:
     - git submodule update --init --recursive
     - sudo gem install xcpretty -N
-    - sudo gem install cocoapods -N --pre
+    - sudo gem install cocoapods -N
 
 test:
   override:
