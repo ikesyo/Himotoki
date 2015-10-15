@@ -12,7 +12,7 @@ dependencies:
 
 test:
   override:
-    - pod spec lint
+    - if [[ $CIRCLE_BRANCH != release/* ]]; then pod spec lint; fi
     - set -o pipefail
     - xcodebuild test -scheme Himotoki-Mac | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-mac.xml
     - xcodebuild test -scheme Himotoki-iOS -sdk iphonesimulator | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-ios.xml
