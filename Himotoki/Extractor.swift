@@ -32,19 +32,23 @@ public struct Extractor {
 
     /// - Throws: DecodeError
     public func value<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> T {
-        guard let value: T = try valueOptional(keyPath) else {
-            throw DecodeError.MissingKeyPath(keyPath)
+        do {
+            if let value: T = try rawValue(keyPath).map(decode) {
+                return value
+            } else {
+                throw DecodeError.MissingKeyPath(keyPath)
+            }
+        } catch let DecodeError.TypeMismatch(expected, actual, _) {
+            throw DecodeError.TypeMismatch(expected: expected, actual: actual, keyPath: keyPath)
         }
-
-        return value
     }
 
     /// - Throws: DecodeError
     public func valueOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> T? {
         do {
-            return try rawValue(keyPath).map(decode)
-        } catch let DecodeError.TypeMismatch(expected, actual, _) {
-            throw DecodeError.TypeMismatch(expected: expected, actual: actual, keyPath: keyPath)
+            return try value(keyPath) as T
+        } catch DecodeError.MissingKeyPath {
+            return nil
         }
     }
 
