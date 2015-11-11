@@ -20,21 +20,36 @@
                ReferencedContainer = "container:Himotoki.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CDE423A81BF2ECA700C9473F"
+               BuildableName = "HimotokiTests-tvOS.xctest"
+               BlueprintName = "HimotokiTests-tvOS"
+               ReferencedContainer = "container:Himotoki.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CDE4237E1BF2E94000C9473F"
-               BuildableName = "Himotoki-tvOSTests.xctest"
-               BlueprintName = "Himotoki-tvOSTests"
+               BlueprintIdentifier = "CDE423A81BF2ECA700C9473F"
+               BuildableName = "HimotokiTests-tvOS.xctest"
+               BlueprintName = "HimotokiTests-tvOS"
                ReferencedContainer = "container:Himotoki.xcodeproj">
             </BuildableReference>
          </TestableReference>
