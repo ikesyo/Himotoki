@@ -39,6 +39,15 @@
 		CDBFDC661BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBFDC641BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift */; };
 		CDC4E7871B0ACB42007F8F88 /* decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4E7861B0ACB42007F8F88 /* decode.swift */; };
 		CDC4E7881B0ACB42007F8F88 /* decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4E7861B0ACB42007F8F88 /* decode.swift */; };
+		CDE4238F1BF2E9B000C9473F /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */; };
+		CDE423901BF2E9B000C9473F /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD929A551AF4A4C9002F5C53 /* Extractor.swift */; };
+		CDE423911BF2E9B000C9473F /* decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4E7861B0ACB42007F8F88 /* decode.swift */; };
+		CDE423921BF2E9B000C9473F /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD929A531AF4A488002F5C53 /* Decodable.swift */; };
+		CDE423931BF2E9B000C9473F /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9ADBF81B00F8F600406AA5 /* Builder.swift */; };
+		CDE423941BF2E9B000C9473F /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD181ED81AF4F7C20065963F /* Operators.swift */; };
+		CDE423951BF2E9B000C9473F /* DecodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8620E21B914C60006DCCDC /* DecodeError.swift */; };
+		CDE423961BF2E9B000C9473F /* RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74501D1BB7FC7B0092EED3 /* RawRepresentable.swift */; };
+		CDE423991BF2E9B000C9473F /* Himotoki.h in Headers */ = {isa = PBXBuildFile; fileRef = CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDF03E3E1AF606F70041C3AA /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF03E331AF606F60041C3AA /* Himotoki.framework */; };
 		CDF03E4C1AF607540041C3AA /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD929A531AF4A488002F5C53 /* Decodable.swift */; };
 		CDF03E4D1AF607580041C3AA /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD929A551AF4A4C9002F5C53 /* Extractor.swift */; };
@@ -103,6 +112,11 @@
 		CD9ADBF81B00F8F600406AA5 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		CDBFDC641BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeWithRootKeyPathTest.swift; sourceTree = "<group>"; };
 		CDC4E7861B0ACB42007F8F88 /* decode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = decode.swift; sourceTree = "<group>"; };
+		CDE4239E1BF2E9B000C9473F /* Himotoki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Himotoki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDE423A11BF2EA0A00C9473F /* tvOS-Application.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "tvOS-Application.xcconfig"; sourceTree = "<group>"; };
+		CDE423A21BF2EA0A00C9473F /* tvOS-Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "tvOS-Base.xcconfig"; sourceTree = "<group>"; };
+		CDE423A31BF2EA0A00C9473F /* tvOS-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "tvOS-Framework.xcconfig"; sourceTree = "<group>"; };
+		CDE423A41BF2EA0A00C9473F /* tvOS-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "tvOS-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
 		CDF03E331AF606F60041C3AA /* Himotoki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Himotoki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF03E3D1AF606F60041C3AA /* HimotokiTests-Mac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HimotokiTests-Mac.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -130,6 +144,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CDE423971BF2E9B000C9473F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CDF03E2F1AF606F60041C3AA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -154,6 +175,7 @@
 				CD748ADD1B4440CB00632C3F /* Base */,
 				CD748AE81B4440CB00632C3F /* iOS */,
 				CD748AED1B4440CB00632C3F /* Mac OS X */,
+				CDE423A01BF2E9C900C9473F /* tvOS */,
 				CD8F0DD71B6D017D0021196A /* watchOS */,
 			);
 			name = Configuration;
@@ -243,6 +265,7 @@
 				CDF03E331AF606F60041C3AA /* Himotoki.framework */,
 				CDF03E3D1AF606F60041C3AA /* HimotokiTests-Mac.xctest */,
 				CD8F0DD51B6D014B0021196A /* Himotoki.framework */,
+				CDE4239E1BF2E9B000C9473F /* Himotoki.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -300,6 +323,17 @@
 			name = Sources;
 			sourceTree = "<group>";
 		};
+		CDE423A01BF2E9C900C9473F /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				CDE423A11BF2EA0A00C9473F /* tvOS-Application.xcconfig */,
+				CDE423A21BF2EA0A00C9473F /* tvOS-Base.xcconfig */,
+				CDE423A31BF2EA0A00C9473F /* tvOS-Framework.xcconfig */,
+				CDE423A41BF2EA0A00C9473F /* tvOS-StaticLibrary.xcconfig */,
+			);
+			path = tvOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -316,6 +350,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD929A3D1AF4A2C3002F5C53 /* Himotoki.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDE423981BF2E9B000C9473F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDE423991BF2E9B000C9473F /* Himotoki.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +425,24 @@
 			productName = HimotokiTests;
 			productReference = CD929A421AF4A2C3002F5C53 /* HimotokiTests-iOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CDE4238D1BF2E9B000C9473F /* Himotoki-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDE4239B1BF2E9B000C9473F /* Build configuration list for PBXNativeTarget "Himotoki-tvOS" */;
+			buildPhases = (
+				CDE4238E1BF2E9B000C9473F /* Sources */,
+				CDE423971BF2E9B000C9473F /* Frameworks */,
+				CDE423981BF2E9B000C9473F /* Headers */,
+				CDE4239A1BF2E9B000C9473F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Himotoki-tvOS";
+			productName = Himotoki;
+			productReference = CDE4239E1BF2E9B000C9473F /* Himotoki.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		CDF03E321AF606F60041C3AA /* Himotoki-Mac */ = {
 			isa = PBXNativeTarget;
@@ -461,6 +521,7 @@
 				CDF03E321AF606F60041C3AA /* Himotoki-Mac */,
 				CDF03E3C1AF606F60041C3AA /* HimotokiTests-Mac */,
 				CD8F0DC61B6D014B0021196A /* Himotoki-watchOS */,
+				CDE4238D1BF2E9B000C9473F /* Himotoki-tvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -481,6 +542,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CD929A401AF4A2C3002F5C53 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDE4239A1BF2E9B000C9473F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -542,6 +610,21 @@
 				CD7450221BB7FE900092EED3 /* RawRepresentableTest.swift in Sources */,
 				CD5E68F91BD766BE00417C84 /* DecodeErrorTest.swift in Sources */,
 				CDBFDC651BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDE4238E1BF2E9B000C9473F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDE4238F1BF2E9B000C9473F /* KeyPath.swift in Sources */,
+				CDE423901BF2E9B000C9473F /* Extractor.swift in Sources */,
+				CDE423911BF2E9B000C9473F /* decode.swift in Sources */,
+				CDE423921BF2E9B000C9473F /* Decodable.swift in Sources */,
+				CDE423931BF2E9B000C9473F /* Builder.swift in Sources */,
+				CDE423941BF2E9B000C9473F /* Operators.swift in Sources */,
+				CDE423951BF2E9B000C9473F /* DecodeError.swift in Sources */,
+				CDE423961BF2E9B000C9473F /* RawRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +706,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ikesyo.$(PRODUCT_NAME:rfc1034identifier)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -640,6 +724,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ikesyo.$(PRODUCT_NAME:rfc1034identifier)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -703,6 +788,28 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		CDE4239C1BF2E9B000C9473F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDE423A31BF2EA0A00C9473F /* tvOS-Framework.xcconfig */;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				INFOPLIST_FILE = Himotoki/Info.plist;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Debug;
+		};
+		CDE4239D1BF2E9B000C9473F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDE423A31BF2EA0A00C9473F /* tvOS-Framework.xcconfig */;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				INFOPLIST_FILE = Himotoki/Info.plist;
+				TARGETED_DEVICE_FAMILY = 3;
 			};
 			name = Release;
 		};
@@ -800,6 +907,15 @@
 			buildConfigurations = (
 				CD929A511AF4A2C3002F5C53 /* Debug */,
 				CD929A521AF4A2C3002F5C53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDE4239B1BF2E9B000C9473F /* Build configuration list for PBXNativeTarget "Himotoki-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDE4239C1BF2E9B000C9473F /* Debug */,
+				CDE4239D1BF2E9B000C9473F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
