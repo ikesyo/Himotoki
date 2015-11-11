@@ -2,3 +2,4 @@ disabled_rules:
   - line_length
 included:
   - Himotoki
+  - HimotokiTests

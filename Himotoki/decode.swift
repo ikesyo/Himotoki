@@ -13,12 +13,22 @@ public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) thr
 }
 
 /// - Throws: DecodeError
+public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject, rootKeyPath: KeyPath) throws -> T {
+    return try decode(object) <| rootKeyPath
+}
+
+/// - Throws: DecodeError
 public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> [T] {
     guard let array = object as? [AnyObject] else {
         throw DecodeError.TypeMismatch(expected: "Array", actual: "\(object)", keyPath: nil)
     }
 
     return try array.map(decode)
+}
+
+/// - Throws: DecodeError
+public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject, rootKeyPath: KeyPath) throws -> [T] {
+    return try decode(object) <|| rootKeyPath
 }
 
 /// - Throws: DecodeError
@@ -32,4 +42,9 @@ public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyO
         accum[key] = try decode(value) as T
         return accum
     }
+}
+
+/// - Throws: DecodeError
+public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyObject, rootKeyPath: KeyPath) throws -> [String: T] {
+    return try decode(object) <|-| rootKeyPath
 }
