@@ -58,6 +58,19 @@ func testGroup() {
 }
 ```
 
+## Operators
+
+Himotoki supports the following operators to decode JSON elements, where `T` is a generic type conforming to `Decodable` protocol.
+
+| Operator                        | Decode element as | Remarks                          |
+|:--------------------------------|:------------------|:---------------------------------|
+| <code>&lt;&#124;</code>         | `T`               | A value                          |
+| <code>&lt;&#124;?</code>        | `T?`              | An optional value                |
+| <code>&lt;&#124;&#124;</code>   | `[T]`             | An array of values               |
+| <code>&lt;&#124;&#124;?</code>  | `[T]?`            | An optional array of values      |
+| <code>&lt;&#124;-&#124;</code>  | `[String: T]`     | A dictionary of values           |
+| <code>&lt;&#124;-&#124;?</code> | `[String: T]?`    | An optional dictionary of values |
+
 ## Requirements
 
 - Swift 2 / Xcode 7
@@ -102,19 +115,6 @@ Himotoki also can be used by [CocoaPods](https://cocoapods.org/).
     ```
 
 - Then just add references of `Himotoki/*.swift` to your Xcode project.
-
-## Operators
-
-Himotoki supports the following operators to decode JSON elements, where `T` is a generic type conforming `Decodable` protocol.
-
-| Operator                        | Decode Element As | Comment                          |
-|:--------------------------------|:------------------|:---------------------------------|
-| <code>&lt;&#124;</code>         | `T`               | A value                          |
-| <code>&lt;&#124;?</code>        | `T?`              | An optional value                |
-| <code>&lt;&#124;&#124;</code>   | `[T]`             | An array of values               |
-| <code>&lt;&#124;&#124;?</code>  | `[T]?`            | An optional array of values      |
-| <code>&lt;&#124;-&#124;</code>  | `[String: T]`     | A dictionary of values           |
-| <code>&lt;&#124;-&#124;?</code> | `[String: T]?`    | An optional dictionary of values |
 
 ## License
 
