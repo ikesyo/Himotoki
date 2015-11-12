@@ -73,10 +73,11 @@ Himotoki supports the following operators to decode JSON elements, where `T` is 
 
 ## Requirements
 
-- Swift 2 / Xcode 7
+- Swift 2.1 / Xcode 7.1
 - OS X 10.9 or later
 - iOS 8.0 or later (by Carthage or CocoaPods) / iOS 7 (by copying the source files directly)
-- watchOS 2
+- tvOS 9.0
+- watchOS 2.0
 
 ## Installation
 
