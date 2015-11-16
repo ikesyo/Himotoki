@@ -190,24 +190,24 @@ struct Person: Decodable {
     let groups: [Group]
 
     static func decode(e: Extractor) throws -> Person {
-        return try build(Person.init)(
-            e <| "first_name",
-            e <| "last_name",
-            e <| "age",
-            e <| "int64",
-            e <| "height",
-            e <| "float",
-            e <| "bool",
-            e <| "number",
-            (e <| "raw_value" as Extractor).rawValue,
-            e <| [ "nested", "value" ],
-            e <|-| [ "nested", "dict" ],
-            e <|| "array",
-            e <||? "arrayOption",
-            e <|-| "dictionary",
-            e <|-|? "dictionaryOption",
-            e <| "group",
-            e <|| "groups"
+        return try Person(
+            firstName: e <| "first_name",
+            lastName: e <| "last_name",
+            age: e <| "age",
+            int64: e <| "int64",
+            height: e <| "height",
+            float: e <| "float",
+            bool: e <| "bool",
+            number: e <| "number",
+            rawValue: (e <| "raw_value" as Extractor).rawValue,
+            nested: e <| [ "nested", "value" ],
+            nestedDict: e <|-| [ "nested", "dict" ],
+            array: e <|| "array",
+            arrayOption: e <||? "arrayOption",
+            dictionary: e <|-| "dictionary",
+            dictionaryOption: e <|-|? "dictionaryOption",
+            group: e <| "group",
+            groups: e <|| "groups"
         )
     }
 }
@@ -218,10 +218,10 @@ struct Group: Decodable {
     let optional: [String]?
 
     static func decode(e: Extractor) throws -> Group {
-        return try build(Group.init)(
-            e <| "name",
-            e <| "floor",
-            e <||? "optional"
+        return try Group(
+            name: e <| "name",
+            floor: e <| "floor",
+            optional: e <||? "optional"
         )
     }
 }
@@ -239,17 +239,17 @@ struct Numbers: Decodable {
     let uint64: UInt64
 
     static func decode(e: Extractor) throws -> Numbers {
-        return try build(Numbers.init)(
-            e <| "int",
-            e <| "uint",
-            e <| "int8",
-            e <| "uint8",
-            e <| "int16",
-            e <| "uint16",
-            e <| "int32",
-            e <| "uint32",
-            e <| "int64",
-            e <| "uint64"
+        return try Numbers(
+            int: e <| "int",
+            uint: e <| "uint",
+            int8: e <| "int8",
+            uint8: e <| "uint8",
+            int16: e <| "int16",
+            uint16: e <| "uint16",
+            int32: e <| "int32",
+            uint32: e <| "uint32",
+            int64: e <| "int64",
+            uint64: e <| "uint64"
         )
     }
 }
