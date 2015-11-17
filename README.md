@@ -27,13 +27,11 @@ struct Group: Decodable {
     // MARK: Decodable
 
     static func decode(e: Extractor) throws -> Group {
-        // Pass the initializer function and the arguments for
-        // that function to `build()`.
-        return try build(Group.init)(
-            e <| "name",
-            e <| "floor",
-            e <| [ "location", "name" ], // Parse nested objects
-            e <||? "optional" // Parse optional arrays of values
+        return try Group(
+            name: e <| "name",
+            floor: e <| "floor",
+            locationName: e <| [ "location", "name" ], // Parse nested objects
+            optional: e <||? "optional" // Parse optional arrays of values
         )
     }
 }
