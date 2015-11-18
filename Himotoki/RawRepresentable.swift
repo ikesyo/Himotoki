@@ -11,7 +11,7 @@ public extension RawRepresentable where Self: Decodable, Self.DecodedType == Sel
         let rawValue = try RawValue.decode(e)
 
         guard let value = self.init(rawValue: rawValue) else {
-            throw DecodeError.TypeMismatch(expected: ".Some(\(Self.self))", actual: ".None", keyPath: nil)
+            throw typeMismatch("rawValue for \(self)", actual: rawValue, keyPath: nil)
         }
 
         return value
