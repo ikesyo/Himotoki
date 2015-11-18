@@ -20,7 +20,7 @@ public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject, roo
 /// - Throws: DecodeError
 public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> [T] {
     guard let array = object as? [AnyObject] else {
-        throw DecodeError.TypeMismatch(expected: "Array", actual: "\(object)", keyPath: nil)
+        throw typeMismatch("Array", actual: object, keyPath: nil)
     }
 
     return try array.map(decode)
@@ -34,7 +34,7 @@ public func decodeArray<T: Decodable where T.DecodedType == T>(object: AnyObject
 /// - Throws: DecodeError
 public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> [String: T] {
     guard let dictionary = object as? [String: AnyObject] else {
-        throw DecodeError.TypeMismatch(expected: "Dictionary", actual: "\(object)", keyPath: nil)
+        throw typeMismatch("Dictionary", actual: object, keyPath: nil)
     }
 
     return try dictionary.reduce([:]) { (var accum: [String: T], element) in

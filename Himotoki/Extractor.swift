@@ -19,11 +19,7 @@ public struct Extractor {
 
     private func rawValue(keyPath: KeyPath) throws -> AnyObject? {
         if !isDictionary {
-            throw DecodeError.TypeMismatch(
-                expected: "Dictionary",
-                actual: "\(rawValue)",
-                keyPath: keyPath
-            )
+            throw typeMismatch("Dictionary", actual: rawValue, keyPath: keyPath)
         }
 
         let components = ArraySlice(keyPath.components)
