@@ -39,6 +39,14 @@
 		CDBFDC661BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBFDC641BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift */; };
 		CDC4E7871B0ACB42007F8F88 /* decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4E7861B0ACB42007F8F88 /* decode.swift */; };
 		CDC4E7881B0ACB42007F8F88 /* decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4E7861B0ACB42007F8F88 /* decode.swift */; };
+		CDDDEE111BFC70B00058595B /* StandardLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDDEE101BFC70B00058595B /* StandardLib.swift */; };
+		CDDDEE121BFC70B00058595B /* StandardLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDDEE101BFC70B00058595B /* StandardLib.swift */; };
+		CDDDEE131BFC70B00058595B /* StandardLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDDEE101BFC70B00058595B /* StandardLib.swift */; };
+		CDDDEE141BFC70B00058595B /* StandardLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDDEE101BFC70B00058595B /* StandardLib.swift */; };
+		CDDDEE171BFC71500058595B /* NSNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDDEE161BFC71500058595B /* NSNumber.swift */; };
+		CDDDEE181BFC71500058595B /* NSNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDDEE161BFC71500058595B /* NSNumber.swift */; };
+		CDDDEE191BFC71500058595B /* NSNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDDEE161BFC71500058595B /* NSNumber.swift */; };
+		CDDDEE1A1BFC71500058595B /* NSNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDDEE161BFC71500058595B /* NSNumber.swift */; };
 		CDE4238F1BF2E9B000C9473F /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */; };
 		CDE423901BF2E9B000C9473F /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD929A551AF4A4C9002F5C53 /* Extractor.swift */; };
 		CDE423911BF2E9B000C9473F /* decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4E7861B0ACB42007F8F88 /* decode.swift */; };
@@ -124,6 +132,8 @@
 		CD9ADBF81B00F8F600406AA5 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		CDBFDC641BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeWithRootKeyPathTest.swift; sourceTree = "<group>"; };
 		CDC4E7861B0ACB42007F8F88 /* decode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = decode.swift; sourceTree = "<group>"; };
+		CDDDEE101BFC70B00058595B /* StandardLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardLib.swift; sourceTree = "<group>"; };
+		CDDDEE161BFC71500058595B /* NSNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSNumber.swift; sourceTree = "<group>"; };
 		CDE4239E1BF2E9B000C9473F /* Himotoki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Himotoki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE423A11BF2EA0A00C9473F /* tvOS-Application.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "tvOS-Application.xcconfig"; sourceTree = "<group>"; };
 		CDE423A21BF2EA0A00C9473F /* tvOS-Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "tvOS-Base.xcconfig"; sourceTree = "<group>"; };
@@ -339,8 +349,10 @@
 				CD929A551AF4A4C9002F5C53 /* Extractor.swift */,
 				CD929A3C1AF4A2C3002F5C53 /* Himotoki.h */,
 				CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */,
+				CDDDEE161BFC71500058595B /* NSNumber.swift */,
 				CD181ED81AF4F7C20065963F /* Operators.swift */,
 				CD74501D1BB7FC7B0092EED3 /* RawRepresentable.swift */,
+				CDDDEE101BFC70B00058595B /* StandardLib.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -628,7 +640,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD8F0DC81B6D014B0021196A /* KeyPath.swift in Sources */,
+				CDDDEE131BFC70B00058595B /* StandardLib.swift in Sources */,
 				CD8F0DC91B6D014B0021196A /* Extractor.swift in Sources */,
+				CDDDEE191BFC71500058595B /* NSNumber.swift in Sources */,
 				CD8F0DCA1B6D014B0021196A /* decode.swift in Sources */,
 				CD8F0DCB1B6D014B0021196A /* Decodable.swift in Sources */,
 				CD8F0DCC1B6D014B0021196A /* Builder.swift in Sources */,
@@ -643,7 +657,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD6DA5E11B215B7C008B3EC5 /* KeyPath.swift in Sources */,
+				CDDDEE111BFC70B00058595B /* StandardLib.swift in Sources */,
 				CD929A561AF4A4C9002F5C53 /* Extractor.swift in Sources */,
+				CDDDEE171BFC71500058595B /* NSNumber.swift in Sources */,
 				CDC4E7871B0ACB42007F8F88 /* decode.swift in Sources */,
 				CD929A541AF4A488002F5C53 /* Decodable.swift in Sources */,
 				CD9ADBF91B00F8F600406AA5 /* Builder.swift in Sources */,
@@ -669,7 +685,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDE4238F1BF2E9B000C9473F /* KeyPath.swift in Sources */,
+				CDDDEE141BFC70B00058595B /* StandardLib.swift in Sources */,
 				CDE423901BF2E9B000C9473F /* Extractor.swift in Sources */,
+				CDDDEE1A1BFC71500058595B /* NSNumber.swift in Sources */,
 				CDE423911BF2E9B000C9473F /* decode.swift in Sources */,
 				CDE423921BF2E9B000C9473F /* Decodable.swift in Sources */,
 				CDE423931BF2E9B000C9473F /* Builder.swift in Sources */,
@@ -695,7 +713,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD6DA5E21B215B7C008B3EC5 /* KeyPath.swift in Sources */,
+				CDDDEE121BFC70B00058595B /* StandardLib.swift in Sources */,
 				CDF03E4D1AF607580041C3AA /* Extractor.swift in Sources */,
+				CDDDEE181BFC71500058595B /* NSNumber.swift in Sources */,
 				CDC4E7881B0ACB42007F8F88 /* decode.swift in Sources */,
 				CDF03E4C1AF607540041C3AA /* Decodable.swift in Sources */,
 				CD9ADBFA1B00F8F600406AA5 /* Builder.swift in Sources */,
