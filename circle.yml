@@ -1,14 +1,13 @@
 machine:
   xcode:
-    version: "7.0"
+    version: "7.1"
   environment:
     LC_CTYPE: en_US.UTF-8
 
 dependencies:
   override:
     - git submodule update --init --recursive
-    - sudo gem install xcpretty -N -v 0.1.12
-    - sudo gem install cocoapods -N
+    - sudo gem install xcpretty -N
 
 test:
   override:
@@ -16,4 +15,5 @@ test:
     - set -o pipefail
     - xcodebuild test -scheme Himotoki-Mac | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-mac.xml
     - xcodebuild test -scheme Himotoki-iOS -sdk iphonesimulator | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-ios.xml
+    - xcodebuild test -scheme Himotoki-tvOS -sdk appletvsimulator | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-tvos.xml
     - xcodebuild build -scheme Himotoki-watchOS -sdk watchsimulator | xcpretty -c
