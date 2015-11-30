@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Himotoki"
-  s.version      = "1.3.0"
+  s.version      = "1.3.1"
   s.summary      = "A type-safe JSON decoding library purely written in Swift"
   s.description  = <<-DESC
 Himotoki (紐解き) is a type-safe JSON decoding library purely written in Swift. This library is highly inspired by popular JSON parsing libraries in Swift: [Argo](https://github.com/thoughtbot/Argo) and [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper).
