@@ -13,7 +13,7 @@ test:
   override:
     - if [[ $CIRCLE_BRANCH != release/* ]]; then pod spec lint; fi
     - set -o pipefail
-    - xcodebuild test -scheme Himotoki-Mac | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-mac.xml
-    - xcodebuild test -scheme Himotoki-iOS -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6s" | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-ios.xml
-    - xcodebuild test -scheme Himotoki-tvOS -sdk appletvsimulator -destination "platform=tvOS Simulator,name=Apple TV 1080p" | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-tvos.xml
+    - xcodebuild test -scheme Himotoki-Mac -configuration Release | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-mac.xml
+    - xcodebuild test -scheme Himotoki-iOS -configuration Release -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6s" | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-ios.xml
+    - xcodebuild test -scheme Himotoki-tvOS -configuration Release -sdk appletvsimulator -destination "platform=tvOS Simulator,name=Apple TV 1080p" | xcpretty -c -r junit -o $CIRCLE_TEST_REPORTS/test-report-tvos.xml
     - xcodebuild build -scheme Himotoki-watchOS -sdk watchsimulator | xcpretty -c

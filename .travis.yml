@@ -12,9 +12,9 @@ before_install:
 script:
 #  - pod spec lint
   - set -o pipefail
-  - xcodebuild test -scheme Himotoki-Mac | xcpretty -c
-  - xcodebuild test -scheme Himotoki-iOS -sdk iphonesimulator | xcpretty -c
-  - xcodebuild test -scheme Himotoki-tvOS -sdk appletvsimulator | xcpretty -c
+  - xcodebuild test -scheme Himotoki-Mac -configuration Release | xcpretty -c
+  - xcodebuild test -scheme Himotoki-iOS -configuration Release -sdk iphonesimulator | xcpretty -c
+  - xcodebuild test -scheme Himotoki-tvOS -configuration Release -sdk appletvsimulator | xcpretty -c
   - xcodebuild build -scheme Himotoki-watchOS -sdk watchsimulator | xcpretty -c
 notifications:
   email: false
