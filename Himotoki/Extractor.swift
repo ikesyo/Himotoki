@@ -101,7 +101,7 @@ private func valueFor(keyPathComponents: ArraySlice<String>, _ object: AnyObject
     }
 
     // This type annotation is necessary to select intended `subscript` method.
-    guard let nested: AnyObject = object[first] else {
+    guard case let nested?? = object[first] else {
         return nil
     }
 
