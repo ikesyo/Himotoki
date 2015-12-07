@@ -37,11 +37,11 @@ public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyO
         throw typeMismatch("Dictionary", actual: object, keyPath: nil)
     }
 
-    return try dictionary.reduce([:]) { (var accum: [String: T], element) in
-        let (key, value) = element
-        accum[key] = try decode(value) as T
-        return accum
+    var result: [String: T] = [:]
+    try dictionary.forEach { key, value in
+        result[key] = try decode(value) as T
     }
+    return result
 }
 
 /// - Throws: DecodeError
