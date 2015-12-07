@@ -286,7 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				CD929A391AF4A2C3002F5C53 /* Himotoki */,
-				CD929A461AF4A2C3002F5C53 /* HimotokiTests */,
+				CD929A461AF4A2C3002F5C53 /* Tests */,
 				CD748ADB1B4440CB00632C3F /* Configuration */,
 				CD929A381AF4A2C3002F5C53 /* Products */,
 			);
@@ -312,7 +312,8 @@
 				CDBE196E1AFFB47A005843C9 /* Sources */,
 				CD929A3A1AF4A2C3002F5C53 /* Supporting Files */,
 			);
-			path = Himotoki;
+			name = Himotoki;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		CD929A3A1AF4A2C3002F5C53 /* Supporting Files */ = {
@@ -323,7 +324,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CD929A461AF4A2C3002F5C53 /* HimotokiTests */ = {
+		CD929A461AF4A2C3002F5C53 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				CD929A571AF4A915002F5C53 /* DecodableTest.swift */,
@@ -333,7 +334,7 @@
 				CD7450211BB7FE900092EED3 /* RawRepresentableTest.swift */,
 				CD929A471AF4A2C3002F5C53 /* Supporting Files */,
 			);
-			path = HimotokiTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		CD929A471AF4A2C3002F5C53 /* Supporting Files */ = {
@@ -771,7 +772,7 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				INFOPLIST_FILE = Himotoki/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 			};
 			name = Debug;
 		};
@@ -781,7 +782,7 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				INFOPLIST_FILE = Himotoki/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 			};
 			name = Release;
 		};
@@ -830,7 +831,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				INFOPLIST_FILE = Himotoki/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 			};
 			name = Debug;
@@ -842,7 +843,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				INFOPLIST_FILE = Himotoki/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 			};
 			name = Release;
@@ -860,7 +861,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = HimotokiTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -877,7 +878,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = HimotokiTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -890,7 +891,7 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				INFOPLIST_FILE = Himotoki/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 			};
 			name = Debug;
 		};
@@ -900,7 +901,7 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				INFOPLIST_FILE = Himotoki/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 			};
 			name = Release;
 		};
@@ -913,7 +914,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = HimotokiTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -926,7 +927,7 @@
 			baseConfigurationReference = CDE423A11BF2EA0A00C9473F /* tvOS-Application.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = HimotokiTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -939,7 +940,7 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				INFOPLIST_FILE = Himotoki/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 			};
 			name = Debug;
@@ -950,7 +951,7 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				INFOPLIST_FILE = Himotoki/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 			};
 			name = Release;
@@ -969,7 +970,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = HimotokiTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -985,7 +986,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = HimotokiTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
