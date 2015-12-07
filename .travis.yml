@@ -10,7 +10,7 @@ git:
 before_install:
   - git submodule update --init --recursive
 script:
-#  - pod spec lint
+  - pod lib lint
   - set -o pipefail
   - xcodebuild test -scheme Himotoki-Mac -configuration Release | xcpretty -c
   - xcodebuild test -scheme Himotoki-iOS -configuration Release -sdk iphonesimulator | xcpretty -c
