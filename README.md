@@ -113,7 +113,7 @@ Himotoki also can be used by [CocoaPods](https://cocoapods.org/).
     $ carthage update --use-submodules
     ```
 
-- Then just add references of `Himotoki/*.swift` to your Xcode project.
+- Then just add references of `Sources/*.swift` to your Xcode project.
 
 ## License
 
