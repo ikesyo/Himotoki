@@ -12,3 +12,14 @@ public protocol Decodable {
     /// - Throws: DecodeError
     static func decode(e: Extractor) throws -> DecodedType
 }
+
+extension Decodable where DecodedType == Self {
+    static func decode(object: AnyObject) throws -> DecodedType {
+        let extractor = Extractor(object)
+        return try decode(extractor)
+    }
+
+    static func decode(object: AnyObject, rootKeyPath: KeyPath) throws -> DecodedType {
+        return try Extractor.decode(object) <| rootKeyPath
+    }
+}
