@@ -100,7 +100,6 @@ private func valueFor<C: CollectionType where C.Generator.Element == String, C.S
         return nil
     }
 
-    // This type annotation is necessary to select intended `subscript` method.
     guard case let nested?? = object[first] else {
         return nil
     }
