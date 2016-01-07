@@ -43,8 +43,6 @@ extension KeyPath: StringLiteralConvertible {
 }
 
 extension KeyPath: ArrayLiteralConvertible {
-    public typealias Element = String
-
     public init(arrayLiteral elements: String...) {
         self.init(elements)
     }
