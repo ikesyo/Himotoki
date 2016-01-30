@@ -9,6 +9,7 @@
 public enum DecodeError: ErrorType {
     case MissingKeyPath(KeyPath)
     case TypeMismatch(expected: String, actual: String, keyPath: KeyPath?)
+    case FailedToConvertValue
 }
 
 public func typeMismatch<T>(expected: String, actual: T, keyPath: KeyPath?) -> DecodeError {

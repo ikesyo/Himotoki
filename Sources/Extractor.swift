@@ -31,7 +31,7 @@ public struct Extractor {
         guard let rawValue = try rawValue(keyPath) else {
             throw DecodeError.MissingKeyPath(keyPath)
         }
-
+        
         do {
             return try decode(rawValue)
         } catch DecodeError.MissingKeyPath {
@@ -39,6 +39,12 @@ public struct Extractor {
         } catch let DecodeError.TypeMismatch(expected, actual, _) {
             throw DecodeError.TypeMismatch(expected: expected, actual: actual, keyPath: keyPath)
         }
+    }
+    
+    /// - Throws: DecodeError
+    public func value<T: Decodable, U where T.DecodedType == T>(keyPath: KeyPath, typeFrom: T.Type = T.self, converter: T throws -> U) throws -> U {
+        let valueFrom: T = try value(keyPath)
+        return try converter(valueFrom)
     }
 
     /// - Throws: DecodeError
@@ -49,7 +55,15 @@ public struct Extractor {
             return nil
         }
     }
-
+    
+    /// - Throws: DecodeError
+    public func valueOptional<T: Decodable, U where T.DecodedType == T>(keyPath: KeyPath, typeFrom: T.Type = T.self, converter: T -> U?) throws -> U? {
+        guard let valueFrom: T = try valueOptional(keyPath) else {
+            return nil
+        }
+        return converter(valueFrom)
+    }
+    
     /// - Throws: DecodeError
     public func array<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [T] {
         guard let array: [T] = try arrayOptional(keyPath) else {
@@ -58,10 +72,25 @@ public struct Extractor {
 
         return array
     }
-
+    
+    /// - Throws: DecodeError
+    public func array<T: Decodable, U where T.DecodedType == T>(keyPath: KeyPath, typeFrom: T.Type = T.self, converter: T throws -> U) throws -> [U] {
+        let arrayFrom: [T] = try array(keyPath)
+        return try arrayFrom.map(converter)
+    }
+    
     /// - Throws: DecodeError
     public func arrayOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [T]? {
         return try rawValue(keyPath).map(decodeArray)
+    }
+    
+    /// - Throws: DecodeError
+    public func arrayOptional<T: Decodable, U where T.DecodedType == T>(keyPath: KeyPath, typeFrom: T.Type = T.self, converter: T -> U?) throws -> [U]? {
+        guard let arrayFrom: [T] = try arrayOptional(keyPath) else {
+            return nil
+        }
+        
+        return arrayFrom.flatMap { converter($0) }
     }
 
     /// - Throws: DecodeError
@@ -72,10 +101,31 @@ public struct Extractor {
 
         return dictionary
     }
+    
+    /// - Throws: DecodeError
+    public func dictionary<T: Decodable, U where T.DecodedType == T>(keyPath: KeyPath, typeFrom: T.Type = T.self, converter: T throws -> U) throws -> [String: U] {
+        let dictionaryFrom: [String: T] = try dictionary(keyPath)
+        return try dictionaryFrom.reduce([String: U]()) { (var dict, from) in
+            dict[from.0] = try converter(from.1)
+            return dict
+        }
+    }
 
     /// - Throws: DecodeError
     public func dictionaryOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [String: T]? {
         return try rawValue(keyPath).map(decodeDictionary)
+    }
+    
+    /// - Throws: DecodeError
+    public func dictionaryOptional<T: Decodable, U where T.DecodedType == T>(keyPath: KeyPath, typeFrom: T.Type = T.self, converter: T -> U?) throws -> [String: U]? {
+        guard let dictionaryFrom: [String: T] = try dictionaryOptional(keyPath) else {
+            return nil
+        }
+        
+        return dictionaryFrom.reduce([String: U]()) { (var dict, from) in
+            dict[from.0] = converter(from.1)
+            return dict
+        }
     }
 }
 
