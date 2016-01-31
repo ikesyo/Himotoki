@@ -92,8 +92,8 @@ public func <^> <T: Decodable, U where T.DecodedType == T>(value: (T throws -> U
 }
 
 /// - Throws: DecodeError
-public func <^> <T: Decodable, U where T.DecodedType == T>(value: (T -> U?) throws -> U?, converter: T -> U?) throws -> U? {
-    return try value(converter)
+public func <^> <T: Decodable, U where T.DecodedType == T>(valueOptional: (T -> U?) throws -> U?, converter: T -> U?) throws -> U? {
+    return try valueOptional(converter)
 }
 
 /// - Throws: DecodeError
@@ -102,8 +102,8 @@ public func <^> <T: Decodable, U where T.DecodedType == T>(array: (T throws -> U
 }
 
 /// - Throws: DecodeError
-public func <^> <T: Decodable, U where T.DecodedType == T>(array: (T -> U?) throws -> [U]?, converter: T -> U?) throws -> [U]? {
-    return try array(converter)
+public func <^> <T: Decodable, U where T.DecodedType == T>(arrayOptional: (T -> U?) throws -> [U]?, converter: T -> U?) throws -> [U]? {
+    return try arrayOptional(converter)
 }
 
 /// - Throws: DecodeError
@@ -112,6 +112,6 @@ public func <^> <T: Decodable, U where T.DecodedType == T>(dictionary: (T throws
 }
 
 /// - Throws: DecodeError
-public func <^> <T: Decodable, U where T.DecodedType == T>(dictionary: (T -> U?) throws -> [String: U]?, converter: T -> U?) throws -> [String: U]? {
-    return try dictionary(converter)
+public func <^> <T: Decodable, U where T.DecodedType == T>(dictionaryOptional: (T -> U?) throws -> [String: U]?, converter: T -> U?) throws -> [String: U]? {
+    return try dictionaryOptional(converter)
 }
