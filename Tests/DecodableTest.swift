@@ -217,34 +217,34 @@ struct Person: Decodable {
             float: e <| "float",
             bool: e <| "bool",
             number: e <| "number",
-            url: e <| "url" <^> { (urlStr: String) in
+            url: e <| "url" -< { (urlStr: String) in
                 guard let url = NSURL(string: urlStr) else {
                     throw DecodeError.FailedToConvertValue
                 }
                 return url
             },
-            id: e <|? "id_string" <^> { Int($0) },
+            id: e <|? "id_string" -< { Int($0) },
             rawValue: (e <| "raw_value" as Extractor).rawValue,
             nested: e <| [ "nested", "value" ],
             nestedDict: e <|-| [ "nested", "dict" ],
             array: e <|| "array",
             arrayOption: e <||? "arrayOption",
-            arrayToConvert: e <|| "arrayToConvert" <^> { (intStr: String) in
+            arrayToConvert: e <|| "arrayToConvert" -< { (intStr: String) in
                 guard let int = Int(intStr) else {
                     throw DecodeError.FailedToConvertValue
                 }
                 return int
             },
-            arrayOptionalToConvert: e <||? "arrayOptionalToConvert" <^> { Int($0) },
+            arrayOptionalToConvert: e <||? "arrayOptionalToConvert" -< { Int($0) },
             dictionary: e <|-| "dictionary",
             dictionaryOption: e <|-|? "dictionaryOption",
-            dictionaryToConvert: e <|-| "dictionaryToConvert" <^> { (intStr: String) in
+            dictionaryToConvert: e <|-| "dictionaryToConvert" -< { (intStr: String) in
                 guard let int = Int(intStr) else {
                     throw DecodeError.FailedToConvertValue
                 }
                 return int
             },
-            dictionaryOptionalToConvert: e <|-|? "dictionaryOptionalToConvert" <^> { Int($0) },
+            dictionaryOptionalToConvert: e <|-|? "dictionaryOptionalToConvert" -< { Int($0) },
             group: e <| "group",
             groups: e <|| "groups"
         )
