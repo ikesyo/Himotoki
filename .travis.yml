@@ -11,7 +11,7 @@ git:
 before_install:
   - git submodule update --init --recursive
 script:
-  - pod lib lint
+  - pod lib lint --allow-warnings
   - set -o pipefail
   - xcodebuild test -scheme Himotoki-Mac -configuration Release | xcpretty -c
   - xcodebuild test -scheme Himotoki-iOS -configuration Release -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6s" | xcpretty -c
