@@ -96,9 +96,19 @@ extension Extractor: CustomStringConvertible {
 // `ArraySlice` is used for performance optimization.
 // See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
 private func valueFor<C: CollectionType where C.Generator.Element == String, C.SubSequence == C>(keyPathComponents: C, _ object: AnyObject) -> AnyObject? {
+    #if os(Linux)
+    guard let
+        first = keyPathComponents.first,
+        let nativeDict = object as? [String: AnyObject],
+        case let nested? = nativeDict[first] where !(nested is NSNull) else
+    {
+        return nil
+    }
+    #else
     guard let first = keyPathComponents.first, case let nested?? = object[first] where !(nested is NSNull) else {
         return nil
     }
+    #endif
 
     if keyPathComponents.count == 1 {
         return nested
