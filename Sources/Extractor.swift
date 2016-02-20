@@ -35,8 +35,7 @@ public struct Extractor {
         do {
             return try decode(rawValue)
         } catch let DecodeError.MissingKeyPath(missing) {
-            let joinedKeyPath = KeyPath(keyPath.components + missing.components)
-            throw DecodeError.MissingKeyPath(joinedKeyPath)
+            throw DecodeError.MissingKeyPath(keyPath + missing)
         } catch let DecodeError.TypeMismatch(expected, actual, _) {
             throw DecodeError.TypeMismatch(expected: expected, actual: actual, keyPath: keyPath)
         }
