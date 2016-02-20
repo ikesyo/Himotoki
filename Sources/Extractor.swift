@@ -34,8 +34,9 @@ public struct Extractor {
 
         do {
             return try decode(rawValue)
-        } catch DecodeError.MissingKeyPath {
-            throw DecodeError.MissingKeyPath(keyPath)
+        } catch let DecodeError.MissingKeyPath(missing) {
+            let joinedKeyPath = KeyPath(keyPath.components + missing.components)
+            throw DecodeError.MissingKeyPath(joinedKeyPath)
         } catch let DecodeError.TypeMismatch(expected, actual, _) {
             throw DecodeError.TypeMismatch(expected: expected, actual: actual, keyPath: keyPath)
         }
@@ -45,7 +46,7 @@ public struct Extractor {
     public func valueOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> T? {
         do {
             return try value(keyPath) as T
-        } catch DecodeError.MissingKeyPath {
+        } catch let DecodeError.MissingKeyPath(missing) where missing == keyPath {
             return nil
         }
     }
