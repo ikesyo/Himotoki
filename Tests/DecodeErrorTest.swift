@@ -20,11 +20,27 @@ extension NSURL: Decodable {
     }
 }
 
-struct URLHolder: Decodable {
+private struct URLHolder: Decodable {
     let URL: NSURL
 
     static func decode(e: Extractor) throws -> URLHolder {
         return self.init(URL: try e <| "url")
+    }
+}
+
+private struct A: Decodable {
+    let b: B?
+
+    static func decode(e: Extractor) throws -> A {
+        return self.init(b: try e <|? "b")
+    }
+}
+
+private struct B: Decodable {
+    let string: String
+
+    static func decode(e: Extractor) throws -> B {
+        return self.init(string: try e <| "string")
     }
 }
 
@@ -36,6 +52,22 @@ class DecodeErrorTest: XCTestCase {
             let _: URLHolder = try decode(d)
         } catch let DecodeError.MissingKeyPath(keyPath) {
             XCTAssertEqual(keyPath, "url")
+        } catch {
+            XCTFail()
+        }
+    }
+
+    func testMissingKeyPathAndDecodeFailure() {
+        let d: [String: AnyObject] = [:]
+        let a: A = try! decode(d)
+        XCTAssertNil(a.b)
+
+        do {
+            let d: [String: AnyObject] = [ "b": [:] ]
+            let _: A = try decode(d)
+            XCTFail("DecodeError.MissingKeyPath should be thrown if decoding optional value failed")
+        } catch let DecodeError.MissingKeyPath(keyPath) {
+            XCTAssertEqual(keyPath, [ "b", "string" ])
         } catch {
             XCTFail()
         }
