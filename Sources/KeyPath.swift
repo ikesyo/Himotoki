@@ -22,6 +22,10 @@ public func == (lhs: KeyPath, rhs: KeyPath) -> Bool {
     return lhs.components == rhs.components
 }
 
+public func + (lhs: KeyPath, rhs: KeyPath) -> KeyPath {
+    return KeyPath(lhs.components + rhs.components)
+}
+
 extension KeyPath: CustomStringConvertible {
     public var description: String {
         return "KeyPath(\(components))"
