@@ -38,7 +38,7 @@ class RawRepresentableTest: XCTestCase {
             "double_2": 4.0,
         ]
 
-        let e: Extractor = try! decode(JSON)
+        let e: Extractor = try! decodeValue(JSON)
 
         let A: StringEnum? = try? e <| "string_1"
         let D: StringEnum? = try? e <| "string_2"

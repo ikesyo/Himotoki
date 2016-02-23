@@ -33,7 +33,7 @@ public struct Extractor {
         }
 
         do {
-            return try decode(rawValue)
+            return try decodeValue(rawValue)
         } catch let DecodeError.MissingKeyPath(missing) {
             throw DecodeError.MissingKeyPath(keyPath + missing)
         } catch let DecodeError.TypeMismatch(expected, actual, _) {

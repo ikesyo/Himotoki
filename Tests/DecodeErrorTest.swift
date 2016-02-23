@@ -54,7 +54,7 @@ class DecodeErrorTest: XCTestCase {
     func testMissingKeyPathInDecodeError() {
         do {
             let d: [String: AnyObject] = [ "url": "" ]
-            let _: URLHolder = try decode(d)
+            let _: URLHolder = try decodeValue(d)
         } catch let DecodeError.MissingKeyPath(keyPath) {
             XCTAssertEqual(keyPath, "url")
         } catch {
@@ -64,12 +64,12 @@ class DecodeErrorTest: XCTestCase {
 
     func testMissingKeyPathAndDecodeFailure() {
         let d: [String: AnyObject] = [:]
-        let a: A = try! decode(d)
+        let a: A = try! decodeValue(d)
         XCTAssertNil(a.b)
 
         do {
             let d: [String: AnyObject] = [ "b": [:] ]
-            let _: A = try decode(d)
+            let _: A = try decodeValue(d)
             XCTFail("DecodeError.MissingKeyPath should be thrown if decoding optional value failed")
         } catch let DecodeError.MissingKeyPath(keyPath) {
             XCTAssertEqual(keyPath, [ "b", "string" ])

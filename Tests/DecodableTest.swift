@@ -43,7 +43,7 @@ class DecodableTest: XCTestCase {
         var JSON = personJSON
 
         // Succeeding case
-        let person: Person? = try? decode(JSON)
+        let person: Person? = try? decodeValue(JSON)
         XCTAssert(person != nil)
         XCTAssert(person?.firstName == "ABC")
         XCTAssert(person?.lastName == "DEF")
@@ -74,7 +74,7 @@ class DecodableTest: XCTestCase {
         do {
             JSON["bool"] = nil
             JSON["group"] = nil
-            try decode(JSON) as Person
+            try decodeValue(JSON) as Person
         } catch let DecodeError.MissingKeyPath(keyPath) {
             XCTAssert(keyPath == "bool")
         } catch {
@@ -83,7 +83,7 @@ class DecodableTest: XCTestCase {
 
         do {
             JSON["age"] = "32"
-            try decode(JSON) as Person
+            try decodeValue(JSON) as Person
         } catch let DecodeError.TypeMismatch(expected, actual, keyPath) {
             XCTAssert(keyPath == "age")
             XCTAssert(actual == "32")
@@ -104,7 +104,7 @@ class DecodableTest: XCTestCase {
     func testGroup() {
         var JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
 
-        let g: Group? = try? decode(JSON)
+        let g: Group? = try? decodeValue(JSON)
         XCTAssert(g != nil)
         XCTAssert(g?.name == "Himotoki")
         XCTAssert(g?.floor == 12)
@@ -112,7 +112,7 @@ class DecodableTest: XCTestCase {
 
         JSON["name"] = nil
         do {
-            try decode(JSON) as Group
+            try decodeValue(JSON) as Group
         } catch let DecodeError.MissingKeyPath(keyPath) {
             XCTAssert(keyPath == "name")
         } catch {
@@ -152,7 +152,7 @@ class DecodableTest: XCTestCase {
             "uint64": NSNumber(unsignedLongLong: UInt64.max),
         ]
 
-        let numbers: Numbers? = try? decode(JSON)
+        let numbers: Numbers? = try? decodeValue(JSON)
         XCTAssert(numbers != nil)
         XCTAssert(numbers?.int == Int.min)
         XCTAssert(numbers?.uint == UInt.max)
