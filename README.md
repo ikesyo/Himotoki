@@ -40,7 +40,7 @@ struct Group: Decodable {
 func testGroup() {
     var JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
     
-    let g: Group? = try? decode(JSON)
+    let g: Group? = try? decodeValue(JSON)
     XCTAssert(g != nil)
     XCTAssert(g?.name == "Himotoki")
     XCTAssert(g?.floor == 12)
@@ -48,7 +48,7 @@ func testGroup() {
 
     JSON["name"] = nil
     do {
-        try decode(JSON) as Group
+        try decodeValue(JSON) as Group
     } catch let DecodeError.MissingKeyPath(keyPath) {
         XCTAssert(keyPath == "name")
     } catch {
