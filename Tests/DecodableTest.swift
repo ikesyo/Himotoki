@@ -22,6 +22,8 @@ class DecodableTest: XCTestCase {
             "float": 32.1 as Float,
             "bool": true,
             "number": NSNumber(long: 123456789),
+            "url": "http://example.com",
+            "id_string": "12345",
             "raw_value": "RawValue",
             "nested": [
                 "value": "The nested value",
@@ -29,8 +31,12 @@ class DecodableTest: XCTestCase {
             ],
             "array": [ "123", "456" ],
             "arrayOption": NSNull(),
+            "arrayToConvert": [ "123", "456"],
+            "arrayOptionalToConvert": [ "123", "456"],
             "dictionary": [ "A": 1, "B": 2 ],
             // "dictionaryOption" key is missing
+            "dictionaryToConvert": [ "A": "1", "B": "2" ],
+            "dictionaryOptionalToConvert": [ "A": "1", "B": "2" ],
             "group": gruopJSON,
         ]
 
@@ -53,6 +59,8 @@ class DecodableTest: XCTestCase {
         XCTAssert(person?.float == 32.1)
         XCTAssert(person?.bool == true)
         XCTAssert(person?.number == NSNumber(long: 123456789))
+        XCTAssert(person?.url == NSURL(string: "http://example.com"))
+        XCTAssert(person?.id == 12345)
         XCTAssert(person?.rawValue as? String == "RawValue")
 
         XCTAssert(person?.nested == "The nested value")
@@ -60,9 +68,13 @@ class DecodableTest: XCTestCase {
         XCTAssert(person?.array.count == 2)
         XCTAssert(person?.array.first == "123")
         XCTAssert(person?.arrayOption == nil)
+        XCTAssert(person?.arrayToConvert.first == 123)
+        XCTAssert(person?.arrayOptionalToConvert?.first == 123)
         XCTAssert(person?.dictionary.count == 2)
         XCTAssert(person?.dictionary["A"] == 1)
         XCTAssert(person?.dictionaryOption == nil)
+        XCTAssert(person?.dictionaryToConvert["A"] == 1)
+        XCTAssert(person?.dictionaryOptionalToConvert?["A"] == 1)
 
         XCTAssert(person?.group.name == "Himotoki")
         XCTAssert(person?.group.floor == 12)
@@ -177,14 +189,20 @@ struct Person: Decodable {
     let float: Float
     let bool: Bool
     let number: NSNumber
+    let url: NSURL
+    let id: Int?
     let rawValue: AnyObject
 
     let nested: String
     let nestedDict: [String: String]
     let array: [String]
     let arrayOption: [String]?
+    let arrayToConvert: [Int]
+    let arrayOptionalToConvert: [Int]?
     let dictionary: [String: Int]
     let dictionaryOption: [String: Int]?
+    let dictionaryToConvert: [String: Int]
+    let dictionaryOptionalToConvert: [String: Int]?
 
     let group: Group
     let groups: [Group]
@@ -199,13 +217,34 @@ struct Person: Decodable {
             float: e <| "float",
             bool: e <| "bool",
             number: e <| "number",
+            url: e <| "url" -< { (urlStr: String) in
+                guard let url = NSURL(string: urlStr) else {
+                    throw DecodeError.FailedToConvertValue
+                }
+                return url
+            },
+            id: e <|? "id_string" -< { Int($0) },
             rawValue: (e <| "raw_value" as Extractor).rawValue,
             nested: e <| [ "nested", "value" ],
             nestedDict: e <|-| [ "nested", "dict" ],
             array: e <|| "array",
             arrayOption: e <||? "arrayOption",
+            arrayToConvert: e <|| "arrayToConvert" -< { (intStr: String) in
+                guard let int = Int(intStr) else {
+                    throw DecodeError.FailedToConvertValue
+                }
+                return int
+            },
+            arrayOptionalToConvert: e <||? "arrayOptionalToConvert" -< { Int($0) },
             dictionary: e <|-| "dictionary",
             dictionaryOption: e <|-|? "dictionaryOption",
+            dictionaryToConvert: e <|-| "dictionaryToConvert" -< { (intStr: String) in
+                guard let int = Int(intStr) else {
+                    throw DecodeError.FailedToConvertValue
+                }
+                return int
+            },
+            dictionaryOptionalToConvert: e <|-|? "dictionaryOptionalToConvert" -< { Int($0) },
             group: e <| "group",
             groups: e <|| "groups"
         )
