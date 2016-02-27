@@ -9,8 +9,13 @@
 public enum DecodeError: ErrorType {
     case MissingKeyPath(KeyPath)
     case TypeMismatch(expected: String, actual: String, keyPath: KeyPath?)
+    case Custom(String)
 }
 
 public func typeMismatch<T>(expected: String, actual: T, keyPath: KeyPath?) -> DecodeError {
     return DecodeError.TypeMismatch(expected: expected, actual: String(actual), keyPath: keyPath)
+}
+
+public func customError(message: String) -> DecodeError {
+    return DecodeError.Custom(message)
 }

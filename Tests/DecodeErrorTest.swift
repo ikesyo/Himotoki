@@ -12,8 +12,13 @@ import Himotoki
 extension NSURL: Decodable {
     public static func decode(e: Extractor) throws -> NSURL {
         let value = try String.decode(e)
+
         if value.isEmpty {
             throw DecodeError.MissingKeyPath([])
+        }
+
+        if value.hasPrefix("file://") {
+            throw customError("File URL is not supported")
         }
 
         return NSURL(string: value)!
@@ -68,6 +73,17 @@ class DecodeErrorTest: XCTestCase {
             XCTFail("DecodeError.MissingKeyPath should be thrown if decoding optional value failed")
         } catch let DecodeError.MissingKeyPath(keyPath) {
             XCTAssertEqual(keyPath, [ "b", "string" ])
+        } catch {
+            XCTFail()
+        }
+    }
+
+    func testCustomError() {
+        do {
+            let d: [String: AnyObject] = [ "url": "file:///Users/foo/bar" ]
+            let _: URLHolder = try decode(d)
+        } catch let DecodeError.Custom(message) {
+            XCTAssertEqual(message, "File URL is not supported")
         } catch {
             XCTFail()
         }
