@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD07B5231C8408A40065883E /* TransformerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC356901C819DE7004F6E47 /* TransformerTest.swift */; };
+		CD07B5241C8408A50065883E /* TransformerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC356901C819DE7004F6E47 /* TransformerTest.swift */; };
+		CD07B5251C8408A60065883E /* TransformerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC356901C819DE7004F6E47 /* TransformerTest.swift */; };
 		CD181ED91AF4F7C20065963F /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD181ED81AF4F7C20065963F /* Operators.swift */; };
 		CD5E68F91BD766BE00417C84 /* DecodeErrorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5E68F81BD766BE00417C84 /* DecodeErrorTest.swift */; };
 		CD5E68FA1BD766BE00417C84 /* DecodeErrorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5E68F81BD766BE00417C84 /* DecodeErrorTest.swift */; };
@@ -41,9 +44,6 @@
 		CDC3568D1C8134CD004F6E47 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3568B1C8134CD004F6E47 /* Transformer.swift */; };
 		CDC3568E1C8134CD004F6E47 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3568B1C8134CD004F6E47 /* Transformer.swift */; };
 		CDC3568F1C8134CD004F6E47 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC3568B1C8134CD004F6E47 /* Transformer.swift */; };
-		CDC356911C819DE7004F6E47 /* TransformerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC356901C819DE7004F6E47 /* TransformerTest.swift */; };
-		CDC356921C819DE7004F6E47 /* TransformerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC356901C819DE7004F6E47 /* TransformerTest.swift */; };
-		CDC356931C819DE7004F6E47 /* TransformerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC356901C819DE7004F6E47 /* TransformerTest.swift */; };
 		CDC4E7871B0ACB42007F8F88 /* decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4E7861B0ACB42007F8F88 /* decode.swift */; };
 		CDC4E7881B0ACB42007F8F88 /* decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4E7861B0ACB42007F8F88 /* decode.swift */; };
 		CDD3962B1C0C0CD000A3A3DD /* NestedObjectParsingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD3962A1C0C0CD000A3A3DD /* NestedObjectParsingTest.swift */; };
@@ -697,7 +697,7 @@
 				CD5E68F91BD766BE00417C84 /* DecodeErrorTest.swift in Sources */,
 				CDD3962B1C0C0CD000A3A3DD /* NestedObjectParsingTest.swift in Sources */,
 				CDBFDC651BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift in Sources */,
-				CDC356911C819DE7004F6E47 /* TransformerTest.swift in Sources */,
+				CD07B5231C8408A40065883E /* TransformerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,7 +716,6 @@
 				CDE423941BF2E9B000C9473F /* Operators.swift in Sources */,
 				CDE423951BF2E9B000C9473F /* DecodeError.swift in Sources */,
 				CDE423961BF2E9B000C9473F /* RawRepresentable.swift in Sources */,
-				CDC356931C819DE7004F6E47 /* TransformerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,6 +728,7 @@
 				CDE423B41BF2F0BD00C9473F /* DecodableTest.swift in Sources */,
 				CDD3962D1C0C0CD000A3A3DD /* NestedObjectParsingTest.swift in Sources */,
 				CDE423B71BF2F0C900C9473F /* RawRepresentableTest.swift in Sources */,
+				CD07B5251C8408A60065883E /* TransformerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,7 +759,7 @@
 				CD5E68FA1BD766BE00417C84 /* DecodeErrorTest.swift in Sources */,
 				CDD3962C1C0C0CD000A3A3DD /* NestedObjectParsingTest.swift in Sources */,
 				CDBFDC661BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift in Sources */,
-				CDC356921C819DE7004F6E47 /* TransformerTest.swift in Sources */,
+				CD07B5241C8408A50065883E /* TransformerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
