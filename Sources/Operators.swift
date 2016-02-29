@@ -42,3 +42,33 @@ public func <|-| <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: 
 public func <|-|? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath: KeyPath) throws -> [String: T]? {
     return try e.dictionaryOptional(keyPath)
 }
+
+/// - Throws: DecodeError
+public func <| <From: Decodable, To where From.DecodedType == From>(e: Extractor, value: (KeyPath, transform: (From) throws -> To)) throws -> To {
+    return try e.transformValue(value.0, transform: value.transform)
+}
+
+/// - Throws: DecodeError
+public func <|? <From: Decodable, To where From.DecodedType == From>(e: Extractor, value: (KeyPath, transform: (From) throws -> To)) throws -> To? {
+    return try e.transformValueOptional(value.0, transform: value.transform)
+}
+
+/// - Throws: DecodeError
+public func <|| <From: Decodable, To where From.DecodedType == From>(e: Extractor, value: (KeyPath, transform: (From) throws -> To)) throws -> [To] {
+    return try e.transformArray(value.0, transform: value.transform)
+}
+
+/// - Throws: DecodeError
+public func <||? <From: Decodable, To where From.DecodedType == From>(e: Extractor, value: (KeyPath, transform: (From) throws -> To)) throws -> [To]? {
+    return try e.transformArrayOptional(value.0, transform: value.transform)
+}
+
+/// - Throws: DecodeError
+public func <|-| <From: Decodable, To where From.DecodedType == From>(e: Extractor, value: (KeyPath, transform: (From) throws -> To)) throws -> [String: To] {
+    return try e.transformDictionary(value.0, transform: value.transform)
+}
+
+/// - Throws: DecodeError
+public func <|-|? <From: Decodable, To where From.DecodedType == From>(e: Extractor, value: (KeyPath, transform: (From) throws -> To)) throws -> [String: To]? {
+    return try e.transformDictionaryOptional(value.0, transform: value.transform)
+}

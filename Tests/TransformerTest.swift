@@ -26,15 +26,13 @@ private struct URLsByTransformer: Decodable {
     let dictionaryOptional: [String: NSURL]?
 
     static func decode(e: Extractor) throws -> URLsByTransformer {
-        let URLTransformer = Transformer(toURL)
-
         return self.init(
-            value: try URLTransformer.apply(e <| "value"),
-            valueOptional: try URLTransformer.apply(e <|? "valueOptional"),
-            array: try URLTransformer.apply(e <|| "array"),
-            arrayOptional: try URLTransformer.apply(e <||? "arrayOptional"),
-            dictionary: try URLTransformer.apply(e <|-| "dictionary"),
-            dictionaryOptional: try URLTransformer.apply(e <|-|? "dictionaryOptional")
+            value: try e <| ("value", transform: toURL),
+            valueOptional: try e <|? ("valueOptional", transform: toURL),
+            array: try e <|| ("array", transform: toURL),
+            arrayOptional: try e <||? ("arrayOptional", transform: toURL),
+            dictionary: try e <|-| ("dictionary", transform: toURL),
+            dictionaryOptional: try e <|-|? ("dictionaryOptional", transform: toURL)
         )
     }
 }
