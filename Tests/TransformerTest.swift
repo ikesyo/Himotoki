@@ -29,7 +29,7 @@ private struct URLsByTransformer: Decodable {
         let URLTransformer = Transformer(toURL)
 
         return self.init(
-            value: try URLTransformer.apply(e <| "value"),
+            value: try Transformer { try toURL($0) }.apply(e <| "value"),
             valueOptional: try URLTransformer.apply(e <|? "valueOptional"),
             array: try URLTransformer.apply(e <|| "array"),
             arrayOptional: try URLTransformer.apply(e <||? "arrayOptional"),
