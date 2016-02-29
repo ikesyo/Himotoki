@@ -81,7 +81,7 @@ class DecodeErrorTest: XCTestCase {
     func testCustomError() {
         do {
             let d: [String: AnyObject] = [ "url": "file:///Users/foo/bar" ]
-            let _: URLHolder = try decode(d)
+            let _: URLHolder = try decodeValue(d)
         } catch let DecodeError.Custom(message) {
             XCTAssertEqual(message, "File URL is not supported")
         } catch {

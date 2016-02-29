@@ -7,16 +7,6 @@
 //
 
 /// - Throws: DecodeError
-@available(*, unavailable, renamed="decodeValue")
-@noreturn public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> T {
-}
-
-/// - Throws: DecodeError
-@available(*, unavailable, renamed="decodeValue")
-@noreturn public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject, rootKeyPath: KeyPath) throws -> T {
-}
-
-/// - Throws: DecodeError
 public func decodeValue<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> T {
     let extractor = Extractor(object)
     return try T.decode(extractor)
@@ -57,4 +47,18 @@ public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyO
 /// - Throws: DecodeError
 public func decodeDictionary<T: Decodable where T.DecodedType == T>(object: AnyObject, rootKeyPath: KeyPath) throws -> [String: T] {
     return try decodeValue(object) <|-| rootKeyPath
+}
+
+// MARK: - Deprecated
+
+/// - Throws: DecodeError
+@available(*, deprecated, renamed="decodeValue")
+public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject) throws -> T {
+    return try decodeValue(object)
+}
+
+/// - Throws: DecodeError
+@available(*, deprecated, renamed="decodeValue")
+public func decode<T: Decodable where T.DecodedType == T>(object: AnyObject, rootKeyPath: KeyPath) throws -> T {
+    return try decodeValue(object)
 }
