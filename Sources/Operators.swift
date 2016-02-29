@@ -45,30 +45,30 @@ public func <|-|? <T: Decodable where T.DecodedType == T>(e: Extractor, keyPath:
 
 /// - Throws: DecodeError
 public func <| <From: Decodable, To where From.DecodedType == From>(e: Extractor, value: (KeyPath, transform: (From) throws -> To)) throws -> To {
-    return try e.transformValue(value.0, transform: value.transform)
+    return try e.value(value.0, transform: value.transform)
 }
 
 /// - Throws: DecodeError
 public func <|? <From: Decodable, To where From.DecodedType == From>(e: Extractor, value: (KeyPath, transform: (From) throws -> To)) throws -> To? {
-    return try e.transformValueOptional(value.0, transform: value.transform)
+    return try e.valueOptional(value.0, transform: value.transform)
 }
 
 /// - Throws: DecodeError
 public func <|| <From: Decodable, To where From.DecodedType == From>(e: Extractor, value: (KeyPath, transform: (From) throws -> To)) throws -> [To] {
-    return try e.transformArray(value.0, transform: value.transform)
+    return try e.array(value.0, transform: value.transform)
 }
 
 /// - Throws: DecodeError
 public func <||? <From: Decodable, To where From.DecodedType == From>(e: Extractor, value: (KeyPath, transform: (From) throws -> To)) throws -> [To]? {
-    return try e.transformArrayOptional(value.0, transform: value.transform)
+    return try e.arrayOptional(value.0, transform: value.transform)
 }
 
 /// - Throws: DecodeError
 public func <|-| <From: Decodable, To where From.DecodedType == From>(e: Extractor, value: (KeyPath, transform: (From) throws -> To)) throws -> [String: To] {
-    return try e.transformDictionary(value.0, transform: value.transform)
+    return try e.dictionary(value.0, transform: value.transform)
 }
 
 /// - Throws: DecodeError
 public func <|-|? <From: Decodable, To where From.DecodedType == From>(e: Extractor, value: (KeyPath, transform: (From) throws -> To)) throws -> [String: To]? {
-    return try e.transformDictionaryOptional(value.0, transform: value.transform)
+    return try e.dictionaryOptional(value.0, transform: value.transform)
 }
