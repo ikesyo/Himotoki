@@ -24,10 +24,10 @@ class DecodeWithRootKeyPathTest: XCTestCase {
 
         var group: Group?
 
-        group = try? decode(objectWithValue)
+        group = try? decodeValue(objectWithValue)
         XCTAssertNil(group)
 
-        group = try? decode(objectWithValue, rootKeyPath: "group")
+        group = try? decodeValue(objectWithValue, rootKeyPath: "group")
         XCTAssertNotNil(group)
     }
 
