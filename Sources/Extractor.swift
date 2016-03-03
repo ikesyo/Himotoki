@@ -8,16 +8,22 @@
 
 import Foundation
 
+#if os(Linux)
+    public typealias AnyJSON = Any
+#else
+    public typealias AnyJSON = AnyObject
+#endif
+
 public struct Extractor {
-    public let rawValue: AnyObject
+    public let rawValue: AnyJSON
     private let isDictionary: Bool
 
-    internal init(_ rawValue: AnyObject) {
+    internal init(_ rawValue: AnyJSON) {
         self.rawValue = rawValue
         self.isDictionary = rawValue is NSDictionary
     }
 
-    private func rawValue(keyPath: KeyPath) throws -> AnyObject? {
+    private func rawValue(keyPath: KeyPath) throws -> AnyJSON? {
         guard isDictionary else {
             throw typeMismatch("Dictionary", actual: rawValue, keyPath: keyPath)
         }
@@ -95,11 +101,11 @@ extension Extractor: CustomStringConvertible {
 //
 // `ArraySlice` is used for performance optimization.
 // See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
-private func valueFor<C: CollectionType where C.Generator.Element == String, C.SubSequence == C>(keyPathComponents: C, _ object: AnyObject) -> AnyObject? {
+private func valueFor<C: CollectionType where C.Generator.Element == String, C.SubSequence == C>(keyPathComponents: C, _ object: AnyJSON) -> AnyJSON? {
     #if os(Linux)
     guard let
         first = keyPathComponents.first,
-        let nativeDict = object as? [String: AnyObject],
+        let nativeDict = object as? [String: AnyJSON],
         case let nested? = nativeDict[first] where !(nested is NSNull) else
     {
         return nil

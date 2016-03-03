@@ -53,7 +53,7 @@ class DecodeErrorTest: XCTestCase {
 
     func testMissingKeyPathInDecodeError() {
         do {
-            let d: [String: AnyObject] = [ "url": "" ]
+            let d: [String: AnyJSON] = [ "url": "" ]
             let _: URLHolder = try decodeValue(d)
         } catch let DecodeError.MissingKeyPath(keyPath) {
             XCTAssertEqual(keyPath, "url")
@@ -63,12 +63,12 @@ class DecodeErrorTest: XCTestCase {
     }
 
     func testMissingKeyPathAndDecodeFailure() {
-        let d: [String: AnyObject] = [:]
+        let d: [String: AnyJSON] = [:]
         let a: A = try! decodeValue(d)
         XCTAssertNil(a.b)
 
         do {
-            let d: [String: AnyObject] = [ "b": [:] ]
+            let d: [String: AnyJSON] = [ "b": [:] ]
             let _: A = try decodeValue(d)
             XCTFail("DecodeError.MissingKeyPath should be thrown if decoding optional value failed")
         } catch let DecodeError.MissingKeyPath(keyPath) {
@@ -80,7 +80,7 @@ class DecodeErrorTest: XCTestCase {
 
     func testCustomError() {
         do {
-            let d: [String: AnyObject] = [ "url": "file:///Users/foo/bar" ]
+            let d: [String: AnyJSON] = [ "url": "file:///Users/foo/bar" ]
             let _: URLHolder = try decodeValue(d)
         } catch let DecodeError.Custom(message) {
             XCTAssertEqual(message, "File URL is not supported")

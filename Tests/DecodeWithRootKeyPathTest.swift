@@ -11,7 +11,7 @@ import Himotoki
 
 class DecodeWithRootKeyPathTest: XCTestCase {
 
-    lazy var JSON: [String: AnyObject] = {
+    lazy var JSON: [String: AnyJSON] = {
         return [
             "name": "name",
             "floor": 123,

@@ -11,9 +11,9 @@ import Himotoki
 
 class DecodableTest: XCTestCase {
 
-    lazy var personJSON: [String: AnyObject] = {
-        let gruopJSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
-        var JSON: [String: AnyObject] = [
+    lazy var personJSON: [String: AnyJSON] = {
+        let gruopJSON: [String: AnyJSON] = [ "name": "Himotoki", "floor": 12 ]
+        var JSON: [String: AnyJSON] = [
             "first_name": "ABC",
             "last_name": "DEF",
             "age": 20,
@@ -102,7 +102,7 @@ class DecodableTest: XCTestCase {
     }
 
     func testGroup() {
-        var JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
+        var JSON: [String: AnyJSON] = [ "name": "Himotoki", "floor": 12 ]
 
         let g: Group? = try? decodeValue(JSON)
         XCTAssert(g != nil)
@@ -121,7 +121,7 @@ class DecodableTest: XCTestCase {
     }
 
     func testDecodeArray() {
-        let JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
+        let JSON: [String: AnyJSON] = [ "name": "Himotoki", "floor": 12 ]
         let JSONArray = [ JSON, JSON ]
 
         let values: [Group]? = try? decodeArray(JSONArray)
@@ -130,7 +130,7 @@ class DecodableTest: XCTestCase {
     }
 
     func testDecodeDictionary() {
-        let JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
+        let JSON: [String: AnyJSON] = [ "name": "Himotoki", "floor": 12 ]
         let JSONDict = [ "1": JSON, "2": JSON ]
 
         let values: [String: Group]? = try? decodeDictionary(JSONDict)
@@ -139,7 +139,7 @@ class DecodableTest: XCTestCase {
     }
 
     func testDecodeNumbers() {
-        let JSON: [String: AnyObject] = [
+        let JSON: [String: AnyJSON] = [
             "int": Int.min,
             "uint": UInt.max,
             "int8": NSNumber(char: Int8.min),
@@ -177,7 +177,7 @@ struct Person: Decodable {
     let float: Float
     let bool: Bool
     let number: NSNumber
-    let rawValue: AnyObject
+    let rawValue: AnyJSON
 
     let nested: String
     let nestedDict: [String: String]
