@@ -81,3 +81,16 @@ class TransformerTest: XCTestCase {
         }
     }
 }
+
+#if os(Linux)
+
+extension TransformerTest: XCTestCaseProvider {
+    var allTests: [(String, () throws -> Void)] {
+        return [
+            ("testTransformerSuccess", testTransformerSuccess),
+            ("testTransformerFailure", testTransformerFailure),
+        ]
+    }
+}
+
+#endif

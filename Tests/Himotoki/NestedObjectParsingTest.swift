@@ -23,6 +23,19 @@ class NestedObjectParsingTest: XCTestCase {
     }
 }
 
+#if os(Linux)
+
+extension NestedObjectParsingTest: XCTestCaseProvider {
+    var allTests: [(String, () throws -> Void)] {
+        return [
+            ("testParseNestedObjectSuccess", testParseNestedObjectSuccess),
+            ("testParseNestedObjectFailure", testParseNestedObjectFailure),
+        ]
+    }
+}
+
+#endif
+
 struct WithNestedObject: Decodable {
     let nestedName: String
 

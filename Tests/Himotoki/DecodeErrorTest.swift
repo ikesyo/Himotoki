@@ -89,3 +89,17 @@ class DecodeErrorTest: XCTestCase {
         }
     }
 }
+
+#if os(Linux)
+
+extension DecodeErrorTest: XCTestCaseProvider {
+    var allTests: [(String, () throws -> Void)] {
+        return [
+            ("testMissingKeyPathInDecodeError", testMissingKeyPathInDecodeError),
+            ("testMissingKeyPathAndDecodeFailure", testMissingKeyPathAndDecodeFailure),
+            ("testCustomError", testCustomError),
+        ]
+    }
+}
+
+#endif

@@ -168,6 +168,23 @@ class DecodableTest: XCTestCase {
 
 }
 
+#if os(Linux)
+
+extension DecodableTest: XCTestCaseProvider {
+    var allTests: [(String, () throws -> Void)] {
+        return [
+            ("testPerson", testPerson),
+            ("testPerformanceByPersons", testPerformanceByPersons),
+            ("testGroup", testGroup),
+            ("testDecodeArray", testDecodeArray),
+            ("testDecodeDictionary", testDecodeDictionary),
+            ("testDecodeNumbers", testDecodeNumbers),
+        ]
+    }
+}
+
+#endif
+
 struct Person: Decodable {
     let firstName: String
     let lastName: String

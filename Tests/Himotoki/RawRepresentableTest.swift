@@ -57,3 +57,15 @@ class RawRepresentableTest: XCTestCase {
     }
 
 }
+
+#if os(Linux)
+
+extension RawRepresentableTest: XCTestCaseProvider {
+    var allTests: [(String, () throws -> Void)] {
+        return [
+            ("testRawRepresentable", testRawRepresentable),
+        ]
+    }
+}
+
+#endif

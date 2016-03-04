@@ -59,3 +59,17 @@ class DecodeWithRootKeyPathTest: XCTestCase {
         XCTAssertEqual(groups?.keys.contains("bar"), true)
     }
 }
+
+#if os(Linux)
+
+extension DecodeWithRootKeyPathTest: XCTestCaseProvider {
+    var allTests: [(String, () throws -> Void)] {
+        return [
+            ("testDecodeWithRootKeyValue", testDecodeWithRootKeyValue),
+            ("testDecodeWithRootKeyArray", testDecodeWithRootKeyArray),
+            ("testDecodeWithRootKeyDictionary", testDecodeWithRootKeyDictionary),
+        ]
+    }
+}
+
+#endif
