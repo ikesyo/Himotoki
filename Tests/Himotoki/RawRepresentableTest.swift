@@ -29,7 +29,7 @@ extension DoubleEnum: Decodable {}
 class RawRepresentableTest: XCTestCase {
 
     func testRawRepresentable() {
-        let JSON: [String: AnyObject] = [
+        let JSON: [String: AnyJSON] = [
             "string_1": "A",
             "string_2": "D",
             "int_1": 1,
@@ -57,3 +57,15 @@ class RawRepresentableTest: XCTestCase {
     }
 
 }
+
+#if os(Linux)
+
+extension RawRepresentableTest: XCTestCaseProvider {
+    var allTests: [(String, () throws -> Void)] {
+        return [
+            ("testRawRepresentable", testRawRepresentable),
+        ]
+    }
+}
+
+#endif

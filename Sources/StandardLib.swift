@@ -18,6 +18,12 @@ extension Int: Decodable {
     }
 }
 
+extension UInt: Decodable {
+    public static func decode(e: Extractor) throws -> UInt {
+        return try castOrFail(e)
+    }
+}
+
 extension Double: Decodable {
     public static func decode(e: Extractor) throws -> Double {
         return try castOrFail(e)

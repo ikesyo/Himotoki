@@ -8,16 +8,28 @@
 
 import Foundation
 
+#if os(Linux)
+    public typealias AnyJSON = Any
+#else
+    public typealias AnyJSON = AnyObject
+#endif
+
 public struct Extractor {
-    public let rawValue: AnyObject
+    public let rawValue: AnyJSON
     private let isDictionary: Bool
 
-    internal init(_ rawValue: AnyObject) {
+    internal init(_ rawValue: AnyJSON) {
         self.rawValue = rawValue
-        self.isDictionary = rawValue is NSDictionary
+        #if os(Linux)
+            self.isDictionary = rawValue is [String: AnyJSON]
+        #else
+            self.isDictionary = rawValue is NSDictionary
+        #endif
     }
 
-    private func rawValue(keyPath: KeyPath) throws -> AnyObject? {
+    // If we use `rawValue` here, that would conflict with `let rawValue: AnyJSON`
+    // on Linux. This naming is avoiding the weird case.
+    private func _rawValue(keyPath: KeyPath) throws -> AnyJSON? {
         guard isDictionary else {
             throw typeMismatch("Dictionary", actual: rawValue, keyPath: keyPath)
         }
@@ -28,7 +40,7 @@ public struct Extractor {
 
     /// - Throws: DecodeError
     public func value<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> T {
-        guard let rawValue = try rawValue(keyPath) else {
+        guard let rawValue = try _rawValue(keyPath) else {
             throw DecodeError.MissingKeyPath(keyPath)
         }
 
@@ -61,7 +73,7 @@ public struct Extractor {
 
     /// - Throws: DecodeError
     public func arrayOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [T]? {
-        return try rawValue(keyPath).map(decodeArray)
+        return try _rawValue(keyPath).map(decodeArray)
     }
 
     /// - Throws: DecodeError
@@ -75,7 +87,7 @@ public struct Extractor {
 
     /// - Throws: DecodeError
     public func dictionaryOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [String: T]? {
-        return try rawValue(keyPath).map(decodeDictionary)
+        return try _rawValue(keyPath).map(decodeDictionary)
     }
 }
 
@@ -95,17 +107,17 @@ extension Extractor: CustomStringConvertible {
 //
 // `ArraySlice` is used for performance optimization.
 // See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
-private func valueFor<C: CollectionType where C.Generator.Element == String, C.SubSequence == C>(keyPathComponents: C, _ object: AnyObject) -> AnyObject? {
+private func valueFor<C: CollectionType where C.Generator.Element == String, C.SubSequence == C>(keyPathComponents: C, _ JSON: AnyJSON) -> AnyJSON? {
     #if os(Linux)
     guard let
         first = keyPathComponents.first,
-        let nativeDict = object as? [String: AnyObject],
+        let nativeDict = JSON as? [String: AnyJSON],
         case let nested? = nativeDict[first] where !(nested is NSNull) else
     {
         return nil
     }
     #else
-    guard let first = keyPathComponents.first, case let nested?? = object[first] where !(nested is NSNull) else {
+    guard let first = keyPathComponents.first, case let nested?? = JSON[first] where !(nested is NSNull) else {
         return nil
     }
     #endif

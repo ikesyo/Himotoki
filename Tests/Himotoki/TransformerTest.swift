@@ -6,6 +6,7 @@
 //  Copyright © 2016 Syo Ikeda. All rights reserved.
 //
 
+import Foundation
 import XCTest
 import Himotoki
 
@@ -44,13 +45,13 @@ class TransformerTest: XCTestCase {
     func testTransformerSuccess() {
         let URLString = "http://www.yahoo.co.jp/"
         let URL = NSURL(string: URLString)!
-        let JSON: [String: AnyObject] = [
+        let JSON: [String: AnyJSON] = [
             "value": URLString,
             "valueOptional": URLString,
-            "array": [ URLString, URLString ],
-            "arrayOptional": [ URLString, URLString ],
-            "dictionary": [ "a": URLString, "b": URLString ],
-            "dictionaryOptional": [ "a": URLString, "b": URLString ],
+            "array": [ URLString, URLString ] as JSONArray,
+            "arrayOptional": [ URLString, URLString ] as JSONArray,
+            "dictionary": [ "a": URLString, "b": URLString ] as JSONDictionary,
+            "dictionaryOptional": [ "a": URLString, "b": URLString ] as JSONDictionary,
         ]
 
         guard let decoded: URLsByTransformer = try? decodeValue(JSON) else {
@@ -68,7 +69,7 @@ class TransformerTest: XCTestCase {
 
     func testTransformerFailure() {
         let URLString = "日本語"
-        let JSON: [String: AnyObject] = [
+        let JSON: [String: AnyJSON] = [
             "value": URLString,
         ]
 
@@ -81,3 +82,16 @@ class TransformerTest: XCTestCase {
         }
     }
 }
+
+#if os(Linux)
+
+extension TransformerTest: XCTestCaseProvider {
+    var allTests: [(String, () throws -> Void)] {
+        return [
+            ("testTransformerSuccess", testTransformerSuccess),
+            ("testTransformerFailure", testTransformerFailure),
+        ]
+    }
+}
+
+#endif

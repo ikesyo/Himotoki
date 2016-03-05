@@ -11,16 +11,16 @@ import Himotoki
 
 class DecodeWithRootKeyPathTest: XCTestCase {
 
-    lazy var JSON: [String: AnyObject] = {
+    lazy var JSON: JSONDictionary = {
         return [
             "name": "name",
             "floor": 123,
-            "optional": [ "foo", "bar" ],
+            "optional": [ "foo", "bar" ] as JSONArray,
         ]
     }()
 
     func testDecodeWithRootKeyValue() {
-        let objectWithValue = [ "group": JSON ]
+        let objectWithValue: JSONDictionary = [ "group": JSON ]
 
         var group: Group?
 
@@ -32,7 +32,7 @@ class DecodeWithRootKeyPathTest: XCTestCase {
     }
 
     func testDecodeWithRootKeyArray() {
-        let objectWithArray = [ "groups": [ JSON, JSON ] ]
+        let objectWithArray: JSONDictionary = [ "groups": [ JSON, JSON ] as JSONArray ]
 
         var groups: [Group]?
 
@@ -45,7 +45,7 @@ class DecodeWithRootKeyPathTest: XCTestCase {
     }
 
     func testDecodeWithRootKeyDictionary() {
-        let objectWithDictionary = [ "groupDict": [ "foo": JSON, "bar": JSON ] ]
+        let objectWithDictionary: JSONDictionary = [ "groupDict": [ "foo": JSON, "bar": JSON ] as JSONDictionary ]
 
         var groups: [String: Group]?
 
@@ -59,3 +59,17 @@ class DecodeWithRootKeyPathTest: XCTestCase {
         XCTAssertEqual(groups?.keys.contains("bar"), true)
     }
 }
+
+#if os(Linux)
+
+extension DecodeWithRootKeyPathTest: XCTestCaseProvider {
+    var allTests: [(String, () throws -> Void)] {
+        return [
+            ("testDecodeWithRootKeyValue", testDecodeWithRootKeyValue),
+            ("testDecodeWithRootKeyArray", testDecodeWithRootKeyArray),
+            ("testDecodeWithRootKeyDictionary", testDecodeWithRootKeyDictionary),
+        ]
+    }
+}
+
+#endif
