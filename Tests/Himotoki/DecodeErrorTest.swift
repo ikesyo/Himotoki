@@ -6,6 +6,7 @@
 //  Copyright © 2015 Syo Ikeda. All rights reserved.
 //
 
+import Foundation
 import XCTest
 import Himotoki
 
@@ -68,7 +69,7 @@ class DecodeErrorTest: XCTestCase {
         XCTAssertNil(a.b)
 
         do {
-            let d: [String: AnyJSON] = [ "b": [:] ]
+            let d: [String: AnyJSON] = [ "b": [:] as JSONDictionary ]
             let _: A = try decodeValue(d)
             XCTFail("DecodeError.MissingKeyPath should be thrown if decoding optional value failed")
         } catch let DecodeError.MissingKeyPath(keyPath) {

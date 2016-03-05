@@ -12,13 +12,15 @@ import Himotoki
 class NestedObjectParsingTest: XCTestCase {
 
     func testParseNestedObjectSuccess() {
-        let success: WithNestedObject? = try? decodeValue([ "nested": [ "name": "Foo Bar" ] ])
+        let JSON: JSONDictionary = [ "nested": [ "name": "Foo Bar" ] as JSONDictionary ]
+        let success: WithNestedObject? = try? decodeValue(JSON)
         XCTAssertNotNil(success)
         XCTAssertEqual(success?.nestedName, "Foo Bar")
     }
 
     func testParseNestedObjectFailure() {
-        let failure: WithNestedObject? = try? decodeValue([ "nested": "Foo Bar" ])
+        let JSON: JSONDictionary = [ "nested": "Foo Bar" ]
+        let failure: WithNestedObject? = try? decodeValue(JSON)
         XCTAssertNil(failure)
     }
 }

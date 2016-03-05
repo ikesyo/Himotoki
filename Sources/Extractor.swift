@@ -20,10 +20,16 @@ public struct Extractor {
 
     internal init(_ rawValue: AnyJSON) {
         self.rawValue = rawValue
-        self.isDictionary = rawValue is NSDictionary
+        #if os(Linux)
+            self.isDictionary = rawValue is [String: AnyJSON]
+        #else
+            self.isDictionary = rawValue is NSDictionary
+        #endif
     }
 
-    private func rawValue(keyPath: KeyPath) throws -> AnyJSON? {
+    // If we use `rawValue` here, that would conflict with `let rawValue: AnyJSON`
+    // on Linux. This naming is avoiding the weird case.
+    private func _rawValue(keyPath: KeyPath) throws -> AnyJSON? {
         guard isDictionary else {
             throw typeMismatch("Dictionary", actual: rawValue, keyPath: keyPath)
         }
@@ -34,7 +40,7 @@ public struct Extractor {
 
     /// - Throws: DecodeError
     public func value<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> T {
-        guard let rawValue = try rawValue(keyPath) else {
+        guard let rawValue = try _rawValue(keyPath) else {
             throw DecodeError.MissingKeyPath(keyPath)
         }
 
@@ -67,7 +73,7 @@ public struct Extractor {
 
     /// - Throws: DecodeError
     public func arrayOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [T]? {
-        return try rawValue(keyPath).map(decodeArray)
+        return try _rawValue(keyPath).map(decodeArray)
     }
 
     /// - Throws: DecodeError
@@ -81,7 +87,7 @@ public struct Extractor {
 
     /// - Throws: DecodeError
     public func dictionaryOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [String: T]? {
-        return try rawValue(keyPath).map(decodeDictionary)
+        return try _rawValue(keyPath).map(decodeDictionary)
     }
 }
 

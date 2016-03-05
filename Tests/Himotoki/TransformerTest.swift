@@ -6,6 +6,7 @@
 //  Copyright © 2016 Syo Ikeda. All rights reserved.
 //
 
+import Foundation
 import XCTest
 import Himotoki
 
@@ -47,10 +48,10 @@ class TransformerTest: XCTestCase {
         let JSON: [String: AnyJSON] = [
             "value": URLString,
             "valueOptional": URLString,
-            "array": [ URLString, URLString ],
-            "arrayOptional": [ URLString, URLString ],
-            "dictionary": [ "a": URLString, "b": URLString ],
-            "dictionaryOptional": [ "a": URLString, "b": URLString ],
+            "array": [ URLString, URLString ] as JSONArray,
+            "arrayOptional": [ URLString, URLString ] as JSONArray,
+            "dictionary": [ "a": URLString, "b": URLString ] as JSONDictionary,
+            "dictionaryOptional": [ "a": URLString, "b": URLString ] as JSONDictionary,
         ]
 
         guard let decoded: URLsByTransformer = try? decodeValue(JSON) else {

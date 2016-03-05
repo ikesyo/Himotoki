@@ -14,12 +14,6 @@ extension NSNumber: Decodable {
     }
 }
 
-extension UInt: Decodable {
-    public static func decode(e: Extractor) throws -> UInt {
-        return try NSNumber.decode(e).unsignedLongValue
-    }
-}
-
 extension Int8: Decodable {
     public static func decode(e: Extractor) throws -> Int8 {
         return try NSNumber.decode(e).charValue

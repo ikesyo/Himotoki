@@ -6,18 +6,22 @@
 //  Copyright (c) 2015 Syo Ikeda. All rights reserved.
 //
 
+import Foundation
 import XCTest
 import Himotoki
 
+typealias JSONArray = [AnyJSON]
+typealias JSONDictionary = [String: AnyJSON]
+
 class DecodableTest: XCTestCase {
 
-    lazy var personJSON: [String: AnyJSON] = {
-        let gruopJSON: [String: AnyJSON] = [ "name": "Himotoki", "floor": 12 ]
-        var JSON: [String: AnyJSON] = [
+    lazy var personJSON: JSONDictionary = {
+        let gruopJSON: JSONDictionary = [ "name": "Himotoki", "floor": 12 ]
+        var JSON: JSONDictionary = [
             "first_name": "ABC",
             "last_name": "DEF",
             "age": 20,
-            "int64": NSNumber(longLong: INT64_MAX),
+            "int64": NSNumber(longLong: Int64.max),
             "height": 175.9,
             "float": 32.1 as Float,
             "bool": true,
@@ -25,16 +29,16 @@ class DecodableTest: XCTestCase {
             "raw_value": "RawValue",
             "nested": [
                 "value": "The nested value",
-                "dict": [ "key": "The nested value" ]
-            ],
-            "array": [ "123", "456" ],
+                "dict": [ "key": "The nested value" ] as JSONDictionary
+            ] as JSONDictionary,
+            "array": [ "123", "456" ] as JSONArray,
             "arrayOption": NSNull(),
-            "dictionary": [ "A": 1, "B": 2 ],
+            "dictionary": [ "A": 1, "B": 2 ] as JSONDictionary,
             // "dictionaryOption" key is missing
             "group": gruopJSON,
         ]
 
-        JSON["groups"] = [ gruopJSON, gruopJSON ]
+        JSON["groups"] = [ gruopJSON, gruopJSON ] as JSONArray
 
         return JSON
     }()
@@ -48,7 +52,7 @@ class DecodableTest: XCTestCase {
         XCTAssert(person?.firstName == "ABC")
         XCTAssert(person?.lastName == "DEF")
         XCTAssert(person?.age == 20)
-        XCTAssert(person?.int64 == INT64_MAX)
+        XCTAssert(person?.int64 == Int64.max)
         XCTAssert(person?.height == 175.9)
         XCTAssert(person?.float == 32.1)
         XCTAssert(person?.bool == true)
@@ -93,6 +97,7 @@ class DecodableTest: XCTestCase {
         }
     }
 
+#if !os(Linux)
     func testPerformanceByPersons() {
         let peopleJSON = Array(count: 500, repeatedValue: personJSON)
 
@@ -100,9 +105,10 @@ class DecodableTest: XCTestCase {
             let _: [Person]? = try? decodeArray(peopleJSON)
         }
     }
+#endif
 
     func testGroup() {
-        var JSON: [String: AnyJSON] = [ "name": "Himotoki", "floor": 12 ]
+        var JSON: JSONDictionary = [ "name": "Himotoki", "floor": 12 ]
 
         let g: Group? = try? decodeValue(JSON)
         XCTAssert(g != nil)
@@ -121,25 +127,25 @@ class DecodableTest: XCTestCase {
     }
 
     func testDecodeArray() {
-        let JSON: [String: AnyJSON] = [ "name": "Himotoki", "floor": 12 ]
-        let JSONArray = [ JSON, JSON ]
+        let JSON: JSONDictionary = [ "name": "Himotoki", "floor": 12 ]
+        let array: JSONArray = [ JSON, JSON ]
 
-        let values: [Group]? = try? decodeArray(JSONArray)
+        let values: [Group]? = try? decodeArray(array)
         XCTAssert(values != nil)
         XCTAssert(values?.count == 2)
     }
 
     func testDecodeDictionary() {
-        let JSON: [String: AnyJSON] = [ "name": "Himotoki", "floor": 12 ]
-        let JSONDict = [ "1": JSON, "2": JSON ]
+        let JSON: JSONDictionary = [ "name": "Himotoki", "floor": 12 ]
+        let dictionary: JSONDictionary = [ "1": JSON, "2": JSON ]
 
-        let values: [String: Group]? = try? decodeDictionary(JSONDict)
+        let values: [String: Group]? = try? decodeDictionary(dictionary)
         XCTAssert(values != nil)
         XCTAssert(values?.count == 2)
     }
 
     func testDecodeNumbers() {
-        let JSON: [String: AnyJSON] = [
+        let JSON: JSONDictionary = [
             "int": Int.min,
             "uint": UInt.max,
             "int8": NSNumber(char: Int8.min),
@@ -174,7 +180,7 @@ extension DecodableTest: XCTestCaseProvider {
     var allTests: [(String, () throws -> Void)] {
         return [
             ("testPerson", testPerson),
-            ("testPerformanceByPersons", testPerformanceByPersons),
+//            ("testPerformanceByPersons", testPerformanceByPersons),
             ("testGroup", testGroup),
             ("testDecodeArray", testDecodeArray),
             ("testDecodeDictionary", testDecodeDictionary),

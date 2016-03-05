@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Himotoki
+@testable import Himotokitest
 
 XCTMain([
     DecodableTest(),
