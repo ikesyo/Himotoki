@@ -70,6 +70,23 @@ Himotoki supports the following operators to decode JSON elements, where `T` is 
 | <code>&lt;&#124;-&#124;</code>  | `[String: T]`     | A dictionary of values           |
 | <code>&lt;&#124;-&#124;?</code> | `[String: T]?`    | An optional dictionary of values |
 
+## Value Transformation
+
+You can transform an extracted value to an instance of non-`Decodable` types by passing the value to a `Transformer` instance as follows:
+
+```swift
+let URLTransformer = Transformer<String, NSURL> { URLString in
+    if let URL = NSURL(string: URLString) {
+        return URL
+    }
+    
+    throw customError("Invalid URL string: \(URLString)")
+}
+
+let URL = try URLTransformer.apply(e <| "foo_url")
+let otherURLs = try URLTransformer.apply(e <|| "bar_urls")
+```
+
 ## Requirements
 
 - Swift 2.1 / Xcode 7.2
