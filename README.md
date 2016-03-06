@@ -75,7 +75,8 @@ Himotoki supports the following operators to decode JSON elements, where `T` is 
 You can transform an extracted value to an instance of non-`Decodable` types by passing the value to a `Transformer` instance as follows:
 
 ```swift
-let URLTransformer = Transformer<String, NSURL> { URLString in
+// Creates a `Transformer` instance.
+let URLTransformer = Transformer<String, NSURL> { URLString throws -> NSURL in
     if let URL = NSURL(string: URLString) {
         return URL
     }
