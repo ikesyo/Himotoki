@@ -10,6 +10,13 @@ import Foundation
 import XCTest
 import Himotoki
 
+func castOrFail<T>(any: Any?) throws -> T {
+    guard let casted = any as? T else {
+        throw typeMismatch("\(T.self)", actual: any, keyPath: nil)
+    }
+    return casted
+}
+
 extension NSURL: Decodable {
     public static func decode(e: Extractor) throws -> Self {
         let value = try String.decode(e)
@@ -21,8 +28,7 @@ extension NSURL: Decodable {
         if value.hasPrefix("file://") {
             throw customError("File URL is not supported")
         }
-
-        return self.init(string: value)!
+        return try castOrFail(self.init(string: value))
     }
 }
 
