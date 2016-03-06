@@ -7,8 +7,6 @@
 //
 
 public protocol Decodable {
-    typealias DecodedType = Self
-
     /// - Throws: DecodeError
-    static func decode(e: Extractor) throws -> DecodedType
+    static func decode(e: Extractor) throws -> Self
 }

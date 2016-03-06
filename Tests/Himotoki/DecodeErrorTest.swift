@@ -11,7 +11,7 @@ import XCTest
 import Himotoki
 
 extension NSURL: Decodable {
-    public static func decode(e: Extractor) throws -> NSURL {
+    public static func decode(e: Extractor) throws -> Self {
         let value = try String.decode(e)
 
         if value.isEmpty {
@@ -22,7 +22,7 @@ extension NSURL: Decodable {
             throw customError("File URL is not supported")
         }
 
-        return NSURL(string: value)!
+        return self.init(string: value)!
     }
 }
 
