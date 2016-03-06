@@ -28,7 +28,7 @@ extension NSURL: Decodable {
         if value.hasPrefix("file://") {
             throw customError("File URL is not supported")
         }
-        return try castOrFail(self.init(string: value))
+        return try castOrFail(NSURL(string: value))
     }
 }
 
