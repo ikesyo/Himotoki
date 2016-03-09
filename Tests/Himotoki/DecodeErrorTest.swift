@@ -52,6 +52,15 @@ private struct B: Decodable {
 
 class DecodeErrorTest: XCTestCase {
 
+    func testSuccessOfCastOrFail() {
+        do {
+            let d: [String: AnyJSON] = [ "url": "https://swift.org/" ]
+            _ = try decodeValue(d) as URLHolder
+        } catch {
+            XCTFail("error: \(error)")
+        }
+    }
+
     func testMissingKeyPathInDecodeError() {
         do {
             let d: [String: AnyJSON] = [ "url": "" ]
