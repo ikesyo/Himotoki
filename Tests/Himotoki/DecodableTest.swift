@@ -86,12 +86,12 @@ class DecodableTest: XCTestCase {
         }
 
         do {
-            JSON["age"] = "32"
+            JSON["age"] = "foo_bar"
             try decodeValue(JSON) as Person
         } catch let DecodeError.TypeMismatch(expected, actual, keyPath) {
-            XCTAssert(keyPath == "age")
-            XCTAssert(actual == "Optional(32)")
-            XCTAssert(expected == "Int")
+            XCTAssertEqual(keyPath, "age")
+            XCTAssertTrue(actual.containsString("foo_bar"))
+            XCTAssertEqual(expected, "Int")
         } catch {
             XCTFail()
         }
