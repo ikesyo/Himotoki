@@ -12,6 +12,21 @@ public enum DecodeError: ErrorType {
     case Custom(String)
 }
 
+extension DecodeError: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case let .MissingKeyPath(keyPath):
+            return "MissingKeyPath(\(keyPath))"
+
+        case let .TypeMismatch(expected, actual, keyPath):
+            return "TypeMismatch(expected: \(expected), actual: \(actual), keyPath: \(keyPath?.description ?? "nil"))"
+
+        case let .Custom(message):
+            return "Custom(\(message))"
+        }
+    }
+}
+
 public func typeMismatch<T>(expected: String, actual: T, keyPath: KeyPath?) -> DecodeError {
     return DecodeError.TypeMismatch(expected: expected, actual: String(actual), keyPath: keyPath)
 }
