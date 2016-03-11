@@ -6,7 +6,7 @@
 //  Copyright © 2015 Syo Ikeda. All rights reserved.
 //
 
-public extension RawRepresentable where Self: Decodable, Self.DecodedType == Self, RawValue: Decodable, RawValue.DecodedType == RawValue {
+public extension RawRepresentable where Self: Decodable, RawValue: Decodable {
     static func decode(e: Extractor) throws -> Self {
         let rawValue = try RawValue.decode(e)
 

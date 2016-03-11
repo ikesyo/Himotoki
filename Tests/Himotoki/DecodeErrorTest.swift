@@ -8,10 +8,10 @@
 
 import Foundation
 import XCTest
-import Himotoki
+@testable import Himotoki
 
 extension NSURL: Decodable {
-    public static func decode(e: Extractor) throws -> NSURL {
+    public static func decode(e: Extractor) throws -> Self {
         let value = try String.decode(e)
 
         if value.isEmpty {
@@ -22,7 +22,7 @@ extension NSURL: Decodable {
             throw customError("File URL is not supported")
         }
 
-        return NSURL(string: value)!
+        return try castOrFail(NSURL(string: value))
     }
 }
 
@@ -51,6 +51,15 @@ private struct B: Decodable {
 }
 
 class DecodeErrorTest: XCTestCase {
+
+    func testSuccessOfCastOrFail() {
+        do {
+            let d: [String: AnyJSON] = [ "url": "https://swift.org/" ]
+            _ = try decodeValue(d) as URLHolder
+        } catch {
+            XCTFail("error: \(error)")
+        }
+    }
 
     func testMissingKeyPathInDecodeError() {
         do {

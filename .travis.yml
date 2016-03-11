@@ -33,9 +33,9 @@ before_install:
 script:
   - pod lib lint --allow-warnings
   - set -o pipefail
-  - xcodebuild test -scheme Himotoki-Mac -configuration Release | xcpretty -c
-  - xcodebuild test -scheme Himotoki-iOS -configuration Release -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6s" | xcpretty -c
-  - xcodebuild test -scheme Himotoki-tvOS -configuration Release -sdk appletvsimulator -destination "platform=tvOS Simulator,name=Apple TV 1080p" | xcpretty -c
+  - xcodebuild test -scheme Himotoki-Mac -configuration Debug | xcpretty -c
+  - xcodebuild test -scheme Himotoki-iOS -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6s" | xcpretty -c
+  - xcodebuild test -scheme Himotoki-tvOS -configuration Debug -sdk appletvsimulator -destination "platform=tvOS Simulator,name=Apple TV 1080p" | xcpretty -c
   - xcodebuild build -scheme Himotoki-watchOS -configuration Release -sdk watchsimulator -destination "platform=watchOS Simulator,name=Apple Watch - 38mm" | xcpretty -c
 notifications:
   email: false

@@ -43,10 +43,12 @@ extension Bool: Decodable {
 }
 
 internal func castOrFail<T>(e: Extractor) throws -> T {
-    let rawValue = e.rawValue
+    return try castOrFail(e.rawValue)
+}
 
-    guard let result = rawValue as? T else {
-        throw typeMismatch("\(T.self)", actual: rawValue, keyPath: nil)
+internal func castOrFail<T>(any: Any?) throws -> T {
+    guard let result = any as? T else {
+        throw typeMismatch("\(T.self)", actual: any, keyPath: nil)
     }
 
     return result
