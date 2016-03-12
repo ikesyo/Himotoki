@@ -16,6 +16,10 @@ public struct KeyPath: Hashable {
     public init(_ components: [String]) {
         self.components = components
     }
+
+    public static var empty: KeyPath {
+        return KeyPath([])
+    }
 }
 
 public func == (lhs: KeyPath, rhs: KeyPath) -> Bool {
@@ -55,5 +59,11 @@ extension KeyPath: StringLiteralConvertible {
 extension KeyPath: ArrayLiteralConvertible {
     public init(arrayLiteral elements: String...) {
         self.init(elements)
+    }
+}
+
+extension KeyPath: NilLiteralConvertible {
+    public init(nilLiteral: ()) {
+        self.init([])
     }
 }

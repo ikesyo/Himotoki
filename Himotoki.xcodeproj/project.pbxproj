@@ -11,6 +11,9 @@
 		CD07B5241C8408A50065883E /* TransformerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC356901C819DE7004F6E47 /* TransformerTest.swift */; };
 		CD07B5251C8408A60065883E /* TransformerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC356901C819DE7004F6E47 /* TransformerTest.swift */; };
 		CD181ED91AF4F7C20065963F /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD181ED81AF4F7C20065963F /* Operators.swift */; };
+		CD182A101C93CB640072E0B5 /* KeyPathTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD182A0F1C93CB640072E0B5 /* KeyPathTest.swift */; };
+		CD182A111C93CB640072E0B5 /* KeyPathTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD182A0F1C93CB640072E0B5 /* KeyPathTest.swift */; };
+		CD182A121C93CB640072E0B5 /* KeyPathTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD182A0F1C93CB640072E0B5 /* KeyPathTest.swift */; };
 		CD5E68F91BD766BE00417C84 /* DecodeErrorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5E68F81BD766BE00417C84 /* DecodeErrorTest.swift */; };
 		CD5E68FA1BD766BE00417C84 /* DecodeErrorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5E68F81BD766BE00417C84 /* DecodeErrorTest.swift */; };
 		CD6DA5E11B215B7C008B3EC5 /* KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */; };
@@ -104,6 +107,7 @@
 
 /* Begin PBXFileReference section */
 		CD181ED81AF4F7C20065963F /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		CD182A0F1C93CB640072E0B5 /* KeyPathTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPathTest.swift; sourceTree = "<group>"; };
 		CD5E68F81BD766BE00417C84 /* DecodeErrorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeErrorTest.swift; sourceTree = "<group>"; };
 		CD6DA5E01B215B7C008B3EC5 /* KeyPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPath.swift; sourceTree = "<group>"; };
 		CD74501D1BB7FC7B0092EED3 /* RawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawRepresentable.swift; sourceTree = "<group>"; };
@@ -339,6 +343,7 @@
 				CD929A571AF4A915002F5C53 /* DecodableTest.swift */,
 				CD5E68F81BD766BE00417C84 /* DecodeErrorTest.swift */,
 				CDBFDC641BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift */,
+				CD182A0F1C93CB640072E0B5 /* KeyPathTest.swift */,
 				CDD3962A1C0C0CD000A3A3DD /* NestedObjectParsingTest.swift */,
 				CD7450211BB7FE900092EED3 /* RawRepresentableTest.swift */,
 				CD929A471AF4A2C3002F5C53 /* Supporting Files */,
@@ -699,6 +704,7 @@
 				CDD3962B1C0C0CD000A3A3DD /* NestedObjectParsingTest.swift in Sources */,
 				CDBFDC651BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift in Sources */,
 				CD07B5231C8408A40065883E /* TransformerTest.swift in Sources */,
+				CD182A101C93CB640072E0B5 /* KeyPathTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,6 +736,7 @@
 				CDD3962D1C0C0CD000A3A3DD /* NestedObjectParsingTest.swift in Sources */,
 				CDE423B71BF2F0C900C9473F /* RawRepresentableTest.swift in Sources */,
 				CD07B5251C8408A60065883E /* TransformerTest.swift in Sources */,
+				CD182A121C93CB640072E0B5 /* KeyPathTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +768,7 @@
 				CDD3962C1C0C0CD000A3A3DD /* NestedObjectParsingTest.swift in Sources */,
 				CDBFDC661BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift in Sources */,
 				CD07B5241C8408A50065883E /* TransformerTest.swift in Sources */,
+				CD182A111C93CB640072E0B5 /* KeyPathTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
