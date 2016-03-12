@@ -13,6 +13,7 @@ XCTMain([
     DecodableTest(),
     DecodeErrorTest(),
     DecodeWithRootKeyPathTest(),
+    KeyPathTest(),
     NestedObjectParsingTest(),
     RawRepresentableTest(),
     TransformerTest(),

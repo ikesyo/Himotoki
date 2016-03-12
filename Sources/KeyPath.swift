@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Syo Ikeda. All rights reserved.
 //
 
-public struct KeyPath: Equatable {
+public struct KeyPath: Hashable {
     public let components: [String]
 
     public init(_ key: String) {
@@ -16,6 +16,10 @@ public struct KeyPath: Equatable {
     public init(_ components: [String]) {
         self.components = components
     }
+
+    public static var empty: KeyPath {
+        return KeyPath([])
+    }
 }
 
 public func == (lhs: KeyPath, rhs: KeyPath) -> Bool {
@@ -24,6 +28,12 @@ public func == (lhs: KeyPath, rhs: KeyPath) -> Bool {
 
 public func + (lhs: KeyPath, rhs: KeyPath) -> KeyPath {
     return KeyPath(lhs.components + rhs.components)
+}
+
+extension KeyPath {
+    public var hashValue: Int {
+        return components.reduce(0) { $0 ^ $1.hashValue }
+    }
 }
 
 extension KeyPath: CustomStringConvertible {
@@ -49,5 +59,11 @@ extension KeyPath: StringLiteralConvertible {
 extension KeyPath: ArrayLiteralConvertible {
     public init(arrayLiteral elements: String...) {
         self.init(elements)
+    }
+}
+
+extension KeyPath: NilLiteralConvertible {
+    public init(nilLiteral: ()) {
+        self.init([])
     }
 }
