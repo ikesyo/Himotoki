@@ -58,6 +58,10 @@ public func == (lhs: DecodeError, rhs: DecodeError) -> Bool {
     }
 }
 
+public func missingKeyPath(keyPath: KeyPath) -> DecodeError {
+    return DecodeError.MissingKeyPath(keyPath)
+}
+
 public func typeMismatch<T>(expected: String, actual: T, keyPath: KeyPath?) -> DecodeError {
     return DecodeError.TypeMismatch(expected: expected, actual: String(actual), keyPath: keyPath)
 }

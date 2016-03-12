@@ -91,7 +91,7 @@ class DecodeErrorTest: XCTestCase {
     }
 
     func testHashableConformance() {
-        let missingKeyPath = DecodeError.MissingKeyPath([ "foo", "bar" ])
+        let missingKeyPath = Himotoki.missingKeyPath([ "foo", "bar" ])
         XCTAssertEqual(missingKeyPath, missingKeyPath)
         XCTAssertEqual(missingKeyPath.hashValue, missingKeyPath.hashValue)
 
