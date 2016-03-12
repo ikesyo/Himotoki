@@ -61,3 +61,9 @@ extension KeyPath: ArrayLiteralConvertible {
         self.init(elements)
     }
 }
+
+extension KeyPath: NilLiteralConvertible {
+    public init(nilLiteral: ()) {
+        self.init([])
+    }
+}
