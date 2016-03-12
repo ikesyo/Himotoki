@@ -16,6 +16,10 @@ public struct KeyPath: Hashable {
     public init(_ components: [String]) {
         self.components = components
     }
+
+    public static var empty: KeyPath {
+        return KeyPath([])
+    }
 }
 
 public func == (lhs: KeyPath, rhs: KeyPath) -> Bool {
