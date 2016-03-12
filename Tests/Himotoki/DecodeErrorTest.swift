@@ -89,6 +89,20 @@ class DecodeErrorTest: XCTestCase {
             XCTFail()
         }
     }
+
+    func testHashableConformance() {
+        let missingKeyPath = DecodeError.MissingKeyPath([ "foo", "bar" ])
+        XCTAssertEqual(missingKeyPath, missingKeyPath)
+        XCTAssertEqual(missingKeyPath.hashValue, missingKeyPath.hashValue)
+
+        let typeMismatch = Himotoki.typeMismatch("Int", actual: String.self, keyPath: [ "baz" ])
+        XCTAssertEqual(typeMismatch, typeMismatch)
+        XCTAssertEqual(typeMismatch.hashValue, typeMismatch.hashValue)
+
+        let customError = Himotoki.customError("This is a custom error")
+        XCTAssertEqual(customError, customError)
+        XCTAssertEqual(customError.hashValue, customError.hashValue)
+    }
 }
 
 #if os(Linux)
@@ -99,6 +113,7 @@ extension DecodeErrorTest: XCTestCaseProvider {
             ("testMissingKeyPathInDecodeError", testMissingKeyPathInDecodeError),
             ("testMissingKeyPathAndDecodeFailure", testMissingKeyPathAndDecodeFailure),
             ("testCustomError", testCustomError),
+            ("testHashableConformance", testHashableConformance),
         ]
     }
 }

@@ -27,6 +27,37 @@ extension DecodeError: CustomStringConvertible {
     }
 }
 
+extension DecodeError: Hashable {
+    public var hashValue: Int {
+        switch self {
+        case let .MissingKeyPath(keyPath):
+            return keyPath.hashValue
+
+        case let .TypeMismatch(expected, actual, keyPath):
+            return expected.hashValue ^ actual.hashValue ^ (keyPath ?? KeyPath.empty).hashValue
+
+        case let .Custom(message):
+            return message.hashValue
+        }
+    }
+}
+
+public func == (lhs: DecodeError, rhs: DecodeError) -> Bool {
+    switch (lhs, rhs) {
+    case let (.MissingKeyPath(l), .MissingKeyPath(r)):
+        return l == r
+
+    case let (.TypeMismatch(la, lb, lc), .TypeMismatch(ra, rb, rc)):
+        return la == ra && lb == rb && lc == rc
+
+    case let (.Custom(l), .Custom(r)):
+        return l == r
+
+    default:
+        return false
+    }
+}
+
 public func typeMismatch<T>(expected: String, actual: T, keyPath: KeyPath?) -> DecodeError {
     return DecodeError.TypeMismatch(expected: expected, actual: String(actual), keyPath: keyPath)
 }
