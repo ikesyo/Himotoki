@@ -52,13 +52,9 @@ public func decodeDictionary<T: Decodable>(JSON: AnyJSON, rootKeyPath: KeyPath) 
 // MARK: - Deprecated
 
 /// - Throws: DecodeError
-@available(*, deprecated, renamed="decodeValue")
-public func decode<T: Decodable>(JSON: AnyJSON) throws -> T {
-    return try decodeValue(JSON)
-}
+@available(*, unavailable, renamed="decodeValue")
+@noreturn public func decode<T: Decodable>(JSON: AnyJSON) throws -> T {}
 
 /// - Throws: DecodeError
-@available(*, deprecated, renamed="decodeValue")
-public func decode<T: Decodable>(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> T {
-    return try decodeValue(JSON)
-}
+@available(*, unavailable, renamed="decodeValue")
+@noreturn public func decode<T: Decodable>(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> T {}
