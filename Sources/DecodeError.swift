@@ -8,7 +8,7 @@
 
 public enum DecodeError: ErrorType {
     case MissingKeyPath(KeyPath)
-    case TypeMismatch(expected: String, actual: String, keyPath: KeyPath?)
+    case TypeMismatch(expected: String, actual: String, keyPath: KeyPath)
     case Custom(String)
 }
 
@@ -19,7 +19,7 @@ extension DecodeError: CustomStringConvertible {
             return "MissingKeyPath(\(keyPath))"
 
         case let .TypeMismatch(expected, actual, keyPath):
-            return "TypeMismatch(expected: \(expected), actual: \(actual), keyPath: \(keyPath?.description ?? "nil"))"
+            return "TypeMismatch(expected: \(expected), actual: \(actual), keyPath: \(keyPath.description))"
 
         case let .Custom(message):
             return "Custom(\(message))"
@@ -34,7 +34,7 @@ extension DecodeError: Hashable {
             return keyPath.hashValue
 
         case let .TypeMismatch(expected, actual, keyPath):
-            return expected.hashValue ^ actual.hashValue ^ (keyPath ?? KeyPath.empty).hashValue
+            return expected.hashValue ^ actual.hashValue ^ keyPath.hashValue
 
         case let .Custom(message):
             return message.hashValue
@@ -62,7 +62,7 @@ public func missingKeyPath(keyPath: KeyPath) -> DecodeError {
     return DecodeError.MissingKeyPath(keyPath)
 }
 
-public func typeMismatch<T>(expected: String, actual: T, keyPath: KeyPath?) -> DecodeError {
+public func typeMismatch<T>(expected: String, actual: T, keyPath: KeyPath = KeyPath.empty) -> DecodeError {
     return DecodeError.TypeMismatch(expected: expected, actual: String(actual), keyPath: keyPath)
 }
 
