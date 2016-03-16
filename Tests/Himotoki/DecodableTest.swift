@@ -47,7 +47,7 @@ class DecodableTest: XCTestCase {
         var JSON = personJSON
 
         // Succeeding case
-        let person: Person? = try? decodeValue(JSON)
+        let person = try? Person.decodeValue(JSON)
         XCTAssert(person != nil)
         XCTAssert(person?.firstName == "ABC")
         XCTAssert(person?.lastName == "DEF")
@@ -78,7 +78,7 @@ class DecodableTest: XCTestCase {
         do {
             JSON["bool"] = nil
             JSON["group"] = nil
-            try decodeValue(JSON) as Person
+            try Person.decodeValue(JSON)
         } catch let DecodeError.MissingKeyPath(keyPath) {
             XCTAssert(keyPath == "bool")
         } catch {
@@ -87,7 +87,7 @@ class DecodableTest: XCTestCase {
 
         do {
             JSON["age"] = "foo_bar"
-            try decodeValue(JSON) as Person
+            try Person.decodeValue(JSON)
         } catch let DecodeError.TypeMismatch(expected, actual, keyPath) {
             XCTAssertEqual(keyPath, "age")
             XCTAssertTrue(actual.containsString("foo_bar"))
@@ -102,7 +102,7 @@ class DecodableTest: XCTestCase {
         let peopleJSON = Array(count: 500, repeatedValue: personJSON)
 
         measureBlock {
-            let _: [Person]? = try? decodeArray(peopleJSON)
+            _ = try? [Person].decode(peopleJSON)
         }
     }
 #endif
@@ -110,7 +110,7 @@ class DecodableTest: XCTestCase {
     func testGroup() {
         var JSON: JSONDictionary = [ "name": "Himotoki", "floor": 12 ]
 
-        let g: Group? = try? decodeValue(JSON)
+        let g = try? Group.decodeValue(JSON)
         XCTAssert(g != nil)
         XCTAssert(g?.name == "Himotoki")
         XCTAssert(g?.floor == 12)
@@ -118,7 +118,7 @@ class DecodableTest: XCTestCase {
 
         JSON["name"] = nil
         do {
-            try decodeValue(JSON) as Group
+            try Group.decodeValue(JSON)
         } catch let DecodeError.MissingKeyPath(keyPath) {
             XCTAssert(keyPath == "name")
         } catch {
@@ -130,7 +130,7 @@ class DecodableTest: XCTestCase {
         let JSON: JSONDictionary = [ "name": "Himotoki", "floor": 12 ]
         let array: JSONArray = [ JSON, JSON ]
 
-        let values: [Group]? = try? decodeArray(array)
+        let values = try? [Group].decode(array)
         XCTAssert(values != nil)
         XCTAssert(values?.count == 2)
     }
@@ -139,7 +139,7 @@ class DecodableTest: XCTestCase {
         let JSON: JSONDictionary = [ "name": "Himotoki", "floor": 12 ]
         let dictionary: JSONDictionary = [ "1": JSON, "2": JSON ]
 
-        let values: [String: Group]? = try? decodeDictionary(dictionary)
+        let values = try? [String: Group].decode(dictionary)
         XCTAssert(values != nil)
         XCTAssert(values?.count == 2)
     }
@@ -158,7 +158,7 @@ class DecodableTest: XCTestCase {
             "uint64": NSNumber(unsignedLongLong: UInt64.max),
         ]
 
-        let numbers: Numbers? = try? decodeValue(JSON)
+        let numbers = try? Numbers.decodeValue(JSON)
         XCTAssert(numbers != nil)
         XCTAssert(numbers?.int == Int.min)
         XCTAssert(numbers?.uint == UInt.max)
