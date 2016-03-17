@@ -45,7 +45,7 @@ public struct Extractor {
         }
 
         do {
-            return try decodeValue(rawValue)
+            return try T.decodeValue(rawValue)
         } catch let DecodeError.MissingKeyPath(missing) {
             throw DecodeError.MissingKeyPath(keyPath + missing)
         } catch let DecodeError.TypeMismatch(expected, actual, _) {
@@ -73,7 +73,7 @@ public struct Extractor {
 
     /// - Throws: DecodeError
     public func arrayOptional<T: Decodable>(keyPath: KeyPath) throws -> [T]? {
-        return try _rawValue(keyPath).map(decodeArray)
+        return try _rawValue(keyPath).map([T].decode)
     }
 
     /// - Throws: DecodeError
@@ -87,7 +87,7 @@ public struct Extractor {
 
     /// - Throws: DecodeError
     public func dictionaryOptional<T: Decodable>(keyPath: KeyPath) throws -> [String: T]? {
-        return try _rawValue(keyPath).map(decodeDictionary)
+        return try _rawValue(keyPath).map([String: T].decode)
     }
 }
 

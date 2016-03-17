@@ -8,45 +8,32 @@
 
 /// - Throws: DecodeError
 public func decodeValue<T: Decodable>(JSON: AnyJSON) throws -> T {
-    let extractor = Extractor(JSON)
-    return try T.decode(extractor)
+    return try T.decodeValue(JSON)
 }
 
 /// - Throws: DecodeError
 public func decodeValue<T: Decodable>(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> T {
-    return try decodeValue(JSON) <| rootKeyPath
+    return try T.decodeValue(JSON, rootKeyPath: rootKeyPath)
 }
 
 /// - Throws: DecodeError
 public func decodeArray<T: Decodable>(JSON: AnyJSON) throws -> [T] {
-    guard let array = JSON as? [AnyJSON] else {
-        throw typeMismatch("Array", actual: JSON, keyPath: nil)
-    }
-
-    return try array.map(decodeValue)
+    return try [T].decode(JSON)
 }
 
 /// - Throws: DecodeError
 public func decodeArray<T: Decodable>(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> [T] {
-    return try decodeValue(JSON) <|| rootKeyPath
+    return try [T].decode(JSON, rootKeyPath: rootKeyPath)
 }
 
 /// - Throws: DecodeError
 public func decodeDictionary<T: Decodable>(JSON: AnyJSON) throws -> [String: T] {
-    guard let dictionary = JSON as? [String: AnyJSON] else {
-        throw typeMismatch("Dictionary", actual: JSON, keyPath: nil)
-    }
-
-    var result = [String: T](minimumCapacity: dictionary.count)
-    try dictionary.forEach { key, value in
-        result[key] = try decodeValue(value) as T
-    }
-    return result
+    return try [String: T].decode(JSON)
 }
 
 /// - Throws: DecodeError
 public func decodeDictionary<T: Decodable>(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> [String: T] {
-    return try decodeValue(JSON) <|-| rootKeyPath
+    return try [String: T].decode(JSON, rootKeyPath: rootKeyPath)
 }
 
 // MARK: - Deprecated

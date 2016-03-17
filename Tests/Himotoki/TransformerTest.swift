@@ -54,7 +54,7 @@ class TransformerTest: XCTestCase {
             "dictionaryOptional": [ "a": URLString, "b": URLString ] as JSONDictionary,
         ]
 
-        guard let decoded: URLsByTransformer = try? decodeValue(JSON) else {
+        guard let decoded = try? URLsByTransformer.decodeValue(JSON) else {
             XCTFail()
             return
         }
@@ -74,7 +74,7 @@ class TransformerTest: XCTestCase {
         ]
 
         do {
-            _ = try decodeValue(JSON) as URLsByTransformer
+            _ = try URLsByTransformer.decodeValue(JSON)
         } catch let DecodeError.Custom(message) {
             XCTAssertEqual(message, "Invalid URL string: \(URLString)")
         } catch {

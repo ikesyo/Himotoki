@@ -42,6 +42,46 @@ extension Bool: Decodable {
     }
 }
 
+// MARK: - Extensions
+
+extension CollectionType where Generator.Element: Decodable {
+    /// - Throws: DecodeError
+    public static func decode(JSON: AnyJSON) throws -> [Generator.Element] {
+        guard let array = JSON as? [AnyJSON] else {
+            throw typeMismatch("Array", actual: JSON, keyPath: nil)
+        }
+
+        return try array.map(Generator.Element.decodeValue)
+    }
+
+    /// - Throws: DecodeError
+    public static func decode(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> [Generator.Element] {
+        return try Extractor(JSON).array(rootKeyPath)
+    }
+}
+
+extension DictionaryLiteralConvertible where Value: Decodable {
+    /// - Throws: DecodeError
+    public static func decode(JSON: AnyJSON) throws -> [String: Value] {
+        guard let dictionary = JSON as? [String: AnyJSON] else {
+            throw typeMismatch("Dictionary", actual: JSON, keyPath: nil)
+        }
+
+        var result = [String: Value](minimumCapacity: dictionary.count)
+        try dictionary.forEach { key, value in
+            result[key] = try Value.decodeValue(value)
+        }
+        return result
+    }
+
+    /// - Throws: DecodeError
+    public static func decode(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> [String: Value] {
+        return try Extractor(JSON).dictionary(rootKeyPath)
+    }
+}
+
+// MARK: Helpers
+
 internal func castOrFail<T>(e: Extractor) throws -> T {
     return try castOrFail(e.rawValue)
 }
