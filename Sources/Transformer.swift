@@ -9,13 +9,17 @@
 public struct Transformer<F, T>: TransformerType {
     public typealias From = F
     public typealias To = T
-    private let transform: From throws -> To
+    private let transform: From -> To?
 
-    public init(_ transform: From throws -> To) {
+    public init(_ transform: From -> To?) {
         self.transform = transform
     }
     
+    /// - Throws: DecodeError
     public func apply(subject: From) throws -> To {
-        return try transform(subject)
+        if let value = transform(subject) {
+            return value
+        }
+        throw customError("Failed transforming \(subject)")
     }
 }

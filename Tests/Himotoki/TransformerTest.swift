@@ -10,12 +10,8 @@ import Foundation
 import XCTest
 import Himotoki
 
-private func toURL(s: String) throws -> NSURL {
-    if let URL = NSURL(string: s) {
-        return URL
-    }
-
-    throw customError("Invalid URL string: \(s)")
+private func toURL(s: String) -> NSURL? {
+    return NSURL(string: s)
 }
 
 private struct URLsByTransformer: Decodable {
@@ -30,7 +26,7 @@ private struct URLsByTransformer: Decodable {
         let URLTransformer = Transformer(toURL)
 
         return self.init(
-            value: try Transformer { try toURL($0) }.apply(e <| "value"),
+            value: try URLTransformer.apply(e <| "value"),
             valueOptional: try URLTransformer.apply(e.valueOptional("valueOptional")),
             array: try URLTransformer.apply(e.array("array")),
             arrayOptional: try URLTransformer.apply(e <||? "arrayOptional"),

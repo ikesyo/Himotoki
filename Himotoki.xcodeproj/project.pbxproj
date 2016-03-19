@@ -351,8 +351,8 @@
 				CD182A0F1C93CB640072E0B5 /* KeyPathTest.swift */,
 				CDD3962A1C0C0CD000A3A3DD /* NestedObjectParsingTest.swift */,
 				CD7450211BB7FE900092EED3 /* RawRepresentableTest.swift */,
-				CD929A471AF4A2C3002F5C53 /* Supporting Files */,
 				CDC356901C819DE7004F6E47 /* TransformerTest.swift */,
+				CD929A471AF4A2C3002F5C53 /* Supporting Files */,
 			);
 			name = Tests;
 			path = Tests/Himotoki;
