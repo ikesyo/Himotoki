@@ -72,7 +72,7 @@ class TransformerTest: XCTestCase {
         do {
             _ = try decodeValue(JSON) as URLsByTransformer
         } catch let DecodeError.Custom(message) {
-            XCTAssertEqual(message, "Invalid URL string: \(URLString)")
+            XCTAssertEqual(message, "Failed transforming \(URLString)")
         } catch {
             XCTFail()
         }
