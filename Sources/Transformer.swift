@@ -6,44 +6,20 @@
 //  Copyright © 2016 Syo Ikeda. All rights reserved.
 //
 
-public struct Transformer<From, To> {
-    private let transform: From throws -> To
+public struct Transformer<F, T>: TransformerType {
+    public typealias From = F
+    public typealias To = T
+    private let transform: From -> To?
 
-    public init(_ transform: From throws -> To) {
+    public init(_ transform: From -> To?) {
         self.transform = transform
     }
 
     /// - Throws: DecodeError
     public func apply(subject: From) throws -> To {
-        return try transform(subject)
-    }
-
-    /// - Throws: DecodeError
-    public func apply(subject: From?) throws -> To? {
-        return try subject.map(apply)
-    }
-
-    /// - Throws: DecodeError
-    public func apply(subject: [From]) throws -> [To] {
-        return try subject.map(transform)
-    }
-
-    /// - Throws: DecodeError
-    public func apply(subject: [From]?) throws -> [To]? {
-        return try subject.map(apply)
-    }
-
-    /// - Throws: DecodeError
-    public func apply(subject: [String: From]) throws -> [String: To] {
-        var result = [String: To](minimumCapacity: subject.count)
-        try subject.forEach { key, value in
-            result[key] = try transform(value)
+        if let value = transform(subject) {
+            return value
         }
-        return result
-    }
-
-    /// - Throws: DecodeError
-    public func apply(subject: [String: From]?) throws -> [String: To]? {
-        return try subject.map(apply)
+        throw customError("Failed transforming \(subject)")
     }
 }
