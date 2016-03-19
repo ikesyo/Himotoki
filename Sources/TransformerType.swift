@@ -16,15 +16,15 @@ public extension TransformerType {
     public func apply(subject: From?) throws -> To? {
         return try subject.map(apply)
     }
-    
+
     public func apply(subject: [From]) throws -> [To] {
         return try subject.map(apply)
     }
-    
+
     public func apply(subject: [From]?) throws -> [To]? {
         return try subject.map(apply)
     }
-    
+
     public func apply(subject: [String: From]) throws -> [String: To] {
         var result = [String: To](minimumCapacity: subject.count)
         try subject.forEach { key, value in
@@ -32,7 +32,7 @@ public extension TransformerType {
         }
         return result
     }
-    
+
     public func apply(subject: [String: From]?) throws -> [String: To]? {
         return try subject.map(apply)
     }

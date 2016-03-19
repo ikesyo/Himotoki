@@ -14,7 +14,7 @@ public struct Transformer<F, T>: TransformerType {
     public init(_ transform: From -> To?) {
         self.transform = transform
     }
-    
+
     /// - Throws: DecodeError
     public func apply(subject: From) throws -> To {
         if let value = transform(subject) {
