@@ -8,6 +8,9 @@
 
 // MARK: Builder
 
+#if swift(>=3.0)
+    // MARK: - Deprecated
+#else
 @available(*, deprecated, message="Use the given initializer directly instead")
 public func build<A, Value>(create: (A) -> Value) -> (A) -> Value {
     return { a in
@@ -189,3 +192,4 @@ public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U,
         create(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z)
     }
 }
+#endif

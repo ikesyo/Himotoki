@@ -106,26 +106,52 @@ extension Extractor: CustomStringConvertible {
 // Implement it as a tail recursive function.
 //
 // `ArraySlice` is used for performance optimization.
-// See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
-private func valueFor<C: CollectionType where C.Generator.Element == String, C.SubSequence == C>(keyPathComponents: C, _ JSON: AnyJSON) -> AnyJSON? {
-    #if os(Linux)
-    guard let
-        first = keyPathComponents.first,
-        let nativeDict = JSON as? [String: AnyJSON],
-        case let nested? = nativeDict[first] where !(nested is NSNull) else
-    {
-        return nil
-    }
-    #else
-    guard let first = keyPathComponents.first, case let nested?? = JSON[first] where !(nested is NSNull) else {
-        return nil
-    }
-    #endif
+// See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662
 
-    if keyPathComponents.count == 1 {
-        return nested
+#if swift(>=3.0)
+    private func valueFor<C: Collection where C.Iterator.Element == String, C.SubSequence == C>(keyPathComponents: C, _ JSON: AnyJSON) -> AnyJSON? {
+        #if os(Linux)
+            guard let
+                first = keyPathComponents.first,
+                let nativeDict = JSON as? [String: AnyJSON],
+                case let nested? = nativeDict[first] where !(nested is NSNull) else
+            {
+                return nil
+            }
+        #else
+            guard let first = keyPathComponents.first, case let nested?? = JSON[first] where !(nested is NSNull) else {
+                return nil
+            }
+        #endif
+        
+        if keyPathComponents.count == 1 {
+            return nested
+        }
+        
+        let tail = keyPathComponents.dropFirst()
+        return valueFor(tail, nested)
     }
+#else
+    private func valueFor<C: CollectionType where C.Generator.Element == String, C.SubSequence == C>(keyPathComponents: C, _ JSON: AnyJSON) -> AnyJSON? {
+        #if os(Linux)
+            guard let
+                first = keyPathComponents.first,
+                let nativeDict = JSON as? [String: AnyJSON],
+                case let nested? = nativeDict[first] where !(nested is NSNull) else
+            {
+                return nil
+            }
+        #else
+            guard let first = keyPathComponents.first, case let nested?? = JSON[first] where !(nested is NSNull) else {
+                return nil
+            }
+        #endif
 
-    let tail = keyPathComponents.dropFirst()
-    return valueFor(tail, nested)
-}
+        if keyPathComponents.count == 1 {
+            return nested
+        }
+
+        let tail = keyPathComponents.dropFirst()
+        return valueFor(tail, nested)
+    }
+#endif
