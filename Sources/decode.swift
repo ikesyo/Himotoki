@@ -49,16 +49,18 @@ public func decodeDictionary<T: Decodable where T.DecodedType == T>(JSON: AnyJSO
     return try decodeValue(JSON) <|-| rootKeyPath
 }
 
-// MARK: - Deprecated
-
-/// - Throws: DecodeError
-@available(*, deprecated, renamed="decodeValue")
-public func decode<T: Decodable where T.DecodedType == T>(JSON: AnyJSON) throws -> T {
-    return try decodeValue(JSON)
-}
-
-/// - Throws: DecodeError
-@available(*, deprecated, renamed="decodeValue")
-public func decode<T: Decodable where T.DecodedType == T>(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> T {
-    return try decodeValue(JSON)
-}
+#if swift(>=3.0)
+    // MARK: - Deprecated
+#else
+    /// - Throws: DecodeError
+    @available(*, deprecated, renamed="decodeValue")
+    public func decode<T: Decodable where T.DecodedType == T>(JSON: AnyJSON) throws -> T {
+        return try decodeValue(JSON)
+    }
+    
+    /// - Throws: DecodeError
+    @available(*, deprecated, renamed="decodeValue")
+    public func decode<T: Decodable where T.DecodedType == T>(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> T {
+        return try decodeValue(JSON)
+    }
+#endif

@@ -99,11 +99,17 @@ class DecodableTest: XCTestCase {
 
 #if !os(Linux)
     func testPerformanceByPersons() {
-        let peopleJSON = Array(count: 500, repeatedValue: personJSON)
-
-        measureBlock {
-            let _: [Person]? = try? decodeArray(peopleJSON)
-        }
+        #if swift(>=3.0)
+            let peopleJSON = repeatElement(personJSON, count: 500)
+            measure({ 
+                let _: [Person]? = try? decodeArray(peopleJSON.repeatedValue)
+            })
+        #else
+            let peopleJSON = Array(count: 500, repeatedValue: personJSON)
+            measureBlock {
+                let _: [Person]? = try? decodeArray(peopleJSON)
+            }
+        #endif
     }
 #endif
 

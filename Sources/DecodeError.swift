@@ -6,7 +6,13 @@
 //  Copyright © 2015 Syo Ikeda. All rights reserved.
 //
 
-public enum DecodeError: ErrorType {
+#if swift(>=3.0)
+    public typealias HimotokiErrorType = ErrorProtocol
+#else
+    public typealias HimotokiErrorType = ErrorType
+#endif
+
+public enum DecodeError: HimotokiErrorType {
     case MissingKeyPath(KeyPath)
     case TypeMismatch(expected: String, actual: String, keyPath: KeyPath?)
     case Custom(String)
