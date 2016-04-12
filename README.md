@@ -90,7 +90,7 @@ let otherURLs = try URLTransformer.apply(e <|| "bar_urls")
 
 ## Requirements
 
-- Swift 2.1 / Xcode 7.2
+- Swift 2.2 / Xcode 7.3
 - OS X 10.9 or later
 - iOS 8.0 or later (by Carthage or CocoaPods) / iOS 7 (by copying the source files directly)
 - tvOS 9.0 or later
@@ -104,7 +104,7 @@ There are 3 options. If your app support iOS 7, you can only use the last way.
 
 Himotoki is [Carthage](https://github.com/Carthage/Carthage) compatible.
 
-- Add `github "ikesyo/Himotoki" ~> 1.7` to your Cartfile.
+- Add `github "ikesyo/Himotoki" ~> 2.0` to your Cartfile.
 - Run `carthage update`.
 
 ### Framework with CocoaPods
@@ -115,7 +115,7 @@ Himotoki also can be used by [CocoaPods](https://cocoapods.org/).
 
     ```ruby
     use_frameworks!
-    pod "Himotoki", "~> 1.7"
+    pod "Himotoki", "~> 2.0"
     ```
 
 - Run `pod install`.
