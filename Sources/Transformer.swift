@@ -13,27 +13,27 @@ public struct Transformer<From, To> {
         self.transform = transform
     }
 
-    /// - Throws: DecodeError
+    /// - Throws: DecodeError or an arbitrary ErrorType
     public func apply(subject: From) throws -> To {
         return try transform(subject)
     }
 
-    /// - Throws: DecodeError
+    /// - Throws: DecodeError or an arbitrary ErrorType
     public func apply(subject: From?) throws -> To? {
         return try subject.map(apply)
     }
 
-    /// - Throws: DecodeError
+    /// - Throws: DecodeError or an arbitrary ErrorType
     public func apply(subject: [From]) throws -> [To] {
         return try subject.map(transform)
     }
 
-    /// - Throws: DecodeError
+    /// - Throws: DecodeError or an arbitrary ErrorType
     public func apply(subject: [From]?) throws -> [To]? {
         return try subject.map(apply)
     }
 
-    /// - Throws: DecodeError
+    /// - Throws: DecodeError or an arbitrary ErrorType
     public func apply(subject: [String: From]) throws -> [String: To] {
         var result = [String: To](minimumCapacity: subject.count)
         try subject.forEach { key, value in
@@ -42,7 +42,7 @@ public struct Transformer<From, To> {
         return result
     }
 
-    /// - Throws: DecodeError
+    /// - Throws: DecodeError or an arbitrary ErrorType
     public func apply(subject: [String: From]?) throws -> [String: To]? {
         return try subject.map(apply)
     }

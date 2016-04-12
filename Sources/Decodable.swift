@@ -7,8 +7,21 @@
 //
 
 public protocol Decodable {
-    typealias DecodedType = Self
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    static func decode(e: Extractor) throws -> Self
+}
 
-    /// - Throws: DecodeError
-    static func decode(e: Extractor) throws -> DecodedType
+// MARK: - Extensions
+
+extension Decodable {
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public static func decodeValue(JSON: AnyJSON) throws -> Self {
+        let extractor = Extractor(JSON)
+        return try self.decode(extractor)
+    }
+
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public static func decodeValue(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> Self {
+        return try Extractor(JSON).value(rootKeyPath)
+    }
 }

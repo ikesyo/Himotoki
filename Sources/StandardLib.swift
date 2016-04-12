@@ -42,11 +42,53 @@ extension Bool: Decodable {
     }
 }
 
-internal func castOrFail<T>(e: Extractor) throws -> T {
-    let rawValue = e.rawValue
+// MARK: - Extensions
 
-    guard let result = rawValue as? T else {
-        throw typeMismatch("\(T.self)", actual: rawValue, keyPath: nil)
+extension CollectionType where Generator.Element: Decodable {
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public static func decode(JSON: AnyJSON) throws -> [Generator.Element] {
+        guard let array = JSON as? [AnyJSON] else {
+            throw typeMismatch("Array", actual: JSON, keyPath: nil)
+        }
+
+        return try array.map(Generator.Element.decodeValue)
+    }
+
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public static func decode(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> [Generator.Element] {
+        return try Extractor(JSON).array(rootKeyPath)
+    }
+}
+
+extension DictionaryLiteralConvertible where Value: Decodable {
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public static func decode(JSON: AnyJSON) throws -> [String: Value] {
+        guard let dictionary = JSON as? [String: AnyJSON] else {
+            throw typeMismatch("Dictionary", actual: JSON, keyPath: nil)
+        }
+
+        var result = [String: Value](minimumCapacity: dictionary.count)
+        try dictionary.forEach { key, value in
+            result[key] = try Value.decodeValue(value)
+        }
+        return result
+    }
+
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public static func decode(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> [String: Value] {
+        return try Extractor(JSON).dictionary(rootKeyPath)
+    }
+}
+
+// MARK: Helpers
+
+internal func castOrFail<T>(e: Extractor) throws -> T {
+    return try castOrFail(e.rawValue)
+}
+
+internal func castOrFail<T>(any: Any?) throws -> T {
+    guard let result = any as? T else {
+        throw typeMismatch("\(T.self)", actual: any, keyPath: nil)
     }
 
     return result
