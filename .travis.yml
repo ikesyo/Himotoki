@@ -30,9 +30,9 @@ before_install:
 script:
   - pod lib lint --allow-warnings
   - set -o pipefail
-  - xcodebuild test -scheme Himotoki-Mac -configuration Debug | xcpretty -c
-  - xcodebuild test -scheme Himotoki-iOS -configuration Debug -sdk iphonesimulator | xcpretty -c
-  - xcodebuild test -scheme Himotoki-tvOS -configuration Debug -sdk appletvsimulator | xcpretty -c
+  - xcodebuild test -scheme Himotoki-Mac -configuration Release ENABLE_TESTABILITY=YES | xcpretty -c
+  - xcodebuild test -scheme Himotoki-iOS -configuration Release ENABLE_TESTABILITY=YES -sdk iphonesimulator | xcpretty -c
+  - xcodebuild test -scheme Himotoki-tvOS -configuration Release ENABLE_TESTABILITY=YES -sdk appletvsimulator | xcpretty -c
   - xcodebuild build -scheme Himotoki-watchOS -configuration Release -sdk watchsimulator | xcpretty -c
 notifications:
   email: false
