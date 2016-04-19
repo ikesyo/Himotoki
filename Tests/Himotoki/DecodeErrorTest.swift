@@ -88,6 +88,18 @@ class DecodeErrorTest: XCTestCase {
         }
     }
 
+    func testTypeMismatchKeyPathReporting() {
+        do {
+            let d: [String: AnyJSON] = [ "b": [ "string": 123 ] as JSONDictionary ]
+            _ = try A.decodeValue(d)
+            XCTFail("DecodeError.TypeMismatch should be thrown")
+        } catch let DecodeError.TypeMismatch(_, _, keyPath) {
+            XCTAssertEqual(keyPath, [ "b", "string" ])
+        } catch {
+            XCTFail()
+        }
+    }
+
     func testCustomError() {
         do {
             let d: [String: AnyJSON] = [ "url": "file:///Users/foo/bar" ]
@@ -121,6 +133,7 @@ extension DecodeErrorTest: XCTestCaseProvider {
         return [
             ("testMissingKeyPathInDecodeError", testMissingKeyPathInDecodeError),
             ("testMissingKeyPathAndDecodeFailure", testMissingKeyPathAndDecodeFailure),
+            ("testTypeMismatchKeyPathReporting", testTypeMismatchKeyPathReporting),
             ("testCustomError", testCustomError),
             ("testHashableConformance", testHashableConformance),
         ]

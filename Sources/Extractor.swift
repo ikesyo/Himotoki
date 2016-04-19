@@ -48,8 +48,8 @@ public struct Extractor {
             return try T.decodeValue(rawValue)
         } catch let DecodeError.MissingKeyPath(missing) {
             throw DecodeError.MissingKeyPath(keyPath + missing)
-        } catch let DecodeError.TypeMismatch(expected, actual, _) {
-            throw DecodeError.TypeMismatch(expected: expected, actual: actual, keyPath: keyPath)
+        } catch let DecodeError.TypeMismatch(expected, actual, mismatched) {
+            throw DecodeError.TypeMismatch(expected: expected, actual: actual, keyPath: keyPath + mismatched)
         }
     }
 
