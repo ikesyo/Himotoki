@@ -8,23 +8,23 @@
 
 public protocol CustomDecodableType {
     
-    associatedtype DecodeType
+    associatedtype DecodedType
     
-    static func decode(e: Extractor) throws -> DecodeType
+    static func decode(e: Extractor) throws -> DecodedType
 }
 
 public struct CustomDecodable<T:CustomDecodableType> : Decodable {
     
     private var _value: Any
     
-    private init(_ value: T.DecodeType) {
+    private init(_ value: T.DecodedType) {
         
         _value = value
     }
     
-    public var value: T.DecodeType {
+    public var value: T.DecodedType {
         
-        return _value as! T.DecodeType
+        return _value as! T.DecodedType
     }
     
     public static func decode(e: Extractor) throws -> CustomDecodable {
