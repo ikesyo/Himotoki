@@ -51,6 +51,34 @@ private class C: A {
     }
 }
 
+private struct TestForSimple : Decodable {
+    
+    var item1: CustomDecodable<A>
+    var item2: CustomDecodable<A>
+    var item3: CustomDecodable<A>
+    
+    static func decode(e: Extractor) throws -> TestForSimple {
+        
+        return try TestForSimple(item1: e <| "item1", item2: e <| "item2", item3: e <| "item3")
+    }
+}
+
+private struct TestWithConvert : Decodable {
+    
+    var item1: A
+    var item2: A
+    var item3: A
+
+    static func decode(e: Extractor) throws -> TestWithConvert {
+
+        let item1 = try e.value("item1") as CustomDecodable<A>
+        let item2 = try e.value("item2") as CustomDecodable<A>
+        let item3 = try e.value("item3") as CustomDecodable<A>
+        
+        return TestWithConvert(item1: item1.value, item2: item2.value, item3: item3.value)
+    }
+}
+
 class CustomDecodableTest: XCTestCase {
 
     func testDecode() {
@@ -113,6 +141,38 @@ class CustomDecodableTest: XCTestCase {
         XCTAssertEqual(c1?.link, "LINK 2")
         XCTAssertEqual(c2?.link, nil)
     }
+    
+    func testNestedDecode() {
+        
+        let json0: [String : AnyJSON] = [ "type" : 0, "title" : "TITLE 0", "total" : 0.5, "link" : "LINK 1" ]
+        let json1: [String : AnyJSON] = [ "type" : 1, "title" : "TITLE 1", "total" : 1.8, "link" : "LINK 2" ]
+        let json2: [String : AnyJSON] = [ "type" : 2, "title" : "TITLE 2", "total" : 2.3, "link" : "LINK 3" ]
+
+        let json: [String : AnyJSON] = [ "item1" : json0, "item2" : json1, "item3" : json2 ]
+        
+        let instanceForSimple = try? decodeValue(json) as TestForSimple
+        let instanceWithConvert = try? decodeValue(json) as TestWithConvert
+        
+        XCTAssertEqual(instanceForSimple?.item1.value.title, "TITLE 0")
+        XCTAssertEqual(instanceForSimple?.item2.value.title, "TITLE 1")
+        XCTAssertEqual(instanceForSimple?.item3.value.title, "TITLE 2")
+        XCTAssertEqual(instanceForSimple?.item1.value.type, 0)
+        XCTAssertEqual(instanceForSimple?.item2.value.type, 1)
+        XCTAssertEqual(instanceForSimple?.item3.value.type, 2)
+        XCTAssertEqual(instanceForSimple.map { String($0.item1.value.dynamicType) }, String(B.self))
+        XCTAssertEqual(instanceForSimple.map { String($0.item2.value.dynamicType) }, String(C.self))
+        XCTAssertEqual(instanceForSimple.map { String($0.item3.value.dynamicType) }, String(A.self))
+        
+        XCTAssertEqual(instanceWithConvert?.item1.title, "TITLE 0")
+        XCTAssertEqual(instanceWithConvert?.item2.title, "TITLE 1")
+        XCTAssertEqual(instanceWithConvert?.item3.title, "TITLE 2")
+        XCTAssertEqual(instanceWithConvert?.item1.type, 0)
+        XCTAssertEqual(instanceWithConvert?.item2.type, 1)
+        XCTAssertEqual(instanceWithConvert?.item3.type, 2)
+        XCTAssertEqual(instanceWithConvert.map { String($0.item1.dynamicType) }, String(B.self))
+        XCTAssertEqual(instanceWithConvert.map { String($0.item2.dynamicType) }, String(C.self))
+        XCTAssertEqual(instanceWithConvert.map { String($0.item3.dynamicType) }, String(A.self))
+    }
 }
 
 #if os(Linux)
@@ -121,6 +181,7 @@ class CustomDecodableTest: XCTestCase {
         var allTests: [(String, () throws -> Void)] {
             return [
                 ("testDecode", testDecode),
+                ("testNestedDecode", testNestedDecode),
             ]
         }
     }
