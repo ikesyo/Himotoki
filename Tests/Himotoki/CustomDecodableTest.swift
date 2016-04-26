@@ -53,16 +53,6 @@ private class C: A {
 
 class CustomDecodableTest: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-
     func testDecode() {
 
         let json0: [String : AnyJSON] = [ "type" : 0, "title" : "TITLE 0", "total" : 0.5, "link" : "LINK 1" ]
@@ -124,3 +114,15 @@ class CustomDecodableTest: XCTestCase {
         XCTAssertEqual(c2?.link, nil)
     }
 }
+
+#if os(Linux)
+    
+    extension CustomDecodableTest: XCTestCaseProvider {
+        var allTests: [(String, () throws -> Void)] {
+            return [
+                ("testDecode", testDecode),
+            ]
+        }
+    }
+    
+#endif
