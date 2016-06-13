@@ -10,8 +10,8 @@ import Foundation
 import XCTest
 import Himotoki
 
-private func toURL(s: String) throws -> NSURL {
-    if let URL = NSURL(string: s) {
+private func toURL(_ s: String) throws -> URL {
+    if let URL = URL(string: s) {
         return URL
     }
 
@@ -19,14 +19,14 @@ private func toURL(s: String) throws -> NSURL {
 }
 
 private struct URLsByTransformer: Decodable {
-    let value: NSURL
-    let valueOptional: NSURL?
-    let array: [NSURL]
-    let arrayOptional: [NSURL]?
-    let dictionary: [String: NSURL]
-    let dictionaryOptional: [String: NSURL]?
+    let value: URL
+    let valueOptional: URL?
+    let array: [URL]
+    let arrayOptional: [URL]?
+    let dictionary: [String: URL]
+    let dictionaryOptional: [String: URL]?
 
-    static func decode(e: Extractor) throws -> URLsByTransformer {
+    static func decode(_ e: Extractor) throws -> URLsByTransformer {
         let URLTransformer = Transformer(toURL)
 
         return self.init(
@@ -44,7 +44,7 @@ class TransformerTest: XCTestCase {
 
     func testTransformerSuccess() {
         let URLString = "http://www.yahoo.co.jp/"
-        let URL = NSURL(string: URLString)!
+        let url = URL(string: URLString)!
         let JSON: [String: AnyJSON] = [
             "value": URLString,
             "valueOptional": URLString,
@@ -59,12 +59,12 @@ class TransformerTest: XCTestCase {
             return
         }
 
-        XCTAssertEqual(decoded.value, URL)
-        XCTAssertEqual(decoded.valueOptional, URL)
-        XCTAssertEqual(decoded.array, [ URL, URL ])
-        XCTAssertEqual(decoded.arrayOptional!, [ URL, URL ])
-        XCTAssertEqual(decoded.dictionary, [ "a": URL, "b": URL ])
-        XCTAssertEqual(decoded.dictionaryOptional!, [ "a": URL, "b": URL ])
+        XCTAssertEqual(decoded.value, url)
+        XCTAssertEqual(decoded.valueOptional, url)
+        XCTAssertEqual(decoded.array, [ url, url ])
+        XCTAssertEqual(decoded.arrayOptional!, [ url, url ])
+        XCTAssertEqual(decoded.dictionary, [ "a": url, "b": url ])
+        XCTAssertEqual(decoded.dictionaryOptional!, [ "a": url, "b": url ])
     }
 
     func testTransformerFailure() {
@@ -75,7 +75,7 @@ class TransformerTest: XCTestCase {
 
         do {
             _ = try URLsByTransformer.decodeValue(JSON)
-        } catch let DecodeError.Custom(message) {
+        } catch let DecodeError.custom(message) {
             XCTAssertEqual(message, "Invalid URL string: \(URLString)")
         } catch {
             XCTFail()

@@ -41,7 +41,7 @@ extension NestedObjectParsingTest: XCTestCaseProvider {
 struct WithNestedObject: Decodable {
     let nestedName: String
 
-    static func decode(e: Extractor) throws -> WithNestedObject {
+    static func decode(_ e: Extractor) throws -> WithNestedObject {
         return self.init(nestedName: try e <| [ "nested", "name" ])
     }
 }

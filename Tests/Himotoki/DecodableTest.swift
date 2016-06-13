@@ -21,11 +21,11 @@ class DecodableTest: XCTestCase {
             "first_name": "ABC",
             "last_name": "DEF",
             "age": 20,
-            "int64": NSNumber(longLong: Int64.max),
+            "int64": NSNumber(value: Int64.max),
             "height": 175.9,
             "float": 32.1 as Float,
             "bool": true,
-            "number": NSNumber(long: 123456789),
+            "number": NSNumber(value: 123456789),
             "raw_value": "RawValue",
             "nested": [
                 "value": "The nested value",
@@ -56,7 +56,7 @@ class DecodableTest: XCTestCase {
         XCTAssert(person?.height == 175.9)
         XCTAssert(person?.float == 32.1)
         XCTAssert(person?.bool == true)
-        XCTAssert(person?.number == NSNumber(long: 123456789))
+        XCTAssert(person?.number == NSNumber(value: 123456789))
         XCTAssert(person?.rawValue as? String == "RawValue")
 
         XCTAssert(person?.nested == "The nested value")
@@ -78,8 +78,8 @@ class DecodableTest: XCTestCase {
         do {
             JSON["bool"] = nil
             JSON["group"] = nil
-            try Person.decodeValue(JSON)
-        } catch let DecodeError.MissingKeyPath(keyPath) {
+            _ = try Person.decodeValue(JSON)
+        } catch let DecodeError.missingKeyPath(keyPath) {
             XCTAssert(keyPath == "bool")
         } catch {
             XCTFail()
@@ -87,10 +87,10 @@ class DecodableTest: XCTestCase {
 
         do {
             JSON["age"] = "foo_bar"
-            try Person.decodeValue(JSON)
-        } catch let DecodeError.TypeMismatch(expected, actual, keyPath) {
+            _ = try Person.decodeValue(JSON)
+        } catch let DecodeError.typeMismatch(expected, actual, keyPath) {
             XCTAssertEqual(keyPath, "age")
-            XCTAssertTrue(actual.containsString("foo_bar"))
+            XCTAssertTrue(actual.contains("foo_bar"))
             XCTAssertEqual(expected, "Int")
         } catch {
             XCTFail()
@@ -99,9 +99,9 @@ class DecodableTest: XCTestCase {
 
 #if !os(Linux)
     func testPerformanceByPersons() {
-        let peopleJSON = Array(count: 500, repeatedValue: personJSON)
+        let peopleJSON = Array(repeating: personJSON, count: 500)
 
-        measureBlock {
+        measure {
             _ = try? [Person].decode(peopleJSON)
         }
     }
@@ -118,8 +118,8 @@ class DecodableTest: XCTestCase {
 
         JSON["name"] = nil
         do {
-            try Group.decodeValue(JSON)
-        } catch let DecodeError.MissingKeyPath(keyPath) {
+            _ = try Group.decodeValue(JSON)
+        } catch let DecodeError.missingKeyPath(keyPath) {
             XCTAssert(keyPath == "name")
         } catch {
             XCTFail()
@@ -148,14 +148,14 @@ class DecodableTest: XCTestCase {
         let JSON: JSONDictionary = [
             "int": Int.min,
             "uint": UInt.max,
-            "int8": NSNumber(char: Int8.min),
-            "uint8": NSNumber(unsignedChar: UInt8.max),
-            "int16": NSNumber(short: Int16.min),
-            "uint16": NSNumber(unsignedShort: UInt16.max),
-            "int32": NSNumber(int: Int32.min),
-            "uint32": NSNumber(unsignedInt: UInt32.max),
-            "int64": NSNumber(longLong: Int64.min),
-            "uint64": NSNumber(unsignedLongLong: UInt64.max),
+            "int8": NSNumber(value: Int8.min),
+            "uint8": NSNumber(value: UInt8.max),
+            "int16": NSNumber(value: Int16.min),
+            "uint16": NSNumber(value: UInt16.max),
+            "int32": NSNumber(value: Int32.min),
+            "uint32": NSNumber(value: UInt32.max),
+            "int64": NSNumber(value: Int64.min),
+            "uint64": NSNumber(value: UInt64.max),
         ]
 
         let numbers = try? Numbers.decodeValue(JSON)
@@ -212,7 +212,7 @@ struct Person: Decodable {
     let group: Group
     let groups: [Group]
 
-    static func decode(e: Extractor) throws -> Person {
+    static func decode(_ e: Extractor) throws -> Person {
         return try Person(
             firstName: e <| "first_name",
             lastName: e <| "last_name",
@@ -240,7 +240,7 @@ struct Group: Decodable {
     let floor: Int
     let optional: [String]?
 
-    static func decode(e: Extractor) throws -> Group {
+    static func decode(_ e: Extractor) throws -> Group {
         return try Group(
             name: e <| "name",
             floor: e <| "floor",
@@ -261,7 +261,7 @@ struct Numbers: Decodable {
     let int64: Int64
     let uint64: UInt64
 
-    static func decode(e: Extractor) throws -> Numbers {
+    static func decode(_ e: Extractor) throws -> Numbers {
         return try Numbers(
             int: e <| "int",
             uint: e <| "uint",
