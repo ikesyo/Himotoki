@@ -9,7 +9,7 @@
 import class Foundation.NSNumber
 
 extension NSNumber: Decodable {
-    public static func decode(e: Extractor) throws -> Self {
+    public static func decode(e: Extractor) throws -> NSNumber {
         return try castOrFail(e)
     }
 }

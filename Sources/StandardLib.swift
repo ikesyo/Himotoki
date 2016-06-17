@@ -44,7 +44,7 @@ extension Bool: Decodable {
 
 // MARK: - Extensions
 
-extension CollectionType where Generator.Element: Decodable {
+extension CollectionType where Generator.Element: Decodable, Generator.Element.DecodedType == Generator.Element {
     /// - Throws: DecodeError or an arbitrary ErrorType
     public static func decode(JSON: AnyJSON) throws -> [Generator.Element] {
         guard let array = JSON as? [AnyJSON] else {
@@ -60,7 +60,7 @@ extension CollectionType where Generator.Element: Decodable {
     }
 }
 
-extension DictionaryLiteralConvertible where Value: Decodable {
+extension DictionaryLiteralConvertible where Value: Decodable, Value.DecodedType == Value {
     /// - Throws: DecodeError or an arbitrary ErrorType
     public static func decode(JSON: AnyJSON) throws -> [String: Value] {
         guard let dictionary = JSON as? [String: AnyJSON] else {
@@ -83,7 +83,13 @@ extension DictionaryLiteralConvertible where Value: Decodable {
 // MARK: Helpers
 
 internal func castOrFail<T>(e: Extractor) throws -> T {
-    return try castOrFail(e.rawValue)
+    let rawValue = e.rawValue
+
+    guard let result = rawValue as? T else {
+        throw typeMismatch("\(T.self)", actual: rawValue, keyPath: nil)
+    }
+
+    return result
 }
 
 internal func castOrFail<T>(any: Any?) throws -> T {
