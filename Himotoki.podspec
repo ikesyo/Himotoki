@@ -24,4 +24,5 @@ DESC
   s.source       = { :git => "https://github.com/ikesyo/Himotoki.git", :tag => s.version }
   s.source_files  = "Sources/**/*.swift"
   s.requires_arc = true
+  s.pod_target_xcconfig = { "SWIFT_VERSION" => "2.3" }
 end
