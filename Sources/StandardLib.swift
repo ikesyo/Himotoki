@@ -79,17 +79,3 @@ extension DictionaryLiteralConvertible where Value: Decodable {
         return try Extractor(JSON).dictionary(rootKeyPath)
     }
 }
-
-// MARK: Helpers
-
-internal func castOrFail<T>(e: Extractor) throws -> T {
-    return try castOrFail(e.rawValue)
-}
-
-internal func castOrFail<T>(any: Any?) throws -> T {
-    guard let result = any as? T else {
-        throw typeMismatch("\(T.self)", actual: any, keyPath: nil)
-    }
-
-    return result
-}
