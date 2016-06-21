@@ -10,7 +10,7 @@ internal func castOrFail<T>(e: Extractor) throws -> T {
     return try castOrFail(e.rawValue)
 }
 
-public func castOrFail<T>(any: Any?) throws -> T {
+public func castOrFail<T>(any: Any) throws -> T {
     guard let result = any as? T else {
         throw typeMismatch("\(T.self)", actual: any, keyPath: nil)
     }
