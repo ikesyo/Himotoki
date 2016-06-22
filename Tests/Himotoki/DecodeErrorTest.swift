@@ -8,7 +8,7 @@
 
 import Foundation
 import XCTest
-@testable import Himotoki
+import Himotoki
 
 extension URL: Decodable {
     public static func decode(_ e: Extractor) throws -> URL {
