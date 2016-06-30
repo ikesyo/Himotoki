@@ -104,7 +104,7 @@ There are 3 options. If your app support iOS 7, you can only use the last way.
 
 Himotoki is [Carthage](https://github.com/Carthage/Carthage) compatible.
 
-- Add `github "ikesyo/Himotoki" ~> 2.1` to your Cartfile.
+- Add `github "ikesyo/Himotoki" ~> 2.1.1` to your Cartfile.
 - Run `carthage update`.
 
 ### Framework with CocoaPods
@@ -115,7 +115,7 @@ Himotoki also can be used by [CocoaPods](https://cocoapods.org/).
 
     ```ruby
     use_frameworks!
-    pod "Himotoki", "~> 2.1"
+    pod "Himotoki", "~> 2.1.1"
     ```
 
 - Run `pod install`.
