@@ -571,18 +571,31 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Syo Ikeda";
 				TargetAttributes = {
+					CD8F0DC61B6D014B0021196A = {
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
+					};
 					CD929A361AF4A2C3002F5C53 = {
 						CreatedOnToolsVersion = 6.3;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					CD929A411AF4A2C3002F5C53 = {
 						CreatedOnToolsVersion = 6.3;
+						LastSwiftMigration = 0800;
+					};
+					CDE4238D1BF2E9B000C9473F = {
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					CDE423A81BF2ECA700C9473F = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
 					};
 					CDF03E321AF606F60041C3AA = {
 						CreatedOnToolsVersion = 6.3;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					CDF03E3C1AF606F60041C3AA = {
 						CreatedOnToolsVersion = 6.3;
@@ -829,7 +842,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD748AE01B4440CB00632C3F /* Debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -851,6 +867,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD748AE21B4440CB00632C3F /* Release.xcconfig */;
 			buildSettings = {
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -871,7 +889,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD748AEB1B4440CB00632C3F /* iOS-Framework.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Sources/Info.plist;
@@ -883,7 +900,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD748AEB1B4440CB00632C3F /* iOS-Framework.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Sources/Info.plist;
