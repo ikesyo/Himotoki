@@ -22,7 +22,7 @@ extension URL: Decodable {
             throw customError("File URL is not supported")
         }
 
-        return try castOrFail(URL(string: value))
+        return try castOrFail(self.init(string: value))
     }
 }
 
@@ -128,8 +128,10 @@ class DecodeErrorTest: XCTestCase {
 
 #if os(Linux)
 
-extension DecodeErrorTest: XCTestCaseProvider {
-    var allTests: [(String, () throws -> Void)] {
+public typealias URL = NSURL
+
+extension DecodeErrorTest {
+    static var allTests: [(String, (DecodeErrorTest) -> () throws -> Void)] {
         return [
             ("testMissingKeyPathInDecodeError", testMissingKeyPathInDecodeError),
             ("testMissingKeyPathAndDecodeFailure", testMissingKeyPathAndDecodeFailure),

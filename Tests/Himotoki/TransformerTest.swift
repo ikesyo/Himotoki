@@ -85,8 +85,8 @@ class TransformerTest: XCTestCase {
 
 #if os(Linux)
 
-extension TransformerTest: XCTestCaseProvider {
-    var allTests: [(String, () throws -> Void)] {
+extension TransformerTest {
+    static var allTests: [(String, (TransformerTest) -> () throws -> Void)] {
         return [
             ("testTransformerSuccess", testTransformerSuccess),
             ("testTransformerFailure", testTransformerFailure),

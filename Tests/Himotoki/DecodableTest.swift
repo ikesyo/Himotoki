@@ -176,8 +176,8 @@ class DecodableTest: XCTestCase {
 
 #if os(Linux)
 
-extension DecodableTest: XCTestCaseProvider {
-    var allTests: [(String, () throws -> Void)] {
+extension DecodableTest {
+    static var allTests: [(String, (DecodableTest) -> () throws -> Void)] {
         return [
             ("testPerson", testPerson),
 //            ("testPerformanceByPersons", testPerformanceByPersons),

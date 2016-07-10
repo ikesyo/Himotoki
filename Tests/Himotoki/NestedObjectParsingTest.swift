@@ -27,8 +27,8 @@ class NestedObjectParsingTest: XCTestCase {
 
 #if os(Linux)
 
-extension NestedObjectParsingTest: XCTestCaseProvider {
-    var allTests: [(String, () throws -> Void)] {
+extension NestedObjectParsingTest {
+    static var allTests: [(String, (NestedObjectParsingTest) -> () throws -> Void)] {
         return [
             ("testParseNestedObjectSuccess", testParseNestedObjectSuccess),
             ("testParseNestedObjectFailure", testParseNestedObjectFailure),
