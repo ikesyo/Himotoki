@@ -2,16 +2,25 @@ env:
   global:
     - LC_CTYPE=en_US.UTF-8
 matrix:
-  allow_failures:
-    - osx_image: xcode8
-  fast_finish: true
   include:
     - os: osx
       language: objective-c
       osx_image: xcode7.3
+      script:
+        - pod lib lint --allow-warnings --quick
+        - rake "build[test, Himotoki-Mac, macosx, arch=x86_64]"
+        - rake "build[test, Himotoki-iOS, iphonesimulator, name=iPhone 6s]"
+        - rake "build[test, Himotoki-tvOS, appletvsimulator, name=Apple TV 1080p]"
+        - rake "build[build, Himotoki-watchOS, watchsimulator, name=Apple Watch - 38mm]"
     - os: osx
       language: objective-c
       osx_image: xcode8
+      script:
+        - pod lib lint --allow-warnings --quick
+        - rake "build[build-for-testing test-without-building, Himotoki-Mac, macosx, arch=x86_64]"
+        - rake "build[build-for-testing test-without-building, Himotoki-iOS, iphonesimulator, name=iPhone 6s]"
+        - rake "build[build-for-testing test-without-building, Himotoki-tvOS, appletvsimulator, name=Apple TV 1080p]"
+        - rake "build[build, Himotoki-watchOS, watchsimulator, name=Apple Watch - 38mm]"
 #     - os: osx
 #       language: generic
 #       osx_image: xcode7.3
@@ -33,11 +42,5 @@ git:
   submodules: false
 before_install:
   - git submodule update --init --recursive
-script:
-  - pod lib lint --allow-warnings --quick
-  - rake "build[test, Himotoki-Mac, macosx, arch=x86_64]"
-  - rake "build[test, Himotoki-iOS, iphonesimulator, name=iPhone 6s]"
-  - rake "build[test, Himotoki-tvOS, appletvsimulator, name=Apple TV 1080p]"
-  - rake "build[build, Himotoki-watchOS, watchsimulator, name=Apple Watch - 38mm]"
 notifications:
   email: false
