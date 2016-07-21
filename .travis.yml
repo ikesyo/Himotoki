@@ -8,7 +8,7 @@ matrix:
       osx_image: xcode8
       script:
         - pod lib lint --allow-warnings --quick
-        - rake "build[build-for-testing test-without-building, Himotoki-Mac, macosx, arch=x86_64]"
+        - rake "build[build-for-testing test-without-building, Himotoki-macOS, macosx, arch=x86_64]"
         - rake "build[build-for-testing test-without-building, Himotoki-iOS, iphonesimulator, name=iPhone 6s]"
         - rake "build[build-for-testing test-without-building, Himotoki-tvOS, appletvsimulator, name=Apple TV 1080p]"
         - rake "build[build, Himotoki-watchOS, watchsimulator, name=Apple Watch - 38mm]"

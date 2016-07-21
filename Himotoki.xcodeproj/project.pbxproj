@@ -163,7 +163,7 @@
 		CDE423A41BF2EA0A00C9473F /* tvOS-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "tvOS-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
 		CDE423A91BF2ECA700C9473F /* HimotokiTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HimotokiTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF03E331AF606F60041C3AA /* Himotoki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Himotoki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDF03E3D1AF606F60041C3AA /* HimotokiTests-Mac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HimotokiTests-Mac.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDF03E3D1AF606F60041C3AA /* HimotokiTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HimotokiTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,7 +316,7 @@
 				CD929A371AF4A2C3002F5C53 /* Himotoki.framework */,
 				CD929A421AF4A2C3002F5C53 /* HimotokiTests-iOS.xctest */,
 				CDF03E331AF606F60041C3AA /* Himotoki.framework */,
-				CDF03E3D1AF606F60041C3AA /* HimotokiTests-Mac.xctest */,
+				CDF03E3D1AF606F60041C3AA /* HimotokiTests-macOS.xctest */,
 				CD8F0DD51B6D014B0021196A /* Himotoki.framework */,
 				CDE4239E1BF2E9B000C9473F /* Himotoki.framework */,
 				CDE423A91BF2ECA700C9473F /* HimotokiTests-tvOS.xctest */,
@@ -525,9 +525,9 @@
 			productReference = CDE423A91BF2ECA700C9473F /* HimotokiTests-tvOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CDF03E321AF606F60041C3AA /* Himotoki-Mac */ = {
+		CDF03E321AF606F60041C3AA /* Himotoki-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CDF03E4A1AF606F70041C3AA /* Build configuration list for PBXNativeTarget "Himotoki-Mac" */;
+			buildConfigurationList = CDF03E4A1AF606F70041C3AA /* Build configuration list for PBXNativeTarget "Himotoki-macOS" */;
 			buildPhases = (
 				CDF03E2E1AF606F60041C3AA /* Sources */,
 				CDF03E2F1AF606F60041C3AA /* Frameworks */,
@@ -538,14 +538,14 @@
 			);
 			dependencies = (
 			);
-			name = "Himotoki-Mac";
+			name = "Himotoki-macOS";
 			productName = Himotoki;
 			productReference = CDF03E331AF606F60041C3AA /* Himotoki.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CDF03E3C1AF606F60041C3AA /* HimotokiTests-Mac */ = {
+		CDF03E3C1AF606F60041C3AA /* HimotokiTests-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CDF03E4B1AF606F70041C3AA /* Build configuration list for PBXNativeTarget "HimotokiTests-Mac" */;
+			buildConfigurationList = CDF03E4B1AF606F70041C3AA /* Build configuration list for PBXNativeTarget "HimotokiTests-macOS" */;
 			buildPhases = (
 				CDF03E391AF606F60041C3AA /* Sources */,
 				CDF03E3A1AF606F60041C3AA /* Frameworks */,
@@ -556,9 +556,9 @@
 			dependencies = (
 				CDF03E401AF606F70041C3AA /* PBXTargetDependency */,
 			);
-			name = "HimotokiTests-Mac";
+			name = "HimotokiTests-macOS";
 			productName = HimotokiTests;
-			productReference = CDF03E3D1AF606F60041C3AA /* HimotokiTests-Mac.xctest */;
+			productReference = CDF03E3D1AF606F60041C3AA /* HimotokiTests-macOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -615,13 +615,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				CDF03E321AF606F60041C3AA /* Himotoki-macOS */,
+				CDF03E3C1AF606F60041C3AA /* HimotokiTests-macOS */,
 				CD929A361AF4A2C3002F5C53 /* Himotoki-iOS */,
 				CD929A411AF4A2C3002F5C53 /* HimotokiTests-iOS */,
-				CDF03E321AF606F60041C3AA /* Himotoki-Mac */,
-				CDF03E3C1AF606F60041C3AA /* HimotokiTests-Mac */,
-				CD8F0DC61B6D014B0021196A /* Himotoki-watchOS */,
 				CDE4238D1BF2E9B000C9473F /* Himotoki-tvOS */,
 				CDE423A81BF2ECA700C9473F /* HimotokiTests-tvOS */,
+				CD8F0DC61B6D014B0021196A /* Himotoki-watchOS */,
 			);
 		};
 /* End PBXProject section */
@@ -812,7 +812,7 @@
 		};
 		CDF03E401AF606F70041C3AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CDF03E321AF606F60041C3AA /* Himotoki-Mac */;
+			target = CDF03E321AF606F60041C3AA /* Himotoki-macOS */;
 			targetProxy = CDF03E3F1AF606F70041C3AA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1109,7 +1109,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CDF03E4A1AF606F70041C3AA /* Build configuration list for PBXNativeTarget "Himotoki-Mac" */ = {
+		CDF03E4A1AF606F70041C3AA /* Build configuration list for PBXNativeTarget "Himotoki-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CDF03E461AF606F70041C3AA /* Debug */,
@@ -1118,7 +1118,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CDF03E4B1AF606F70041C3AA /* Build configuration list for PBXNativeTarget "HimotokiTests-Mac" */ = {
+		CDF03E4B1AF606F70041C3AA /* Build configuration list for PBXNativeTarget "HimotokiTests-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CDF03E481AF606F70041C3AA /* Debug */,
