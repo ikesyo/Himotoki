@@ -8,6 +8,7 @@
 
 // MARK: Builder
 
+#if !os(Linux)
 @available(*, unavailable, message:"Use the given initializer directly instead")
 @noreturn public func build<A, Value>(_ create: (A) -> Value) -> (A) -> Value {}
 
@@ -85,3 +86,4 @@
 
 @available(*, unavailable, message:"Use the given initializer directly instead")
 @noreturn public func build<A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Value>(_ create: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z) -> Value) -> (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z) -> Value {}
+#endif
