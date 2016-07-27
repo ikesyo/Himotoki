@@ -58,8 +58,6 @@ class RawRepresentableTest: XCTestCase {
 
 }
 
-#if os(Linux)
-
 extension RawRepresentableTest {
     static var allTests: [(String, (RawRepresentableTest) -> () throws -> Void)] {
         return [
@@ -67,5 +65,3 @@ extension RawRepresentableTest {
         ]
     }
 }
-
-#endif

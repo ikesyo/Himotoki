@@ -25,8 +25,6 @@ class NestedObjectParsingTest: XCTestCase {
     }
 }
 
-#if os(Linux)
-
 extension NestedObjectParsingTest {
     static var allTests: [(String, (NestedObjectParsingTest) -> () throws -> Void)] {
         return [
@@ -35,8 +33,6 @@ extension NestedObjectParsingTest {
         ]
     }
 }
-
-#endif
 
 struct WithNestedObject: Decodable {
     let nestedName: String

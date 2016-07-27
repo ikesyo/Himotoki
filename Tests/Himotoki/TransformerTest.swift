@@ -83,8 +83,6 @@ class TransformerTest: XCTestCase {
     }
 }
 
-#if os(Linux)
-
 extension TransformerTest {
     static var allTests: [(String, (TransformerTest) -> () throws -> Void)] {
         return [
@@ -93,5 +91,3 @@ extension TransformerTest {
         ]
     }
 }
-
-#endif
