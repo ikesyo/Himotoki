@@ -130,6 +130,8 @@ class DecodeErrorTest: XCTestCase {
 
 public typealias URL = NSURL
 
+#endif
+
 extension DecodeErrorTest {
     static var allTests: [(String, (DecodeErrorTest) -> () throws -> Void)] {
         return [
@@ -141,5 +143,3 @@ extension DecodeErrorTest {
         ]
     }
 }
-
-#endif

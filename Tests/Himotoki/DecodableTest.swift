@@ -174,8 +174,6 @@ class DecodableTest: XCTestCase {
 
 }
 
-#if os(Linux)
-
 extension DecodableTest {
     static var allTests: [(String, (DecodableTest) -> () throws -> Void)] {
         return [
@@ -188,8 +186,6 @@ extension DecodableTest {
         ]
     }
 }
-
-#endif
 
 struct Person: Decodable {
     let firstName: String

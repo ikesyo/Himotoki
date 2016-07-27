@@ -60,8 +60,6 @@ class DecodeWithRootKeyPathTest: XCTestCase {
     }
 }
 
-#if os(Linux)
-
 extension DecodeWithRootKeyPathTest {
     static var allTests: [(String, (DecodeWithRootKeyPathTest) -> () throws -> Void)] {
         return [
@@ -71,5 +69,3 @@ extension DecodeWithRootKeyPathTest {
         ]
     }
 }
-
-#endif

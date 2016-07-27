@@ -22,8 +22,6 @@ class KeyPathTest: XCTestCase {
     }
 }
 
-#if os(Linux)
-
 extension KeyPathTest {
     static var allTests: [(String, (KeyPathTest) -> () throws -> Void)] {
         return [
@@ -32,5 +30,3 @@ extension KeyPathTest {
         ]
     }
 }
-    
-#endif
