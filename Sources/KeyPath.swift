@@ -6,6 +6,13 @@
 //  Copyright (c) 2015 Syo Ikeda. All rights reserved.
 //
 
+#if !os(Linux)
+    public typealias ExpressibleByStringLiteral = StringLiteralConvertible
+    public typealias ExpressibleByArrayLiteral = ArrayLiteralConvertible
+    public typealias ExpressibleByDictionaryLiteral = DictionaryLiteralConvertible
+    public typealias ExpressibleByNilLiteral = NilLiteralConvertible
+#endif
+
 public struct KeyPath: Hashable {
     public let components: [String]
 
@@ -42,7 +49,7 @@ extension KeyPath: CustomStringConvertible {
     }
 }
 
-extension KeyPath: StringLiteralConvertible {
+extension KeyPath: ExpressibleByStringLiteral {
     public init(unicodeScalarLiteral value: String) {
         self.init(value)
     }
@@ -56,13 +63,13 @@ extension KeyPath: StringLiteralConvertible {
     }
 }
 
-extension KeyPath: ArrayLiteralConvertible {
+extension KeyPath: ExpressibleByArrayLiteral {
     public init(arrayLiteral elements: String...) {
         self.init(elements)
     }
 }
 
-extension KeyPath: NilLiteralConvertible {
+extension KeyPath: ExpressibleByNilLiteral {
     public init(nilLiteral: ()) {
         self.init([])
     }

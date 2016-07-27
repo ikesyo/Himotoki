@@ -40,8 +40,8 @@ public func decodeDictionary<T: Decodable>(_ JSON: AnyJSON, rootKeyPath: KeyPath
 
 /// - Throws: DecodeError
 @available(*, unavailable, renamed:"decodeValue")
-@noreturn public func decode<T: Decodable>(_ JSON: AnyJSON) throws -> T {}
+public func decode<T: Decodable>(_ JSON: AnyJSON) throws -> T { fatalError() }
 
 /// - Throws: DecodeError
 @available(*, unavailable, renamed:"decodeValue")
-@noreturn public func decode<T: Decodable>(_ JSON: AnyJSON, rootKeyPath: KeyPath) throws -> T {}
+public func decode<T: Decodable>(_ JSON: AnyJSON, rootKeyPath: KeyPath) throws -> T { fatalError() }
