@@ -126,12 +126,6 @@ class DecodeErrorTest: XCTestCase {
     }
 }
 
-#if os(Linux)
-
-public typealias URL = NSURL
-
-#endif
-
 extension DecodeErrorTest {
     static var allTests: [(String, (DecodeErrorTest) -> () throws -> Void)] {
         return [
