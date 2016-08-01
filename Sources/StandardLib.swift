@@ -60,7 +60,7 @@ extension Collection where Iterator.Element: Decodable {
     }
 }
 
-extension DictionaryLiteralConvertible where Value: Decodable {
+extension ExpressibleByDictionaryLiteral where Value: Decodable {
     /// - Throws: DecodeError or an arbitrary ErrorType
     public static func decode(_ JSON: AnyJSON) throws -> [String: Value] {
         guard let dictionary = JSON as? [String: AnyJSON] else {
