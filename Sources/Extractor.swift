@@ -112,12 +112,12 @@ private func valueFor<C: Collection where C.Iterator.Element == String, C.SubSeq
     guard let
         first = keyPathComponents.first,
         let nativeDict = JSON as? [String: AnyJSON],
-        case let nested? = nativeDict[first] where !(nested is NSNull) else
+        case let nested? = nativeDict[first], !(nested is NSNull) else
     {
         return nil
     }
     #else
-    guard let first = keyPathComponents.first, case let nested?? = JSON[first] where !(nested is NSNull) else {
+    guard let first = keyPathComponents.first, case let nested?? = JSON[first], !(nested is NSNull) else {
         return nil
     }
     #endif
