@@ -9,7 +9,7 @@
 public struct Transformer<From, To> {
     private let transform: (From) throws -> To
 
-    public init(_ transform: (From) throws -> To) {
+    public init(_ transform: @escaping (From) throws -> To) {
         self.transform = transform
     }
 
