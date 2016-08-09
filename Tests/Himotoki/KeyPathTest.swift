@@ -32,5 +32,5 @@ extension KeyPathTest: XCTestCaseProvider {
         ]
     }
 }
-    
+
 #endif

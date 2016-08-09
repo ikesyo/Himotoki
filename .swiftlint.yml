@@ -1,5 +1,10 @@
 disabled_rules:
   - line_length
+  - valid_docs
 included:
-  - Himotoki
-  - HimotokiTests
+  - Sources
+  - Tests
+
+variable_name:
+  excluded:
+    - e
