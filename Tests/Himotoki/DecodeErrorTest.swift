@@ -34,15 +34,15 @@ private struct URLHolder: Decodable {
     }
 }
 
-private struct A: Decodable {
-    let b: B?
+private struct A: Decodable { // swiftlint:disable:this type_name
+    let b: B? // swiftlint:disable:this variable_name
 
     static func decode(_ e: Extractor) throws -> A {
         return self.init(b: try e <|? "b")
     }
 }
 
-private struct B: Decodable {
+private struct B: Decodable { // swiftlint:disable:this type_name
     let string: String
 
     static func decode(_ e: Extractor) throws -> B {
@@ -74,7 +74,7 @@ class DecodeErrorTest: XCTestCase {
 
     func testMissingKeyPathAndDecodeFailure() {
         let d: [String: AnyJSON] = [:]
-        let a = try! A.decodeValue(d)
+        let a = try! A.decodeValue(d) // swiftlint:disable:this force_try
         XCTAssertNil(a.b)
 
         do {

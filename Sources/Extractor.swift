@@ -109,10 +109,11 @@ extension Extractor: CustomStringConvertible {
 // See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
 private func valueFor<C: Collection where C.Iterator.Element == String, C.SubSequence == C>(_ keyPathComponents: C, _ JSON: AnyJSON) -> AnyJSON? {
     #if os(Linux)
-    guard let
-        first = keyPathComponents.first,
+    guard
+        let first = keyPathComponents.first,
         let nativeDict = JSON as? [String: AnyJSON],
-        case let nested? = nativeDict[first], !(nested is NSNull) else
+        case let nested? = nativeDict[first],
+        !(nested is NSNull) else // swiftlint:disable:this opening_brace
     {
         return nil
     }

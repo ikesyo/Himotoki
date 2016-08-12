@@ -38,7 +38,7 @@ class RawRepresentableTest: XCTestCase {
             "double_2": 4.0,
         ]
 
-        let e = try! Extractor.decodeValue(JSON)
+        let e = try! Extractor.decodeValue(JSON) // swiftlint:disable:this force_try
 
         let A: StringEnum? = try? e <| "string_1"
         let D: StringEnum? = try? e <| "string_2"
