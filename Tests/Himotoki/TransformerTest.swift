@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 import Himotoki
 
-private func toURL(s: String) throws -> NSURL {
+private func toURL(s: String) throws -> NSURL { // swiftlint:disable:this variable_name
     if let URL = NSURL(string: s) {
         return URL
     }

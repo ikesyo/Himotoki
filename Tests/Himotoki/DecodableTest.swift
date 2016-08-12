@@ -43,7 +43,7 @@ class DecodableTest: XCTestCase {
         return JSON
     }()
 
-    func testPerson() {
+    func testPerson() { // swiftlint:disable:this function_body_length
         var JSON = personJSON
 
         // Succeeding case
