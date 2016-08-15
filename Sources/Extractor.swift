@@ -8,11 +8,7 @@
 
 import Foundation
 
-#if os(Linux)
-    public typealias AnyJSON = Any
-#else
-    public typealias AnyJSON = AnyObject
-#endif
+public typealias AnyJSON = Any
 
 public struct Extractor {
     public let rawValue: AnyJSON
@@ -107,7 +103,7 @@ extension Extractor: CustomStringConvertible {
 //
 // `ArraySlice` is used for performance optimization.
 // See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
-private func valueFor<C: Collection where C.Iterator.Element == String, C.SubSequence == C>(_ keyPathComponents: C, _ JSON: AnyJSON) -> AnyJSON? {
+private func valueFor<C: Collection>(_ keyPathComponents: C, _ JSON: AnyJSON) -> AnyJSON? where C.Iterator.Element == String, C.SubSequence == C {
     #if os(Linux)
     guard
         let first = keyPathComponents.first,
@@ -118,7 +114,7 @@ private func valueFor<C: Collection where C.Iterator.Element == String, C.SubSeq
         return nil
     }
     #else
-    guard let first = keyPathComponents.first, case let nested?? = JSON[first], !(nested is NSNull) else {
+    guard let first = keyPathComponents.first, case let nested?? = (JSON as AnyObject)[first], !(nested is NSNull) else {
         return nil
     }
     #endif
