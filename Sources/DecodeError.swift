@@ -63,7 +63,7 @@ public func missingKeyPath(_ keyPath: KeyPath) -> DecodeError {
 }
 
 public func typeMismatch<T>(_ expected: String, actual: T, keyPath: KeyPath = KeyPath.empty) -> DecodeError {
-    return DecodeError.typeMismatch(expected: expected, actual: String(actual), keyPath: keyPath)
+    return DecodeError.typeMismatch(expected: expected, actual: String(describing: actual), keyPath: keyPath)
 }
 
 public func customError(_ message: String) -> DecodeError {

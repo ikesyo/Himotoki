@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import HimotokiTestSuite
+@testable import HimotokiTests
 
 XCTMain([
     testCase(DecodableTest.allTests),

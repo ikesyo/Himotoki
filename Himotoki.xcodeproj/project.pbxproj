@@ -304,7 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				CD929A391AF4A2C3002F5C53 /* Himotoki */,
-				CD929A461AF4A2C3002F5C53 /* Tests */,
+				CD929A461AF4A2C3002F5C53 /* HimotokiTests */,
 				CD748ADB1B4440CB00632C3F /* Configuration */,
 				CD929A381AF4A2C3002F5C53 /* Products */,
 			);
@@ -342,7 +342,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CD929A461AF4A2C3002F5C53 /* Tests */ = {
+		CD929A461AF4A2C3002F5C53 /* HimotokiTests */ = {
 			isa = PBXGroup;
 			children = (
 				CD929A571AF4A915002F5C53 /* DecodableTest.swift */,
@@ -354,8 +354,8 @@
 				CD929A471AF4A2C3002F5C53 /* Supporting Files */,
 				CDC356901C819DE7004F6E47 /* TransformerTest.swift */,
 			);
-			name = Tests;
-			path = Tests/Himotoki;
+			name = HimotokiTests;
+			path = Tests/HimotokiTests;
 			sourceTree = "<group>";
 		};
 		CD929A471AF4A2C3002F5C53 /* Supporting Files */ = {
@@ -568,7 +568,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Syo Ikeda";
 				TargetAttributes = {
 					CD8F0DC61B6D014B0021196A = {
@@ -842,6 +842,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD748AE01B4440CB00632C3F /* Debug.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -867,6 +869,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD748AE21B4440CB00632C3F /* Release.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -920,7 +924,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Tests/Himotoki/Info.plist;
+				INFOPLIST_FILE = Tests/HimotokiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -937,7 +941,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Tests/Himotoki/Info.plist;
+				INFOPLIST_FILE = Tests/HimotokiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -973,7 +977,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Tests/Himotoki/Info.plist;
+				INFOPLIST_FILE = Tests/HimotokiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -986,7 +990,7 @@
 			baseConfigurationReference = CDE423A11BF2EA0A00C9473F /* tvOS-Application.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = Tests/Himotoki/Info.plist;
+				INFOPLIST_FILE = Tests/HimotokiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -1029,7 +1033,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Tests/Himotoki/Info.plist;
+				INFOPLIST_FILE = Tests/HimotokiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1045,7 +1049,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Tests/Himotoki/Info.plist;
+				INFOPLIST_FILE = Tests/HimotokiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
