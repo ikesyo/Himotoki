@@ -45,7 +45,7 @@ class TransformerTest: XCTestCase {
     func testTransformerSuccess() {
         let URLString = "http://www.yahoo.co.jp/"
         let url = URL(string: URLString)!
-        let JSON: [String: AnyJSON] = [
+        let JSON: [String: Any] = [
             "value": URLString,
             "valueOptional": URLString,
             "array": [ URLString, URLString ] as JSONArray,
@@ -69,7 +69,7 @@ class TransformerTest: XCTestCase {
 
     func testTransformerFailure() {
         let URLString = "日本語"
-        let JSON: [String: AnyJSON] = [
+        let JSON: [String: Any] = [
             "value": URLString,
         ]
 

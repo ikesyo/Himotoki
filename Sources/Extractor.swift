@@ -8,24 +8,22 @@
 
 import Foundation
 
-public typealias AnyJSON = Any
-
 public struct Extractor {
-    public let rawValue: AnyJSON
+    public let rawValue: Any
     private let isDictionary: Bool
 
-    internal init(_ rawValue: AnyJSON) {
+    internal init(_ rawValue: Any) {
         self.rawValue = rawValue
         #if os(Linux)
-            self.isDictionary = rawValue is [String: AnyJSON]
+            self.isDictionary = rawValue is [String: Any]
         #else
             self.isDictionary = rawValue is NSDictionary
         #endif
     }
 
-    // If we use `rawValue` here, that would conflict with `let rawValue: AnyJSON`
+    // If we use `rawValue` here, that would conflict with `let rawValue: Any`
     // on Linux. This naming is avoiding the weird case.
-    private func _rawValue(_ keyPath: KeyPath) throws -> AnyJSON? {
+    private func _rawValue(_ keyPath: KeyPath) throws -> Any? {
         guard isDictionary else {
             throw typeMismatch("Dictionary", actual: rawValue, keyPath: keyPath)
         }
@@ -103,11 +101,11 @@ extension Extractor: CustomStringConvertible {
 //
 // `ArraySlice` is used for performance optimization.
 // See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
-private func valueFor<C: Collection>(_ keyPathComponents: C, _ JSON: AnyJSON) -> AnyJSON? where C.Iterator.Element == String, C.SubSequence == C {
+private func valueFor<C: Collection>(_ keyPathComponents: C, _ JSON: Any) -> Any? where C.Iterator.Element == String, C.SubSequence == C {
     #if os(Linux)
     guard
         let first = keyPathComponents.first,
-        let nativeDict = JSON as? [String: AnyJSON],
+        let nativeDict = JSON as? [String: Any],
         case let nested? = nativeDict[first],
         !(nested is NSNull) else // swiftlint:disable:this opening_brace
     {

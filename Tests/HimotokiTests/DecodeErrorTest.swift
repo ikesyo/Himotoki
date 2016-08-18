@@ -54,7 +54,7 @@ class DecodeErrorTest: XCTestCase {
 
     func testSuccessOfCastOrFail() {
         do {
-            let d: [String: AnyJSON] = [ "url": "https://swift.org/" ]
+            let d: [String: Any] = [ "url": "https://swift.org/" ]
             _ = try URLHolder.decodeValue(d)
         } catch {
             XCTFail("error: \(error)")
@@ -63,7 +63,7 @@ class DecodeErrorTest: XCTestCase {
 
     func testMissingKeyPathInDecodeError() {
         do {
-            let d: [String: AnyJSON] = [ "url": "" ]
+            let d: [String: Any] = [ "url": "" ]
             _ = try URLHolder.decodeValue(d)
         } catch let DecodeError.missingKeyPath(keyPath) {
             XCTAssertEqual(keyPath, "url")
@@ -73,12 +73,12 @@ class DecodeErrorTest: XCTestCase {
     }
 
     func testMissingKeyPathAndDecodeFailure() {
-        let d: [String: AnyJSON] = [:]
+        let d: [String: Any] = [:]
         let a = try! A.decodeValue(d) // swiftlint:disable:this force_try
         XCTAssertNil(a.b)
 
         do {
-            let d: [String: AnyJSON] = [ "b": [:] as JSONDictionary ]
+            let d: [String: Any] = [ "b": [:] as JSONDictionary ]
             _ = try A.decodeValue(d)
             XCTFail("DecodeError.missingKeyPath should be thrown if decoding optional value failed")
         } catch let DecodeError.missingKeyPath(keyPath) {
@@ -90,7 +90,7 @@ class DecodeErrorTest: XCTestCase {
 
     func testTypeMismatchKeyPathReporting() {
         do {
-            let d: [String: AnyJSON] = [ "b": [ "string": 123 ] as JSONDictionary ]
+            let d: [String: Any] = [ "b": [ "string": 123 ] as JSONDictionary ]
             _ = try A.decodeValue(d)
             XCTFail("DecodeError.typeMismatch should be thrown")
         } catch let DecodeError.typeMismatch(_, _, keyPath) {
@@ -102,7 +102,7 @@ class DecodeErrorTest: XCTestCase {
 
     func testCustomError() {
         do {
-            let d: [String: AnyJSON] = [ "url": "file:///Users/foo/bar" ]
+            let d: [String: Any] = [ "url": "file:///Users/foo/bar" ]
             _ = try URLHolder.decodeValue(d)
         } catch let DecodeError.custom(message) {
             XCTAssertEqual(message, "File URL is not supported")

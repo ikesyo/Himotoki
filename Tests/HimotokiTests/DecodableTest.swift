@@ -10,8 +10,8 @@ import Foundation
 import XCTest
 import Himotoki
 
-typealias JSONArray = [AnyJSON]
-typealias JSONDictionary = [String: AnyJSON]
+typealias JSONArray = [Any]
+typealias JSONDictionary = [String: Any]
 
 class DecodableTest: XCTestCase {
 
@@ -196,7 +196,7 @@ struct Person: Decodable {
     let float: Float
     let bool: Bool
     let number: NSNumber
-    let rawValue: AnyJSON
+    let rawValue: Any
 
     let nested: String
     let nestedDict: [String: String]
