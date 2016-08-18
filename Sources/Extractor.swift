@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Syo Ikeda. All rights reserved.
 //
 
-import Foundation
+import class Foundation.NSNull
 
 public struct Extractor {
     public let rawValue: Any
@@ -14,11 +14,7 @@ public struct Extractor {
 
     internal init(_ rawValue: Any) {
         self.rawValue = rawValue
-        #if os(Linux)
-            self.isDictionary = rawValue is [String: Any]
-        #else
-            self.isDictionary = rawValue is NSDictionary
-        #endif
+        self.isDictionary = rawValue is [String: Any]
     }
 
     // If we use `rawValue` here, that would conflict with `let rawValue: Any`
@@ -102,7 +98,6 @@ extension Extractor: CustomStringConvertible {
 // `ArraySlice` is used for performance optimization.
 // See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
 private func valueFor<C: Collection>(_ keyPathComponents: C, _ JSON: Any) -> Any? where C.Iterator.Element == String, C.SubSequence == C {
-    #if os(Linux)
     guard
         let first = keyPathComponents.first,
         let nativeDict = JSON as? [String: Any],
@@ -111,11 +106,6 @@ private func valueFor<C: Collection>(_ keyPathComponents: C, _ JSON: Any) -> Any
     {
         return nil
     }
-    #else
-    guard let first = keyPathComponents.first, case let nested?? = (JSON as AnyObject)[first], !(nested is NSNull) else {
-        return nil
-    }
-    #endif
 
     if keyPathComponents.count == 1 {
         return nested
