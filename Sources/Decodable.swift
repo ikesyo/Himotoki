@@ -15,13 +15,13 @@ public protocol Decodable {
 
 extension Decodable {
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public static func decodeValue(_ JSON: AnyJSON) throws -> Self {
+    public static func decodeValue(_ JSON: Any) throws -> Self {
         let extractor = Extractor(JSON)
         return try self.decode(extractor)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public static func decodeValue(_ JSON: AnyJSON, rootKeyPath: KeyPath) throws -> Self {
+    public static func decodeValue(_ JSON: Any, rootKeyPath: KeyPath) throws -> Self {
         return try Extractor(JSON).value(rootKeyPath)
     }
 }
