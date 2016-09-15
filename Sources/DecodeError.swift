@@ -16,13 +16,13 @@ extension DecodeError: CustomStringConvertible {
     public var description: String {
         switch self {
         case let .missingKeyPath(keyPath):
-            return "MissingKeyPath(\(keyPath))"
+            return "DecodeError.missingKeyPath(\(keyPath))"
 
         case let .typeMismatch(expected, actual, keyPath):
-            return "TypeMismatch(expected: \(expected), actual: \(actual), keyPath: \(keyPath.description))"
+            return "DecodeError.typeMismatch(expected: \(expected), actual: \(actual), keyPath: \(keyPath.description))"
 
         case let .custom(message):
-            return "Custom(\(message))"
+            return "DecodeError.custom(\(message))"
         }
     }
 }
