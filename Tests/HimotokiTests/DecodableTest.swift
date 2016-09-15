@@ -97,7 +97,6 @@ class DecodableTest: XCTestCase {
         }
     }
 
-#if !os(Linux)
     func testPerformanceByPersons() {
         let peopleJSON = Array(repeating: personJSON, count: 500)
 
@@ -105,7 +104,6 @@ class DecodableTest: XCTestCase {
             _ = try? [Person].decode(peopleJSON)
         }
     }
-#endif
 
     func testGroup() {
         var JSON: JSONDictionary = [ "name": "Himotoki", "floor": 12 ]
@@ -178,7 +176,7 @@ extension DecodableTest {
     static var allTests: [(String, (DecodableTest) -> () throws -> Void)] {
         return [
             ("testPerson", testPerson),
-//            ("testPerformanceByPersons", testPerformanceByPersons),
+            ("testPerformanceByPersons", testPerformanceByPersons),
             ("testGroup", testGroup),
             ("testDecodeArray", testDecodeArray),
             ("testDecodeDictionary", testDecodeDictionary),
