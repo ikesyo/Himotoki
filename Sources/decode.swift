@@ -35,13 +35,3 @@ public func decodeDictionary<T: Decodable>(_ JSON: Any) throws -> [String: T] {
 public func decodeDictionary<T: Decodable>(_ JSON: Any, rootKeyPath: KeyPath) throws -> [String: T] {
     return try [String: T].decode(JSON, rootKeyPath: rootKeyPath)
 }
-
-// MARK: - Deprecated
-
-/// - Throws: DecodeError
-@available(*, unavailable, renamed:"decodeValue")
-public func decode<T: Decodable>(_ JSON: Any) throws -> T { fatalError() }
-
-/// - Throws: DecodeError
-@available(*, unavailable, renamed:"decodeValue")
-public func decode<T: Decodable>(_ JSON: Any, rootKeyPath: KeyPath) throws -> T { fatalError() }
