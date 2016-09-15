@@ -7,7 +7,8 @@ matrix:
       language: objective-c
       osx_image: xcode8
       script:
-        - pod lib lint --allow-warnings --quick
+        - gem update cocoapods --pre # Install 1.1.0.rc.2
+        - pod lib lint --allow-warnings
         - rake "build[build-for-testing test-without-building, Himotoki-macOS, macosx, arch=x86_64]"
         - rake "build[build-for-testing test-without-building, Himotoki-iOS, iphonesimulator, name=iPhone 6s]"
         - rake "build[build-for-testing test-without-building, Himotoki-tvOS, appletvsimulator, name=Apple TV 1080p]"
