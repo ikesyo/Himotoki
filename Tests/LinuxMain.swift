@@ -7,14 +7,14 @@
 //
 
 import XCTest
-@testable import Himotokitest
+@testable import HimotokiTests
 
 XCTMain([
-    DecodableTest(),
-    DecodeErrorTest(),
-    DecodeWithRootKeyPathTest(),
-    KeyPathTest(),
-    NestedObjectParsingTest(),
-    RawRepresentableTest(),
-    TransformerTest(),
+    testCase(DecodableTest.allTests),
+    testCase(DecodeErrorTest.allTests),
+    testCase(DecodeWithRootKeyPathTest.allTests),
+    testCase(KeyPathTest.allTests),
+    testCase(NestedObjectParsingTest.allTests),
+    testCase(RawRepresentableTest.allTests),
+    testCase(TransformerTest.allTests),
 ])

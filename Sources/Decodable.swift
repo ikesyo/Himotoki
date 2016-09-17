@@ -8,20 +8,20 @@
 
 public protocol Decodable {
     /// - Throws: DecodeError or an arbitrary ErrorType
-    static func decode(e: Extractor) throws -> Self
+    static func decode(_ e: Extractor) throws -> Self
 }
 
 // MARK: - Extensions
 
 extension Decodable {
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public static func decodeValue(JSON: AnyJSON) throws -> Self {
+    public static func decodeValue(_ JSON: Any) throws -> Self {
         let extractor = Extractor(JSON)
         return try self.decode(extractor)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public static func decodeValue(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> Self {
+    public static func decodeValue(_ JSON: Any, rootKeyPath: KeyPath) throws -> Self {
         return try Extractor(JSON).value(rootKeyPath)
     }
 }

@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 Syo Ikeda. All rights reserved.
 //
 
-infix operator <| { associativity left precedence 150 }
-infix operator <|? { associativity left precedence 150 }
-infix operator <|| { associativity left precedence 150 }
-infix operator <||? { associativity left precedence 150 }
-infix operator <|-| { associativity left precedence 150 }
-infix operator <|-|? { associativity left precedence 150 }
+infix operator <| : MultiplicationPrecedence
+infix operator <|? : MultiplicationPrecedence
+infix operator <|| : MultiplicationPrecedence
+infix operator <||? : MultiplicationPrecedence
+infix operator <|-| : MultiplicationPrecedence
+infix operator <|-|? : MultiplicationPrecedence
 
 /// - Throws: DecodeError or an arbitrary ErrorType
 public func <| <T: Decodable>(e: Extractor, keyPath: KeyPath) throws -> T {

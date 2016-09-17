@@ -14,12 +14,12 @@ enum StringEnum: String {
 }
 
 enum IntEnum: Int {
-    case Zero, One
+    case zero, one
 }
 
 enum DoubleEnum: Double {
-    case One = 1.0
-    case Two = 2.0
+    case one = 1.0
+    case two = 2.0
 }
 
 extension StringEnum: Decodable {}
@@ -29,7 +29,7 @@ extension DoubleEnum: Decodable {}
 class RawRepresentableTest: XCTestCase {
 
     func testRawRepresentable() {
-        let JSON: [String: AnyJSON] = [
+        let JSON: [String: Any] = [
             "string_1": "A",
             "string_2": "D",
             "int_1": 1,
@@ -47,25 +47,21 @@ class RawRepresentableTest: XCTestCase {
 
         let int1: IntEnum? = try? e <| "int_1"
         let int3: IntEnum? = try? e <| "int_3"
-        XCTAssert(int1 == .One)
+        XCTAssert(int1 == .one)
         XCTAssert(int3 == nil)
 
         let double2: DoubleEnum? = try? e <| "double_1"
         let double4: DoubleEnum? = try? e <| "double_2"
-        XCTAssert(double2 == .Two)
+        XCTAssert(double2 == .two)
         XCTAssert(double4 == nil)
     }
 
 }
 
-#if os(Linux)
-
-extension RawRepresentableTest: XCTestCaseProvider {
-    var allTests: [(String, () throws -> Void)] {
+extension RawRepresentableTest {
+    static var allTests: [(String, (RawRepresentableTest) -> () throws -> Void)] {
         return [
             ("testRawRepresentable", testRawRepresentable),
         ]
     }
 }
-
-#endif

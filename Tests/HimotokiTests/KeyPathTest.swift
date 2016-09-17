@@ -22,15 +22,11 @@ class KeyPathTest: XCTestCase {
     }
 }
 
-#if os(Linux)
-
-extension KeyPathTest: XCTestCaseProvider {
-    var allTests: [(String, () throws -> Void)] {
+extension KeyPathTest {
+    static var allTests: [(String, (KeyPathTest) -> () throws -> Void)] {
         return [
             ("testEmptyKeyPath", testEmptyKeyPath),
             ("testNilLiteral", testNilLiteral),
         ]
     }
 }
-
-#endif

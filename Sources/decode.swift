@@ -7,41 +7,31 @@
 //
 
 /// - Throws: DecodeError or an arbitrary ErrorType
-public func decodeValue<T: Decodable>(JSON: AnyJSON) throws -> T {
+public func decodeValue<T: Decodable>(_ JSON: Any) throws -> T {
     return try T.decodeValue(JSON)
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
-public func decodeValue<T: Decodable>(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> T {
+public func decodeValue<T: Decodable>(_ JSON: Any, rootKeyPath: KeyPath) throws -> T {
     return try T.decodeValue(JSON, rootKeyPath: rootKeyPath)
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
-public func decodeArray<T: Decodable>(JSON: AnyJSON) throws -> [T] {
+public func decodeArray<T: Decodable>(_ JSON: Any) throws -> [T] {
     return try [T].decode(JSON)
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
-public func decodeArray<T: Decodable>(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> [T] {
+public func decodeArray<T: Decodable>(_ JSON: Any, rootKeyPath: KeyPath) throws -> [T] {
     return try [T].decode(JSON, rootKeyPath: rootKeyPath)
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
-public func decodeDictionary<T: Decodable>(JSON: AnyJSON) throws -> [String: T] {
+public func decodeDictionary<T: Decodable>(_ JSON: Any) throws -> [String: T] {
     return try [String: T].decode(JSON)
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
-public func decodeDictionary<T: Decodable>(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> [String: T] {
+public func decodeDictionary<T: Decodable>(_ JSON: Any, rootKeyPath: KeyPath) throws -> [String: T] {
     return try [String: T].decode(JSON, rootKeyPath: rootKeyPath)
 }
-
-// MARK: - Deprecated
-
-/// - Throws: DecodeError
-@available(*, unavailable, renamed="decodeValue")
-public func decode<T: Decodable>(JSON: AnyJSON) throws -> T { fatalError() }
-
-/// - Throws: DecodeError
-@available(*, unavailable, renamed="decodeValue")
-public func decode<T: Decodable>(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> T { fatalError() }

@@ -7,63 +7,63 @@
 //
 
 extension String: Decodable {
-    public static func decode(e: Extractor) throws -> String {
+    public static func decode(_ e: Extractor) throws -> String {
         return try castOrFail(e)
     }
 }
 
 extension Int: Decodable {
-    public static func decode(e: Extractor) throws -> Int {
+    public static func decode(_ e: Extractor) throws -> Int {
         return try castOrFail(e)
     }
 }
 
 extension UInt: Decodable {
-    public static func decode(e: Extractor) throws -> UInt {
+    public static func decode(_ e: Extractor) throws -> UInt {
         return try castOrFail(e)
     }
 }
 
 extension Double: Decodable {
-    public static func decode(e: Extractor) throws -> Double {
+    public static func decode(_ e: Extractor) throws -> Double {
         return try castOrFail(e)
     }
 }
 
 extension Float: Decodable {
-    public static func decode(e: Extractor) throws -> Float {
+    public static func decode(_ e: Extractor) throws -> Float {
         return try castOrFail(e)
     }
 }
 
 extension Bool: Decodable {
-    public static func decode(e: Extractor) throws -> Bool {
+    public static func decode(_ e: Extractor) throws -> Bool {
         return try castOrFail(e)
     }
 }
 
 // MARK: - Extensions
 
-extension CollectionType where Generator.Element: Decodable {
+extension Collection where Iterator.Element: Decodable {
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public static func decode(JSON: AnyJSON) throws -> [Generator.Element] {
-        guard let array = JSON as? [AnyJSON] else {
+    public static func decode(_ JSON: Any) throws -> [Iterator.Element] {
+        guard let array = JSON as? [Any] else {
             throw typeMismatch("Array", actual: JSON, keyPath: nil)
         }
 
-        return try array.map(Generator.Element.decodeValue)
+        return try array.map(Iterator.Element.decodeValue)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public static func decode(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> [Generator.Element] {
+    public static func decode(_ JSON: Any, rootKeyPath: KeyPath) throws -> [Iterator.Element] {
         return try Extractor(JSON).array(rootKeyPath)
     }
 }
 
-extension DictionaryLiteralConvertible where Value: Decodable {
+extension ExpressibleByDictionaryLiteral where Value: Decodable {
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public static func decode(JSON: AnyJSON) throws -> [String: Value] {
-        guard let dictionary = JSON as? [String: AnyJSON] else {
+    public static func decode(_ JSON: Any) throws -> [String: Value] {
+        guard let dictionary = JSON as? [String: Any] else {
             throw typeMismatch("Dictionary", actual: JSON, keyPath: nil)
         }
 
@@ -75,7 +75,7 @@ extension DictionaryLiteralConvertible where Value: Decodable {
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public static func decode(JSON: AnyJSON, rootKeyPath: KeyPath) throws -> [String: Value] {
+    public static func decode(_ JSON: Any, rootKeyPath: KeyPath) throws -> [String: Value] {
         return try Extractor(JSON).dictionary(rootKeyPath)
     }
 }

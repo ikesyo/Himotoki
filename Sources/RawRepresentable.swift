@@ -7,7 +7,7 @@
 //
 
 public extension RawRepresentable where Self: Decodable, RawValue: Decodable {
-    static func decode(e: Extractor) throws -> Self {
+    static func decode(_ e: Extractor) throws -> Self {
         let rawValue = try RawValue.decode(e)
 
         guard let value = self.init(rawValue: rawValue) else {

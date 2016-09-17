@@ -7,34 +7,34 @@
 //
 
 public struct Transformer<From, To> {
-    private let transform: From throws -> To
+    private let transform: (From) throws -> To
 
-    public init(_ transform: From throws -> To) {
+    public init(_ transform: @escaping (From) throws -> To) {
         self.transform = transform
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public func apply(subject: From) throws -> To {
+    public func apply(_ subject: From) throws -> To {
         return try transform(subject)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public func apply(subject: From?) throws -> To? {
+    public func apply(_ subject: From?) throws -> To? {
         return try subject.map(apply)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public func apply(subject: [From]) throws -> [To] {
+    public func apply(_ subject: [From]) throws -> [To] {
         return try subject.map(transform)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public func apply(subject: [From]?) throws -> [To]? {
+    public func apply(_ subject: [From]?) throws -> [To]? {
         return try subject.map(apply)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public func apply(subject: [String: From]) throws -> [String: To] {
+    public func apply(_ subject: [String: From]) throws -> [String: To] {
         var result = [String: To](minimumCapacity: subject.count)
         try subject.forEach { key, value in
             result[key] = try transform(value)
@@ -43,7 +43,7 @@ public struct Transformer<From, To> {
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public func apply(subject: [String: From]?) throws -> [String: To]? {
+    public func apply(_ subject: [String: From]?) throws -> [String: To]? {
         return try subject.map(apply)
     }
 }

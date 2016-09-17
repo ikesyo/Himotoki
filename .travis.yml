@@ -5,36 +5,26 @@ matrix:
   include:
     - os: osx
       language: objective-c
-      osx_image: xcode7.3
-      script:
-        - pod lib lint --allow-warnings --quick
-        - rake "build[test, Himotoki-Mac, macosx, arch=x86_64]"
-        - rake "build[test, Himotoki-iOS, iphonesimulator, name=iPhone 6s]"
-        - rake "build[test, Himotoki-tvOS, appletvsimulator, name=Apple TV 1080p]"
-        - rake "build[build, Himotoki-watchOS, watchsimulator, name=Apple Watch - 38mm]"
-    - os: osx
-      language: objective-c
       osx_image: xcode8
       script:
-        - pod lib lint --allow-warnings --quick
-        - rake "build[build-for-testing test-without-building, Himotoki-Mac, macosx, arch=x86_64]"
+        - gem update cocoapods --pre # Install 1.1.0.rc.2
+        - pod lib lint --allow-warnings
+        - rake "build[build-for-testing test-without-building, Himotoki-macOS, macosx, arch=x86_64]"
         - rake "build[build-for-testing test-without-building, Himotoki-iOS, iphonesimulator, name=iPhone 6s]"
         - rake "build[build-for-testing test-without-building, Himotoki-tvOS, appletvsimulator, name=Apple TV 1080p]"
         - rake "build[build, Himotoki-watchOS, watchsimulator, name=Apple Watch - 38mm]"
-#     - os: osx
-#       language: generic
-#       osx_image: xcode7.3
-#       before_install:
-#         - eval "$(curl -sL https://gist.githubusercontent.com/kylef/5c0475ff02b7c7671d2a/raw/02090c7ede5a637b76e6df1710e83cd0bbe7dcdf/swiftenv-install.sh)"
-#       script:
-#         - swift build
-#         - swift test
+    - os: osx
+      language: generic
+      osx_image: xcode8
+      script:
+        - swift build
+        - swift test
     - os: linux
       language: generic
       sudo: required
       dist: trusty
       before_install:
-        - eval "$(curl -sL https://gist.githubusercontent.com/kylef/5c0475ff02b7c7671d2a/raw/02090c7ede5a637b76e6df1710e83cd0bbe7dcdf/swiftenv-install.sh)"
+        - eval "$(curl -sL https://gist.githubusercontent.com/kylef/5c0475ff02b7c7671d2a/raw/9f442512a46d7a2af7b850d65a7e9bd31edfb09b/swiftenv-install.sh)"
       script:
         - swift build
         - swift test

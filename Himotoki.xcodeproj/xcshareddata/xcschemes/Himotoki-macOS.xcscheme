@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CDF03E321AF606F60041C3AA"
                BuildableName = "Himotoki.framework"
-               BlueprintName = "Himotoki-Mac"
+               BlueprintName = "Himotoki-macOS"
                ReferencedContainer = "container:Himotoki.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CDF03E3C1AF606F60041C3AA"
-               BuildableName = "HimotokiTests-Mac.xctest"
-               BlueprintName = "HimotokiTests-Mac"
+               BuildableName = "HimotokiTests-macOS.xctest"
+               BlueprintName = "HimotokiTests-macOS"
                ReferencedContainer = "container:Himotoki.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,8 +48,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CDF03E3C1AF606F60041C3AA"
-               BuildableName = "HimotokiTests-Mac.xctest"
-               BlueprintName = "HimotokiTests-Mac"
+               BuildableName = "HimotokiTests-macOS.xctest"
+               BlueprintName = "HimotokiTests-macOS"
                ReferencedContainer = "container:Himotoki.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -59,7 +59,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CDF03E321AF606F60041C3AA"
             BuildableName = "Himotoki.framework"
-            BlueprintName = "Himotoki-Mac"
+            BlueprintName = "Himotoki-macOS"
             ReferencedContainer = "container:Himotoki.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -81,7 +81,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CDF03E321AF606F60041C3AA"
             BuildableName = "Himotoki.framework"
-            BlueprintName = "Himotoki-Mac"
+            BlueprintName = "Himotoki-macOS"
             ReferencedContainer = "container:Himotoki.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -99,7 +99,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CDF03E321AF606F60041C3AA"
             BuildableName = "Himotoki.framework"
-            BlueprintName = "Himotoki-Mac"
+            BlueprintName = "Himotoki-macOS"
             ReferencedContainer = "container:Himotoki.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

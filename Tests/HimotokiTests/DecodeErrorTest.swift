@@ -10,34 +10,34 @@ import Foundation
 import XCTest
 import Himotoki
 
-extension NSURL: Decodable {
-    public static func decode(e: Extractor) throws -> Self {
+extension URL: Decodable {
+    public static func decode(_ e: Extractor) throws -> URL {
         let value = try String.decode(e)
 
         if value.isEmpty {
-            throw DecodeError.MissingKeyPath([])
+            throw DecodeError.missingKeyPath([])
         }
 
         if value.hasPrefix("file://") {
             throw customError("File URL is not supported")
         }
 
-        return try castOrFail(NSURL(string: value))
+        return try castOrFail(self.init(string: value))
     }
 }
 
 private struct URLHolder: Decodable {
-    let URL: NSURL
+    let url: URL
 
-    static func decode(e: Extractor) throws -> URLHolder {
-        return self.init(URL: try e <| "url")
+    static func decode(_ e: Extractor) throws -> URLHolder {
+        return self.init(url: try e <| "url")
     }
 }
 
 private struct A: Decodable { // swiftlint:disable:this type_name
     let b: B? // swiftlint:disable:this variable_name
 
-    static func decode(e: Extractor) throws -> A {
+    static func decode(_ e: Extractor) throws -> A {
         return self.init(b: try e <|? "b")
     }
 }
@@ -45,7 +45,7 @@ private struct A: Decodable { // swiftlint:disable:this type_name
 private struct B: Decodable { // swiftlint:disable:this type_name
     let string: String
 
-    static func decode(e: Extractor) throws -> B {
+    static func decode(_ e: Extractor) throws -> B {
         return self.init(string: try e <| "string")
     }
 }
@@ -54,7 +54,7 @@ class DecodeErrorTest: XCTestCase {
 
     func testSuccessOfCastOrFail() {
         do {
-            let d: [String: AnyJSON] = [ "url": "https://swift.org/" ]
+            let d: [String: Any] = [ "url": "https://swift.org/" ]
             _ = try URLHolder.decodeValue(d)
         } catch {
             XCTFail("error: \(error)")
@@ -63,9 +63,9 @@ class DecodeErrorTest: XCTestCase {
 
     func testMissingKeyPathInDecodeError() {
         do {
-            let d: [String: AnyJSON] = [ "url": "" ]
+            let d: [String: Any] = [ "url": "" ]
             _ = try URLHolder.decodeValue(d)
-        } catch let DecodeError.MissingKeyPath(keyPath) {
+        } catch let DecodeError.missingKeyPath(keyPath) {
             XCTAssertEqual(keyPath, "url")
         } catch {
             XCTFail()
@@ -73,15 +73,15 @@ class DecodeErrorTest: XCTestCase {
     }
 
     func testMissingKeyPathAndDecodeFailure() {
-        let d: [String: AnyJSON] = [:]
+        let d: [String: Any] = [:]
         let a = try! A.decodeValue(d) // swiftlint:disable:this force_try
         XCTAssertNil(a.b)
 
         do {
-            let d: [String: AnyJSON] = [ "b": [:] as JSONDictionary ]
+            let d: [String: Any] = [ "b": [:] as JSONDictionary ]
             _ = try A.decodeValue(d)
-            XCTFail("DecodeError.MissingKeyPath should be thrown if decoding optional value failed")
-        } catch let DecodeError.MissingKeyPath(keyPath) {
+            XCTFail("DecodeError.missingKeyPath should be thrown if decoding optional value failed")
+        } catch let DecodeError.missingKeyPath(keyPath) {
             XCTAssertEqual(keyPath, [ "b", "string" ])
         } catch {
             XCTFail()
@@ -90,10 +90,10 @@ class DecodeErrorTest: XCTestCase {
 
     func testTypeMismatchKeyPathReporting() {
         do {
-            let d: [String: AnyJSON] = [ "b": [ "string": 123 ] as JSONDictionary ]
+            let d: [String: Any] = [ "b": [ "string": 123 ] as JSONDictionary ]
             _ = try A.decodeValue(d)
-            XCTFail("DecodeError.TypeMismatch should be thrown")
-        } catch let DecodeError.TypeMismatch(_, _, keyPath) {
+            XCTFail("DecodeError.typeMismatch should be thrown")
+        } catch let DecodeError.typeMismatch(_, _, keyPath) {
             XCTAssertEqual(keyPath, [ "b", "string" ])
         } catch {
             XCTFail()
@@ -102,9 +102,9 @@ class DecodeErrorTest: XCTestCase {
 
     func testCustomError() {
         do {
-            let d: [String: AnyJSON] = [ "url": "file:///Users/foo/bar" ]
+            let d: [String: Any] = [ "url": "file:///Users/foo/bar" ]
             _ = try URLHolder.decodeValue(d)
-        } catch let DecodeError.Custom(message) {
+        } catch let DecodeError.custom(message) {
             XCTAssertEqual(message, "File URL is not supported")
         } catch {
             XCTFail()
@@ -126,10 +126,8 @@ class DecodeErrorTest: XCTestCase {
     }
 }
 
-#if os(Linux)
-
-extension DecodeErrorTest: XCTestCaseProvider {
-    var allTests: [(String, () throws -> Void)] {
+extension DecodeErrorTest {
+    static var allTests: [(String, (DecodeErrorTest) -> () throws -> Void)] {
         return [
             ("testMissingKeyPathInDecodeError", testMissingKeyPathInDecodeError),
             ("testMissingKeyPathAndDecodeFailure", testMissingKeyPathAndDecodeFailure),
@@ -139,5 +137,3 @@ extension DecodeErrorTest: XCTestCaseProvider {
         ]
     }
 }
-
-#endif

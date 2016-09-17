@@ -60,10 +60,8 @@ class DecodeWithRootKeyPathTest: XCTestCase {
     }
 }
 
-#if os(Linux)
-
-extension DecodeWithRootKeyPathTest: XCTestCaseProvider {
-    var allTests: [(String, () throws -> Void)] {
+extension DecodeWithRootKeyPathTest {
+    static var allTests: [(String, (DecodeWithRootKeyPathTest) -> () throws -> Void)] {
         return [
             ("testDecodeWithRootKeyValue", testDecodeWithRootKeyValue),
             ("testDecodeWithRootKeyArray", testDecodeWithRootKeyArray),
@@ -71,5 +69,3 @@ extension DecodeWithRootKeyPathTest: XCTestCaseProvider {
         ]
     }
 }
-
-#endif
