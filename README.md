@@ -27,7 +27,7 @@ struct Group: Decodable {
 
     // MARK: Decodable
 
-    static func decode(e: Extractor) throws -> Group {
+    static func decode(_ e: Extractor) throws -> Group {
         return try Group(
             name: e <| "name",
             floor: e <| "floor",
@@ -57,9 +57,20 @@ func testGroup() {
 }
 ```
 
-## Operators
+## Implementing the `decode` method for your models
 
-Himotoki supports the following operators to decode JSON elements, where `T` is a generic type conforming to `Decodable` protocol.
+To implement the `decode` method for you models conforming to the `Decodable` protocol, you can use the following `Extractor`'s extraction methods:
+
+- `public func value<T: Decodable>(_ keyPath: KeyPath) throws -> T`
+- `public func valueOptional<T: Decodable>(_ keyPath: KeyPath) throws -> T?`
+- `public func array<T: Decodable>(_ keyPath: KeyPath) throws -> [T]`
+- `public func arrayOptional<T: Decodable>(_ keyPath: KeyPath) throws -> [T]?`
+- `public func dictionary<T: Decodable>(_ keyPath: KeyPath) throws -> [String: T]`
+- `public func dictionaryOptional<T: Decodable>(_ keyPath: KeyPath) throws -> [String: T]?`
+
+### Extraction Operators
+
+Himotoki also supports the following operators to decode JSON elements, where `T` is a generic type conforming to the `Decodable` protocol.
 
 | Operator                        | Decode element as | Remarks                          |
 |:--------------------------------|:------------------|:---------------------------------|
@@ -90,7 +101,10 @@ let otherURLs = try URLTransformer.apply(e <|| "bar_urls")
 
 ## Requirements
 
+Himotoki 3.x requires / supports the following environments:
+
 - Swift 3.0 / Xcode 8
+    - If you use Swift 2.2 (Xcode 7.3) or Swift 2.3 (Xcode 8), you can use [2.1.1](https://github.com/ikesyo/Himotoki/releases/tag/2.1.1) instead.
 - OS X 10.9 or later
 - iOS 8.0 or later
 - tvOS 9.0 or later
@@ -100,14 +114,14 @@ let otherURLs = try URLTransformer.apply(e <|| "bar_urls")
 
 There are 2 options.
 
-### Framework with Carthage (preferable)
+### Carthage
 
 Himotoki is [Carthage](https://github.com/Carthage/Carthage) compatible.
 
 - Add `github "ikesyo/Himotoki" ~> 3.0` to your Cartfile.
 - Run `carthage update`.
 
-### Framework with CocoaPods
+### CocoaPods
 
 Himotoki also can be used by [CocoaPods](https://cocoapods.org/).
 
