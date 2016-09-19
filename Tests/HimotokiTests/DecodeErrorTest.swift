@@ -78,7 +78,7 @@ class DecodeErrorTest: XCTestCase {
         XCTAssertNil(a.b)
 
         do {
-            let d: [String: Any] = [ "b": [:] as JSONDictionary ]
+            let d: [String: Any] = [ "b": [:] ]
             _ = try A.decodeValue(d)
             XCTFail("DecodeError.missingKeyPath should be thrown if decoding optional value failed")
         } catch let DecodeError.missingKeyPath(keyPath) {
@@ -90,7 +90,7 @@ class DecodeErrorTest: XCTestCase {
 
     func testTypeMismatchKeyPathReporting() {
         do {
-            let d: [String: Any] = [ "b": [ "string": 123 ] as JSONDictionary ]
+            let d: [String: Any] = [ "b": [ "string": 123 ] ]
             _ = try A.decodeValue(d)
             XCTFail("DecodeError.typeMismatch should be thrown")
         } catch let DecodeError.typeMismatch(_, _, keyPath) {

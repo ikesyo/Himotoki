@@ -15,7 +15,7 @@ class DecodeWithRootKeyPathTest: XCTestCase {
         return [
             "name": "name",
             "floor": 123,
-            "optional": [ "foo", "bar" ] as JSONArray,
+            "optional": [ "foo", "bar" ],
         ]
     }()
 
@@ -32,7 +32,7 @@ class DecodeWithRootKeyPathTest: XCTestCase {
     }
 
     func testDecodeWithRootKeyArray() {
-        let objectWithArray: JSONDictionary = [ "groups": [ JSON, JSON ] as JSONArray ]
+        let objectWithArray: JSONDictionary = [ "groups": [ JSON, JSON ] ]
 
         var groups: [Group]?
 
@@ -45,7 +45,7 @@ class DecodeWithRootKeyPathTest: XCTestCase {
     }
 
     func testDecodeWithRootKeyDictionary() {
-        let objectWithDictionary: JSONDictionary = [ "groupDict": [ "foo": JSON, "bar": JSON ] as JSONDictionary ]
+        let objectWithDictionary: JSONDictionary = [ "groupDict": [ "foo": JSON, "bar": JSON ] ]
 
         var groups: [String: Group]?
 

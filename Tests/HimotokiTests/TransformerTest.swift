@@ -48,10 +48,10 @@ class TransformerTest: XCTestCase {
         let JSON: [String: Any] = [
             "value": URLString,
             "valueOptional": URLString,
-            "array": [ URLString, URLString ] as JSONArray,
-            "arrayOptional": [ URLString, URLString ] as JSONArray,
-            "dictionary": [ "a": URLString, "b": URLString ] as JSONDictionary,
-            "dictionaryOptional": [ "a": URLString, "b": URLString ] as JSONDictionary,
+            "array": [ URLString, URLString ],
+            "arrayOptional": [ URLString, URLString ],
+            "dictionary": [ "a": URLString, "b": URLString ],
+            "dictionaryOptional": [ "a": URLString, "b": URLString ],
         ]
 
         guard let decoded = try? URLsByTransformer.decodeValue(JSON) else {
