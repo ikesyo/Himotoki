@@ -29,16 +29,16 @@ class DecodableTest: XCTestCase {
             "raw_value": "RawValue",
             "nested": [
                 "value": "The nested value",
-                "dict": [ "key": "The nested value" ] as JSONDictionary
-            ] as JSONDictionary,
-            "array": [ "123", "456" ] as JSONArray,
+                "dict": [ "key": "The nested value" ]
+            ],
+            "array": [ "123", "456" ],
             "arrayOption": NSNull(),
-            "dictionary": [ "A": 1, "B": 2 ] as JSONDictionary,
+            "dictionary": [ "A": 1, "B": 2 ],
             // "dictionaryOption" key is missing
             "group": gruopJSON,
         ]
 
-        JSON["groups"] = [ gruopJSON, gruopJSON ] as JSONArray
+        JSON["groups"] = [ gruopJSON, gruopJSON ]
 
         return JSON
     }()

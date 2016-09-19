@@ -12,7 +12,7 @@ import Himotoki
 class NestedObjectParsingTest: XCTestCase {
 
     func testParseNestedObjectSuccess() {
-        let JSON: JSONDictionary = [ "nested": [ "name": "Foo Bar" ] as JSONDictionary ]
+        let JSON: JSONDictionary = [ "nested": [ "name": "Foo Bar" ] ]
         let success = try? WithNestedObject.decodeValue(JSON)
         XCTAssertNotNil(success)
         XCTAssertEqual(success?.nestedName, "Foo Bar")
