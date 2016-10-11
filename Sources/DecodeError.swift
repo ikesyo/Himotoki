@@ -28,6 +28,22 @@ extension DecodeError: CustomStringConvertible {
 }
 
 extension DecodeError: Hashable {
+    public static func == (lhs: DecodeError, rhs: DecodeError) -> Bool {
+        switch (lhs, rhs) {
+        case let (.missingKeyPath(l), .missingKeyPath(r)):
+            return l == r
+
+        case let (.typeMismatch(la, lb, lc), .typeMismatch(ra, rb, rc)):
+            return la == ra && lb == rb && lc == rc
+
+        case let (.custom(l), .custom(r)):
+            return l == r
+
+        default:
+            return false
+        }
+    }
+
     public var hashValue: Int {
         switch self {
         case let .missingKeyPath(keyPath):
@@ -39,22 +55,6 @@ extension DecodeError: Hashable {
         case let .custom(message):
             return message.hashValue
         }
-    }
-}
-
-public func == (lhs: DecodeError, rhs: DecodeError) -> Bool {
-    switch (lhs, rhs) {
-    case let (.missingKeyPath(l), .missingKeyPath(r)):
-        return l == r
-
-    case let (.typeMismatch(la, lb, lc), .typeMismatch(ra, rb, rc)):
-        return la == ra && lb == rb && lc == rc
-
-    case let (.custom(l), .custom(r)):
-        return l == r
-
-    default:
-        return false
     }
 }
 
