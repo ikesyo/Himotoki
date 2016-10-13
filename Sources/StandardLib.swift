@@ -67,15 +67,21 @@ extension ExpressibleByDictionaryLiteral where Value: Decodable {
             throw typeMismatch("Dictionary", actual: JSON, keyPath: nil)
         }
 
-        var result = [String: Value](minimumCapacity: dictionary.count)
-        for (key, value) in dictionary {
-            result[key] = try Value.decodeValue(value)
-        }
-        return result
+        return try dictionary.mapValue(Value.decodeValue)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
     public static func decode(_ JSON: Any, rootKeyPath: KeyPath) throws -> [String: Value] {
         return try Extractor(JSON).dictionary(rootKeyPath)
+    }
+}
+
+extension Dictionary {
+    internal func mapValue<T>(_ transform: (Value) throws -> T) rethrows -> [Key: T] {
+        var result = [Key: T](minimumCapacity: count)
+        for (key, value) in self {
+            result[key] = try transform(value)
+        }
+        return result
     }
 }
