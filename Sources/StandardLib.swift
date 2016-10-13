@@ -68,7 +68,7 @@ extension ExpressibleByDictionaryLiteral where Value: Decodable {
         }
 
         var result = [String: Value](minimumCapacity: dictionary.count)
-        try dictionary.forEach { key, value in
+        for (key, value) in dictionary {
             result[key] = try Value.decodeValue(value)
         }
         return result
