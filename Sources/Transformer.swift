@@ -35,11 +35,7 @@ public struct Transformer<From, To> {
 
     /// - Throws: DecodeError or an arbitrary ErrorType
     public func apply(_ subject: [String: From]) throws -> [String: To] {
-        var result = [String: To](minimumCapacity: subject.count)
-        for (key, value) in subject {
-            result[key] = try transform(value)
-        }
-        return result
+        return try subject.mapValue(transform)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
