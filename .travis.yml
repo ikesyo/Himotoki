@@ -5,9 +5,8 @@ matrix:
   include:
     - os: osx
       language: objective-c
-      osx_image: xcode8
+      osx_image: xcode8.1
       script:
-        - gem install cocoapods -v 1.1.1
         - pod lib lint
         - rake "build[build-for-testing test-without-building, Himotoki-macOS, macosx, arch=x86_64]"
         - rake "build[build-for-testing test-without-building, Himotoki-iOS, iphonesimulator, name=iPhone 6s]"
@@ -15,7 +14,7 @@ matrix:
         - rake "build[build, Himotoki-watchOS, watchsimulator, name=Apple Watch - 38mm]"
     - os: osx
       language: generic
-      osx_image: xcode8
+      osx_image: xcode8.1
       script:
         - swift build
         - swift test

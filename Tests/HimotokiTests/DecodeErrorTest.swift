@@ -22,7 +22,7 @@ extension URL: Decodable {
             throw customError("File URL is not supported")
         }
 
-        return try castOrFail(self.init(string: value))
+        return try castOrFail(self.init(string: value) as Any)
     }
 }
 
