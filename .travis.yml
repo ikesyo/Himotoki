@@ -6,6 +6,7 @@ matrix:
     - os: osx
       language: objective-c
       osx_image: xcode8.1
+      before_script: gem install cocoapods -v 1.1.1
       script:
         - pod lib lint
         - rake "build[build-for-testing test-without-building, Himotoki-macOS, macosx, arch=x86_64]"
