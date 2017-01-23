@@ -47,6 +47,8 @@ public struct Extractor {
     public func valueOptional<T: Decodable>(_ keyPath: KeyPath) throws -> T? {
         do {
             return try value(keyPath) as T
+        } catch DecodeError.typeMismatch {
+            return nil
         } catch let DecodeError.missingKeyPath(missing) where missing == keyPath {
             return nil
         }
