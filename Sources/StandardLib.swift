@@ -48,7 +48,7 @@ extension Collection where Iterator.Element: Decodable {
     /// - Throws: DecodeError or an arbitrary ErrorType
     public static func decode(_ JSON: Any) throws -> [Iterator.Element] {
         guard let array = JSON as? [Any] else {
-            throw typeMismatch("Array", actual: JSON, keyPath: nil)
+            throw typeMismatch("Array", actual: JSON)
         }
 
         return try array.map(Iterator.Element.decodeValue)
@@ -64,7 +64,7 @@ extension ExpressibleByDictionaryLiteral where Value: Decodable {
     /// - Throws: DecodeError or an arbitrary ErrorType
     public static func decode(_ JSON: Any) throws -> [String: Value] {
         guard let dictionary = JSON as? [String: Any] else {
-            throw typeMismatch("Dictionary", actual: JSON, keyPath: nil)
+            throw typeMismatch("Dictionary", actual: JSON)
         }
 
         return try dictionary.mapValue(Value.decodeValue)

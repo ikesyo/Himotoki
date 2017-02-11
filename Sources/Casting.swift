@@ -12,7 +12,7 @@ internal func castOrFail<T>(_ e: Extractor) throws -> T {
 
 public func castOrFail<T>(_ any: Any) throws -> T {
     guard let result = any as? T else {
-        throw typeMismatch("\(T.self)", actual: any, keyPath: nil)
+        throw typeMismatch("\(T.self)", actual: any)
     }
 
     return result
