@@ -15,18 +15,12 @@ class KeyPathTest: XCTestCase {
         let empty = KeyPath.empty
         XCTAssertEqual(empty, KeyPath([]))
     }
-
-    func testNilLiteral() {
-        let fromNilLiteral: KeyPath = nil
-        XCTAssertEqual(fromNilLiteral, KeyPath.empty)
-    }
 }
 
 extension KeyPathTest {
     static var allTests: [(String, (KeyPathTest) -> () throws -> Void)] {
         return [
             ("testEmptyKeyPath", testEmptyKeyPath),
-            ("testNilLiteral", testNilLiteral),
         ]
     }
 }

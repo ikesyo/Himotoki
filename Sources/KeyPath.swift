@@ -17,9 +17,7 @@ public struct KeyPath {
         self.components = components
     }
 
-    public static var empty: KeyPath {
-        return KeyPath([])
-    }
+    public static let empty: KeyPath = KeyPath([])
 }
 
 public func + (lhs: KeyPath, rhs: KeyPath) -> KeyPath {
@@ -63,6 +61,7 @@ extension KeyPath: ExpressibleByArrayLiteral {
 }
 
 extension KeyPath: ExpressibleByNilLiteral {
+    @available(*, deprecated, renamed: "KeyPath.empty")
     public init(nilLiteral: ()) {
         self.init([])
     }
