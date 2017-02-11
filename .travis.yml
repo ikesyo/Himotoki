@@ -5,8 +5,9 @@ matrix:
   include:
     - os: osx
       language: objective-c
-      osx_image: xcode8.1
-      before_script: gem install cocoapods -v 1.1.1
+      osx_image: xcode8.2
+      before_script:
+        - xcrun simctl delete BE8E0914-5B5F-45C2-8C99-879894AF72B0
       script:
         - pod lib lint --swift-version=3.0
         - rake "build[build-for-testing test-without-building, Himotoki-macOS, macosx, arch=x86_64]"
@@ -15,7 +16,7 @@ matrix:
         - rake "build[build, Himotoki-watchOS, watchsimulator, name=Apple Watch - 38mm]"
     - os: osx
       language: generic
-      osx_image: xcode8.1
+      osx_image: xcode8.2
       script:
         - swift build
         - swift test
@@ -28,9 +29,5 @@ matrix:
       script:
         - swift build
         - swift test
-git:
-  submodules: false
-before_install:
-  - git submodule update --init --recursive
 notifications:
   email: false
