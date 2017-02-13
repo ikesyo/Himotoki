@@ -24,8 +24,7 @@ public struct Extractor {
             throw typeMismatch("Dictionary", actual: rawValue, keyPath: keyPath)
         }
 
-        let components = ArraySlice(keyPath.components)
-        return valueFor(components, rawValue)
+        return extract(from: rawValue as! [String: Any], for: keyPath)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
@@ -97,20 +96,31 @@ extension Extractor: CustomStringConvertible {
 //
 // `ArraySlice` is used for performance optimization.
 // See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
-private func valueFor<C: Collection>(_ keyPathComponents: C, _ JSON: Any) -> Any? where C.Iterator.Element == String, C.SubSequence == C {
+private func extract(from jsonObject: [String: Any], for keyPath: KeyPath) -> Any? {
+    switch keyPath.storage {
+    case .empty:
+        return nil
+
+    case let .single(key):
+        return extract(from: jsonObject, key: key)
+
+    case var .array(array):
+        let key = array[0]
+        if let inner = extract(from: jsonObject, key: key) as? [String: Any] {
+            return extract(from: inner, for: KeyPath(Array(array.dropFirst())))
+        } else {
+            return nil
+        }
+    }
+}
+
+private func extract(from jsonObject: [String: Any], key: String) -> Any? {
     guard
-        let first = keyPathComponents.first,
-        let nativeDict = JSON as? [String: Any],
-        case let nested? = nativeDict[first],
-        !(nested is NSNull) else // swiftlint:disable:this opening_brace
+        let value = jsonObject[key],
+        !(value is NSNull) else // swiftlint:disable:this opening_brace
     {
         return nil
     }
 
-    if keyPathComponents.count == 1 {
-        return nested
-    }
-
-    let tail = keyPathComponents.dropFirst()
-    return valueFor(tail, nested)
+    return value
 }
