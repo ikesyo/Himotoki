@@ -9,6 +9,9 @@
 public protocol Decodable {
     /// - Throws: DecodeError or an arbitrary ErrorType
     static func decode(_ e: Extractor) throws -> Self
+
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    static func decodeValue(_ JSON: Any) throws -> Self
 }
 
 // MARK: - Extensions

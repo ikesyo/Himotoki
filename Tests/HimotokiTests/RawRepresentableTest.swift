@@ -22,9 +22,9 @@ enum DoubleEnum: Double {
     case two = 2.0
 }
 
-extension StringEnum: Decodable {}
-extension IntEnum: Decodable {}
-extension DoubleEnum: Decodable {}
+extension StringEnum: ValueType {}
+extension IntEnum: ValueType {}
+extension DoubleEnum: ValueType {}
 
 class RawRepresentableTest: XCTestCase {
 

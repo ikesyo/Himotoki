@@ -8,9 +8,13 @@
 
 import class Foundation.NSNumber
 
-extension NSNumber: Decodable {
+extension NSNumber: ValueType {
     public static func decode(_ e: Extractor) throws -> Self {
-        return try castOrFail(e)
+        return try decodeValue(e.rawValue)
+    }
+
+    public static func decodeValue(_ JSON: Any) throws -> Self {
+        return try castOrFail(JSON)
     }
 }
 

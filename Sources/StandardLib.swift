@@ -6,41 +6,24 @@
 //  Copyright © 2015 Syo Ikeda. All rights reserved.
 //
 
-extension String: Decodable {
-    public static func decode(_ e: Extractor) throws -> String {
-        return try castOrFail(e)
+public protocol ValueType: Decodable {}
+
+extension ValueType {
+    public static func decode(_ e: Extractor) throws -> Self {
+        return try decodeValue(e.rawValue)
+    }
+
+    public static func decodeValue(_ JSON: Any) throws -> Self {
+        return try castOrFail(JSON)
     }
 }
 
-extension Int: Decodable {
-    public static func decode(_ e: Extractor) throws -> Int {
-        return try castOrFail(e)
-    }
-}
-
-extension UInt: Decodable {
-    public static func decode(_ e: Extractor) throws -> UInt {
-        return try castOrFail(e)
-    }
-}
-
-extension Double: Decodable {
-    public static func decode(_ e: Extractor) throws -> Double {
-        return try castOrFail(e)
-    }
-}
-
-extension Float: Decodable {
-    public static func decode(_ e: Extractor) throws -> Float {
-        return try castOrFail(e)
-    }
-}
-
-extension Bool: Decodable {
-    public static func decode(_ e: Extractor) throws -> Bool {
-        return try castOrFail(e)
-    }
-}
+extension String: ValueType {}
+extension Int: ValueType {}
+extension UInt: ValueType {}
+extension Double: ValueType {}
+extension Float: ValueType {}
+extension Bool: ValueType {}
 
 // MARK: - Extensions
 
