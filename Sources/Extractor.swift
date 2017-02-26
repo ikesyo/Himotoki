@@ -10,22 +10,22 @@ import class Foundation.NSNull
 
 public struct Extractor {
     public let rawValue: Any
-    private let isDictionary: Bool
+    private let dictionary: [String: Any]?
 
     internal init(_ rawValue: Any) {
         self.rawValue = rawValue
-        self.isDictionary = rawValue is [String: Any]
+        self.dictionary = rawValue as? [String: Any]
     }
 
     // If we use `rawValue` here, that would conflict with `let rawValue: Any`
     // on Linux. This naming is avoiding the weird case.
     private func _rawValue(_ keyPath: KeyPath) throws -> Any? {
-        guard isDictionary else {
+        guard let dictionary = dictionary else {
             throw typeMismatch("Dictionary", actual: rawValue, keyPath: keyPath)
         }
 
         let components = ArraySlice(keyPath.components)
-        return valueFor(components, rawValue)
+        return valueFor(components, dictionary)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
