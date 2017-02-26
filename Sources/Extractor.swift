@@ -24,8 +24,7 @@ public struct Extractor {
             throw typeMismatch("Dictionary", actual: rawValue, keyPath: keyPath)
         }
 
-        let components = ArraySlice(keyPath.components)
-        return valueFor(components, dictionary)
+        return valueFor(keyPath, dictionary)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
@@ -93,24 +92,19 @@ extension Extractor: CustomStringConvertible {
     }
 }
 
-// Implement it as a tail recursive function.
-//
-// `ArraySlice` is used for performance optimization.
-// See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
-private func valueFor<C: Collection>(_ keyPathComponents: C, _ JSON: Any) -> Any? where C.Iterator.Element == String, C.SubSequence == C {
-    guard
-        let first = keyPathComponents.first,
-        let nativeDict = JSON as? [String: Any],
-        case let nested? = nativeDict[first],
-        !(nested is NSNull) else // swiftlint:disable:this opening_brace
-    {
+private func valueFor(_ keyPath: KeyPath, _ json: Any) -> Any? {
+    var result = json
+    for key in keyPath.components {
+        if let object = result as? [String: Any], let value = object[key] {
+            result = value
+        } else {
+            return nil
+        }
+    }
+
+    if result is NSNull {
         return nil
     }
 
-    if keyPathComponents.count == 1 {
-        return nested
-    }
-
-    let tail = keyPathComponents.dropFirst()
-    return valueFor(tail, nested)
+    return result
 }
