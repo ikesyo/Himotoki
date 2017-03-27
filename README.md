@@ -72,14 +72,14 @@ To implement the `decode` method for you models conforming to the `Decodable` pr
 
 Himotoki also supports the following operators to decode JSON elements, where `T` is a generic type conforming to the `Decodable` protocol.
 
-| Operator                        | Decode element as | Remarks                          |
-|:--------------------------------|:------------------|:---------------------------------|
-| <code>&lt;&#124;</code>         | `T`               | A value                          |
-| <code>&lt;&#124;?</code>        | `T?`              | An optional value                |
-| <code>&lt;&#124;&#124;</code>   | `[T]`             | An array of values               |
-| <code>&lt;&#124;&#124;?</code>  | `[T]?`            | An optional array of values      |
-| <code>&lt;&#124;-&#124;</code>  | `[String: T]`     | A dictionary of values           |
-| <code>&lt;&#124;-&#124;?</code> | `[String: T]?`    | An optional dictionary of values |
+| Operator | Decode element as | Remarks                          |
+|:---------|:------------------|:---------------------------------|
+| `<|`     | `T`               | A value                          |
+| `<|?`    | `T?`              | An optional value                |
+| `<||`    | `[T]`             | An array of values               |
+| `<||?`   | `[T]?`            | An optional array of values      |
+| `<|-|`   | `[String: T]`     | A dictionary of values           |
+| `<|-|?`  | `[String: T]?`    | An optional dictionary of values |
 
 ## Value Transformation
 
