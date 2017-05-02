@@ -7,16 +7,16 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 
-Himotoki (紐解き) is a type-safe JSON decoding library purely written in Swift. This library is highly inspired by popular JSON parsing libraries in Swift: [Argo](https://github.com/thoughtbot/Argo) and [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper).
+Himotoki (紐解き) is a type-safe JSON decoding library written purely in Swift. This library is highly inspired by the popular Swift JSON parsing libraries: [Argo](https://github.com/thoughtbot/Argo) and [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper).
 
 _Himotoki_ has the same meaning of 'decoding' in Japanese.
 
-- Just do JSON decoding (deserialization) well. JSON encoding (serialization) would not be supported going forward. :wink:
+- Just do JSON decoding (deserialization) well. JSON encoding (serialization) will not be supported going forward. :wink:
 - Much simpler API.
 - Fail-fast conditional model building. This is useful for some `struct`s with non-optional `let` properties.
 - No external dependencies.
 
-See a simple example from a test code:
+Let's take a look at a simple example:
 
 ```swift
 struct Group: Decodable {
@@ -112,7 +112,7 @@ Himotoki 3.x requires / supports the following environments:
 
 ## Installation
 
-There are 2 options.
+Currently Himotoki supports installation via the package managers [Carthage](https://github.com/Carthage/Carthage) and [CocoaPods](https://cocoapods.org/).
 
 ### Carthage
 
