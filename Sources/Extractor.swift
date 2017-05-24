@@ -121,10 +121,10 @@ private func valueFor(_ keyPath: KeyPath, _ json: Any) -> Any? {
         #endif
 
     }
-    
+ 
     if result is NSNull {
         return nil
     }
-    
+
     return result
 }
