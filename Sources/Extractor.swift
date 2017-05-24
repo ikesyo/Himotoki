@@ -13,7 +13,7 @@ public struct Extractor {
     public let rawValue: Any
 
     #if os(Linux)
-    private let dictionary: [Swift: Any]?
+    private let dictionary: [String: Any]?
     #else
     private let dictionary: NSDictionary?
     #endif
@@ -22,7 +22,7 @@ public struct Extractor {
         self.rawValue = rawValue
 
         #if os(Linux)
-            self.dictionary = rawValue as? [Swift: Any]
+            self.dictionary = rawValue as? [String: Any]
         #else
             self.dictionary = rawValue as? NSDictionary
         #endif
