@@ -11,11 +11,21 @@ import class Foundation.NSDictionary
 
 public struct Extractor {
     public let rawValue: Any
+
+    #if os(Linux)
+    private let dictionary: [Swift: Any]?
+    #else
     private let dictionary: NSDictionary?
+    #endif
 
     internal init(_ rawValue: Any) {
         self.rawValue = rawValue
-        self.dictionary = rawValue as? NSDictionary
+
+        #if os(Linux)
+            self.dictionary = rawValue as? [Swift: Any]
+        #else
+            self.dictionary = rawValue as? NSDictionary
+        #endif
     }
 
     // If we use `rawValue` here, that would conflict with `let rawValue: Any`
@@ -96,16 +106,25 @@ extension Extractor: CustomStringConvertible {
 private func valueFor(_ keyPath: KeyPath, _ json: Any) -> Any? {
     var result = json
     for key in keyPath.components {
-        if let object = result as? NSDictionary, let value = object[key] {
-            result = value
-        } else {
-            return nil
-        }
-    }
+        #if os(Linux)
+            if let object = result as? [String: Any], let value = object[key] {
+                result = value
+            } else {
+                return nil
+            }
+        #else
+            if let object = result as? NSDictionary, let value = object[key] {
+                result = value
+            } else {
+                return nil
+            }
+        #endif
 
+    }
+    
     if result is NSNull {
         return nil
     }
-
+    
     return result
 }
