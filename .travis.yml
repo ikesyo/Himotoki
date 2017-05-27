@@ -6,8 +6,6 @@ matrix:
     - os: osx
       language: objective-c
       osx_image: xcode8.2
-      before_script:
-        - xcrun simctl delete BE8E0914-5B5F-45C2-8C99-879894AF72B0
       script:
         - pod lib lint --swift-version=3.0
       env:
@@ -15,8 +13,6 @@ matrix:
     - os: osx
       language: objective-c
       osx_image: xcode8.2
-      before_script:
-        - xcrun simctl delete BE8E0914-5B5F-45C2-8C99-879894AF72B0
       script:
         - rake "build[build-for-testing test-without-building, Himotoki-macOS, macosx, arch=x86_64]"
         - rake "build[build-for-testing test-without-building, Himotoki-iOS, iphonesimulator, name=iPhone 6s]"
