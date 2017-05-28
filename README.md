@@ -74,12 +74,12 @@ Himotoki also supports the following operators to decode JSON elements, where `T
 
 | Operator | Decode element as | Remarks                          |
 |:---------|:------------------|:---------------------------------|
-| `<|`     | `T`               | A value                          |
-| `<|?`    | `T?`              | An optional value                |
-| `<||`    | `[T]`             | An array of values               |
-| `<||?`   | `[T]?`            | An optional array of values      |
-| `<|-|`   | `[String: T]`     | A dictionary of values           |
-| `<|-|?`  | `[String: T]?`    | An optional dictionary of values |
+| `<\|`     | `T`               | A value                          |
+| `<\|?`    | `T?`              | An optional value                |
+| `<\|\|`    | `[T]`             | An array of values               |
+| `<\|\|?`   | `[T]?`            | An optional array of values      |
+| `<\|-\|`   | `[String: T]`     | A dictionary of values           |
+| `<\|-\|?`  | `[String: T]?`    | An optional dictionary of values |
 
 ## Value Transformation
 
