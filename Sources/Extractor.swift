@@ -8,13 +8,22 @@
 
 import class Foundation.NSNull
 
+// swiftlint:disable type_name
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+import class Foundation.NSDictionary
+private typealias _Dictionary = NSDictionary
+#else
+private typealias _Dictionary = [String: Any]
+#endif
+// swiftlint:enable type_name
+
 public struct Extractor {
     public let rawValue: Any
-    private let dictionary: [String: Any]?
+    private let dictionary: _Dictionary?
 
     internal init(_ rawValue: Any) {
         self.rawValue = rawValue
-        self.dictionary = rawValue as? [String: Any]
+        self.dictionary = rawValue as? _Dictionary
     }
 
     // If we use `rawValue` here, that would conflict with `let rawValue: Any`
@@ -95,7 +104,7 @@ extension Extractor: CustomStringConvertible {
 private func valueFor(_ keyPath: KeyPath, _ json: Any) -> Any? {
     var result = json
     for key in keyPath.components {
-        if let object = result as? [String: Any], let value = object[key] {
+        if let object = result as? _Dictionary, let value = object[key] {
             result = value
         } else {
             return nil
