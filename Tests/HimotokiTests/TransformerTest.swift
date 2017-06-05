@@ -18,7 +18,7 @@ private func toURL(_ s: String) throws -> URL { // swiftlint:disable:this variab
     throw customError("Invalid URL string: \(s)")
 }
 
-private struct URLsByTransformer: Decodable {
+private struct URLsByTransformer: Himotoki.Decodable {
     let value: URL
     let valueOptional: URL?
     let array: [URL]

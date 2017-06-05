@@ -19,13 +19,13 @@ _Himotoki_ has the same meaning of 'decoding' in Japanese.
 Let's take a look at a simple example:
 
 ```swift
-struct Group: Decodable {
+struct Group: Himotoki.Decodable {
     let name: String
     let floor: Int
     let locationName: String
     let optional: [String]?
 
-    // MARK: Decodable
+    // MARK: Himotoki.Decodable
 
     static func decode(_ e: Extractor) throws -> Group {
         return try Group(
@@ -56,6 +56,8 @@ func testGroup() {
     }
 }
 ```
+
+:warning: __Please note that you should need to add the module name `Himotoki` to `Decodable` (`Himotoki.Decodable`) to avoid type name collision with `Foundation.Decodable` in Xcode 9 or later.__ :warning:
 
 ## Implementing the `decode` method for your models
 
