@@ -34,7 +34,7 @@ extension NestedObjectParsingTest {
     }
 }
 
-struct WithNestedObject: Decodable {
+struct WithNestedObject: Himotoki.Decodable {
     let nestedName: String
 
     static func decode(_ e: Extractor) throws -> WithNestedObject {

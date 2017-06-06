@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 import Himotoki
 
-extension URL: Decodable {
+extension URL: Himotoki.Decodable {
     public static func decode(_ e: Extractor) throws -> URL {
         let value = try String.decode(e)
 
@@ -26,7 +26,7 @@ extension URL: Decodable {
     }
 }
 
-private struct URLHolder: Decodable {
+private struct URLHolder: Himotoki.Decodable {
     let url: URL
 
     static func decode(_ e: Extractor) throws -> URLHolder {
@@ -34,7 +34,7 @@ private struct URLHolder: Decodable {
     }
 }
 
-private struct A: Decodable { // swiftlint:disable:this type_name
+private struct A: Himotoki.Decodable { // swiftlint:disable:this type_name
     let b: B? // swiftlint:disable:this variable_name
 
     static func decode(_ e: Extractor) throws -> A {
@@ -42,7 +42,7 @@ private struct A: Decodable { // swiftlint:disable:this type_name
     }
 }
 
-private struct B: Decodable { // swiftlint:disable:this type_name
+private struct B: Himotoki.Decodable { // swiftlint:disable:this type_name
     let string: String
 
     static func decode(_ e: Extractor) throws -> B {

@@ -195,7 +195,7 @@ extension DecodableTest {
     }
 }
 
-struct Person: Decodable {
+struct Person: Himotoki.Decodable {
     let firstName: String
     let lastName: String
     let age: Int
@@ -239,7 +239,7 @@ struct Person: Decodable {
     }
 }
 
-struct Group: Decodable {
+struct Group: Himotoki.Decodable {
     let name: String
     let floor: Int
     let optional: [String]?
@@ -253,7 +253,7 @@ struct Group: Decodable {
     }
 }
 
-struct Numbers: Decodable {
+struct Numbers: Himotoki.Decodable {
     let int: Int
     let uint: UInt
     let int8: Int8
