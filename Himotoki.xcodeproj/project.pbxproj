@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B1601CCA1CCEF5E80066002F /* CustomDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1601CC91CCEF5E80066002F /* CustomDecodable.swift */; };
+		B1601CCB1CCEF5E80066002F /* CustomDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1601CC91CCEF5E80066002F /* CustomDecodable.swift */; };
+		B1601CCC1CCEF5E80066002F /* CustomDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1601CC91CCEF5E80066002F /* CustomDecodable.swift */; };
+		B1601CCD1CCEF5E80066002F /* CustomDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1601CC91CCEF5E80066002F /* CustomDecodable.swift */; };
+		B1601CD31CCEF77A0066002F /* CustomDecodableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1601CD21CCEF77A0066002F /* CustomDecodableTest.swift */; };
+		B1601CD41CCEF77A0066002F /* CustomDecodableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1601CD21CCEF77A0066002F /* CustomDecodableTest.swift */; };
+		B1601CD51CCEF77A0066002F /* CustomDecodableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1601CD21CCEF77A0066002F /* CustomDecodableTest.swift */; };
 		CD07B5231C8408A40065883E /* TransformerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC356901C819DE7004F6E47 /* TransformerTest.swift */; };
 		CD07B5241C8408A50065883E /* TransformerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC356901C819DE7004F6E47 /* TransformerTest.swift */; };
 		CD07B5251C8408A60065883E /* TransformerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC356901C819DE7004F6E47 /* TransformerTest.swift */; };
@@ -106,6 +113,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B1601CC91CCEF5E80066002F /* CustomDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDecodable.swift; sourceTree = "<group>"; };
+		B1601CD21CCEF77A0066002F /* CustomDecodableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDecodableTest.swift; sourceTree = "<group>"; };
 		CD181ED81AF4F7C20065963F /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		CD182A0F1C93CB640072E0B5 /* KeyPathTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPathTest.swift; sourceTree = "<group>"; };
 		CD5E68F81BD766BE00417C84 /* DecodeErrorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeErrorTest.swift; sourceTree = "<group>"; };
@@ -341,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				CD929A571AF4A915002F5C53 /* DecodableTest.swift */,
+				B1601CD21CCEF77A0066002F /* CustomDecodableTest.swift */,
 				CD5E68F81BD766BE00417C84 /* DecodeErrorTest.swift */,
 				CDBFDC641BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift */,
 				CD182A0F1C93CB640072E0B5 /* KeyPathTest.swift */,
@@ -366,6 +376,7 @@
 			children = (
 				CDDFC2661D183D3900E119B0 /* Casting.swift */,
 				CD929A531AF4A488002F5C53 /* Decodable.swift */,
+				B1601CC91CCEF5E80066002F /* CustomDecodable.swift */,
 				CDC4E7861B0ACB42007F8F88 /* decode.swift */,
 				CD8620E21B914C60006DCCDC /* DecodeError.swift */,
 				CD929A551AF4A4C9002F5C53 /* Extractor.swift */,
@@ -687,6 +698,7 @@
 				CD8F0DCD1B6D014B0021196A /* Operators.swift in Sources */,
 				CDDFC2691D183D3900E119B0 /* Casting.swift in Sources */,
 				CD8620E51B914C60006DCCDC /* DecodeError.swift in Sources */,
+				B1601CCC1CCEF5E80066002F /* CustomDecodable.swift in Sources */,
 				CD7450201BB7FC7B0092EED3 /* RawRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,6 +717,7 @@
 				CD181ED91AF4F7C20065963F /* Operators.swift in Sources */,
 				CDDFC2671D183D3900E119B0 /* Casting.swift in Sources */,
 				CD8620E31B914C60006DCCDC /* DecodeError.swift in Sources */,
+				B1601CCA1CCEF5E80066002F /* CustomDecodable.swift in Sources */,
 				CD74501E1BB7FC7B0092EED3 /* RawRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -715,6 +728,7 @@
 			files = (
 				CD929A581AF4A915002F5C53 /* DecodableTest.swift in Sources */,
 				CD7450221BB7FE900092EED3 /* RawRepresentableTest.swift in Sources */,
+				B1601CD31CCEF77A0066002F /* CustomDecodableTest.swift in Sources */,
 				CD5E68F91BD766BE00417C84 /* DecodeErrorTest.swift in Sources */,
 				CDD3962B1C0C0CD000A3A3DD /* NestedObjectParsingTest.swift in Sources */,
 				CDBFDC651BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift in Sources */,
@@ -737,6 +751,7 @@
 				CDE423941BF2E9B000C9473F /* Operators.swift in Sources */,
 				CDDFC26A1D183D3900E119B0 /* Casting.swift in Sources */,
 				CDE423951BF2E9B000C9473F /* DecodeError.swift in Sources */,
+				B1601CCD1CCEF5E80066002F /* CustomDecodable.swift in Sources */,
 				CDE423961BF2E9B000C9473F /* RawRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -747,6 +762,7 @@
 			files = (
 				CDE423B51BF2F0C200C9473F /* DecodeErrorTest.swift in Sources */,
 				CDE423B61BF2F0C600C9473F /* DecodeWithRootKeyPathTest.swift in Sources */,
+				B1601CD51CCEF77A0066002F /* CustomDecodableTest.swift in Sources */,
 				CDE423B41BF2F0BD00C9473F /* DecodableTest.swift in Sources */,
 				CDD3962D1C0C0CD000A3A3DD /* NestedObjectParsingTest.swift in Sources */,
 				CDE423B71BF2F0C900C9473F /* RawRepresentableTest.swift in Sources */,
@@ -769,6 +785,7 @@
 				CDF03E4E1AF607650041C3AA /* Operators.swift in Sources */,
 				CDDFC2681D183D3900E119B0 /* Casting.swift in Sources */,
 				CD8620E41B914C60006DCCDC /* DecodeError.swift in Sources */,
+				B1601CCB1CCEF5E80066002F /* CustomDecodable.swift in Sources */,
 				CD74501F1BB7FC7B0092EED3 /* RawRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -779,6 +796,7 @@
 			files = (
 				CDF03E4F1AF607A20041C3AA /* DecodableTest.swift in Sources */,
 				CD7450231BB7FE900092EED3 /* RawRepresentableTest.swift in Sources */,
+				B1601CD41CCEF77A0066002F /* CustomDecodableTest.swift in Sources */,
 				CD5E68FA1BD766BE00417C84 /* DecodeErrorTest.swift in Sources */,
 				CDD3962C1C0C0CD000A3A3DD /* NestedObjectParsingTest.swift in Sources */,
 				CDBFDC661BF1F19200231C5D /* DecodeWithRootKeyPathTest.swift in Sources */,
