@@ -1,5 +1,6 @@
 import PackageDescription
 
 let package = Package(
-    name: "Himotoki"
+    name: "Himotoki",
+    swiftLanguageVersions: [3, 4]
 )
