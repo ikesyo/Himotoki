@@ -20,8 +20,10 @@ public struct KeyPath {
     public static let empty: KeyPath = KeyPath([])
 }
 
-public func + (lhs: KeyPath, rhs: KeyPath) -> KeyPath {
-    return KeyPath(lhs.components + rhs.components)
+extension KeyPath {
+    public static func + (lhs: KeyPath, rhs: KeyPath) -> KeyPath {
+        return KeyPath(lhs.components + rhs.components)
+    }
 }
 
 extension KeyPath: Hashable {
