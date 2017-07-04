@@ -105,7 +105,7 @@ let otherURLs = try URLTransformer.apply(e <|| "bar_urls")
 
 Himotoki 3.x requires / supports the following environments:
 
-- Swift 3.0.1 / Xcode 8.1 or later
+- Swift 3.1 / Xcode 8.3 or later
     - If you use Swift 2.2 (Xcode 7.3) or Swift 2.3 (Xcode 8), you can use [2.1.1](https://github.com/ikesyo/Himotoki/releases/tag/2.1.1) instead.
 - OS X 10.9 or later
 - iOS 8.0 or later
@@ -121,7 +121,7 @@ Currently Himotoki supports installation via the package managers [Carthage](htt
 
 Himotoki is [Carthage](https://github.com/Carthage/Carthage) compatible.
 
-- Add `github "ikesyo/Himotoki" ~> 3.0` to your Cartfile.
+- Add `github "ikesyo/Himotoki" ~> 3.1` to your Cartfile.
 - Run `carthage update`.
 
 ### CocoaPods
@@ -132,7 +132,7 @@ Himotoki also can be used by [CocoaPods](https://cocoapods.org/).
 
     ```ruby
     use_frameworks!
-    pod "Himotoki", "~> 3.0"
+    pod "Himotoki", "~> 3.1"
     ```
 
 - Run `pod install`.
