@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Syo Ikeda. All rights reserved.
 //
 
+import struct Foundation.Data
+import class Foundation.JSONSerialization
 import class Foundation.NSNull
 
 // swiftlint:disable type_name
@@ -20,6 +22,15 @@ private typealias _Dictionary = [String: Any]
 public struct Extractor {
     public let rawValue: Any
     private let dictionary: _Dictionary?
+
+    internal init(from data: Data) throws {
+        do {
+            let json = try JSONSerialization.jsonObject(with: data)
+            self.init(json)
+        } catch {
+            throw customError("The given data was not valid JSON.")
+        }
+    }
 
     internal init(_ rawValue: Any) {
         self.rawValue = rawValue

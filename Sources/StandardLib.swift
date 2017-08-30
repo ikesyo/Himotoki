@@ -6,6 +6,9 @@
 //  Copyright © 2015 Syo Ikeda. All rights reserved.
 //
 
+import struct Foundation.Data
+import class Foundation.JSONSerialization
+
 extension String: Decodable {
     public static func decode(_ e: Extractor) throws -> String {
         return try castOrFail(e)
@@ -46,12 +49,27 @@ extension Bool: Decodable {
 
 extension Collection where Iterator.Element: Decodable {
     /// - Throws: DecodeError or an arbitrary ErrorType
+    public static func decode(from data: Data) throws -> [Iterator.Element] {
+        do {
+            let json = try JSONSerialization.jsonObject(with: data)
+            return try self.decode(json)
+        } catch {
+            throw customError("The given data was not valid JSON.")
+        }
+    }
+
+    /// - Throws: DecodeError or an arbitrary ErrorType
     public static func decode(_ JSON: Any) throws -> [Iterator.Element] {
         guard let array = JSON as? [Any] else {
             throw typeMismatch("Array", actual: JSON)
         }
 
         return try array.map(Iterator.Element.decodeValue)
+    }
+
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public static func decode(from data: Data, rootKeyPath: KeyPath) throws -> [Iterator.Element] {
+        return try Extractor(from: data).array(rootKeyPath)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
@@ -62,12 +80,27 @@ extension Collection where Iterator.Element: Decodable {
 
 extension ExpressibleByDictionaryLiteral where Value: Decodable {
     /// - Throws: DecodeError or an arbitrary ErrorType
+    public static func decode(from data: Data) throws -> [String: Value] {
+        do {
+            let json = try JSONSerialization.jsonObject(with: data)
+            return try self.decode(json)
+        } catch {
+            throw customError("The given data was not valid JSON.")
+        }
+    }
+
+    /// - Throws: DecodeError or an arbitrary ErrorType
     public static func decode(_ JSON: Any) throws -> [String: Value] {
         guard let dictionary = JSON as? [String: Any] else {
             throw typeMismatch("Dictionary", actual: JSON)
         }
 
         return try dictionary.mapValue(Value.decodeValue)
+    }
+
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public static func decode(from data: Data, rootKeyPath: KeyPath) throws -> [String: Value] {
+        return try Extractor(from: data).dictionary(rootKeyPath)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
