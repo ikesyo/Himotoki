@@ -7,6 +7,7 @@
 //
 
 import struct Foundation.Data
+import class Foundation.JSONSerialization
 
 extension String: Decodable {
     public static func decode(_ e: Extractor) throws -> String {

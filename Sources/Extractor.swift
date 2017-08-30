@@ -7,6 +7,7 @@
 //
 
 import struct Foundation.Data
+import class Foundation.JSONSerialization
 import class Foundation.NSNull
 
 // swiftlint:disable type_name
