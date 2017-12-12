@@ -106,8 +106,8 @@ extension Extractor: Decodable {
     }
 }
 
-extension Extractor: CustomStringConvertible {
-    public var description: String {
+extension Extractor: CustomDebugStringConvertible {
+    public var debugDescription: String {
         return "Extractor(\(rawValue))"
     }
 }

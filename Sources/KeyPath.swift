@@ -36,8 +36,8 @@ extension KeyPath: Hashable {
     }
 }
 
-extension KeyPath: CustomStringConvertible {
-    public var description: String {
+extension KeyPath: CustomDebugStringConvertible {
+    public var debugDescription: String {
         return "KeyPath(\(components))"
     }
 }
