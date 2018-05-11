@@ -5,22 +5,22 @@ matrix:
   include:
     - os: osx
       language: objective-c
-      osx_image: xcode9.2
+      osx_image: xcode9.3
       script:
         - pod lib lint
       env:
         - JOB=PODSPEC
     - os: osx
       language: objective-c
-      osx_image: xcode9.2
+      osx_image: xcode9.3
       script:
         - rake "build[build-for-testing test-without-building, Himotoki-macOS, macosx, arch=x86_64]"
-        - rake "build[build-for-testing test-without-building, Himotoki-iOS, iphonesimulator, name=iPhone 7]"
+        - rake "build[build-for-testing test-without-building, Himotoki-iOS, iphonesimulator, name=iPhone 8]"
         - rake "build[build-for-testing test-without-building, Himotoki-tvOS, appletvsimulator, name=Apple TV]"
         - rake "build[build, Himotoki-watchOS, watchsimulator, name=Apple Watch - 38mm]"
     - os: osx
       language: generic
-      osx_image: xcode9.2
+      osx_image: xcode9.3
       script:
         - swift --version
         - swift build
@@ -29,7 +29,7 @@ matrix:
         - JOB=SWIFTPM_DARWIN
     - os: osx
       language: generic
-      osx_image: xcode9.2
+      osx_image: xcode9.3
       before_install:
         - eval "$(curl -sL https://gist.githubusercontent.com/kylef/5c0475ff02b7c7671d2a/raw/9f442512a46d7a2af7b850d65a7e9bd31edfb09b/swiftenv-install.sh)"
       script:
@@ -38,7 +38,7 @@ matrix:
         - swift test
       env:
         - JOB=SWIFTPM_DARWIN
-        - SWIFT_VERSION=4.1-DEVELOPMENT-SNAPSHOT-2017-12-25-a
+        - SWIFT_VERSION=4.2-DEVELOPMENT-SNAPSHOT-2018-05-08-a
     - os: linux
       language: generic
       sudo: required
@@ -63,6 +63,6 @@ matrix:
         - swift test
       env:
         - JOB=SWIFTPM_LINUX
-        - SWIFT_VERSION=4.1-DEVELOPMENT-SNAPSHOT-2017-12-25-a
+        - SWIFT_VERSION=4.2-DEVELOPMENT-SNAPSHOT-2018-05-08-a
 notifications:
   email: false
