@@ -12,14 +12,14 @@ public enum DecodeError: Error {
     case custom(String)
 }
 
-extension DecodeError: CustomStringConvertible {
-    public var description: String {
+extension DecodeError: CustomDebugStringConvertible {
+    public var debugDescription: String {
         switch self {
         case let .missingKeyPath(keyPath):
             return "DecodeError.missingKeyPath(\(keyPath))"
 
         case let .typeMismatch(expected, actual, keyPath):
-            return "DecodeError.typeMismatch(expected: \(expected), actual: \(actual), keyPath: \(keyPath.description))"
+            return "DecodeError.typeMismatch(expected: \(expected), actual: \(actual), keyPath: \(keyPath))"
 
         case let .custom(message):
             return "DecodeError.custom(\(message))"
