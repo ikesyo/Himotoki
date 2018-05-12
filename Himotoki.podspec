@@ -24,4 +24,7 @@ DESC
   s.source       = { :git => "https://github.com/ikesyo/Himotoki.git", :tag => s.version }
   s.source_files  = "Sources/**/*.swift"
   s.requires_arc = true
+  
+  s.swift_version = "4.0"
+  s.cocoapods_version = ">= 1.4.0"
 end

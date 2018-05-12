@@ -103,10 +103,9 @@ let otherURLs = try URLTransformer.apply(e <|| "bar_urls")
 
 ## Requirements
 
-Himotoki 3.x requires / supports the following environments:
+Himotoki 4.x requires / supports the following environments:
 
-- Swift 3.1 / Xcode 8.3 or later
-    - If you use Swift 2.2 (Xcode 7.3) or Swift 2.3 (Xcode 8), you can use [2.1.1](https://github.com/ikesyo/Himotoki/releases/tag/2.1.1) instead.
+- Swift 4.1 / Xcode 9.3 or later
 - OS X 10.9 or later
 - iOS 8.0 or later
 - tvOS 9.0 or later
