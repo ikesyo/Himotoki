@@ -32,7 +32,7 @@ struct Group: Himotoki.Decodable {
             name: e <| "name",
             floor: e <| "floor",
             locationName: e <| [ "location", "name" ], // Parse nested objects
-            optional: e <||? "optional" // Parse optional arrays of values
+            optional: e <|? "optional" // Parse optional arrays of values
         )
     }
 }
@@ -89,16 +89,16 @@ You can transform an extracted value to an instance of non-`Decodable` types by 
 
 ```swift
 // Creates a `Transformer` instance.
-let URLTransformer = Transformer<String, NSURL> { URLString throws -> NSURL in
-    if let URL = NSURL(string: URLString) {
-        return URL
+let URLTransformer = Transformer<String, URL> { urlString throws -> URL in
+    if let url = URL(string: urlString) {
+        return url
     }
     
-    throw customError("Invalid URL string: \(URLString)")
+    throw customError("Invalid URL string: \(urlString)")
 }
 
-let URL = try URLTransformer.apply(e <| "foo_url")
-let otherURLs = try URLTransformer.apply(e <|| "bar_urls")
+let url: URL = try URLTransformer.apply(e <| "foo_url")
+let otherURLs: [URL] = try URLTransformer.apply(e <| "bar_urls")
 ```
 
 ## Requirements

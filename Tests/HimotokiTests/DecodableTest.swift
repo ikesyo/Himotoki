@@ -229,12 +229,12 @@ struct Person: Himotoki.Decodable {
             rawValue: (e <| "raw_value" as Extractor).rawValue,
             nested: e <| [ "nested", "value" ],
             nestedDict: e <|-| [ "nested", "dict" ],
-            array: e <|| "array",
-            arrayOption: e <||? "arrayOption",
+            array: e <| "array",
+            arrayOption: e <|? "arrayOption",
             dictionary: e <|-| "dictionary",
             dictionaryOption: e <|-|? "dictionaryOption",
             group: e <| "group",
-            groups: e <|| "groups"
+            groups: e <| "groups"
         )
     }
 }
@@ -248,7 +248,7 @@ struct Group: Himotoki.Decodable {
         return try Group(
             name: e <| "name",
             floor: e <| "floor",
-            optional: e <||? "optional"
+            optional: e <|? "optional"
         )
     }
 }

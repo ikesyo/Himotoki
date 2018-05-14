@@ -36,10 +36,10 @@ class DecodeWithRootKeyPathTest: XCTestCase {
 
         var groups: [Group]?
 
-        groups = try? decodeArray(objectWithArray)
+        groups = try? decodeValue(objectWithArray)
         XCTAssertNil(groups)
 
-        groups = try? decodeArray(objectWithArray, rootKeyPath: "groups")
+        groups = try? decodeValue(objectWithArray, rootKeyPath: "groups")
         XCTAssertNotNil(groups)
         XCTAssertEqual(groups?.count, 2)
     }

@@ -24,11 +24,13 @@ public func <|? <T: Decodable>(e: Extractor, keyPath: KeyPath) throws -> T? {
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
+@available(*, unavailable, renamed: "<|")
 public func <|| <T: Decodable>(e: Extractor, keyPath: KeyPath) throws -> [T] {
     return try e.array(keyPath)
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
+@available(*, unavailable, renamed: "<|?")
 public func <||? <T: Decodable>(e: Extractor, keyPath: KeyPath) throws -> [T]? {
     return try e.arrayOptional(keyPath)
 }
