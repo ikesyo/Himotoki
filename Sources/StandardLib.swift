@@ -47,33 +47,38 @@ extension Bool: Decodable {
 
 // MARK: - Extensions
 
-extension Collection where Iterator.Element: Decodable {
+extension Array: Decodable where Element: Decodable {
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public static func decode(from data: Data) throws -> [Iterator.Element] {
+    public static func decode(_ e: Extractor) throws -> [Element] {
+        guard let array = e.rawValue as? [Any] else {
+            throw typeMismatch("Array", actual: e.rawValue)
+        }
+
+        return try array.map(Element.decodeValue)
+    }
+
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public static func decode(from data: Data) throws -> [Element] {
         do {
             let json = try JSONSerialization.jsonObject(with: data)
-            return try self.decode(json)
+            return try decode(Extractor(json))
         } catch {
             throw customError("The given data was not valid JSON.")
         }
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public static func decode(_ JSON: Any) throws -> [Iterator.Element] {
-        guard let array = JSON as? [Any] else {
-            throw typeMismatch("Array", actual: JSON)
-        }
-
-        return try array.map(Iterator.Element.decodeValue)
+    public static func decode(_ JSON: Any) throws -> [Element] {
+        return try decode(Extractor(JSON))
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public static func decode(from data: Data, rootKeyPath: KeyPath) throws -> [Iterator.Element] {
+    public static func decode(from data: Data, rootKeyPath: KeyPath) throws -> [Element] {
         return try Extractor(from: data).array(rootKeyPath)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
-    public static func decode(_ JSON: Any, rootKeyPath: KeyPath) throws -> [Iterator.Element] {
+    public static func decode(_ JSON: Any, rootKeyPath: KeyPath) throws -> [Element] {
         return try Extractor(JSON).array(rootKeyPath)
     }
 }
