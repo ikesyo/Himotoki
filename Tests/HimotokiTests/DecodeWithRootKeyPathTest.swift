@@ -49,10 +49,10 @@ class DecodeWithRootKeyPathTest: XCTestCase {
 
         var groups: [String: Group]?
 
-        groups = try? decodeDictionary(objectWithDictionary)
+        groups = try? decodeValue(objectWithDictionary)
         XCTAssertNil(groups)
 
-        groups = try? decodeDictionary(objectWithDictionary, rootKeyPath: "groupDict")
+        groups = try? decodeValue(objectWithDictionary, rootKeyPath: "groupDict")
         XCTAssertNotNil(groups)
         XCTAssertEqual(groups?.count, 2)
         XCTAssertEqual(groups?.keys.contains("foo"), true)

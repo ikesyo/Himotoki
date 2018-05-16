@@ -83,12 +83,21 @@ extension Array: Decodable where Element: Decodable {
     }
 }
 
-extension ExpressibleByDictionaryLiteral where Value: Decodable {
+extension Dictionary: Decodable where Key == String, Value: Decodable {
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public static func decode(_ e: Extractor) throws -> [String: Value] {
+        guard let dictionary = e.rawValue as? [String: Any] else {
+            throw typeMismatch("Dictionary", actual: e.rawValue)
+        }
+
+        return try dictionary.mapValues(Value.decodeValue)
+    }
+
     /// - Throws: DecodeError or an arbitrary ErrorType
     public static func decode(from data: Data) throws -> [String: Value] {
         do {
             let json = try JSONSerialization.jsonObject(with: data)
-            return try self.decode(json)
+            return try decode(Extractor(json))
         } catch {
             throw customError("The given data was not valid JSON.")
         }
@@ -96,11 +105,7 @@ extension ExpressibleByDictionaryLiteral where Value: Decodable {
 
     /// - Throws: DecodeError or an arbitrary ErrorType
     public static func decode(_ JSON: Any) throws -> [String: Value] {
-        guard let dictionary = JSON as? [String: Any] else {
-            throw typeMismatch("Dictionary", actual: JSON)
-        }
-
-        return try dictionary.mapValues(Value.decodeValue)
+        return try decode(Extractor(JSON))
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
