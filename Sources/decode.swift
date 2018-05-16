@@ -53,21 +53,25 @@ public func decodeArray<T: Decodable>(_ JSON: Any, rootKeyPath: KeyPath) throws 
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
+@available(*, unavailable, renamed: "decodeValue(from:)")
 public func decodeDictionary<T: Decodable>(from data: Data) throws -> [String: T] {
     return try [String: T].decode(from: data)
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
+@available(*, unavailable, renamed: "decodeValue(_:)")
 public func decodeDictionary<T: Decodable>(_ JSON: Any) throws -> [String: T] {
     return try [String: T].decode(JSON)
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
+@available(*, unavailable, renamed: "decodeValue(from:rootKeyPath:)")
 public func decodeDictionary<T: Decodable>(from data: Data, rootKeyPath: KeyPath) throws -> [String: T] {
     return try [String: T].decode(from: data, rootKeyPath: rootKeyPath)
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
+@available(*, unavailable, renamed: "decodeValue(_:rootKeyPath:)")
 public func decodeDictionary<T: Decodable>(_ JSON: Any, rootKeyPath: KeyPath) throws -> [String: T] {
     return try [String: T].decode(JSON, rootKeyPath: rootKeyPath)
 }

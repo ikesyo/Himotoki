@@ -228,11 +228,11 @@ struct Person: Himotoki.Decodable {
             number: e <| "number",
             rawValue: (e <| "raw_value" as Extractor).rawValue,
             nested: e <| [ "nested", "value" ],
-            nestedDict: e <|-| [ "nested", "dict" ],
+            nestedDict: e <| [ "nested", "dict" ],
             array: e <| "array",
             arrayOption: e <|? "arrayOption",
-            dictionary: e <|-| "dictionary",
-            dictionaryOption: e <|-|? "dictionaryOption",
+            dictionary: e <| "dictionary",
+            dictionaryOption: e <|? "dictionaryOption",
             group: e <| "group",
             groups: e <| "groups"
         )
