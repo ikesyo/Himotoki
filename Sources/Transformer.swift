@@ -35,7 +35,7 @@ public struct Transformer<From, To> {
 
     /// - Throws: DecodeError or an arbitrary ErrorType
     public func apply(_ subject: [String: From]) throws -> [String: To] {
-        return try subject.mapValue(transform)
+        return try subject.mapValues(transform)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
