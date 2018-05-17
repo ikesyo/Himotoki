@@ -72,17 +72,15 @@ public struct Extractor {
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
+    @available(*, unavailable, renamed: "value(_:)")
     public func array<T: Decodable>(_ keyPath: KeyPath) throws -> [T] {
-        guard let array: [T] = try arrayOptional(keyPath) else {
-            throw DecodeError.missingKeyPath(keyPath)
-        }
-
-        return array
+        fatalError()
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
+    @available(*, unavailable, renamed: "valueOptional(_:)")
     public func arrayOptional<T: Decodable>(_ keyPath: KeyPath) throws -> [T]? {
-        return try _rawValue(keyPath).map([T].decode)
+        fatalError()
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
