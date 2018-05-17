@@ -110,11 +110,11 @@ extension Dictionary: Decodable where Key == String, Value: Decodable {
 
     /// - Throws: DecodeError or an arbitrary ErrorType
     public static func decode(from data: Data, rootKeyPath: KeyPath) throws -> [String: Value] {
-        return try Extractor(from: data).dictionary(rootKeyPath)
+        return try Extractor(from: data).value(rootKeyPath)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
     public static func decode(_ JSON: Any, rootKeyPath: KeyPath) throws -> [String: Value] {
-        return try Extractor(JSON).dictionary(rootKeyPath)
+        return try Extractor(JSON).value(rootKeyPath)
     }
 }

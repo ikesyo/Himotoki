@@ -38,11 +38,11 @@ public func <||? <T: Decodable>(e: Extractor, keyPath: KeyPath) throws -> [T]? {
 /// - Throws: DecodeError or an arbitrary ErrorType
 @available(*, unavailable, renamed: "<|")
 public func <|-| <T: Decodable>(e: Extractor, keyPath: KeyPath) throws -> [String: T] {
-    return try e.dictionary(keyPath)
+    fatalError()
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
 @available(*, unavailable, renamed: "<|?")
 public func <|-|? <T: Decodable>(e: Extractor, keyPath: KeyPath) throws -> [String: T]? {
-    return try e.dictionaryOptional(keyPath)
+    fatalError()
 }
