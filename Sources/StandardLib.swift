@@ -74,12 +74,12 @@ extension Array: Decodable where Element: Decodable {
 
     /// - Throws: DecodeError or an arbitrary ErrorType
     public static func decode(from data: Data, rootKeyPath: KeyPath) throws -> [Element] {
-        return try Extractor(from: data).array(rootKeyPath)
+        return try Extractor(from: data).value(rootKeyPath)
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
     public static func decode(_ JSON: Any, rootKeyPath: KeyPath) throws -> [Element] {
-        return try Extractor(JSON).array(rootKeyPath)
+        return try Extractor(JSON).value(rootKeyPath)
     }
 }
 
