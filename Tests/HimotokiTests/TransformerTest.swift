@@ -35,7 +35,7 @@ private struct URLsByTransformer: Himotoki.Decodable {
             array: try URLTransformer.apply(e.value("array")),
             arrayOptional: try URLTransformer.apply(e <|? "arrayOptional"),
             dictionary: try URLTransformer.apply(e <| "dictionary"),
-            dictionaryOptional: try URLTransformer.apply(e.dictionaryOptional("dictionaryOptional"))
+            dictionaryOptional: try URLTransformer.apply(e.valueOptional("dictionaryOptional"))
         )
     }
 }
