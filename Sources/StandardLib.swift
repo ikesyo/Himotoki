@@ -58,28 +58,27 @@ extension Array: Decodable where Element: Decodable {
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
+    @available(*, unavailable, renamed: "decodeValue(from:)")
     public static func decode(from data: Data) throws -> [Element] {
-        do {
-            let json = try JSONSerialization.jsonObject(with: data)
-            return try decode(Extractor(json))
-        } catch {
-            throw customError("The given data was not valid JSON.")
-        }
+        fatalError()
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
+    @available(*, unavailable, renamed: "decodeValue(_:)")
     public static func decode(_ JSON: Any) throws -> [Element] {
-        return try decode(Extractor(JSON))
+        fatalError()
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
+    @available(*, unavailable, renamed: "decodeValue(from:rootKeyPath:)")
     public static func decode(from data: Data, rootKeyPath: KeyPath) throws -> [Element] {
-        return try Extractor(from: data).value(rootKeyPath)
+        fatalError()
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
+    @available(*, unavailable, renamed: "decodeValue(_:rootKeyPath:)")
     public static func decode(_ JSON: Any, rootKeyPath: KeyPath) throws -> [Element] {
-        return try Extractor(JSON).value(rootKeyPath)
+        fatalError()
     }
 }
 
@@ -94,27 +93,26 @@ extension Dictionary: Decodable where Key == String, Value: Decodable {
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
+    @available(*, unavailable, renamed: "decodeValue(from:)")
     public static func decode(from data: Data) throws -> [String: Value] {
-        do {
-            let json = try JSONSerialization.jsonObject(with: data)
-            return try decode(Extractor(json))
-        } catch {
-            throw customError("The given data was not valid JSON.")
-        }
+        fatalError()
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
+    @available(*, unavailable, renamed: "decodeValue(_:)")
     public static func decode(_ JSON: Any) throws -> [String: Value] {
-        return try decode(Extractor(JSON))
+        fatalError()
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
+    @available(*, unavailable, renamed: "decodeValue(from:rootKeyPath:)")
     public static func decode(from data: Data, rootKeyPath: KeyPath) throws -> [String: Value] {
-        return try Extractor(from: data).value(rootKeyPath)
+        fatalError()
     }
 
     /// - Throws: DecodeError or an arbitrary ErrorType
+    @available(*, unavailable, renamed: "decodeValue(_:rootKeyPath:)")
     public static func decode(_ JSON: Any, rootKeyPath: KeyPath) throws -> [String: Value] {
-        return try Extractor(JSON).value(rootKeyPath)
+        fatalError()
     }
 }
