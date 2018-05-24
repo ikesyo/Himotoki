@@ -31,47 +31,47 @@ public func decodeValue<T: Decodable>(_ JSON: Any, rootKeyPath: KeyPath) throws 
 /// - Throws: DecodeError or an arbitrary ErrorType
 @available(*, unavailable, renamed: "decodeValue(from:)")
 public func decodeArray<T: Decodable>(from data: Data) throws -> [T] {
-    return try [T].decode(from: data)
+    fatalError()
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
 @available(*, unavailable, renamed: "decodeValue(_:)")
 public func decodeArray<T: Decodable>(_ JSON: Any) throws -> [T] {
-    return try [T].decode(JSON)
+    fatalError()
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
 @available(*, unavailable, renamed: "decodeValue(from:rootKeyPath:)")
 public func decodeArray<T: Decodable>(from data: Data, rootKeyPath: KeyPath) throws -> [T] {
-    return try [T].decode(from: data, rootKeyPath: rootKeyPath)
+    fatalError()
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
 @available(*, unavailable, renamed: "decodeValue(_:rootKeyPath:)")
 public func decodeArray<T: Decodable>(_ JSON: Any, rootKeyPath: KeyPath) throws -> [T] {
-    return try [T].decode(JSON, rootKeyPath: rootKeyPath)
+    fatalError()
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
 @available(*, unavailable, renamed: "decodeValue(from:)")
 public func decodeDictionary<T: Decodable>(from data: Data) throws -> [String: T] {
-    return try [String: T].decode(from: data)
+    fatalError()
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
 @available(*, unavailable, renamed: "decodeValue(_:)")
 public func decodeDictionary<T: Decodable>(_ JSON: Any) throws -> [String: T] {
-    return try [String: T].decode(JSON)
+    fatalError()
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
 @available(*, unavailable, renamed: "decodeValue(from:rootKeyPath:)")
 public func decodeDictionary<T: Decodable>(from data: Data, rootKeyPath: KeyPath) throws -> [String: T] {
-    return try [String: T].decode(from: data, rootKeyPath: rootKeyPath)
+    fatalError()
 }
 
 /// - Throws: DecodeError or an arbitrary ErrorType
 @available(*, unavailable, renamed: "decodeValue(_:rootKeyPath:)")
 public func decodeDictionary<T: Decodable>(_ JSON: Any, rootKeyPath: KeyPath) throws -> [String: T] {
-    return try [String: T].decode(JSON, rootKeyPath: rootKeyPath)
+    fatalError()
 }

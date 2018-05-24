@@ -108,7 +108,7 @@ class DecodableTest: XCTestCase {
 
         measure {
             do {
-                _ = try [Person].decode(peopleJSON)
+                _ = try [Person].decodeValue(peopleJSON)
             } catch {
                 XCTFail(String(describing: error))
             }
@@ -138,7 +138,7 @@ class DecodableTest: XCTestCase {
         let JSON: JSONDictionary = [ "name": "Himotoki", "floor": 12 ]
         let array: JSONArray = [ JSON, JSON ]
 
-        let values = try? [Group].decode(array)
+        let values = try? [Group].decodeValue(array)
         XCTAssert(values != nil)
         XCTAssert(values?.count == 2)
     }
@@ -147,7 +147,7 @@ class DecodableTest: XCTestCase {
         let JSON: JSONDictionary = [ "name": "Himotoki", "floor": 12 ]
         let dictionary: JSONDictionary = [ "1": JSON, "2": JSON ]
 
-        let values = try? [String: Group].decode(dictionary)
+        let values = try? [String: Group].decodeValue(dictionary)
         XCTAssert(values != nil)
         XCTAssert(values?.count == 2)
     }
