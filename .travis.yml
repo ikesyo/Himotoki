@@ -5,7 +5,7 @@ matrix:
   include:
     - os: osx
       language: objective-c
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       script:
         # To work around the lint error: "ERROR | swift: Specification `Himotoki` specifies an inconsistent `swift_version` (`4.0`) compared to the one present in your `.swift-version` file (`4.1`). Please remove the `.swift-version` file which is now deprecated and only use the `swift_version` attribute within your podspec."
         # `.swift-version` is for swiftenv, not for CocoaPods, so we can't remove the file as suggested.
@@ -15,7 +15,15 @@ matrix:
         - JOB=PODSPEC
     - os: osx
       language: objective-c
-      osx_image: xcode9.3
+      osx_image: xcode9.4
+      script:
+        - rake "build[build-for-testing test-without-building, Himotoki-macOS, macosx, arch=x86_64]"
+        - rake "build[build-for-testing test-without-building, Himotoki-iOS, iphonesimulator, name=iPhone 8]"
+        - rake "build[build-for-testing test-without-building, Himotoki-tvOS, appletvsimulator, name=Apple TV]"
+        - rake "build[build, Himotoki-watchOS, watchsimulator, name=Apple Watch - 38mm]"
+    - os: osx
+      language: objective-c
+      osx_image: xcode10.1
       script:
         - rake "build[build-for-testing test-without-building, Himotoki-macOS, macosx, arch=x86_64]"
         - rake "build[build-for-testing test-without-building, Himotoki-iOS, iphonesimulator, name=iPhone 8]"
@@ -23,7 +31,7 @@ matrix:
         - rake "build[build, Himotoki-watchOS, watchsimulator, name=Apple Watch - 38mm]"
     - os: osx
       language: generic
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       script:
         - swift --version
         - swift build
@@ -32,7 +40,7 @@ matrix:
         - JOB=SWIFTPM_DARWIN
     - os: osx
       language: generic
-      osx_image: xcode9.3
+      osx_image: xcode10.1
       before_install:
         - eval "$(curl -sL https://gist.githubusercontent.com/kylef/5c0475ff02b7c7671d2a/raw/9f442512a46d7a2af7b850d65a7e9bd31edfb09b/swiftenv-install.sh)"
       script:
@@ -41,7 +49,7 @@ matrix:
         - swift test
       env:
         - JOB=SWIFTPM_DARWIN
-        - SWIFT_VERSION=4.2-DEVELOPMENT-SNAPSHOT-2018-05-08-a
+        - SWIFT_VERSION=4.2.1
     - os: linux
       language: generic
       sudo: required
@@ -66,6 +74,6 @@ matrix:
         - swift test
       env:
         - JOB=SWIFTPM_LINUX
-        - SWIFT_VERSION=4.2-DEVELOPMENT-SNAPSHOT-2018-05-08-a
+        - SWIFT_VERSION=4.2.1
 notifications:
   email: false
