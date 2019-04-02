@@ -25,6 +25,6 @@ DESC
   s.source_files  = "Sources/**/*.swift"
   s.requires_arc = true
   
-  s.swift_version = "4.0"
   s.cocoapods_version = ">= 1.4.0"
+  s.swift_version = "4.2"
 end
